@@ -1,0 +1,24 @@
+[
+  {
+    "code": "SC1001",
+    "title": "Introduction to Computing",
+    "aus": 3,
+    "prerequisites": {"all_of": [], "any_of": [], "minimum_study_year": null, "raw_text": null},
+    "exclusions": [],
+    "applicable_programmes": ["CS"],
+    "programme_categories": {"CS": ["CORE"]},
+    "documented_constraints": [],
+    "source_ids": ["source.course.sc1001"]
+  },
+  {
+    "code": "SC1002",
+    "title": "Data Structures",
+    "aus": 3,
+    "prerequisites": {"all_of": ["SC1001"], "any_of": [], "minimum_study_year": null, "raw_text": "SC1001"},
+    "exclusions": [],
+    "applicable_programmes": ["CS"],
+    "programme_categories": {"CS": ["CORE"]},
+    "documented_constraints": [],
+    "source_ids": ["source.course.sc1002"]
+  }
+]

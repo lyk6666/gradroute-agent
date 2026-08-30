@@ -9,6 +9,7 @@ Files:
 3. `03_demo_scenarios.md` — seven scenario families and dataset split
 4. `04_simulation_design.md` — exact medium-scale simulation design
 5. `05_evaluation_plan.md` — 315-run evaluation methodology and metrics
+6. `06_stage_1_contract_decisions.md` — explicit resolutions for schema ambiguities
 
 Recommended implementation order:
 

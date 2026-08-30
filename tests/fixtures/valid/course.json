@@ -1,0 +1,16 @@
+{
+  "code": "SC1001",
+  "title": "Introduction to Computing",
+  "aus": 3,
+  "prerequisites": {
+    "all_of": [],
+    "any_of": [],
+    "minimum_study_year": null,
+    "raw_text": null
+  },
+  "exclusions": [],
+  "applicable_programmes": ["CS"],
+  "programme_categories": {"CS": ["CORE"]},
+  "documented_constraints": [],
+  "source_ids": ["source.course.sc1001"]
+}
