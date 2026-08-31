@@ -1,0 +1,34 @@
+[
+  {
+    "programme_id": "programme.aisc",
+    "code": "AISC",
+    "name": "Artificial Intelligence and Society",
+    "college": "College of Computing and Data Science",
+    "active": true,
+    "source_ids": ["ntu.ccds.programmes.current"]
+  },
+  {
+    "programme_id": "programme.ce",
+    "code": "CE",
+    "name": "Computer Engineering",
+    "college": "College of Computing and Data Science",
+    "active": true,
+    "source_ids": ["ntu.ccds.programmes.current"]
+  },
+  {
+    "programme_id": "programme.csc",
+    "code": "CSC",
+    "name": "Computer Science",
+    "college": "College of Computing and Data Science",
+    "active": true,
+    "source_ids": ["ntu.ccds.programmes.current"]
+  },
+  {
+    "programme_id": "programme.dsai",
+    "code": "DSAI",
+    "name": "Data Science and Artificial Intelligence",
+    "college": "College of Computing and Data Science",
+    "active": true,
+    "source_ids": ["ntu.ccds.programmes.current"]
+  }
+]

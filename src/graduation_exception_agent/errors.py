@@ -20,7 +20,11 @@ class DataFileNotFoundError(DataLoadError):
 
 
 class DataDecodeError(DataLoadError):
-    """Raised when a file is not valid UTF-8 JSON."""
+    """Raised when a file is not valid UTF-8 or embedded JSON cannot be decoded."""
+
+
+class DataMarkdownError(DataLoadError):
+    """Raised when a grounded Markdown document violates its structural contract."""
 
 
 class DataShapeError(DataLoadError):
@@ -57,3 +61,18 @@ class DataSchemaError(DataLoadError):
             for issue in self.issues
         )
         super().__init__(path, f"{prefix}schema validation failed: {summary}")
+
+
+class DataIntegrityError(DataLoadError):
+    """Raised after structurally valid files fail cross-file validation."""
+
+    def __init__(self, path: str | Path, issues: list[dict[str, Any]]) -> None:
+        self.issues = tuple(issues)
+        summary = "; ".join(
+            f"{issue.get('code', 'INTEGRITY_ERROR')}"
+            f"[{issue.get('record_id', '<unknown>')}]"
+            for issue in self.issues[:8]
+        )
+        if len(self.issues) > 8:
+            summary += f"; and {len(self.issues) - 8} more"
+        super().__init__(path, f"real-data integrity validation failed: {summary}")

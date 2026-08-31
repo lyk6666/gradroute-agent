@@ -27,6 +27,14 @@ def _ensure_unique(values: list[str], field_name: str) -> list[str]:
     return values
 
 
+class DataCompleteness(StrEnum):
+    """Whether a collected field is complete, partial, or not yet known."""
+
+    COMPLETE = "COMPLETE"
+    PARTIAL = "PARTIAL"
+    UNKNOWN = "UNKNOWN"
+
+
 class Semester(StrEnum):
     SEMESTER_1 = "SEMESTER_1"
     SEMESTER_2 = "SEMESTER_2"
@@ -68,11 +76,12 @@ class CurriculumRequirement(DomainModel):
     requirement_id: Identifier
     name: NonEmptyText
     category: Identifier
-    minimum_aus: Decimal = Field(default=Decimal("0"), ge=0)
-    minimum_courses: int = Field(default=0, ge=0)
+    minimum_aus: Decimal | None = Field(default=None, gt=0)
+    minimum_courses: int | None = Field(default=None, gt=0)
     required_courses: list[CourseCode] = Field(default_factory=list)
     elective_pool: list[CourseCode] = Field(default_factory=list)
     constraints: list[NonEmptyText] = Field(default_factory=list)
+    course_lists_completeness: DataCompleteness = DataCompleteness.UNKNOWN
 
     @field_validator("required_courses", "elective_pool")
     @classmethod
@@ -85,12 +94,48 @@ class CurriculumRequirement(DomainModel):
         if set(self.required_courses) & set(self.elective_pool):
             raise ValueError("a course cannot be both required and in the elective pool")
         if (
-            self.minimum_aus == 0
-            and self.minimum_courses == 0
+            self.minimum_aus is None
+            and self.minimum_courses is None
             and not self.required_courses
+            and not self.constraints
         ):
             raise ValueError("a requirement must define an AU, course, or count condition")
+        if (
+            (self.required_courses or self.elective_pool)
+            and self.course_lists_completeness is DataCompleteness.UNKNOWN
+        ):
+            raise ValueError(
+                "known requirement course lists require COMPLETE or PARTIAL coverage"
+            )
         return self
+
+
+class GraduationPath(DomainModel):
+    """One explicit alternative route to a programme's graduation total."""
+
+    path_id: Identifier
+    name: NonEmptyText
+    graduation_aus: Decimal = Field(gt=0)
+    category_aus: dict[Identifier, Decimal] = Field(default_factory=dict)
+    minimum_course_counts: dict[Identifier, int] = Field(default_factory=dict)
+    required_components: list[NonEmptyText] = Field(default_factory=list)
+    constraints: list[NonEmptyText] = Field(default_factory=list)
+
+    @field_validator("category_aus")
+    @classmethod
+    def positive_category_aus(
+        cls, value: dict[str, Decimal]
+    ) -> dict[str, Decimal]:
+        if any(aus <= 0 for aus in value.values()):
+            raise ValueError("category_aus values must be positive")
+        return value
+
+    @field_validator("minimum_course_counts")
+    @classmethod
+    def positive_course_counts(cls, value: dict[str, int]) -> dict[str, int]:
+        if any(count <= 0 for count in value.values()):
+            raise ValueError("minimum_course_counts values must be positive")
+        return value
 
 
 class Curriculum(DomainModel):
@@ -98,9 +143,11 @@ class Curriculum(DomainModel):
     programme: ProgrammeCode
     admission_cohort: AdmissionCohort
     effective_academic_year: AcademicYear
-    graduation_aus: Decimal = Field(gt=0)
+    graduation_aus: Decimal | None = Field(default=None, gt=0)
+    graduation_paths: list[GraduationPath] = Field(default_factory=list)
     requirements: list[CurriculumRequirement] = Field(min_length=1)
     programme_constraints: list[NonEmptyText] = Field(default_factory=list)
+    rules_completeness: DataCompleteness = DataCompleteness.UNKNOWN
     source_ids: list[Identifier] = Field(min_length=1)
 
     @field_validator("source_ids")
@@ -112,6 +159,22 @@ class Curriculum(DomainModel):
     def unique_requirements(self) -> Curriculum:
         requirement_ids = [item.requirement_id for item in self.requirements]
         _ensure_unique(requirement_ids, "requirement_ids")
+        _ensure_unique(
+            [item.category for item in self.requirements],
+            "requirement_categories",
+        )
+        _ensure_unique(
+            [path.path_id for path in self.graduation_paths],
+            "graduation_path_ids",
+        )
+        if (self.graduation_aus is None) == (not self.graduation_paths):
+            raise ValueError(
+                "define exactly one fixed graduation_aus or graduation_paths"
+            )
+        if self.rules_completeness is DataCompleteness.UNKNOWN:
+            raise ValueError(
+                "a populated curriculum must declare COMPLETE or PARTIAL rule coverage"
+            )
         return self
 
 
@@ -145,6 +208,10 @@ class Course(DomainModel):
         default_factory=dict
     )
     documented_constraints: list[NonEmptyText] = Field(default_factory=list)
+    prerequisites_completeness: DataCompleteness = DataCompleteness.UNKNOWN
+    exclusions_completeness: DataCompleteness = DataCompleteness.UNKNOWN
+    applicability_completeness: DataCompleteness = DataCompleteness.UNKNOWN
+    constraints_completeness: DataCompleteness = DataCompleteness.UNKNOWN
     source_ids: list[Identifier] = Field(min_length=1)
 
     @field_validator("exclusions", "applicable_programmes", "source_ids")
@@ -175,6 +242,33 @@ class Course(DomainModel):
             raise ValueError(
                 "programme_categories contains programmes not listed as applicable"
             )
+        has_prerequisite_data = bool(
+            self.prerequisites.all_of
+            or self.prerequisites.any_of
+            or self.prerequisites.minimum_study_year is not None
+            or self.prerequisites.raw_text is not None
+        )
+        if (
+            has_prerequisite_data
+            and self.prerequisites_completeness is DataCompleteness.UNKNOWN
+        ):
+            raise ValueError(
+                "known prerequisite data requires COMPLETE or PARTIAL coverage"
+            )
+        if self.exclusions and self.exclusions_completeness is DataCompleteness.UNKNOWN:
+            raise ValueError("known exclusions require COMPLETE or PARTIAL coverage")
+        if (
+            (self.applicable_programmes or self.programme_categories)
+            and self.applicability_completeness is DataCompleteness.UNKNOWN
+        ):
+            raise ValueError(
+                "known programme applicability requires COMPLETE or PARTIAL coverage"
+            )
+        if (
+            self.documented_constraints
+            and self.constraints_completeness is DataCompleteness.UNKNOWN
+        ):
+            raise ValueError("known constraints require COMPLETE or PARTIAL coverage")
         return self
 
 

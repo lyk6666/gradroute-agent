@@ -18,6 +18,7 @@ The agent must never treat simulated rules as official NTU policy.
 data/
 ├── real/
 │   ├── source_manifest.json
+│   ├── programmes.json
 │   ├── academic_calendar.md
 │   ├── curriculum.json
 │   ├── courses.json
@@ -41,6 +42,13 @@ data/
 
 ## Real Data
 
+### `programmes.json`
+
+Records the primary CCDS programme codes and names used by the prototype. This
+small additive file lets cross-file validation distinguish a known programme
+from an unverified code; it does not claim that other NTU joint, double-degree,
+second-major, or part-time pathways do not exist.
+
 ### `source_manifest.json`
 
 Tracks provenance and freshness for every real source.
@@ -49,14 +57,14 @@ Minimum fields:
 
 ```json
 {
-  "source_id": "ccds_curriculum_cs_ay2026",
+  "source_id": "ntu.ccds.curriculum.csc.ay2025-26",
   "source_type": "curriculum",
-  "programme": "CS",
-  "academic_year": "AY2026",
+  "programme": "CSC",
+  "effective_academic_year": "AY2025-26",
   "source_url": "...",
   "retrieved_at": "...",
   "version": "...",
-  "status": "verified"
+  "origin": "VERIFIED_REAL"
 }
 ```
 
@@ -84,6 +92,11 @@ Minimum content:
 - elective/category requirements;
 - programme-specific constraints.
 
+Unknown course-count or course-list fields are `null`/`UNKNOWN`, not zero or a
+verified-empty list. A programme with conditional graduation totals uses
+explicit `graduation_paths`; each path carries its total AU, category AU,
+minimum course counts, required components, and constraints.
+
 ### `courses.json`
 
 Real, relatively stable course metadata:
@@ -110,9 +123,18 @@ Real semester offering data collected from official NTU sources where accessible
 
 Dynamic scenario changes are injected by the simulator; they do not overwrite the stored source snapshot.
 
+When no reproducible public snapshot has been collected, this file is a typed
+`PLACEHOLDER` with a reason and an empty `offerings` list. That state means
+“unknown/not collected,” never “NTU offers no courses.”
+
 ### `public_policies/registration.md`
 
 Public registration processes and rules relevant to the prototype.
+
+Every policy section records an origin and typed applicability. Applicability
+is either explicit (academic year and/or admission cohort), source-unspecified,
+or unknown. Operational queries require year/cohort context and exclude
+source-unspecified sections unless explicitly requested.
 
 ### `public_policies/exceptions.md`
 
@@ -253,3 +275,5 @@ This file is the main ground-truth contract for evaluation.
 4. **Dynamic changes are scenario injections, not fabricated source data.**
 5. **Every real rule must be traceable through `source_manifest.json`.**
 6. **Every simulated rule must be explicitly labeled as simulated.**
+7. **Every public loader resolves source IDs against the source manifest.**
+8. **Conditional curriculum paths must remain separate and machine-readable.**

@@ -67,9 +67,11 @@ def valid_payloads() -> dict[str, dict[str, Any]]:
                     "required_courses": ["SC1001"],
                     "elective_pool": [],
                     "constraints": [],
+                    "course_lists_completeness": "COMPLETE",
                 }
             ],
             "programme_constraints": [],
+            "rules_completeness": "COMPLETE",
             "source_ids": ["source.curriculum.cs.2026"],
         },
         "course": {
@@ -86,6 +88,10 @@ def valid_payloads() -> dict[str, dict[str, Any]]:
             "applicable_programmes": ["CS"],
             "programme_categories": {"CS": ["CORE"]},
             "documented_constraints": [],
+            "prerequisites_completeness": "COMPLETE",
+            "exclusions_completeness": "PARTIAL",
+            "applicability_completeness": "COMPLETE",
+            "constraints_completeness": "UNKNOWN",
             "source_ids": ["source.course.sc1001"],
         },
         "offering": {

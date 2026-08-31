@@ -1,0 +1,62 @@
+[
+  {
+    "code": "SC1003",
+    "title": "Introduction to Computational Thinking & Programming",
+    "aus": 3,
+    "prerequisites": {"all_of": [], "any_of": [], "minimum_study_year": null, "raw_text": "Nil"},
+    "exclusions": [],
+    "applicable_programmes": ["AISC", "CE", "CSC", "DSAI"],
+    "programme_categories": {"AISC": ["COLLEGE_CORE"], "CE": ["COLLEGE_CORE"], "CSC": ["COLLEGE_CORE"], "DSAI": ["COLLEGE_CORE"]},
+    "documented_constraints": [],
+    "prerequisites_completeness": "COMPLETE",
+    "exclusions_completeness": "UNKNOWN",
+    "applicability_completeness": "COMPLETE",
+    "constraints_completeness": "UNKNOWN",
+    "source_ids": ["ntu.ccds.curriculum.aisc.ay2025-26", "ntu.ccds.curriculum.ce.ay2025-26", "ntu.ccds.curriculum.csc.ay2025-26", "ntu.ccds.curriculum.dsai.ay2025-26"]
+  },
+  {
+    "code": "MH1812",
+    "title": "Discrete Mathematics",
+    "aus": 3,
+    "prerequisites": {"all_of": [], "any_of": [], "minimum_study_year": null, "raw_text": "Nil"},
+    "exclusions": [],
+    "applicable_programmes": ["AISC", "CE", "CSC", "DSAI"],
+    "programme_categories": {"AISC": ["PROGRAMME_CORE"], "CE": ["PROGRAMME_CORE"], "CSC": ["PROGRAMME_CORE"], "DSAI": ["PROGRAMME_CORE"]},
+    "documented_constraints": [],
+    "prerequisites_completeness": "COMPLETE",
+    "exclusions_completeness": "UNKNOWN",
+    "applicability_completeness": "COMPLETE",
+    "constraints_completeness": "UNKNOWN",
+    "source_ids": ["ntu.ccds.curriculum.aisc.ay2025-26", "ntu.ccds.curriculum.ce.ay2025-26", "ntu.ccds.curriculum.csc.ay2025-26", "ntu.ccds.curriculum.dsai.ay2025-26"]
+  },
+  {
+    "code": "SC1007",
+    "title": "Data Structures & Algorithms",
+    "aus": 3,
+    "prerequisites": {"all_of": ["SC1003"], "any_of": [], "minimum_study_year": null, "raw_text": "SC1003"},
+    "exclusions": [],
+    "applicable_programmes": ["AISC", "CE", "CSC", "DSAI"],
+    "programme_categories": {"AISC": ["PROGRAMME_CORE"], "CE": ["PROGRAMME_CORE"], "CSC": ["PROGRAMME_CORE"], "DSAI": ["PROGRAMME_CORE"]},
+    "documented_constraints": [],
+    "prerequisites_completeness": "COMPLETE",
+    "exclusions_completeness": "UNKNOWN",
+    "applicability_completeness": "COMPLETE",
+    "constraints_completeness": "UNKNOWN",
+    "source_ids": ["ntu.ccds.curriculum.aisc.ay2025-26", "ntu.ccds.curriculum.ce.ay2025-26", "ntu.ccds.curriculum.csc.ay2025-26", "ntu.ccds.curriculum.dsai.ay2025-26"]
+  },
+  {
+    "code": "SC2001",
+    "title": "Algorithm Design & Analysis",
+    "aus": 3,
+    "prerequisites": {"all_of": ["SC1007", "MH1812"], "any_of": [], "minimum_study_year": null, "raw_text": "SC1007 and MH1812"},
+    "exclusions": [],
+    "applicable_programmes": ["AISC", "CE", "CSC", "DSAI"],
+    "programme_categories": {"AISC": ["PROGRAMME_CORE"], "CE": ["PROGRAMME_CORE"], "CSC": ["PROGRAMME_CORE"], "DSAI": ["PROGRAMME_CORE"]},
+    "documented_constraints": [],
+    "prerequisites_completeness": "COMPLETE",
+    "exclusions_completeness": "UNKNOWN",
+    "applicability_completeness": "COMPLETE",
+    "constraints_completeness": "UNKNOWN",
+    "source_ids": ["ntu.ccds.curriculum.aisc.ay2025-26", "ntu.ccds.curriculum.ce.ay2025-26", "ntu.ccds.curriculum.csc.ay2025-26", "ntu.ccds.curriculum.dsai.ay2025-26"]
+  }
+]

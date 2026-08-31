@@ -8,6 +8,10 @@
     "applicable_programmes": ["CS"],
     "programme_categories": {"CS": ["CORE"]},
     "documented_constraints": [],
+    "prerequisites_completeness": "COMPLETE",
+    "exclusions_completeness": "UNKNOWN",
+    "applicability_completeness": "COMPLETE",
+    "constraints_completeness": "UNKNOWN",
     "source_ids": ["source.course.sc1001"]
   },
   {
@@ -19,6 +23,10 @@
     "applicable_programmes": ["CS"],
     "programme_categories": {"CS": ["CORE"]},
     "documented_constraints": [],
+    "prerequisites_completeness": "COMPLETE",
+    "exclusions_completeness": "UNKNOWN",
+    "applicability_completeness": "COMPLETE",
+    "constraints_completeness": "UNKNOWN",
     "source_ids": ["source.course.sc1002"]
   }
 ]

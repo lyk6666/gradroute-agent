@@ -1,0 +1,90 @@
+[
+  {
+    "curriculum_id": "curriculum.aisc.ay2025-26",
+    "programme": "AISC",
+    "admission_cohort": "AY2025-26",
+    "effective_academic_year": "AY2025-26",
+    "graduation_aus": 131,
+    "requirements": [
+      {"requirement_id": "requirement.aisc.university_core", "name": "University Core (ICC and CSL)", "category": "UNIVERSITY_CORE", "minimum_aus": 17, "minimum_courses": null, "required_courses": [], "elective_pool": [], "constraints": [], "course_lists_completeness": "UNKNOWN"},
+      {"requirement_id": "requirement.aisc.college_core", "name": "College Core (Professional Series)", "category": "COLLEGE_CORE", "minimum_aus": 16, "minimum_courses": null, "required_courses": [], "elective_pool": [], "constraints": [], "course_lists_completeness": "UNKNOWN"},
+      {"requirement_id": "requirement.aisc.programme_core", "name": "Programme Core", "category": "PROGRAMME_CORE", "minimum_aus": 57, "minimum_courses": null, "required_courses": [], "elective_pool": [], "constraints": [], "course_lists_completeness": "UNKNOWN"},
+      {"requirement_id": "requirement.aisc.mpe", "name": "Major Prescribed Electives", "category": "MPE", "minimum_aus": 24, "minimum_courses": 8, "required_courses": [], "elective_pool": [], "constraints": ["At least 2 MPE courses must be from the Technical group.", "At least 2 MPE courses must be from the Society group."], "course_lists_completeness": "UNKNOWN"},
+      {"requirement_id": "requirement.aisc.bde", "name": "Broadening and Deepening Electives", "category": "BDE", "minimum_aus": 17, "minimum_courses": null, "required_courses": [], "elective_pool": [], "constraints": [], "course_lists_completeness": "UNKNOWN"}
+    ],
+    "programme_constraints": [],
+    "rules_completeness": "PARTIAL",
+    "source_ids": ["ntu.ccds.curriculum.aisc.ay2025-26"]
+  },
+  {
+    "curriculum_id": "curriculum.ce.ay2025-26",
+    "programme": "CE",
+    "admission_cohort": "AY2025-26",
+    "effective_academic_year": "AY2025-26",
+    "graduation_aus": 136,
+    "requirements": [
+      {"requirement_id": "requirement.ce.university_core", "name": "University Core (ICC and CSL)", "category": "UNIVERSITY_CORE", "minimum_aus": 17, "minimum_courses": null, "required_courses": [], "elective_pool": [], "constraints": [], "course_lists_completeness": "UNKNOWN"},
+      {"requirement_id": "requirement.ce.college_core", "name": "College Core (Professional Series)", "category": "COLLEGE_CORE", "minimum_aus": 16, "minimum_courses": null, "required_courses": [], "elective_pool": [], "constraints": [], "course_lists_completeness": "UNKNOWN"},
+      {"requirement_id": "requirement.ce.programme_core", "name": "Programme Core", "category": "PROGRAMME_CORE", "minimum_aus": 68, "minimum_courses": null, "required_courses": [], "elective_pool": [], "constraints": [], "course_lists_completeness": "UNKNOWN"},
+      {"requirement_id": "requirement.ce.mpe", "name": "Major Prescribed Electives", "category": "MPE", "minimum_aus": 15, "minimum_courses": 5, "required_courses": [], "elective_pool": [], "constraints": ["MPE-1 may be an SC3xxx or SC4xxx course.", "MPE-2 through MPE-5 must be SC4xxx courses."], "course_lists_completeness": "UNKNOWN"},
+      {"requirement_id": "requirement.ce.bde", "name": "Broadening and Deepening Electives", "category": "BDE", "minimum_aus": 20, "minimum_courses": null, "required_courses": [], "elective_pool": [], "constraints": [], "course_lists_completeness": "UNKNOWN"}
+    ],
+    "programme_constraints": [],
+    "rules_completeness": "PARTIAL",
+    "source_ids": ["ntu.ccds.curriculum.ce.ay2025-26"]
+  },
+  {
+    "curriculum_id": "curriculum.csc.ay2025-26",
+    "programme": "CSC",
+    "admission_cohort": "AY2025-26",
+    "effective_academic_year": "AY2025-26",
+    "graduation_aus": null,
+    "graduation_paths": [
+      {
+        "path_id": "graduation_path.csc.fyp",
+        "name": "Final Year Project path",
+        "graduation_aus": 135,
+        "category_aus": {"MPE": 35},
+        "minimum_course_counts": {"MPE": 9},
+        "required_components": ["SC4079 Final Year Project Parts 1 and 2 (8 AU total)"],
+        "constraints": ["At least 4 MPE courses must be at the SC4xxx level."]
+      },
+      {
+        "path_id": "graduation_path.csc.coursework",
+        "name": "Additional MPE coursework path",
+        "graduation_aus": 136,
+        "category_aus": {"MPE": 36},
+        "minimum_course_counts": {"MPE": 12},
+        "required_components": [],
+        "constraints": ["Three additional MPE courses replace the Final Year Project.", "At least 4 MPE courses must be at the SC4xxx level."]
+      }
+    ],
+    "requirements": [
+      {"requirement_id": "requirement.csc.university_core", "name": "University Core (ICC and CSL)", "category": "UNIVERSITY_CORE", "minimum_aus": 17, "minimum_courses": null, "required_courses": [], "elective_pool": [], "constraints": [], "course_lists_completeness": "UNKNOWN"},
+      {"requirement_id": "requirement.csc.college_core", "name": "College Core (Professional Series)", "category": "COLLEGE_CORE", "minimum_aus": 16, "minimum_courses": null, "required_courses": [], "elective_pool": [], "constraints": [], "course_lists_completeness": "UNKNOWN"},
+      {"requirement_id": "requirement.csc.programme_core", "name": "Programme Core", "category": "PROGRAMME_CORE", "minimum_aus": 47, "minimum_courses": null, "required_courses": [], "elective_pool": [], "constraints": [], "course_lists_completeness": "UNKNOWN"},
+      {"requirement_id": "requirement.csc.mpe", "name": "Major Prescribed Electives and FYP alternative", "category": "MPE", "minimum_aus": null, "minimum_courses": null, "required_courses": [], "elective_pool": [], "constraints": ["The AU and course-count requirement is path-dependent; use graduation_paths.", "At least 4 MPE courses must be at the SC4xxx level."], "course_lists_completeness": "UNKNOWN"},
+      {"requirement_id": "requirement.csc.bde", "name": "Broadening and Deepening Electives", "category": "BDE", "minimum_aus": 20, "minimum_courses": null, "required_courses": [], "elective_pool": [], "constraints": [], "course_lists_completeness": "UNKNOWN"}
+    ],
+    "programme_constraints": ["Highest Distinction requires completion of the Final Year Project path."],
+    "rules_completeness": "PARTIAL",
+    "source_ids": ["ntu.ccds.curriculum.csc.ay2025-26"]
+  },
+  {
+    "curriculum_id": "curriculum.dsai.ay2025-26",
+    "programme": "DSAI",
+    "admission_cohort": "AY2025-26",
+    "effective_academic_year": "AY2025-26",
+    "graduation_aus": 131,
+    "requirements": [
+      {"requirement_id": "requirement.dsai.university_core", "name": "University Core (ICC and CSL)", "category": "UNIVERSITY_CORE", "minimum_aus": 17, "minimum_courses": null, "required_courses": [], "elective_pool": [], "constraints": [], "course_lists_completeness": "UNKNOWN"},
+      {"requirement_id": "requirement.dsai.college_core", "name": "College Core (Professional Series)", "category": "COLLEGE_CORE", "minimum_aus": 16, "minimum_courses": null, "required_courses": [], "elective_pool": [], "constraints": [], "course_lists_completeness": "UNKNOWN"},
+      {"requirement_id": "requirement.dsai.programme_core", "name": "Programme Core", "category": "PROGRAMME_CORE", "minimum_aus": 61, "minimum_courses": null, "required_courses": [], "elective_pool": [], "constraints": [], "course_lists_completeness": "UNKNOWN"},
+      {"requirement_id": "requirement.dsai.mpe", "name": "Major Prescribed Electives", "category": "MPE", "minimum_aus": 18, "minimum_courses": null, "required_courses": [], "elective_pool": [], "constraints": ["The selected U24-and-after study plan assigns at least four MPE slots to SC4xxx courses."], "course_lists_completeness": "UNKNOWN"},
+      {"requirement_id": "requirement.dsai.bde", "name": "Broadening and Deepening Electives", "category": "BDE", "minimum_aus": 19, "minimum_courses": null, "required_courses": [], "elective_pool": [], "constraints": [], "course_lists_completeness": "UNKNOWN"}
+    ],
+    "programme_constraints": [],
+    "rules_completeness": "PARTIAL",
+    "source_ids": ["ntu.ccds.curriculum.dsai.ay2025-26"]
+  }
+]
