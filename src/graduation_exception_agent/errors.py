@@ -75,4 +75,4 @@ class DataIntegrityError(DataLoadError):
         )
         if len(self.issues) > 8:
             summary += f"; and {len(self.issues) - 8} more"
-        super().__init__(path, f"real-data integrity validation failed: {summary}")
+        super().__init__(path, f"data integrity validation failed: {summary}")

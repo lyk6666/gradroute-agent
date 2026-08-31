@@ -34,6 +34,14 @@ _IDENTITY_FIELDS = (
     "transaction_id",
     "script_id",
     "scenario_id",
+    "manifest_id",
+    "simulation_scope_id",
+    "assumption_id",
+    "policy_id",
+    "mutation_id",
+    "event_id",
+    "registration_item_id",
+    "meeting_id",
 )
 
 

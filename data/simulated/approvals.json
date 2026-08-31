@@ -1,0 +1,1718 @@
+[
+  {
+    "approval_id": "approval.sim-aisc-007",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "case_id": "case.sim-aisc-007",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-aisc-007.scenario_supporting_record"
+    ],
+    "seed": 1563769522,
+    "simulation_scope_id": "scope.aisc.terminal",
+    "source_rule_ids": [
+      "course.CC0006",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-aisc-008",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "case_id": "case.sim-aisc-008",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-aisc-008.scenario_supporting_record"
+    ],
+    "seed": 1989146723,
+    "simulation_scope_id": "scope.aisc.terminal",
+    "source_rule_ids": [
+      "course.ML0004",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-aisc-009",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "case_id": "case.sim-aisc-009",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-aisc-009.scenario_supporting_record"
+    ],
+    "seed": 1015797063,
+    "simulation_scope_id": "scope.aisc.terminal",
+    "source_rule_ids": [
+      "course.CC0007",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-aisc-010",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "case_id": "case.sim-aisc-010",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-aisc-010.scenario_supporting_record"
+    ],
+    "seed": 1667764829,
+    "simulation_scope_id": "scope.aisc.terminal",
+    "source_rule_ids": [
+      "course.SC2000",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-aisc-011",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "case_id": "case.sim-aisc-011",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-aisc-011.scenario_supporting_record"
+    ],
+    "seed": 733465137,
+    "simulation_scope_id": "scope.aisc.terminal",
+    "source_rule_ids": [
+      "course.CC0001",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-aisc-012",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "VERIFIED_PUBLIC_ROUTE",
+    "basis_rule_ids": [
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "case_id": "case.sim-aisc-012",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-aisc-012.unofficial_transcript",
+      "document.sim-aisc-012.requested_course_mapping",
+      "document.sim-aisc-012.prerequisite_course_mapping",
+      "document.sim-aisc-012.foreign_course_mapping"
+    ],
+    "seed": 1998830637,
+    "simulation_scope_id": "scope.aisc.terminal",
+    "source_rule_ids": [
+      "course.SC4002",
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-aisc-013",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "VERIFIED_PUBLIC_ROUTE",
+    "basis_rule_ids": [
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "case_id": "case.sim-aisc-013",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-aisc-013.unofficial_transcript",
+      "document.sim-aisc-013.requested_course_mapping",
+      "document.sim-aisc-013.prerequisite_course_mapping",
+      "document.sim-aisc-013.foreign_course_mapping"
+    ],
+    "seed": 107768097,
+    "simulation_scope_id": "scope.aisc.terminal",
+    "source_rule_ids": [
+      "course.SC1007",
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-aisc-014",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "VERIFIED_PUBLIC_ROUTE",
+    "basis_rule_ids": [
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "case_id": "case.sim-aisc-014",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-aisc-014.unofficial_transcript",
+      "document.sim-aisc-014.requested_course_mapping",
+      "document.sim-aisc-014.prerequisite_course_mapping",
+      "document.sim-aisc-014.foreign_course_mapping"
+    ],
+    "seed": 1420923752,
+    "simulation_scope_id": "scope.aisc.terminal",
+    "source_rule_ids": [
+      "course.SC2002",
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-aisc-015",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "VERIFIED_PUBLIC_ROUTE",
+    "basis_rule_ids": [
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "case_id": "case.sim-aisc-015",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-aisc-015.unofficial_transcript",
+      "document.sim-aisc-015.requested_course_mapping",
+      "document.sim-aisc-015.prerequisite_course_mapping",
+      "document.sim-aisc-015.foreign_course_mapping"
+    ],
+    "seed": 968403709,
+    "simulation_scope_id": "scope.aisc.terminal",
+    "source_rule_ids": [
+      "course.SC2001",
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-aisc-016",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "VERIFIED_PUBLIC_ROUTE",
+    "basis_rule_ids": [
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "case_id": "case.sim-aisc-016",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-aisc-016.unofficial_transcript",
+      "document.sim-aisc-016.requested_course_mapping",
+      "document.sim-aisc-016.prerequisite_course_mapping",
+      "document.sim-aisc-016.foreign_course_mapping"
+    ],
+    "seed": 1449877956,
+    "simulation_scope_id": "scope.aisc.terminal",
+    "source_rule_ids": [
+      "course.SC4002",
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-bce-004",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "case_id": "case.sim-bce-004",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-bce-004.scenario_supporting_record"
+    ],
+    "seed": 762122062,
+    "simulation_scope_id": "scope.bce.terminal",
+    "source_rule_ids": [
+      "course.CC0003",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-bce-005",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "case_id": "case.sim-bce-005",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-bce-005.scenario_supporting_record"
+    ],
+    "seed": 1785445369,
+    "simulation_scope_id": "scope.bce.terminal",
+    "source_rule_ids": [
+      "course.CC0015",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-bce-006",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "case_id": "case.sim-bce-006",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-bce-006.scenario_supporting_record"
+    ],
+    "seed": 793896736,
+    "simulation_scope_id": "scope.bce.terminal",
+    "source_rule_ids": [
+      "course.SC1005",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-bce-007",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "VERIFIED_PUBLIC_ROUTE",
+    "basis_rule_ids": [
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "case_id": "case.sim-bce-007",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-bce-007.unofficial_transcript",
+      "document.sim-bce-007.requested_course_mapping",
+      "document.sim-bce-007.prerequisite_course_mapping",
+      "document.sim-bce-007.foreign_course_mapping"
+    ],
+    "seed": 1710201719,
+    "simulation_scope_id": "scope.bce.terminal",
+    "source_rule_ids": [
+      "course.SC2001",
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-bce-008",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "VERIFIED_PUBLIC_ROUTE",
+    "basis_rule_ids": [
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "case_id": "case.sim-bce-008",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-bce-008.unofficial_transcript",
+      "document.sim-bce-008.requested_course_mapping",
+      "document.sim-bce-008.prerequisite_course_mapping",
+      "document.sim-bce-008.foreign_course_mapping"
+    ],
+    "seed": 1630964941,
+    "simulation_scope_id": "scope.bce.terminal",
+    "source_rule_ids": [
+      "course.SC2103",
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-bce-009",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "VERIFIED_PUBLIC_ROUTE",
+    "basis_rule_ids": [
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "case_id": "case.sim-bce-009",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-bce-009.unofficial_transcript",
+      "document.sim-bce-009.requested_course_mapping",
+      "document.sim-bce-009.prerequisite_course_mapping",
+      "document.sim-bce-009.foreign_course_mapping"
+    ],
+    "seed": 1608300884,
+    "simulation_scope_id": "scope.bce.terminal",
+    "source_rule_ids": [
+      "course.SC2002",
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-bcg-004",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "case_id": "case.sim-bcg-004",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-bcg-004.scenario_supporting_record"
+    ],
+    "seed": 1904333483,
+    "simulation_scope_id": "scope.bcg.terminal",
+    "source_rule_ids": [
+      "course.SC1005",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-bcg-005",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "case_id": "case.sim-bcg-005",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-bcg-005.scenario_supporting_record"
+    ],
+    "seed": 206471424,
+    "simulation_scope_id": "scope.bcg.terminal",
+    "source_rule_ids": [
+      "course.MH1812",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-bcg-006",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "case_id": "case.sim-bcg-006",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-bcg-006.scenario_supporting_record"
+    ],
+    "seed": 1879663195,
+    "simulation_scope_id": "scope.bcg.terminal",
+    "source_rule_ids": [
+      "course.AD1102",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-bcg-007",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "case_id": "case.sim-bcg-007",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-bcg-007.scenario_supporting_record"
+    ],
+    "seed": 356918010,
+    "simulation_scope_id": "scope.bcg.terminal",
+    "source_rule_ids": [
+      "course.SC1008",
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-bcg-008",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "case_id": "case.sim-bcg-008",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-bcg-008.scenario_supporting_record"
+    ],
+    "seed": 1866829583,
+    "simulation_scope_id": "scope.bcg.terminal",
+    "source_rule_ids": [
+      "course.MH1812",
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-bcg-009",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "case_id": "case.sim-bcg-009",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-bcg-009.scenario_supporting_record"
+    ],
+    "seed": 760034823,
+    "simulation_scope_id": "scope.bcg.terminal",
+    "source_rule_ids": [
+      "course.AD1102",
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-ce-012",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_prerequisite_waiver"
+    ],
+    "case_id": "case.sim-ce-012",
+    "decided_at": null,
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-ce-012.unofficial_transcript",
+      "document.sim-ce-012.requested_course_mapping",
+      "document.sim-ce-012.prerequisite_course_mapping",
+      "document.sim-ce-012.foreign_course_mapping"
+    ],
+    "seed": 657606332,
+    "simulation_scope_id": "scope.ce.terminal",
+    "source_rule_ids": [
+      "course.SC3102",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_prerequisite_waiver"
+    ],
+    "status": "PENDING",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-ce-013",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_prerequisite_waiver"
+    ],
+    "case_id": "case.sim-ce-013",
+    "decided_at": null,
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-ce-013.unofficial_transcript",
+      "document.sim-ce-013.requested_course_mapping",
+      "document.sim-ce-013.prerequisite_course_mapping",
+      "document.sim-ce-013.foreign_course_mapping"
+    ],
+    "seed": 1200877260,
+    "simulation_scope_id": "scope.ce.terminal",
+    "source_rule_ids": [
+      "course.HW0288",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_prerequisite_waiver"
+    ],
+    "status": "PENDING",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-ce-014",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_prerequisite_waiver"
+    ],
+    "case_id": "case.sim-ce-014",
+    "decided_at": null,
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-ce-014.unofficial_transcript",
+      "document.sim-ce-014.requested_course_mapping",
+      "document.sim-ce-014.prerequisite_course_mapping",
+      "document.sim-ce-014.foreign_course_mapping"
+    ],
+    "seed": 503986251,
+    "simulation_scope_id": "scope.ce.terminal",
+    "source_rule_ids": [
+      "course.SC1004",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_prerequisite_waiver"
+    ],
+    "status": "PENDING",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cedana-004",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "case_id": "case.sim-cedana-004",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cedana-004.scenario_supporting_record"
+    ],
+    "seed": 328571220,
+    "simulation_scope_id": "scope.ce-dana.terminal",
+    "source_rule_ids": [
+      "course.CC0015",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cedana-005",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "case_id": "case.sim-cedana-005",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cedana-005.scenario_supporting_record"
+    ],
+    "seed": 1382340126,
+    "simulation_scope_id": "scope.ce-dana.terminal",
+    "source_rule_ids": [
+      "course.SC1005",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cedana-006",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "case_id": "case.sim-cedana-006",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cedana-006.scenario_supporting_record"
+    ],
+    "seed": 926504855,
+    "simulation_scope_id": "scope.ce-dana.terminal",
+    "source_rule_ids": [
+      "course.MH1812",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cedana-007",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "VERIFIED_PUBLIC_ROUTE",
+    "basis_rule_ids": [
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "case_id": "case.sim-cedana-007",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cedana-007.unofficial_transcript",
+      "document.sim-cedana-007.requested_course_mapping",
+      "document.sim-cedana-007.prerequisite_course_mapping",
+      "document.sim-cedana-007.foreign_course_mapping"
+    ],
+    "seed": 1970886186,
+    "simulation_scope_id": "scope.ce-dana.terminal",
+    "source_rule_ids": [
+      "course.SC2103",
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cedana-008",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "VERIFIED_PUBLIC_ROUTE",
+    "basis_rule_ids": [
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "case_id": "case.sim-cedana-008",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cedana-008.unofficial_transcript",
+      "document.sim-cedana-008.requested_course_mapping",
+      "document.sim-cedana-008.prerequisite_course_mapping",
+      "document.sim-cedana-008.foreign_course_mapping"
+    ],
+    "seed": 1664321568,
+    "simulation_scope_id": "scope.ce-dana.terminal",
+    "source_rule_ids": [
+      "course.SC2207",
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cedana-009",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "VERIFIED_PUBLIC_ROUTE",
+    "basis_rule_ids": [
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "case_id": "case.sim-cedana-009",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cedana-009.unofficial_transcript",
+      "document.sim-cedana-009.requested_course_mapping",
+      "document.sim-cedana-009.prerequisite_course_mapping",
+      "document.sim-cedana-009.foreign_course_mapping"
+    ],
+    "seed": 500227300,
+    "simulation_scope_id": "scope.ce-dana.terminal",
+    "source_rule_ids": [
+      "course.SC2005",
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-ceec-007",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "case_id": "case.sim-ceec-007",
+    "decided_at": "2029-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2029-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-ceec-007.scenario_supporting_record"
+    ],
+    "seed": 1106979017,
+    "simulation_scope_id": "scope.ceec.terminal",
+    "source_rule_ids": [
+      "course.CC0015",
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-ceec-008",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "case_id": "case.sim-ceec-008",
+    "decided_at": "2029-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2029-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-ceec-008.scenario_supporting_record"
+    ],
+    "seed": 1665499783,
+    "simulation_scope_id": "scope.ceec.terminal",
+    "source_rule_ids": [
+      "course.SC1004",
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-ceec-009",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "case_id": "case.sim-ceec-009",
+    "decided_at": "2029-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2029-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-ceec-009.scenario_supporting_record"
+    ],
+    "seed": 850739861,
+    "simulation_scope_id": "scope.ceec.terminal",
+    "source_rule_ids": [
+      "course.SC1007",
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-ceent-004",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "case_id": "case.sim-ceent-004",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-ceent-004.scenario_supporting_record"
+    ],
+    "seed": 1999769354,
+    "simulation_scope_id": "scope.ce-ent.terminal",
+    "source_rule_ids": [
+      "course.CC0015",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-ceent-005",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "case_id": "case.sim-ceent-005",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-ceent-005.scenario_supporting_record"
+    ],
+    "seed": 1425678336,
+    "simulation_scope_id": "scope.ce-ent.terminal",
+    "source_rule_ids": [
+      "course.SC1005",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-ceent-006",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "case_id": "case.sim-ceent-006",
+    "decided_at": null,
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-ceent-006.scenario_supporting_record"
+    ],
+    "seed": 1230957417,
+    "simulation_scope_id": "scope.ce-ent.terminal",
+    "source_rule_ids": [
+      "course.MH1812",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "status": "PENDING",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-ceent-007",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "VERIFIED_PUBLIC_ROUTE",
+    "basis_rule_ids": [
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "case_id": "case.sim-ceent-007",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-ceent-007.unofficial_transcript",
+      "document.sim-ceent-007.requested_course_mapping",
+      "document.sim-ceent-007.prerequisite_course_mapping",
+      "document.sim-ceent-007.foreign_course_mapping"
+    ],
+    "seed": 561345957,
+    "simulation_scope_id": "scope.ce-ent.terminal",
+    "source_rule_ids": [
+      "course.SC2103",
+      "policy.exception.exchange.pending_transfer"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-ceent-008",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_prerequisite_waiver"
+    ],
+    "case_id": "case.sim-ceent-008",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-ceent-008.unofficial_transcript",
+      "document.sim-ceent-008.requested_course_mapping",
+      "document.sim-ceent-008.prerequisite_course_mapping",
+      "document.sim-ceent-008.foreign_course_mapping"
+    ],
+    "seed": 1879405227,
+    "simulation_scope_id": "scope.ce-ent.terminal",
+    "source_rule_ids": [
+      "course.SC2005",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_prerequisite_waiver"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-ceent-009",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_prerequisite_waiver"
+    ],
+    "case_id": "case.sim-ceent-009",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-ceent-009.unofficial_transcript",
+      "document.sim-ceent-009.requested_course_mapping",
+      "document.sim-ceent-009.prerequisite_course_mapping",
+      "document.sim-ceent-009.foreign_course_mapping"
+    ],
+    "seed": 1907407687,
+    "simulation_scope_id": "scope.ce-ent.terminal",
+    "source_rule_ids": [
+      "course.SC2006",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_prerequisite_waiver"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cesust-004",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "case_id": "case.sim-cesust-004",
+    "decided_at": null,
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cesust-004.scenario_supporting_record"
+    ],
+    "seed": 1200405864,
+    "simulation_scope_id": "scope.ce-sust.terminal",
+    "source_rule_ids": [
+      "course.CC0015",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "status": "PENDING",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cesust-005",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "case_id": "case.sim-cesust-005",
+    "decided_at": null,
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cesust-005.scenario_supporting_record"
+    ],
+    "seed": 993481913,
+    "simulation_scope_id": "scope.ce-sust.terminal",
+    "source_rule_ids": [
+      "course.SC1005",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "status": "PENDING",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cesust-006",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "case_id": "case.sim-cesust-006",
+    "decided_at": null,
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cesust-006.scenario_supporting_record"
+    ],
+    "seed": 1323350383,
+    "simulation_scope_id": "scope.ce-sust.terminal",
+    "source_rule_ids": [
+      "course.MH1812",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_clash_waiver"
+    ],
+    "status": "PENDING",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cesust-007",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_prerequisite_waiver"
+    ],
+    "case_id": "case.sim-cesust-007",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cesust-007.unofficial_transcript",
+      "document.sim-cesust-007.requested_course_mapping",
+      "document.sim-cesust-007.prerequisite_course_mapping",
+      "document.sim-cesust-007.foreign_course_mapping"
+    ],
+    "seed": 1434714548,
+    "simulation_scope_id": "scope.ce-sust.terminal",
+    "source_rule_ids": [
+      "course.SC2103",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_prerequisite_waiver"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cesust-008",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_prerequisite_waiver"
+    ],
+    "case_id": "case.sim-cesust-008",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cesust-008.unofficial_transcript",
+      "document.sim-cesust-008.requested_course_mapping",
+      "document.sim-cesust-008.prerequisite_course_mapping",
+      "document.sim-cesust-008.foreign_course_mapping"
+    ],
+    "seed": 1637469143,
+    "simulation_scope_id": "scope.ce-sust.terminal",
+    "source_rule_ids": [
+      "course.SC2005",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_prerequisite_waiver"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cesust-009",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_prerequisite_waiver"
+    ],
+    "case_id": "case.sim-cesust-009",
+    "decided_at": null,
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cesust-009.unofficial_transcript",
+      "document.sim-cesust-009.requested_course_mapping",
+      "document.sim-cesust-009.prerequisite_course_mapping",
+      "document.sim-cesust-009.foreign_course_mapping"
+    ],
+    "seed": 656450736,
+    "simulation_scope_id": "scope.ce-sust.terminal",
+    "source_rule_ids": [
+      "course.SC2006",
+      "policy.prototype.registration_operations",
+      "unknown.exception.general_prerequisite_waiver"
+    ],
+    "status": "PENDING",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cscbusiness-007",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "case_id": "case.sim-cscbusiness-007",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cscbusiness-007.scenario_supporting_record"
+    ],
+    "seed": 752293869,
+    "simulation_scope_id": "scope.csc-business.terminal",
+    "source_rule_ids": [
+      "course.SC1006",
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cscbusiness-008",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "case_id": "case.sim-cscbusiness-008",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cscbusiness-008.scenario_supporting_record"
+    ],
+    "seed": 1249697264,
+    "simulation_scope_id": "scope.csc-business.terminal",
+    "source_rule_ids": [
+      "course.SC1007",
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "status": "APPROVED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cscbusiness-009",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "case_id": "case.sim-cscbusiness-009",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cscbusiness-009.scenario_supporting_record"
+    ],
+    "seed": 959303398,
+    "simulation_scope_id": "scope.csc-business.terminal",
+    "source_rule_ids": [
+      "course.SC1008",
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cscent-007",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "case_id": "case.sim-cscent-007",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cscent-007.scenario_supporting_record"
+    ],
+    "seed": 835931694,
+    "simulation_scope_id": "scope.csc-ent.terminal",
+    "source_rule_ids": [
+      "course.SC1007",
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cscent-008",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "case_id": "case.sim-cscent-008",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cscent-008.scenario_supporting_record"
+    ],
+    "seed": 1814260449,
+    "simulation_scope_id": "scope.csc-ent.terminal",
+    "source_rule_ids": [
+      "course.SC1008",
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cscent-009",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "case_id": "case.sim-cscent-009",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cscent-009.scenario_supporting_record"
+    ],
+    "seed": 1845881738,
+    "simulation_scope_id": "scope.csc-ent.terminal",
+    "source_rule_ids": [
+      "course.CC0001",
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cscitp-007",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "case_id": "case.sim-cscitp-007",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cscitp-007.scenario_supporting_record"
+    ],
+    "seed": 1061253968,
+    "simulation_scope_id": "scope.csc-itp.terminal",
+    "source_rule_ids": [
+      "course.SC1006",
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cscitp-008",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "case_id": "case.sim-cscitp-008",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cscitp-008.scenario_supporting_record"
+    ],
+    "seed": 1574200565,
+    "simulation_scope_id": "scope.csc-itp.terminal",
+    "source_rule_ids": [
+      "course.SC1007",
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cscitp-009",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "case_id": "case.sim-cscitp-009",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cscitp-009.scenario_supporting_record"
+    ],
+    "seed": 1878840958,
+    "simulation_scope_id": "scope.csc-itp.terminal",
+    "source_rule_ids": [
+      "course.SC1008",
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cscsust-007",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "case_id": "case.sim-cscsust-007",
+    "decided_at": "2028-08-25T09:01:00+08:00",
+    "decision_reason": "The simulated evidence does not support this exception.",
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cscsust-007.scenario_supporting_record"
+    ],
+    "seed": 116971163,
+    "simulation_scope_id": "scope.csc-sust.terminal",
+    "source_rule_ids": [
+      "course.SC1007",
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "status": "REJECTED",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cscsust-008",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "case_id": "case.sim-cscsust-008",
+    "decided_at": null,
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cscsust-008.scenario_supporting_record"
+    ],
+    "seed": 341563053,
+    "simulation_scope_id": "scope.csc-sust.terminal",
+    "source_rule_ids": [
+      "course.SC1008",
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "status": "PENDING",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-cscsust-009",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "case_id": "case.sim-cscsust-009",
+    "decided_at": null,
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2028-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-cscsust-009.scenario_supporting_record"
+    ],
+    "seed": 1186573883,
+    "simulation_scope_id": "scope.csc-sust.terminal",
+    "source_rule_ids": [
+      "course.CC0001",
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "status": "PENDING",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-csec-007",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "case_id": "case.sim-csec-007",
+    "decided_at": null,
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2029-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-csec-007.scenario_supporting_record"
+    ],
+    "seed": 1295636055,
+    "simulation_scope_id": "scope.csec.terminal",
+    "source_rule_ids": [
+      "course.SC1007",
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "status": "PENDING",
+    "version": 1
+  },
+  {
+    "approval_id": "approval.sim-csec-008",
+    "approver_role": "CCDS Undergraduate Office",
+    "basis": "SIMULATED_POLICY",
+    "basis_rule_ids": [
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "case_id": "case.sim-csec-008",
+    "decided_at": null,
+    "decision_reason": null,
+    "generator_version": "stage3.4.0",
+    "observable": false,
+    "requested_action": "Review a scenario-bounded exception request.",
+    "requested_at": "2029-08-25T09:00:00+08:00",
+    "required_document_ids": [
+      "document.sim-csec-008.scenario_supporting_record"
+    ],
+    "seed": 573654593,
+    "simulation_scope_id": "scope.csec.terminal",
+    "source_rule_ids": [
+      "course.SC1008",
+      "policy.prototype.registration_operations",
+      "unknown.exception.substitution"
+    ],
+    "status": "PENDING",
+    "version": 1
+  }
+]

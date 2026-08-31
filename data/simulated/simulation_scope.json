@@ -1,0 +1,528 @@
+[
+  {
+    "accepted_gap_ids": [],
+    "admission_cohort": "AY2025-26",
+    "assumption_ids": [
+      "assumption.aisc.terminal"
+    ],
+    "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
+    "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
+    "curriculum_id": "curriculum.aisc.ay2025-26",
+    "generator_version": "stage3.4.0",
+    "permitted_graduation_path_ids": [],
+    "permitted_study_plan_path_labels": [],
+    "programme": "AISC",
+    "seed": 1549066081,
+    "simulation_academic_year": "AY2028-29",
+    "simulation_period_id": "period.terminal.s1",
+    "simulation_scope_id": "scope.aisc.terminal",
+    "simulation_semester": "SEMESTER_1",
+    "source_rule_ids": [
+      "curriculum.aisc.ay2025-26",
+      "policy.prototype.counterfactual_template_reuse",
+      "policy.prototype.scenario_bounded_audit"
+    ],
+    "student_count": 21,
+    "template_academic_year": "AY2026-27",
+    "template_semester": "SEMESTER_1",
+    "terminal_study_year": 4
+  },
+  {
+    "accepted_gap_ids": [],
+    "admission_cohort": "AY2025-26",
+    "assumption_ids": [
+      "assumption.bce.terminal"
+    ],
+    "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
+    "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
+    "curriculum_id": "curriculum.bce.ay2025-26",
+    "generator_version": "stage3.4.0",
+    "permitted_graduation_path_ids": [],
+    "permitted_study_plan_path_labels": [],
+    "programme": "BCE",
+    "seed": 969911936,
+    "simulation_academic_year": "AY2028-29",
+    "simulation_period_id": "period.terminal.s1",
+    "simulation_scope_id": "scope.bce.terminal",
+    "simulation_semester": "SEMESTER_1",
+    "source_rule_ids": [
+      "curriculum.bce.ay2025-26",
+      "policy.prototype.counterfactual_template_reuse",
+      "policy.prototype.scenario_bounded_audit"
+    ],
+    "student_count": 12,
+    "template_academic_year": "AY2026-27",
+    "template_semester": "SEMESTER_1",
+    "terminal_study_year": 4
+  },
+  {
+    "accepted_gap_ids": [],
+    "admission_cohort": "AY2025-26",
+    "assumption_ids": [
+      "assumption.bcg.terminal"
+    ],
+    "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
+    "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
+    "curriculum_id": "curriculum.bcg.ay2025-26",
+    "generator_version": "stage3.4.0",
+    "permitted_graduation_path_ids": [
+      "graduation_path.bcg.fyp",
+      "graduation_path.bcg.coursework"
+    ],
+    "permitted_study_plan_path_labels": [],
+    "programme": "BCG",
+    "seed": 398155181,
+    "simulation_academic_year": "AY2028-29",
+    "simulation_period_id": "period.terminal.s1",
+    "simulation_scope_id": "scope.bcg.terminal",
+    "simulation_semester": "SEMESTER_1",
+    "source_rule_ids": [
+      "curriculum.bcg.ay2025-26",
+      "policy.prototype.counterfactual_template_reuse",
+      "policy.prototype.scenario_bounded_audit"
+    ],
+    "student_count": 12,
+    "template_academic_year": "AY2026-27",
+    "template_semester": "SEMESTER_1",
+    "terminal_study_year": 4
+  },
+  {
+    "accepted_gap_ids": [],
+    "admission_cohort": "AY2025-26",
+    "assumption_ids": [
+      "assumption.ce-dana.terminal"
+    ],
+    "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
+    "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
+    "curriculum_id": "curriculum.ce-dana.ay2025-26",
+    "generator_version": "stage3.4.0",
+    "permitted_graduation_path_ids": [],
+    "permitted_study_plan_path_labels": [],
+    "programme": "CE-DANA",
+    "seed": 767741745,
+    "simulation_academic_year": "AY2028-29",
+    "simulation_period_id": "period.terminal.s1",
+    "simulation_scope_id": "scope.ce-dana.terminal",
+    "simulation_semester": "SEMESTER_1",
+    "source_rule_ids": [
+      "curriculum.ce-dana.ay2025-26",
+      "policy.prototype.counterfactual_template_reuse",
+      "policy.prototype.scenario_bounded_audit"
+    ],
+    "student_count": 12,
+    "template_academic_year": "AY2026-27",
+    "template_semester": "SEMESTER_1",
+    "terminal_study_year": 4
+  },
+  {
+    "accepted_gap_ids": [],
+    "admission_cohort": "AY2025-26",
+    "assumption_ids": [
+      "assumption.ce-ent.terminal"
+    ],
+    "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
+    "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
+    "curriculum_id": "curriculum.ce-ent.ay2025-26",
+    "generator_version": "stage3.4.0",
+    "permitted_graduation_path_ids": [],
+    "permitted_study_plan_path_labels": [],
+    "programme": "CE-ENT",
+    "seed": 1082238131,
+    "simulation_academic_year": "AY2028-29",
+    "simulation_period_id": "period.terminal.s1",
+    "simulation_scope_id": "scope.ce-ent.terminal",
+    "simulation_semester": "SEMESTER_1",
+    "source_rule_ids": [
+      "curriculum.ce-ent.ay2025-26",
+      "policy.prototype.counterfactual_template_reuse",
+      "policy.prototype.scenario_bounded_audit"
+    ],
+    "student_count": 12,
+    "template_academic_year": "AY2026-27",
+    "template_semester": "SEMESTER_1",
+    "terminal_study_year": 4
+  },
+  {
+    "accepted_gap_ids": [],
+    "admission_cohort": "AY2025-26",
+    "assumption_ids": [
+      "assumption.ce-sust.terminal"
+    ],
+    "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
+    "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
+    "curriculum_id": "curriculum.ce-sust.ay2025-26",
+    "generator_version": "stage3.4.0",
+    "permitted_graduation_path_ids": [],
+    "permitted_study_plan_path_labels": [
+      "PA option : 10-WEEK Professional Attachment",
+      "PI option : 20-WEEK Professional Internship"
+    ],
+    "programme": "CE-SUST",
+    "seed": 914226576,
+    "simulation_academic_year": "AY2028-29",
+    "simulation_period_id": "period.terminal.s1",
+    "simulation_scope_id": "scope.ce-sust.terminal",
+    "simulation_semester": "SEMESTER_1",
+    "source_rule_ids": [
+      "curriculum.ce-sust.ay2025-26",
+      "policy.prototype.counterfactual_template_reuse",
+      "policy.prototype.scenario_bounded_audit"
+    ],
+    "student_count": 12,
+    "template_academic_year": "AY2026-27",
+    "template_semester": "SEMESTER_1",
+    "terminal_study_year": 4
+  },
+  {
+    "accepted_gap_ids": [],
+    "admission_cohort": "AY2025-26",
+    "assumption_ids": [
+      "assumption.ce.terminal"
+    ],
+    "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
+    "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
+    "curriculum_id": "curriculum.ce.ay2025-26",
+    "generator_version": "stage3.4.0",
+    "permitted_graduation_path_ids": [],
+    "permitted_study_plan_path_labels": [],
+    "programme": "CE",
+    "seed": 808180617,
+    "simulation_academic_year": "AY2028-29",
+    "simulation_period_id": "period.terminal.s1",
+    "simulation_scope_id": "scope.ce.terminal",
+    "simulation_semester": "SEMESTER_1",
+    "source_rule_ids": [
+      "curriculum.ce.ay2025-26",
+      "policy.prototype.counterfactual_template_reuse",
+      "policy.prototype.scenario_bounded_audit"
+    ],
+    "student_count": 21,
+    "template_academic_year": "AY2026-27",
+    "template_semester": "SEMESTER_1",
+    "terminal_study_year": 4
+  },
+  {
+    "accepted_gap_ids": [],
+    "admission_cohort": "AY2025-26",
+    "assumption_ids": [
+      "assumption.ceec.terminal"
+    ],
+    "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
+    "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
+    "curriculum_id": "curriculum.ceec.ay2025-26",
+    "generator_version": "stage3.4.0",
+    "permitted_graduation_path_ids": [
+      "graduation_path.ceec.pi",
+      "graduation_path.ceec.pa"
+    ],
+    "permitted_study_plan_path_labels": [
+      "PA option : 10-WEEK Professional Attachment",
+      "PI option : 20-WEEK Professional Internship"
+    ],
+    "programme": "CEEC",
+    "seed": 1638294330,
+    "simulation_academic_year": "AY2029-30",
+    "simulation_period_id": "period.terminal.s1",
+    "simulation_scope_id": "scope.ceec.terminal",
+    "simulation_semester": "SEMESTER_1",
+    "source_rule_ids": [
+      "curriculum.ceec.ay2025-26",
+      "policy.prototype.counterfactual_template_reuse",
+      "policy.prototype.scenario_bounded_audit"
+    ],
+    "student_count": 12,
+    "template_academic_year": "AY2026-27",
+    "template_semester": "SEMESTER_1",
+    "terminal_study_year": 5
+  },
+  {
+    "accepted_gap_ids": [],
+    "admission_cohort": "AY2025-26",
+    "assumption_ids": [
+      "assumption.csc-business.terminal"
+    ],
+    "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
+    "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
+    "curriculum_id": "curriculum.csc-business.ay2025-26",
+    "generator_version": "stage3.4.0",
+    "permitted_graduation_path_ids": [
+      "graduation_path.csc-business.pi-fyp",
+      "graduation_path.csc-business.pi-coursework",
+      "graduation_path.csc-business.pa-fyp",
+      "graduation_path.csc-business.pa-coursework"
+    ],
+    "permitted_study_plan_path_labels": [
+      "PA option : 10-WEEK Professional Attachment (Graded)",
+      "PI option : 20-WEEK Professional Internship"
+    ],
+    "programme": "CSC",
+    "seed": 1714182825,
+    "simulation_academic_year": "AY2028-29",
+    "simulation_period_id": "period.terminal.s1",
+    "simulation_scope_id": "scope.csc-business.terminal",
+    "simulation_semester": "SEMESTER_1",
+    "source_rule_ids": [
+      "curriculum.csc-business.ay2025-26",
+      "policy.prototype.counterfactual_template_reuse",
+      "policy.prototype.scenario_bounded_audit"
+    ],
+    "student_count": 12,
+    "template_academic_year": "AY2026-27",
+    "template_semester": "SEMESTER_1",
+    "terminal_study_year": 4
+  },
+  {
+    "accepted_gap_ids": [],
+    "admission_cohort": "AY2025-26",
+    "assumption_ids": [
+      "assumption.csc-ent.terminal"
+    ],
+    "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
+    "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
+    "curriculum_id": "curriculum.csc-ent.ay2025-26",
+    "generator_version": "stage3.4.0",
+    "permitted_graduation_path_ids": [
+      "graduation_path.csc-ent.fyp",
+      "graduation_path.csc-ent.coursework"
+    ],
+    "permitted_study_plan_path_labels": [],
+    "programme": "CSC-ENT",
+    "seed": 1606621425,
+    "simulation_academic_year": "AY2028-29",
+    "simulation_period_id": "period.terminal.s1",
+    "simulation_scope_id": "scope.csc-ent.terminal",
+    "simulation_semester": "SEMESTER_1",
+    "source_rule_ids": [
+      "curriculum.csc-ent.ay2025-26",
+      "policy.prototype.counterfactual_template_reuse",
+      "policy.prototype.scenario_bounded_audit"
+    ],
+    "student_count": 12,
+    "template_academic_year": "AY2026-27",
+    "template_semester": "SEMESTER_1",
+    "terminal_study_year": 4
+  },
+  {
+    "accepted_gap_ids": [],
+    "admission_cohort": "AY2025-26",
+    "assumption_ids": [
+      "assumption.csc-itp.terminal"
+    ],
+    "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
+    "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
+    "curriculum_id": "curriculum.csc-itp.ay2025-26",
+    "generator_version": "stage3.4.0",
+    "permitted_graduation_path_ids": [
+      "graduation_path.csc-itp.pi-fyp",
+      "graduation_path.csc-itp.pi-coursework",
+      "graduation_path.csc-itp.pa-fyp",
+      "graduation_path.csc-itp.pa-coursework"
+    ],
+    "permitted_study_plan_path_labels": [
+      "PA option : 10-WEEK Professional Attachment (Graded)",
+      "PI option : 20-WEEK Professional Internship"
+    ],
+    "programme": "CSC-ITP",
+    "seed": 1167601353,
+    "simulation_academic_year": "AY2028-29",
+    "simulation_period_id": "period.terminal.s1",
+    "simulation_scope_id": "scope.csc-itp.terminal",
+    "simulation_semester": "SEMESTER_1",
+    "source_rule_ids": [
+      "curriculum.csc-itp.ay2025-26",
+      "policy.prototype.counterfactual_template_reuse",
+      "policy.prototype.scenario_bounded_audit"
+    ],
+    "student_count": 12,
+    "template_academic_year": "AY2026-27",
+    "template_semester": "SEMESTER_1",
+    "terminal_study_year": 4
+  },
+  {
+    "accepted_gap_ids": [],
+    "admission_cohort": "AY2025-26",
+    "assumption_ids": [
+      "assumption.csc-sust.terminal"
+    ],
+    "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
+    "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
+    "curriculum_id": "curriculum.csc-sust.ay2025-26",
+    "generator_version": "stage3.4.0",
+    "permitted_graduation_path_ids": [
+      "graduation_path.csc-sust.pi-fyp",
+      "graduation_path.csc-sust.pi-coursework",
+      "graduation_path.csc-sust.pa-fyp",
+      "graduation_path.csc-sust.pa-coursework"
+    ],
+    "permitted_study_plan_path_labels": [
+      "PA option : 10-WEEK Professional Attachment (Graded)",
+      "PI option : 20-WEEK Professional Internship"
+    ],
+    "programme": "CSC-SUST",
+    "seed": 1528354992,
+    "simulation_academic_year": "AY2028-29",
+    "simulation_period_id": "period.terminal.s1",
+    "simulation_scope_id": "scope.csc-sust.terminal",
+    "simulation_semester": "SEMESTER_1",
+    "source_rule_ids": [
+      "curriculum.csc-sust.ay2025-26",
+      "policy.prototype.counterfactual_template_reuse",
+      "policy.prototype.scenario_bounded_audit"
+    ],
+    "student_count": 12,
+    "template_academic_year": "AY2026-27",
+    "template_semester": "SEMESTER_1",
+    "terminal_study_year": 4
+  },
+  {
+    "accepted_gap_ids": [],
+    "admission_cohort": "AY2025-26",
+    "assumption_ids": [
+      "assumption.csc.terminal"
+    ],
+    "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
+    "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
+    "curriculum_id": "curriculum.csc.ay2025-26",
+    "generator_version": "stage3.4.0",
+    "permitted_graduation_path_ids": [
+      "graduation_path.csc.fyp",
+      "graduation_path.csc.coursework"
+    ],
+    "permitted_study_plan_path_labels": [],
+    "programme": "CSC",
+    "seed": 360411215,
+    "simulation_academic_year": "AY2028-29",
+    "simulation_period_id": "period.terminal.s1",
+    "simulation_scope_id": "scope.csc.terminal",
+    "simulation_semester": "SEMESTER_1",
+    "source_rule_ids": [
+      "curriculum.csc.ay2025-26",
+      "policy.prototype.counterfactual_template_reuse",
+      "policy.prototype.scenario_bounded_audit"
+    ],
+    "student_count": 21,
+    "template_academic_year": "AY2026-27",
+    "template_semester": "SEMESTER_1",
+    "terminal_study_year": 4
+  },
+  {
+    "accepted_gap_ids": [],
+    "admission_cohort": "AY2025-26",
+    "assumption_ids": [
+      "assumption.csec.terminal"
+    ],
+    "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
+    "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
+    "curriculum_id": "curriculum.csec.ay2025-26",
+    "generator_version": "stage3.4.0",
+    "permitted_graduation_path_ids": [
+      "graduation_path.csec.pi-fyp",
+      "graduation_path.csec.pi-coursework",
+      "graduation_path.csec.pa-fyp",
+      "graduation_path.csec.pa-coursework"
+    ],
+    "permitted_study_plan_path_labels": [
+      "PA option : 10-WEEK Professional Attachment",
+      "PI option : 20-WEEK Professional Internship"
+    ],
+    "programme": "CSEC",
+    "seed": 1166373944,
+    "simulation_academic_year": "AY2029-30",
+    "simulation_period_id": "period.terminal.s1",
+    "simulation_scope_id": "scope.csec.terminal",
+    "simulation_semester": "SEMESTER_1",
+    "source_rule_ids": [
+      "curriculum.csec.ay2025-26",
+      "policy.prototype.counterfactual_template_reuse",
+      "policy.prototype.scenario_bounded_audit"
+    ],
+    "student_count": 12,
+    "template_academic_year": "AY2026-27",
+    "template_semester": "SEMESTER_1",
+    "terminal_study_year": 5
+  },
+  {
+    "accepted_gap_ids": [],
+    "admission_cohort": "AY2025-26",
+    "assumption_ids": [
+      "assumption.dsai-sust.terminal"
+    ],
+    "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
+    "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
+    "curriculum_id": "curriculum.dsai-sust.ay2025-26",
+    "generator_version": "stage3.4.0",
+    "permitted_graduation_path_ids": [],
+    "permitted_study_plan_path_labels": [],
+    "programme": "DSAI-SUST",
+    "seed": 560294175,
+    "simulation_academic_year": "AY2028-29",
+    "simulation_period_id": "period.terminal.s1",
+    "simulation_scope_id": "scope.dsai-sust.terminal",
+    "simulation_semester": "SEMESTER_1",
+    "source_rule_ids": [
+      "curriculum.dsai-sust.ay2025-26",
+      "policy.prototype.counterfactual_template_reuse",
+      "policy.prototype.scenario_bounded_audit"
+    ],
+    "student_count": 12,
+    "template_academic_year": "AY2026-27",
+    "template_semester": "SEMESTER_1",
+    "terminal_study_year": 4
+  },
+  {
+    "accepted_gap_ids": [],
+    "admission_cohort": "AY2025-26",
+    "assumption_ids": [
+      "assumption.dsai.terminal"
+    ],
+    "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
+    "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
+    "curriculum_id": "curriculum.dsai.ay2025-26",
+    "generator_version": "stage3.4.0",
+    "permitted_graduation_path_ids": [],
+    "permitted_study_plan_path_labels": [],
+    "programme": "DSAI",
+    "seed": 1774650846,
+    "simulation_academic_year": "AY2028-29",
+    "simulation_period_id": "period.terminal.s1",
+    "simulation_scope_id": "scope.dsai.terminal",
+    "simulation_semester": "SEMESTER_1",
+    "source_rule_ids": [
+      "curriculum.dsai.ay2025-26",
+      "policy.prototype.counterfactual_template_reuse",
+      "policy.prototype.scenario_bounded_audit"
+    ],
+    "student_count": 21,
+    "template_academic_year": "AY2026-27",
+    "template_semester": "SEMESTER_1",
+    "terminal_study_year": 4
+  },
+  {
+    "accepted_gap_ids": [],
+    "admission_cohort": "AY2025-26",
+    "assumption_ids": [
+      "assumption.macs.terminal"
+    ],
+    "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
+    "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
+    "curriculum_id": "curriculum.macs.ay2025-26",
+    "generator_version": "stage3.4.0",
+    "permitted_graduation_path_ids": [],
+    "permitted_study_plan_path_labels": [],
+    "programme": "MACS",
+    "seed": 1745356125,
+    "simulation_academic_year": "AY2028-29",
+    "simulation_period_id": "period.terminal.s1",
+    "simulation_scope_id": "scope.macs.terminal",
+    "simulation_semester": "SEMESTER_1",
+    "source_rule_ids": [
+      "curriculum.macs.ay2025-26",
+      "policy.prototype.counterfactual_template_reuse",
+      "policy.prototype.scenario_bounded_audit"
+    ],
+    "student_count": 12,
+    "template_academic_year": "AY2026-27",
+    "template_semester": "SEMESTER_1",
+    "terminal_study_year": 4
+  }
+]
