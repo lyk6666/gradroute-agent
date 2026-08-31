@@ -18,11 +18,14 @@ The agent must never treat simulated rules as official NTU policy.
 data/
 ├── real/
 │   ├── source_manifest.json
+│   ├── coverage.json
 │   ├── programmes.json
 │   ├── academic_calendar.md
 │   ├── curriculum.json
 │   ├── courses.json
 │   ├── course_offerings.json
+│   ├── course_catalogue_queries.json
+│   ├── course_schedule_queries.json
 │   └── public_policies/
 │       ├── registration.md
 │       ├── exceptions.md
@@ -44,10 +47,18 @@ data/
 
 ### `programmes.json`
 
-Records the primary CCDS programme codes and names used by the prototype. This
-small additive file lets cross-file validation distinguish a known programme
-from an unverified code; it does not claim that other NTU joint, double-degree,
-second-major, or part-time pathways do not exist.
+Records the complete current public CCDS programme/pathway inventory: single,
+double, second-major, joint, and part-time degrees. Each record declares its
+kind, study mode, CCDS base programme where applicable, public identifiers, and
+source IDs.
+
+### `coverage.json`
+
+Defines what “complete” means for each real dataset. Every target records the
+scope parameters, exact expected record IDs, inventory and content status,
+required fields, discovery sources, and dimension-specific gaps. A complete
+query-result inventory can therefore coexist with partial content when an
+official public source omits capacity, eligibility, or authenticated rules.
 
 ### `source_manifest.json`
 
@@ -63,6 +74,11 @@ Minimum fields:
   "effective_academic_year": "AY2025-26",
   "source_url": "...",
   "retrieved_at": "...",
+  "access_status": "RETRIEVED",
+  "classification": "PUBLIC_RESTRICTED",
+  "retrieval_method": "DIRECT_DOWNLOAD",
+  "content_sha256": "...",
+  "checksum_scope": "SOURCE_BYTES",
   "version": "...",
   "origin": "VERIFIED_REAL"
 }
@@ -72,16 +88,18 @@ Use it to prevent stale or mixed-cohort rules.
 
 ### `academic_calendar.md`
 
-Contains only dates needed by the prototype:
+Contains typed dates and public timing boundaries needed by the prototype:
 
-- semester boundaries;
-- registration periods;
-- Add/Drop periods;
-- relevant academic deadlines.
+- teaching, recess, revision/examination, vacation, and Special Term;
+- registration, schedule release, allocation, and Add/Drop periods;
+- CCDS internship/attachment periods;
+- results, FGO, result-review, and convocation-related cutoffs.
 
 ### `curriculum.json`
 
-Real curriculum rules for the selected CCDS programmes/cohorts.
+Real curriculum rules for all current public CCDS programme configurations for
+which official facts were found. Exact cohort sheets remain separate from
+unversioned public pages and search-index-only records.
 
 Minimum content:
 
@@ -99,7 +117,8 @@ minimum course counts, required components, and constraints.
 
 ### `courses.json`
 
-Real, relatively stable course metadata:
+Term-specific public course metadata, retaining every observed programme,
+elective-pool, or exact curriculum-course appearance:
 
 - course code;
 - title;
@@ -121,11 +140,16 @@ Real semester offering data collected from official NTU sources where accessible
 - vacancy snapshot if publicly/reliably obtainable;
 - retrieval timestamp.
 
-Dynamic scenario changes are injected by the simulator; they do not overwrite the stored source snapshot.
+Dynamic scenario changes are injected by the simulator; they do not overwrite
+the stored source snapshot. Public schedule rows do not establish individual
+eligibility, capacity, waitlist priority, or a guaranteed future offering.
 
-When no reproducible public snapshot has been collected, this file is a typed
-`PLACEHOLDER` with a reason and an empty `offerings` list. That state means
-“unknown/not collected,” never “NTU offers no courses.”
+### Query audit files
+
+`course_catalogue_queries.json` and `course_schedule_queries.json` record every
+public request scope, response hash, result count, normalized dataset hash, and
+known limitation. They make the current snapshot measurable and repeatable
+without treating an empty portal response as a university policy fact.
 
 ### `public_policies/registration.md`
 
@@ -140,7 +164,8 @@ source-unspecified sections unless explicitly requested.
 
 Publicly documented exception/waiver guidance.
 
-Any rule that cannot be verified must be marked:
+An unavailable real process remains an `UNKNOWN` section. If a later stage
+intentionally adds a deterministic prototype-only rule, that section must begin:
 
 ```text
 SIMULATED POLICY FOR PROTOTYPE

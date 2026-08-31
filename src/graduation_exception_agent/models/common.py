@@ -98,6 +98,46 @@ class SourceOrigin(StrEnum):
     UNKNOWN = "UNKNOWN"
 
 
+class SourceAccessStatus(StrEnum):
+    """Outcome of the most recent attempt to collect a source."""
+
+    RETRIEVED = "RETRIEVED"
+    PARTIALLY_RETRIEVED = "PARTIALLY_RETRIEVED"
+    AUTHENTICATION_REQUIRED = "AUTHENTICATION_REQUIRED"
+    UNAVAILABLE = "UNAVAILABLE"
+
+
+class SourceClassification(StrEnum):
+    """Handling/access classification stated or implied by the source host."""
+
+    PUBLIC = "PUBLIC"
+    PUBLIC_RESTRICTED = "PUBLIC_RESTRICTED"
+    AUTHENTICATED = "AUTHENTICATED"
+    UNKNOWN = "UNKNOWN"
+
+
+class ChecksumScope(StrEnum):
+    """Bytes represented by a provenance checksum."""
+
+    SOURCE_BYTES = "SOURCE_BYTES"
+    NORMALIZED_EXTRACTION = "NORMALIZED_EXTRACTION"
+
+
+class ProgrammeKind(StrEnum):
+    """Kind of CCDS degree or named pathway in the public inventory."""
+
+    SINGLE_DEGREE = "SINGLE_DEGREE"
+    DOUBLE_DEGREE = "DOUBLE_DEGREE"
+    SECOND_MAJOR = "SECOND_MAJOR"
+    JOINT_DEGREE = "JOINT_DEGREE"
+    PART_TIME_DEGREE = "PART_TIME_DEGREE"
+
+
+class StudyMode(StrEnum):
+    FULL_TIME = "FULL_TIME"
+    PART_TIME = "PART_TIME"
+
+
 class SourceProvenance(DomainModel):
     """Traceable source metadata for every grounded record."""
 
@@ -109,17 +149,26 @@ class SourceProvenance(DomainModel):
     offering_academic_year: AcademicYear | None = None
     source_url: AnyHttpUrl | None = None
     retrieved_at: datetime | None = None
+    checked_at: datetime | None = None
     version: NonEmptyText
     origin: SourceOrigin
+    access_status: SourceAccessStatus | None = None
+    classification: SourceClassification | None = None
+    retrieval_method: Identifier | None = None
+    request_parameters: dict[Identifier, NonEmptyText] = Field(default_factory=dict)
+    content_sha256: str | None = Field(default=None, pattern=r"^[a-f0-9]{64}$")
+    checksum_scope: ChecksumScope | None = None
+    access_note: NonEmptyText | None = None
     effective_from: date | None = None
     effective_to: date | None = None
     dependent_records: list[Identifier] = Field(default_factory=list)
 
-    @field_validator("retrieved_at")
+    @field_validator("retrieved_at", "checked_at")
     @classmethod
-    def require_timezone(cls, value: datetime | None) -> datetime | None:
+    def require_timezone(cls, value: datetime | None, info: object) -> datetime | None:
         if value is not None and value.tzinfo is None:
-            raise ValueError("retrieved_at must include a timezone")
+            field_name = getattr(info, "field_name", "timestamp")
+            raise ValueError(f"{field_name} must include a timezone")
         return value
 
     @field_validator("dependent_records")
@@ -132,10 +181,49 @@ class SourceProvenance(DomainModel):
     @model_validator(mode="after")
     def validate_provenance(self) -> SourceProvenance:
         if self.origin is SourceOrigin.VERIFIED_REAL:
-            if self.source_url is None or self.retrieved_at is None:
+            if self.source_url is None or (
+                self.checked_at is None and self.retrieved_at is None
+            ):
                 raise ValueError(
-                    "verified real sources require source_url and retrieved_at"
+                    "verified real sources require source_url and a checked/retrieved time"
                 )
+        if (
+            self.checked_at is not None
+            and self.retrieved_at is not None
+            and self.retrieved_at > self.checked_at
+        ):
+            raise ValueError("retrieved_at must not be after checked_at")
+        if self.access_status in {
+            SourceAccessStatus.RETRIEVED,
+            SourceAccessStatus.PARTIALLY_RETRIEVED,
+        }:
+            if self.retrieved_at is None:
+                raise ValueError("retrieved sources require retrieved_at")
+            if self.retrieval_method is None:
+                raise ValueError("retrieved sources require retrieval_method")
+            if self.content_sha256 is None or self.checksum_scope is None:
+                raise ValueError(
+                    "retrieved sources require content_sha256 and checksum_scope"
+                )
+            if (
+                self.access_status is SourceAccessStatus.PARTIALLY_RETRIEVED
+                and self.access_note is None
+            ):
+                raise ValueError("partially retrieved sources require access_note")
+        if self.access_status in {
+            SourceAccessStatus.AUTHENTICATION_REQUIRED,
+            SourceAccessStatus.UNAVAILABLE,
+        }:
+            if self.access_note is None:
+                raise ValueError("inaccessible sources require access_note")
+            if self.content_sha256 is not None or self.checksum_scope is not None:
+                raise ValueError(
+                    "inaccessible sources cannot claim a retrieved-content checksum"
+                )
+        if (self.content_sha256 is None) != (self.checksum_scope is None):
+            raise ValueError(
+                "content_sha256 and checksum_scope must be provided together"
+            )
         if self.effective_from and self.effective_to:
             if self.effective_to < self.effective_from:
                 raise ValueError("effective_to must not precede effective_from")
@@ -164,12 +252,39 @@ class Programme(DomainModel):
     code: ProgrammeCode
     name: NonEmptyText
     college: NonEmptyText = "College of Computing and Data Science"
+    programme_kind: ProgrammeKind = ProgrammeKind.SINGLE_DEGREE
+    study_mode: StudyMode = StudyMode.FULL_TIME
+    ccds_base_programmes: list[ProgrammeCode] = Field(default_factory=list)
+    external_identifiers: dict[Identifier, NonEmptyText] = Field(default_factory=dict)
     active: bool = True
     source_ids: list[Identifier] = Field(min_length=1)
 
-    @field_validator("source_ids")
+    @field_validator("source_ids", "ccds_base_programmes")
     @classmethod
-    def unique_sources(cls, value: list[str]) -> list[str]:
+    def unique_sources(cls, value: list[str], info: object) -> list[str]:
         if len(value) != len(set(value)):
-            raise ValueError("source_ids must not contain duplicates")
+            field_name = getattr(info, "field_name", "values")
+            raise ValueError(f"{field_name} must not contain duplicates")
         return value
+
+    @model_validator(mode="after")
+    def validate_pathway_metadata(self) -> Programme:
+        if self.code in self.ccds_base_programmes:
+            raise ValueError("a programme cannot be its own CCDS base programme")
+        if (
+            self.programme_kind is ProgrammeKind.SECOND_MAJOR
+            and len(self.ccds_base_programmes) != 1
+        ):
+            raise ValueError(
+                "second-major pathways require exactly one CCDS base programme"
+            )
+        if (
+            self.programme_kind is ProgrammeKind.PART_TIME_DEGREE
+            and self.study_mode is not StudyMode.PART_TIME
+        ):
+            raise ValueError("part-time degrees require PART_TIME study mode")
+        if len(self.external_identifiers.values()) != len(
+            set(self.external_identifiers.values())
+        ):
+            raise ValueError("external identifier values must not contain duplicates")
+        return self

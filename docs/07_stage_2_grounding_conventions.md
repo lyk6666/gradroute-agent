@@ -1,58 +1,97 @@
 # Stage 2 Grounding Conventions
 
-This note records the ingestion decisions used for the real NTU/CCDS data layer. It does not introduce new university rules.
+This note defines the scope and safety boundaries of the NTU/CCDS real-data
+layer. It does not introduce university rules.
 
-## Prototype programme scope
+## Declared completion scope
 
-The official CCDS programme overview describes four primary undergraduate pathways: Artificial Intelligence and Society (AISC), Computer Engineering (CE), Computer Science (CSC), and Data Science and Artificial Intelligence (DSAI). These are the four programmes used by the simulator specification. Other double-degree, second-major, joint, and part-time pathways remain outside this initial dataset.
+Stage 2 is complete for the official-public inventory described by
+`data/real/coverage.json`, as checked on 31 August 2026. Completeness is assessed
+twice: inventory coverage asks whether every record in the declared public
+scope is represented; content coverage asks whether every required field is
+actually exposed by those sources. The latter may remain `PARTIAL` or
+`UNAVAILABLE` without fabricated values.
 
-`programmes.json` is an additive extension to the original directory proposal. It supplies a validated target for programme references in curricula and courses.
-Its `college` value identifies the prototype's CCDS scope; it is not an assertion that a programme has no other provider or academic partner.
+The measured snapshot contains:
 
-## Version separation
+- 22 public CCDS programme/pathway records;
+- 23 public curriculum configurations and 1,176 normalized study-plan rows;
+- 219 AY2026–27 Semester 1 catalogue records and 1,035 appearances;
+- 210 scheduled courses and 2,108 indexes;
+- 45 typed calendar events; and
+- 64 registration, exception, and approval/routing sections.
 
-The collected detailed curriculum snapshots are for the AY2025–26 admission cohort. The operational calendar and handbook snapshot are AY2026–27. These records coexist because an AY2025–26 student can study during AY2026–27, but the loader never merges or substitutes one version for another. Repository queries can select curriculum by programme, admission cohort, and effective academic year.
+## Programme and curriculum boundaries
 
-Conflicting or superseded official files are not combined. The manifest identifies the selected source and version. Exact current AY2026–27 code-level CCDS curricula are not publicly available in the collected sources and are not invented.
+The programme inventory includes the current public single-degree,
+double-degree, second-major, joint-degree, and part-time entries. The 23rd
+curriculum configuration is the separately published Computer Science
+mainstream Business second-major plan; it is not presented as another degree.
 
-The dated AY2025–26 DSAI cohort sheet reports 61 programme-core AU and 19 BDE AU, while a current unversioned overview reports different category totals. The dated cohort sheet is selected for this cohort and the conflict is recorded in its manifest version; the values are never averaged or substituted. The CSC sheet has two official routes: 135 AU with FYP and 9 MPE courses, or 136 AU with 3 additional MPE courses replacing FYP. They are represented as separate `graduation_paths`, including the corresponding 35/36 MPE AU and 9/12 MPE course counts.
+Detailed curricula use exact AY2025–26 cohort sheets where available. Public
+page, unversioned PDF, stale-search-index, and authenticated-only cases remain
+separate. Conflicts are retained rather than averaged or silently resolved,
+including revised versus legacy CE/Data Analytics totals, the CE/Sustainability
+path anomaly, and the DSAI/Sustainability PDF versus overview total. Every
+configuration is currently `PARTIAL`, because a public curriculum snapshot is
+not a complete authenticated degree audit.
 
-## Partial and unknown data
+## Course catalogue and schedule boundaries
 
-- Curriculum records contain verified category AU totals and selected documented MPE constraints, but not every course-level rule, so `rules_completeness` is `PARTIAL`. Uncollected course lists and count constraints are `UNKNOWN`/`null`, never empty or zero assertions.
-- The course catalogue is a closed four-course subset. Prerequisites in that subset are transitively resolved; uncollected exclusions and constraints are `UNKNOWN`.
-- `course_offerings.json` is a typed `PLACEHOLDER` because a stable, reproducible offering/capacity/waitlist snapshot has not been collected.
-- Personalised registration timestamps, general after-Add/Drop exceptions, most prerequisite-waiver workflows, and delegated approval chains remain explicit `UNKNOWN` sections.
+The catalogue collector queries all discovered current degree selectors,
+programme years, relevant elective pools, and exact codes appearing in the
+published study plans. It preserves raw prerequisite/exclusion expressions,
+zero-AU records, external course references, programme appearances, request
+hashes, and unresolved exact-code searches. A code absent from the current
+portal remains a raw study-plan code; no metadata is invented for it.
 
-Empty and zero are never used as substitutes for unknown values.
+The schedule collector combines the programme matrix with direct full-time and
+part-time lookups for every collected catalogue code. Blank continuation rows
+are attached to their preceding index, and class type, group, raw day/time,
+venue, teaching weeks, and remarks are retained. A current schedule row proves
+only that the public portal exposed that course/index at the snapshot time. It
+does not prove student eligibility, capacity, vacancy, waitlist order,
+allocation priority, or future availability.
 
-## Markdown provenance contract
+## Calendar and policy boundaries
 
-`academic_calendar.md` and every file in `public_policies/` begin with one exact `GEA-METADATA` JSON comment. Policy metadata declares each level-two section ID, origin, and source IDs. The parser then maps those declarations to headings of the form:
+Calendar records distinguish exact dates, general timing, and unavailable
+personalised timestamps. Policy sections independently declare their origin,
+source IDs, and applicability by admission cohort or academic year. Current
+contact pages establish routing, not final approval authority. Narrow workflows
+such as the exchange-credit prerequisite waiver and CC0006 clash route are not
+generalized beyond their published context.
 
-```markdown
-## [policy.registration.stars] Official registration channel
-```
+Admission-cohort handbooks are never substituted for one another. AY2023–24,
+AY2024–25, AY2025–26, and AY2026–27 are catalogued separately; the unavailable
+official-public AY2022–23 handbook remains a coverage gap.
 
-It preserves the raw Markdown, SHA-256 digest, and source line range. It rejects untracked headings, missing metadata, duplicate IDs, and filename/type mismatches.
+## Explicit public-access gaps
 
-A section with origin `SIMULATED_POLICY` must start with the exact visible line:
+The real layer does not claim public knowledge of personalised registration
+slots, authenticated curriculum plans, total class capacity, live eligibility,
+waitlist priority, general post-Add/Drop registration, a general prerequisite or
+clash waiver, overload/restricted-repeat forms and service times, substitution,
+BDE appeal, or a universal coordinator-to-approver chain. These fields remain
+`UNKNOWN`, `UNAVAILABLE`, or simulated in later stages.
 
-```text
-SIMULATED POLICY FOR PROTOTYPE
-```
+## Provenance and source handling
 
-Policy metadata also declares whether applicability is explicit, source-unspecified, or unknown. An explicit scope carries typed academic-year and/or admission-cohort values. Repository policy queries require one of those contexts; source-unspecified rules are excluded unless the caller opts in. Verified-only queries return only sections whose explicit origin is `VERIFIED_REAL`; they never infer provenance or applicability from wording.
+Every real record resolves to `source_manifest.json`. Provenance includes URL,
+time, access outcome, classification, retrieval method, request parameters,
+checksum scope, version, temporal scope, and exact reverse dependencies.
+`coverage.json` is itself cross-checked against the loaded IDs and source
+quality.
 
-## Cross-file validation
+Several curriculum PDFs are publicly retrievable but carry an NTU restricted
+classification footer. Only normalized facts, official URLs, and source-byte
+hashes are committed. Raw copies stay outside version control.
 
-Loading has two phases:
+## Validation
 
-1. strict UTF-8, JSON, Markdown, and Pydantic schema validation;
-2. aggregated consistency checks across files.
-
-The second phase checks source IDs and source types, source origins, reverse dependencies, parent/child source declarations, policy applicability, programme/cohort alignment, fixed and alternative curriculum AU totals, curriculum course references, catalogue prerequisite/exclusion closure, programme categories, and offering course references. Public file loaders require the parsed source registry; the repository constructor validates in-memory bundles as well as directory loads. Repository properties and queries return defensive deep copies, and diagnostic loading with `fail_on_errors=False` retains its issue report. Integrity failures use stable issue codes and do not fall back to guessed records.
-
-## Source handling
-
-The selected CCDS curriculum PDFs carry a restricted classification. The repository records their official URLs, retrieval metadata, and only the extracted facts required by this prototype; it does not redistribute local copies. Future collection must preserve any source access and handling restrictions.
+Loading has two phases: strict JSON/Markdown/Pydantic parsing, followed by
+cross-file checks for source IDs and types, reverse provenance, programme and
+cohort alignment, AU totals and paths, study-plan course references, catalogue
+scope, offering references, policy applicability, and completeness-contract
+drift. Missing external prerequisite/exclusion targets are preserved as
+warnings, not converted into fictional local courses.

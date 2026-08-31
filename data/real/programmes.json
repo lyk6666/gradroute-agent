@@ -2,33 +2,361 @@
   {
     "programme_id": "programme.aisc",
     "code": "AISC",
-    "name": "Artificial Intelligence and Society",
+    "name": "Bachelor of Computing (Hons) in Artificial Intelligence (AI) and Society",
     "college": "College of Computing and Data Science",
+    "programme_kind": "SINGLE_DEGREE",
+    "study_mode": "FULL_TIME",
+    "ccds_base_programmes": [],
+    "external_identifiers": {
+      "ntu_course_portal_code": "AISC"
+    },
     "active": true,
-    "source_ids": ["ntu.ccds.programmes.current"]
-  },
-  {
-    "programme_id": "programme.ce",
-    "code": "CE",
-    "name": "Computer Engineering",
-    "college": "College of Computing and Data Science",
-    "active": true,
-    "source_ids": ["ntu.ccds.programmes.current"]
+    "source_ids": [
+      "ntu.ccds.programmes.current"
+    ]
   },
   {
     "programme_id": "programme.csc",
     "code": "CSC",
-    "name": "Computer Science",
+    "name": "Bachelor of Computing (Hons) in Computer Science",
     "college": "College of Computing and Data Science",
+    "programme_kind": "SINGLE_DEGREE",
+    "study_mode": "FULL_TIME",
+    "ccds_base_programmes": [],
+    "external_identifiers": {
+      "ntu_course_portal_code": "CSC"
+    },
     "active": true,
-    "source_ids": ["ntu.ccds.programmes.current"]
+    "source_ids": [
+      "ntu.ccds.programmes.current"
+    ]
+  },
+  {
+    "programme_id": "programme.ce",
+    "code": "CE",
+    "name": "Bachelor of Engineering (Hons) in Computer Engineering",
+    "college": "College of Computing and Data Science",
+    "programme_kind": "SINGLE_DEGREE",
+    "study_mode": "FULL_TIME",
+    "ccds_base_programmes": [],
+    "external_identifiers": {
+      "ntu_course_portal_code": "CE"
+    },
+    "active": true,
+    "source_ids": [
+      "ntu.ccds.programmes.current"
+    ]
   },
   {
     "programme_id": "programme.dsai",
     "code": "DSAI",
-    "name": "Data Science and Artificial Intelligence",
+    "name": "Bachelor of Computing (Hons) in Data Science and Artificial Intelligence",
     "college": "College of Computing and Data Science",
+    "programme_kind": "SINGLE_DEGREE",
+    "study_mode": "FULL_TIME",
+    "ccds_base_programmes": [],
+    "external_identifiers": {
+      "ntu_course_portal_code": "DSAI"
+    },
     "active": true,
-    "source_ids": ["ntu.ccds.programmes.current"]
+    "source_ids": [
+      "ntu.ccds.programmes.current"
+    ]
+  },
+  {
+    "programme_id": "programme.bcg",
+    "code": "BCG",
+    "name": "Double Degree in Computer Science and Business (specialisation in Business Analytics)",
+    "college": "College of Computing and Data Science",
+    "programme_kind": "DOUBLE_DEGREE",
+    "study_mode": "FULL_TIME",
+    "ccds_base_programmes": [
+      "CSC"
+    ],
+    "external_identifiers": {
+      "ntu_course_portal_code": "BCG"
+    },
+    "active": true,
+    "source_ids": [
+      "ntu.ccds.programmes.current"
+    ]
+  },
+  {
+    "programme_id": "programme.bce",
+    "code": "BCE",
+    "name": "Double Degree in Computer Engineering and Business (specialisation in Business Analytics)",
+    "college": "College of Computing and Data Science",
+    "programme_kind": "DOUBLE_DEGREE",
+    "study_mode": "FULL_TIME",
+    "ccds_base_programmes": [
+      "CE"
+    ],
+    "external_identifiers": {
+      "ntu_course_portal_code": "BCE"
+    },
+    "active": true,
+    "source_ids": [
+      "ntu.ccds.programmes.current"
+    ]
+  },
+  {
+    "programme_id": "programme.csec",
+    "code": "CSEC",
+    "name": "Double Degree in Computer Science and Economics",
+    "college": "College of Computing and Data Science",
+    "programme_kind": "DOUBLE_DEGREE",
+    "study_mode": "FULL_TIME",
+    "ccds_base_programmes": [
+      "CSC"
+    ],
+    "external_identifiers": {
+      "ntu_course_portal_code": "CSEC"
+    },
+    "active": true,
+    "source_ids": [
+      "ntu.ccds.programmes.current"
+    ]
+  },
+  {
+    "programme_id": "programme.ceec",
+    "code": "CEEC",
+    "name": "Double Degree in Computer Engineering and Economics",
+    "college": "College of Computing and Data Science",
+    "programme_kind": "DOUBLE_DEGREE",
+    "study_mode": "FULL_TIME",
+    "ccds_base_programmes": [
+      "CE"
+    ],
+    "external_identifiers": {
+      "ntu_course_portal_code": "CEEC"
+    },
+    "active": true,
+    "source_ids": [
+      "ntu.ccds.programmes.current"
+    ]
+  },
+  {
+    "programme_id": "programme.acda",
+    "code": "ACDA",
+    "name": "Double Degree in Accountancy and Data Science and Artificial Intelligence",
+    "college": "College of Computing and Data Science",
+    "programme_kind": "DOUBLE_DEGREE",
+    "study_mode": "FULL_TIME",
+    "ccds_base_programmes": [
+      "DSAI"
+    ],
+    "external_identifiers": {
+      "ntu_course_portal_code": "ACDA"
+    },
+    "active": true,
+    "source_ids": [
+      "ntu.ccds.programmes.current"
+    ]
+  },
+  {
+    "programme_id": "programme.csc-ent",
+    "code": "CSC-ENT",
+    "name": "Bachelor of Computing (Hons) in Computer Science with a Second Major in Entrepreneurship",
+    "college": "College of Computing and Data Science",
+    "programme_kind": "SECOND_MAJOR",
+    "study_mode": "FULL_TIME",
+    "ccds_base_programmes": [
+      "CSC"
+    ],
+    "external_identifiers": {},
+    "active": true,
+    "source_ids": [
+      "ntu.ccds.programmes.current"
+    ]
+  },
+  {
+    "programme_id": "programme.csc-itp",
+    "code": "CSC-ITP",
+    "name": "Bachelor of Computing in Computer Science with Second Major in Business (International Trading)",
+    "college": "College of Computing and Data Science",
+    "programme_kind": "SECOND_MAJOR",
+    "study_mode": "FULL_TIME",
+    "ccds_base_programmes": [
+      "CSC"
+    ],
+    "external_identifiers": {},
+    "active": true,
+    "source_ids": [
+      "ntu.ccds.programmes.current"
+    ]
+  },
+  {
+    "programme_id": "programme.csc-sust",
+    "code": "CSC-SUST",
+    "name": "Bachelor of Computing (Hons) in Computer Science with a Second Major in Sustainability",
+    "college": "College of Computing and Data Science",
+    "programme_kind": "SECOND_MAJOR",
+    "study_mode": "FULL_TIME",
+    "ccds_base_programmes": [
+      "CSC"
+    ],
+    "external_identifiers": {},
+    "active": true,
+    "source_ids": [
+      "ntu.ccds.programmes.current"
+    ]
+  },
+  {
+    "programme_id": "programme.ce-dana",
+    "code": "CE-DANA",
+    "name": "Bachelor of Engineering (Hons) in Computer Engineering with a Second Major in Data Analytics",
+    "college": "College of Computing and Data Science",
+    "programme_kind": "SECOND_MAJOR",
+    "study_mode": "FULL_TIME",
+    "ccds_base_programmes": [
+      "CE"
+    ],
+    "external_identifiers": {},
+    "active": true,
+    "source_ids": [
+      "ntu.ccds.programmes.current"
+    ]
+  },
+  {
+    "programme_id": "programme.ce-ent",
+    "code": "CE-ENT",
+    "name": "Bachelor of Engineering (Hons) in Computer Engineering with Second Major in Entrepreneurship",
+    "college": "College of Computing and Data Science",
+    "programme_kind": "SECOND_MAJOR",
+    "study_mode": "FULL_TIME",
+    "ccds_base_programmes": [
+      "CE"
+    ],
+    "external_identifiers": {},
+    "active": true,
+    "source_ids": [
+      "ntu.ccds.programmes.current"
+    ]
+  },
+  {
+    "programme_id": "programme.ce-itp",
+    "code": "CE-ITP",
+    "name": "Bachelor of Engineering in Computer Engineering with Second Major in Business (International Trading)",
+    "college": "College of Computing and Data Science",
+    "programme_kind": "SECOND_MAJOR",
+    "study_mode": "FULL_TIME",
+    "ccds_base_programmes": [
+      "CE"
+    ],
+    "external_identifiers": {},
+    "active": true,
+    "source_ids": [
+      "ntu.ccds.programmes.current"
+    ]
+  },
+  {
+    "programme_id": "programme.ce-sust",
+    "code": "CE-SUST",
+    "name": "Bachelor of Engineering (Hons) in Computer Engineering with a Second Major in Sustainability",
+    "college": "College of Computing and Data Science",
+    "programme_kind": "SECOND_MAJOR",
+    "study_mode": "FULL_TIME",
+    "ccds_base_programmes": [
+      "CE"
+    ],
+    "external_identifiers": {},
+    "active": true,
+    "source_ids": [
+      "ntu.ccds.programmes.current"
+    ]
+  },
+  {
+    "programme_id": "programme.ce-bus",
+    "code": "CE-BUS",
+    "name": "Bachelor of Engineering in Computer Engineering with Second Major in Business",
+    "college": "College of Computing and Data Science",
+    "programme_kind": "SECOND_MAJOR",
+    "study_mode": "FULL_TIME",
+    "ccds_base_programmes": [
+      "CE"
+    ],
+    "external_identifiers": {},
+    "active": true,
+    "source_ids": [
+      "ntu.ccds.programmes.current"
+    ]
+  },
+  {
+    "programme_id": "programme.dsai-sust",
+    "code": "DSAI-SUST",
+    "name": "Bachelor of Computing (Hons) in Data Science and Artificial Intelligence with a Second Major in Sustainability",
+    "college": "College of Computing and Data Science",
+    "programme_kind": "SECOND_MAJOR",
+    "study_mode": "FULL_TIME",
+    "ccds_base_programmes": [
+      "DSAI"
+    ],
+    "external_identifiers": {},
+    "active": true,
+    "source_ids": [
+      "ntu.ccds.programmes.current"
+    ]
+  },
+  {
+    "programme_id": "programme.bacf",
+    "code": "BACF",
+    "name": "Bachelor of Applied Computing in Finance",
+    "college": "College of Computing and Data Science",
+    "programme_kind": "JOINT_DEGREE",
+    "study_mode": "FULL_TIME",
+    "ccds_base_programmes": [],
+    "external_identifiers": {
+      "ntu_course_portal_code": "BACF"
+    },
+    "active": true,
+    "source_ids": [
+      "ntu.ccds.programmes.current"
+    ]
+  },
+  {
+    "programme_id": "programme.ecds",
+    "code": "ECDS",
+    "name": "Bachelor of Science in Economics and Data Science",
+    "college": "College of Computing and Data Science",
+    "programme_kind": "JOINT_DEGREE",
+    "study_mode": "FULL_TIME",
+    "ccds_base_programmes": [],
+    "external_identifiers": {
+      "ntu_course_portal_code": "ECDS"
+    },
+    "active": true,
+    "source_ids": [
+      "ntu.ccds.programmes.current"
+    ]
+  },
+  {
+    "programme_id": "programme.macs",
+    "code": "MACS",
+    "name": "Bachelor of Science in Mathematical and Computer Sciences",
+    "college": "College of Computing and Data Science",
+    "programme_kind": "JOINT_DEGREE",
+    "study_mode": "FULL_TIME",
+    "ccds_base_programmes": [],
+    "external_identifiers": {
+      "ntu_course_portal_code": "MACS"
+    },
+    "active": true,
+    "source_ids": [
+      "ntu.ccds.programmes.current"
+    ]
+  },
+  {
+    "programme_id": "programme.btech-comp",
+    "code": "BTECH-COMP",
+    "name": "Bachelor of Technology in Computing (A SkillsFuture Work-Study Degree)",
+    "college": "College of Computing and Data Science",
+    "programme_kind": "PART_TIME_DEGREE",
+    "study_mode": "PART_TIME",
+    "ccds_base_programmes": [],
+    "external_identifiers": {},
+    "active": true,
+    "source_ids": [
+      "ntu.ccds.programmes.current"
+    ]
   }
 ]

@@ -9,12 +9,19 @@ The implementation specifications are indexed in [`docs/README.md`](docs/README.
 
 ## Current stage
 
-Stage 2 adds the validated NTU/CCDS real-data ingestion layer: source manifests,
-four primary programme records, versioned curriculum snapshots, a closed course
-subset, academic-calendar and policy Markdown parsers, immutable repository
-queries, and cross-file provenance checks. Unavailable offering and exception
-details remain explicit placeholders or `UNKNOWN` values. The project still
-deliberately contains no LangGraph, simulator, rule engine, action tools,
+Stage 2 is the validated NTU/CCDS real-data ingestion layer. Its declared
+official-public snapshot contains all 22 CCDS degree/pathway entries exposed by
+the current undergraduate programme index, 23 public curriculum configurations,
+219 current course-catalogue records, and 210 scheduled courses with 2,108 class
+indexes for AY2026–27 Semester 1. It also contains a typed academic calendar,
+public registration/exception/routing guidance, source-query audits, and a
+machine-checkable completeness contract.
+
+“Complete” is deliberately scoped to the official-public inventory and query
+matrix recorded in `data/real/coverage.json`. Authenticated curriculum plans,
+personalised registration slots, capacity, eligibility, general late-registration
+workflows, and undocumented approval chains remain explicit gaps. The project
+still deliberately contains no LangGraph, simulator, rule engine, action tools,
 evaluation harness, or UI implementation.
 
 The grounding conventions and current limitations are recorded in

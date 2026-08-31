@@ -2,11 +2,11 @@
 {
   "document_id": "calendar.ay2026-27",
   "document_type": "ACADEMIC_CALENDAR",
-  "title": "NTU undergraduate academic calendar windows used by the prototype",
+  "title": "NTU AY2026-27 undergraduate academic, registration, results and CCDS internship calendar",
   "status": "PARTIAL",
   "academic_year": "AY2026-27",
   "timezone": "Asia/Singapore",
-  "source_ids": ["ntu.calendar.ay2026-27", "ntu.academic_activities.undergraduate"],
+  "source_ids": ["ntu.calendar.ay2026-27", "ntu.academic_activities.undergraduate", "ntu.internship_schedule.ay2026-27"],
   "events": [
     {
       "event_id": "calendar.s1.teaching",
@@ -16,7 +16,7 @@
       "start_date": "2026-08-10",
       "end_date": "2026-11-14",
       "date_precision": "EXACT",
-      "description": "Published Semester 1 teaching span; the separately recorded recess week interrupts this span.",
+      "description": "Published Semester 1 teaching weeks; the separately recorded recess week interrupts this span.",
       "origin": "VERIFIED_REAL",
       "source_ids": ["ntu.calendar.ay2026-27"]
     },
@@ -33,6 +33,30 @@
       "source_ids": ["ntu.calendar.ay2026-27"]
     },
     {
+      "event_id": "calendar.s1.revision_examination",
+      "event_type": "REVISION_EXAMINATION",
+      "name": "Semester 1 revision and examination period",
+      "semester": "SEMESTER_1",
+      "start_date": "2026-11-16",
+      "end_date": "2026-12-04",
+      "date_precision": "EXACT",
+      "description": "Published three-week Semester 1 revision and examination period.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.calendar.ay2026-27"]
+    },
+    {
+      "event_id": "calendar.s1.vacation",
+      "event_type": "VACATION",
+      "name": "Vacation after Semester 1",
+      "semester": "SEMESTER_1",
+      "start_date": "2026-12-05",
+      "end_date": "2027-01-10",
+      "date_precision": "EXACT",
+      "description": "Interval after the published Semester 1 revision and examination period and before Semester 2 teaching begins.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.calendar.ay2026-27"]
+    },
+    {
       "event_id": "calendar.s2.teaching",
       "event_type": "TEACHING",
       "name": "Semester 2 teaching span",
@@ -40,7 +64,7 @@
       "start_date": "2027-01-11",
       "end_date": "2027-04-17",
       "date_precision": "EXACT",
-      "description": "Published Semester 2 teaching span; the separately recorded recess week interrupts this span.",
+      "description": "Published Semester 2 teaching weeks; the separately recorded recess week interrupts this span.",
       "origin": "VERIFIED_REAL",
       "source_ids": ["ntu.calendar.ay2026-27"]
     },
@@ -57,6 +81,198 @@
       "source_ids": ["ntu.calendar.ay2026-27"]
     },
     {
+      "event_id": "calendar.s2.revision_examination",
+      "event_type": "REVISION_EXAMINATION",
+      "name": "Semester 2 revision and examination period",
+      "semester": "SEMESTER_2",
+      "start_date": "2027-04-19",
+      "end_date": "2027-05-07",
+      "date_precision": "EXACT",
+      "description": "Published three-week Semester 2 revision and examination period.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.calendar.ay2026-27"]
+    },
+    {
+      "event_id": "calendar.s2.vacation",
+      "event_type": "VACATION",
+      "name": "Vacation after Semester 2",
+      "semester": "SEMESTER_2",
+      "start_date": "2027-05-08",
+      "end_date": "2027-08-08",
+      "date_precision": "EXACT",
+      "description": "Interval after the published Semester 2 revision and examination period and before the next academic year's teaching; Special Term and internships can run within this vacation.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.calendar.ay2026-27"]
+    },
+    {
+      "event_id": "calendar.special_term.teaching",
+      "event_type": "SPECIAL_TERM",
+      "name": "Special Term teaching span",
+      "semester": null,
+      "start_date": "2027-05-10",
+      "end_date": "2027-07-31",
+      "date_precision": "EXACT",
+      "description": "Published twelve-week Special Term span. Courses may include research, attachment, fieldwork, graduate or part-time undergraduate courses, and summer programmes; the calendar warns that graduating students who clear remaining AU through summer programmes cannot join that year's convocation.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.calendar.ay2026-27"]
+    },
+    {
+      "event_id": "calendar.ccds.pi.s1",
+      "event_type": "INTERNSHIP",
+      "name": "CCDS Professional Internship — Semester 1",
+      "semester": "SEMESTER_1",
+      "start_date": "2026-07-20",
+      "end_date": "2026-12-04",
+      "date_precision": "EXACT",
+      "description": "Confirmed 20-week CCDS Professional Internship period.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.internship_schedule.ay2026-27"]
+    },
+    {
+      "event_id": "calendar.ccds.pi.s2",
+      "event_type": "INTERNSHIP",
+      "name": "CCDS Professional Internship — Semester 2",
+      "semester": "SEMESTER_2",
+      "start_date": "2027-01-11",
+      "end_date": "2027-05-28",
+      "date_precision": "EXACT",
+      "description": "Confirmed 20-week CCDS Professional Internship period.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.internship_schedule.ay2026-27"]
+    },
+    {
+      "event_id": "calendar.ccds.enhanced_pi.s2",
+      "event_type": "INTERNSHIP",
+      "name": "CCDS Enhanced Professional Internship — Semester 2",
+      "semester": "SEMESTER_2",
+      "start_date": "2027-01-11",
+      "end_date": "2027-08-06",
+      "date_precision": "EXACT",
+      "description": "Confirmed 30-week CCDS Enhanced Professional Internship period; offered in Semester 2 only.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.internship_schedule.ay2026-27"]
+    },
+    {
+      "event_id": "calendar.ccds.pa",
+      "event_type": "INTERNSHIP",
+      "name": "CCDS Professional Attachment",
+      "semester": null,
+      "start_date": "2027-05-10",
+      "end_date": "2027-07-16",
+      "date_precision": "EXACT",
+      "description": "Confirmed 10-week CCDS Professional Attachment period, limited by the source to students enrolled in Double Major and Double Degree programmes; programme-specific eligibility remains in the curriculum plan.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.internship_schedule.ay2026-27"]
+    },
+    {
+      "event_id": "calendar.publication.academic_calendar",
+      "event_type": "SCHEDULE_RELEASE",
+      "name": "Announcement of the next academic calendar",
+      "semester": null,
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public key-activities schedule states that the academic calendar is announced every February for the upcoming academic year.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.publication.academic_handbook",
+      "event_type": "SCHEDULE_RELEASE",
+      "name": "Release of the next academic handbook",
+      "semester": null,
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public key-activities schedule states that the academic handbook is released every July for the upcoming academic year; each student must still select the handbook for their admission cohort.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.s1.exam_timetable_release",
+      "event_type": "SCHEDULE_RELEASE",
+      "name": "Release of Semester 1 examination timetable",
+      "semester": "SEMESTER_1",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule gives mid-May; no exact date is published there.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.s2.exam_timetable_release",
+      "event_type": "SCHEDULE_RELEASE",
+      "name": "Release of Semester 2 examination timetable",
+      "semester": "SEMESTER_2",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule gives mid-November; no exact date is published there.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.special_term.exam_timetable_release",
+      "event_type": "SCHEDULE_RELEASE",
+      "name": "Release of Special Term examination timetable",
+      "semester": null,
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule gives mid-March; no exact date is published there.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.examination_seating_release",
+      "event_type": "SCHEDULE_RELEASE",
+      "name": "Release of examination seating arrangements",
+      "semester": null,
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule gives two weeks before the start of the applicable examination period.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.calculator_registration_schedule",
+      "event_type": "SCHEDULE_RELEASE",
+      "name": "Calculator-registration schedule availability",
+      "semester": null,
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "Calculator-registration schedules vary by programme; the public key-activities schedule instructs students to check details at least four weeks before examinations.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.s1.registration_schedule_release",
+      "event_type": "SCHEDULE_RELEASE",
+      "name": "Release of Semester 1 course-registration schedule",
+      "semester": "SEMESTER_1",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule gives April; no exact date is published there.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.s1.class_schedule_release",
+      "event_type": "SCHEDULE_RELEASE",
+      "name": "Release of Semester 1 class schedule",
+      "semester": "SEMESTER_1",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule gives end May; no exact date is published there.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
       "event_id": "calendar.s1.registration.general",
       "event_type": "COURSE_REGISTRATION",
       "name": "General Semester 1 registration period",
@@ -64,7 +280,67 @@
       "start_date": null,
       "end_date": null,
       "date_precision": "GENERAL",
-      "description": "The public activity schedule places Semester 1 course registration in mid-to-end June; it does not publish a student's personalised timestamp.",
+      "description": "The public undergraduate key-activities schedule gives mid-to-end June; it does not publish a student's personalised timestamp.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.s1.allocation_results",
+      "event_type": "ALLOCATION_RESULTS",
+      "name": "Semester 1 GERPE, UE or BDE allocation results",
+      "semester": "SEMESTER_1",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule gives early August and preserves the source's GERPE/UE/BDE terminology.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.s1.add_drop.general",
+      "event_type": "ADD_DROP",
+      "name": "General full-time Semester 1 Add/Drop window",
+      "semester": "SEMESTER_1",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule identifies Teaching Weeks 1 and 2 for full-time undergraduates.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.s1.add_drop.part_time.general",
+      "event_type": "ADD_DROP",
+      "name": "General part-time Semester 1 Add/Drop window",
+      "semester": "SEMESTER_1",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule identifies Teaching Week 1 for part-time undergraduates.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.s2.registration_schedule_release",
+      "event_type": "SCHEDULE_RELEASE",
+      "name": "Release of Semester 2 course-registration schedule",
+      "semester": "SEMESTER_2",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule gives October; no exact date is published there.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.s2.class_schedule_release",
+      "event_type": "SCHEDULE_RELEASE",
+      "name": "Release of Semester 2 class schedule",
+      "semester": "SEMESTER_2",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule gives mid-November; no exact date is published there.",
       "origin": "VERIFIED_REAL",
       "source_ids": ["ntu.academic_activities.undergraduate"]
     },
@@ -76,31 +352,187 @@
       "start_date": null,
       "end_date": null,
       "date_precision": "GENERAL",
-      "description": "The public activity schedule places Semester 2 course registration in December; it does not publish a student's personalised timestamp.",
+      "description": "The public undergraduate key-activities schedule gives December; it does not publish a student's personalised timestamp.",
       "origin": "VERIFIED_REAL",
       "source_ids": ["ntu.academic_activities.undergraduate"]
     },
     {
-      "event_id": "calendar.s1.add_drop.general",
-      "event_type": "ADD_DROP",
-      "name": "General Semester 1 Add/Drop window",
-      "semester": "SEMESTER_1",
+      "event_id": "calendar.s2.allocation_results",
+      "event_type": "ALLOCATION_RESULTS",
+      "name": "Semester 2 GERPE, UE or BDE allocation results",
+      "semester": "SEMESTER_2",
       "start_date": null,
       "end_date": null,
       "date_precision": "GENERAL",
-      "description": "The public activity schedule identifies Teaching Weeks 1 and 2 for full-time undergraduate Add/Drop.",
+      "description": "The public undergraduate key-activities schedule gives early January and preserves the source's GERPE/UE/BDE terminology.",
       "origin": "VERIFIED_REAL",
       "source_ids": ["ntu.academic_activities.undergraduate"]
     },
     {
       "event_id": "calendar.s2.add_drop.general",
       "event_type": "ADD_DROP",
-      "name": "General Semester 2 Add/Drop window",
+      "name": "General full-time Semester 2 Add/Drop window",
       "semester": "SEMESTER_2",
       "start_date": null,
       "end_date": null,
       "date_precision": "GENERAL",
-      "description": "The public activity schedule identifies Teaching Weeks 1 and 2 for full-time undergraduate Add/Drop.",
+      "description": "The public undergraduate key-activities schedule identifies Teaching Weeks 1 and 2 for full-time undergraduates.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.s2.add_drop.part_time.general",
+      "event_type": "ADD_DROP",
+      "name": "General part-time Semester 2 Add/Drop window",
+      "semester": "SEMESTER_2",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule identifies Teaching Week 1 for part-time undergraduates.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.special_term.registration_schedule_release",
+      "event_type": "SCHEDULE_RELEASE",
+      "name": "Release of part-time Special Term course-registration schedule",
+      "semester": null,
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule gives January and labels this activity Part-Time.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.special_term.class_schedule_release",
+      "event_type": "SCHEDULE_RELEASE",
+      "name": "Release of part-time Special Term class schedule",
+      "semester": null,
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule gives early March and labels this activity Part-Time.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.special_term.registration.general",
+      "event_type": "COURSE_REGISTRATION",
+      "name": "General part-time Special Term registration period",
+      "semester": null,
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule gives mid-to-end March and labels this activity Part-Time.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.special_term.add_drop.general",
+      "event_type": "ADD_DROP",
+      "name": "General part-time Special Term Add/Drop window",
+      "semester": null,
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule gives end March to early April and labels this activity Part-Time.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.s1.results.general",
+      "event_type": "RESULTS",
+      "name": "Expected Semester 1 course-results release",
+      "semester": "SEMESTER_1",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule gives end December to early January.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.s2.results.general",
+      "event_type": "RESULTS",
+      "name": "Expected Semester 2 course-results release",
+      "semester": "SEMESTER_2",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule gives end May to early June.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.special_term.results.general",
+      "event_type": "RESULTS",
+      "name": "Expected Special Term course-results release",
+      "semester": null,
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule gives August.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.s1.fgo.general",
+      "event_type": "FGO",
+      "name": "General Semester 1 Flexible Grading Option declaration period",
+      "semester": "SEMESTER_1",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule gives early January; eligibility and quota are governed by the student's applicable handbook and current FGO rules.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.s2.fgo.general",
+      "event_type": "FGO",
+      "name": "General Semester 2 Flexible Grading Option declaration period",
+      "semester": "SEMESTER_2",
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule gives early June; eligibility and quota are governed by the student's applicable handbook and current FGO rules.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.special_term.fgo.general",
+      "event_type": "FGO",
+      "name": "General Special Term Flexible Grading Option declaration period",
+      "semester": null,
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule gives August; eligibility and quota are governed by the student's applicable handbook and current FGO rules.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.result_review.deadline",
+      "event_type": "RESULT_REVIEW",
+      "name": "Course-results review deadline",
+      "semester": null,
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "A review request must be submitted through Student Intranet within three calendar days from the applicable course-results release date; the source therefore defines a relative, not fixed, window.",
+      "origin": "VERIFIED_REAL",
+      "source_ids": ["ntu.academic_activities.undergraduate"]
+    },
+    {
+      "event_id": "calendar.convocation.results_cutoff.general",
+      "event_type": "CONVOCATION_CUTOFF",
+      "name": "General results-receipt cutoff for the year's Convocation",
+      "semester": null,
+      "start_date": null,
+      "end_date": null,
+      "date_precision": "GENERAL",
+      "description": "The public undergraduate key-activities schedule states that final-semester, attachment or exchange results must reach the Office of Academic Services by end May to be eligible to join Convocation; students must check the annually updated Convocation information for the exact year-specific date.",
       "origin": "VERIFIED_REAL",
       "source_ids": ["ntu.academic_activities.undergraduate"]
     },
@@ -112,7 +544,7 @@
       "start_date": null,
       "end_date": null,
       "date_precision": "UNKNOWN",
-      "description": "UNKNOWN: exact personalised registration dates and times are not present in the collected public sources.",
+      "description": "UNKNOWN: exact personalised registration dates and times are not present in the collected public sources and must be read from the authenticated student system.",
       "origin": "UNKNOWN",
       "source_ids": []
     }
@@ -123,8 +555,8 @@
 
 # AY2026–27 academic calendar
 
-This prototype stores only the windows needed to reason about course-registration cases. Exact teaching and recess dates come from the official NTU semester calendar. General registration and Add/Drop timing comes from the official undergraduate key-activities schedule.
+This calendar combines three separate official-public NTU publications without confusing their scope: the exact AY2026–27 semester calendar, the general undergraduate schedule of key academic activities, and the confirmed AY2026–27 attachment and internship schedule. Exact dates are stored only where the publication gives an exact span. Month-level and teaching-week guidance remains `GENERAL`.
 
-The public sources do not expose each student's personalised registration timestamp. That value is explicitly `UNKNOWN`; a later simulator may supply case state but must not relabel it as an official source fact.
+The semester calendar shows 13 teaching weeks, one recess week and three revision/examination weeks in each main semester. Its vacation intervals can contain Special Term, attachment, internship or other academic activity and therefore do not imply that an individual student has no obligations.
 
-All published calendar dates remain subject to change by NTU. Consumers should use the source manifest and retrieval timestamp before relying on this snapshot.
+The public key-activities schedule does not expose a student's personalised registration time, exact allocation run, or exact date for most recurring releases. Those values must not be inferred from the general month or teaching-week labels. All dates remain subject to change by NTU, so consumers must check the source retrieval date and the student's authenticated schedule before taking action.

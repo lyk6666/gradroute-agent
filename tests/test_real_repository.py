@@ -31,39 +31,66 @@ def repository() -> RealDataRepository:
 def test_production_real_data_loads_without_network_or_credentials(
     repository: RealDataRepository,
 ) -> None:
-    assert len(repository.sources) == 11
+    assert len(repository.sources) == 48
     assert {programme.code for programme in repository.programmes} == {
+        "ACDA",
         "AISC",
+        "BACF",
+        "BCE",
+        "BCG",
+        "BTECH-COMP",
         "CE",
+        "CE-BUS",
+        "CE-DANA",
+        "CE-ENT",
+        "CE-ITP",
+        "CE-SUST",
+        "CEEC",
         "CSC",
+        "CSC-ENT",
+        "CSC-ITP",
+        "CSC-SUST",
+        "CSEC",
         "DSAI",
+        "DSAI-SUST",
+        "ECDS",
+        "MACS",
     }
-    assert len(repository.curricula) == 4
-    assert len(repository.courses) == 4
+    assert len(repository.curricula) == 23
+    assert sum(len(item.study_plan) for item in repository.curricula) == 1176
+    assert len(repository.courses) == 219
+    assert sum(
+        len(course.catalogue_appearances) for course in repository.courses
+    ) == 1035
+    assert len(repository.offerings) == 210
+    assert sum(len(offering.indexes) for offering in repository.offerings) == 2108
+    assert len(repository.coverage.targets) == 8
 
 
 def test_typed_file_loaders_cover_each_json_dataset() -> None:
     sources = load_source_manifest(REAL_ROOT / "source_manifest.json")
 
-    assert len(sources) == 11
+    assert len(sources) == 48
     assert len(
         load_programmes(REAL_ROOT / "programmes.json", sources=sources)
-    ) == 4
-    assert len(load_curricula(REAL_ROOT / "curriculum.json", sources=sources)) == 4
-    assert len(load_courses(REAL_ROOT / "courses.json", sources=sources)) == 4
-    assert (
-        load_course_offerings(
-            REAL_ROOT / "course_offerings.json", sources=sources
-        ).status.value
-        == "PLACEHOLDER"
+    ) == 22
+    assert len(load_curricula(REAL_ROOT / "curriculum.json", sources=sources)) == 23
+    assert len(load_courses(REAL_ROOT / "courses.json", sources=sources)) == 219
+    offerings = load_course_offerings(
+        REAL_ROOT / "course_offerings.json", sources=sources
     )
+    assert offerings.status.value == "COLLECTED"
+    assert len(offerings.offerings) == 210
 
 
-def test_production_bundle_has_zero_consistency_issues(
+def test_production_bundle_has_no_consistency_errors(
     repository: RealDataRepository,
 ) -> None:
-    assert validate_real_data(repository.bundle) == ()
-    assert repository.consistency_issues == ()
+    issues = validate_real_data(repository.bundle)
+
+    assert not any(issue.severity.value == "ERROR" for issue in issues)
+    assert {issue.code for issue in issues} == {"UNKNOWN_COURSE_REFERENCE"}
+    assert issues == repository.consistency_issues
 
 
 def test_provenance_is_preserved_and_reverse_linked(
@@ -87,9 +114,10 @@ def test_curriculum_queries_are_cohort_and_year_specific(
         effective_academic_year="ay2025-26",
     )
 
-    assert [item.curriculum_id for item in found] == [
-        "curriculum.csc.ay2025-26"
-    ]
+    assert {item.curriculum_id for item in found} == {
+        "curriculum.csc.ay2025-26",
+        "curriculum.csc-business.ay2025-26",
+    }
     assert repository.find_curricula(
         programme="CSC", admission_cohort="AY2026-27"
     ) == ()
@@ -146,7 +174,12 @@ def test_policy_query_requires_context_and_excludes_unscoped_by_default(
         section.section_id == "policy.role.ccds_undergraduate_office"
         for section in with_unscoped
     )
-    assert repository.policy_sections(admission_cohort="AY2025-26") == ()
+    ay2025 = repository.policy_sections(admission_cohort="AY2025-26")
+    assert ay2025
+    assert any(
+        section.section_id == "policy.registration.stars.ay2024-26"
+        for section in ay2025
+    )
 
 
 def test_default_policy_query_excludes_simulated_policy(
@@ -171,9 +204,18 @@ def test_default_policy_query_excludes_simulated_policy(
     document_payload = first.model_dump(mode="python")
     document_payload["sections"] = [*first.sections, simulated]
     document = PolicyDocument.model_validate(document_payload)
+    coverage_payload = repository.coverage.model_dump(mode="python")
+    registration_target = next(
+        target
+        for target in coverage_payload["targets"]
+        if target["dataset"] == "REGISTRATION_GUIDANCE"
+    )
+    registration_target["expected_record_ids"].append(simulated.section_id)
+    registration_target["expected_record_count"] += 1
     bundle = replace(
         repository.bundle,
         policies=(document, *repository.policies[1:]),
+        coverage=type(repository.coverage).model_validate(coverage_payload),
     )
     mixed_repository = RealDataRepository(bundle)
 
@@ -191,21 +233,36 @@ def test_default_policy_query_excludes_simulated_policy(
     ]
 
 
-def test_offerings_absence_is_an_explicit_placeholder(
+def test_offerings_are_a_collected_public_schedule_snapshot(
     repository: RealDataRepository,
 ) -> None:
     collection = repository.bundle.offering_collection
 
-    assert collection.status.value == "PLACEHOLDER"
-    assert repository.offerings == ()
-    assert collection.placeholder_reason is not None
+    assert collection.status.value == "COLLECTED"
+    assert len(repository.offerings) == 210
+    assert collection.placeholder_reason is None
+    assert all(
+        index.capacity is None
+        and index.vacancies is None
+        and index.waitlist_count is None
+        for offering in repository.offerings
+        for index in offering.indexes
+    )
 
 
 def test_validator_detects_unknown_source_id(
     repository: RealDataRepository,
 ) -> None:
-    bad_course = repository.courses[0].model_copy(
-        update={"source_ids": ["source.does.not.exist"]}
+    unknown_source = "source.does.not.exist"
+    original = repository.courses[0]
+    bad_course = original.model_copy(
+        update={
+            "source_ids": [unknown_source],
+            "catalogue_appearances": [
+                appearance.model_copy(update={"source_ids": [unknown_source]})
+                for appearance in original.catalogue_appearances
+            ],
+        }
     )
     bad_bundle = replace(
         repository.bundle,
@@ -234,6 +291,8 @@ def test_directory_loading_enforces_source_registry(
     courses_path = data_root / "courses.json"
     payload = json.loads(courses_path.read_text(encoding="utf-8"))
     payload[0]["source_ids"] = ["source.does.not.exist"]
+    for appearance in payload[0]["catalogue_appearances"]:
+        appearance["source_ids"] = ["source.does.not.exist"]
     courses_path.write_text(json.dumps(payload, indent=2), encoding="utf-8")
 
     with pytest.raises(DataIntegrityError, match="UNKNOWN_SOURCE_ID"):
@@ -250,10 +309,13 @@ def test_repository_defensive_copies_prevent_external_mutation(
 
     assert "source.does.not.exist" not in repository.courses[0].source_ids
     assert "record.does.not.exist" not in repository.sources[0].dependent_records
-    assert repository.consistency_issues == ()
+    assert not any(
+        issue.severity.value == "ERROR"
+        for issue in repository.consistency_issues
+    )
 
 
-def test_validator_detects_curriculum_course_outside_closed_subset(
+def test_validator_detects_curriculum_course_outside_collected_subset(
     repository: RealDataRepository,
 ) -> None:
     curriculum = repository.curricula[0]

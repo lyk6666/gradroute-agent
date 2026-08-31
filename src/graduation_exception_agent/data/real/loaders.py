@@ -15,6 +15,7 @@ from graduation_exception_agent.models import (
     AcademicCalendarDocument,
     Course,
     CourseOfferingCollection,
+    CoverageContract,
     Curriculum,
     PolicyDocument,
     PolicyDocumentType,
@@ -101,6 +102,20 @@ def load_course_offerings(
     return collection
 
 
+def load_coverage_contract(
+    path: str | Path, *, sources: Iterable[SourceProvenance]
+) -> CoverageContract:
+    contract = load_model(path, CoverageContract)
+    references: list[tuple[str, Iterable[str]]] = []
+    for target in contract.targets:
+        references.append((target.target_id, target.discovery_source_ids))
+        references.extend(
+            (gap.gap_id, gap.source_ids) for gap in target.gaps
+        )
+    _validate_source_ids(path, references, sources)
+    return contract
+
+
 def load_academic_calendar(
     path: str | Path, *, sources: Iterable[SourceProvenance]
 ) -> AcademicCalendarDocument:
@@ -170,6 +185,7 @@ __all__ = [
     "POLICY_FILES",
     "load_academic_calendar",
     "load_course_offerings",
+    "load_coverage_contract",
     "load_courses",
     "load_curricula",
     "load_policy_corpus",

@@ -1,0 +1,4027 @@
+{
+  "source_id": "ntu.class_schedule.ay2026-27.s1",
+  "source_url": "https://wish.wis.ntu.edu.sg/webexe/owa/AUS_SCHEDULE.main_display1",
+  "direct_source_url": "https://wish.wis.ntu.edu.sg/webexe/owa/AUS_SCHEDULE.outgen_search",
+  "academic_period": "2026;1",
+  "retrieved_at": "2026-08-31T11:58:22.268296+08:00",
+  "queries": [
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "AISC;;1;F",
+      "programme": "AISC",
+      "study_year": 1,
+      "course_count": 24,
+      "index_count": 817,
+      "response_sha256": "463a0289410dc66d9df137e551eb28c2d37d13328831fd48e0fccfbf7ed60ab8"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "AISC;;2;F",
+      "programme": "AISC",
+      "study_year": 2,
+      "course_count": 22,
+      "index_count": 473,
+      "response_sha256": "9cdb19ded9bac219bacb890d6ba64c61e0ae7c5a7e1d3a0754b2326d1ac312ad"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "AISC;;3;F",
+      "programme": "AISC",
+      "study_year": 3,
+      "course_count": 39,
+      "index_count": 266,
+      "response_sha256": "6c4a5ed03a9e25eac43c6658fe8800aa5a8d4cd8c6dff5243efaf2341af567c6"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "AISC;;4;F",
+      "programme": "AISC",
+      "study_year": 4,
+      "course_count": 30,
+      "index_count": 109,
+      "response_sha256": "1669fa5769b60c2c2fe9facc88ea6694bab12d3e74df73b6af91743f8f6ce8cb"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BACF;;1;F",
+      "programme": "BACF",
+      "study_year": 1,
+      "course_count": 17,
+      "index_count": 697,
+      "response_sha256": "f057b70e83af7403d1a4638936bc541098512c54cc1646ea426979eb5d1a1572"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BACF;;2;F",
+      "programme": "BACF",
+      "study_year": 2,
+      "course_count": 33,
+      "index_count": 623,
+      "response_sha256": "38d31829338e8f88008af1085539c41a885c81bef296fd001eea0342a01b625f"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BACF;;3;F",
+      "programme": "BACF",
+      "study_year": 3,
+      "course_count": 27,
+      "index_count": 210,
+      "response_sha256": "46099a581b6e21a8253ac59940084226c8f6cee52f0d08c7dce34e9dfa257e90"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BACF;;4;F",
+      "programme": "BACF",
+      "study_year": 4,
+      "course_count": 27,
+      "index_count": 162,
+      "response_sha256": "c89ce683987469f8cfcfee24160c6783555b446b73edef4d2863405edcbc89a8"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CE;;1;F",
+      "programme": "CE",
+      "study_year": 1,
+      "course_count": 28,
+      "index_count": 922,
+      "response_sha256": "b47b5b34b968b54b36ff9307fc93aec529fa8c2cb63809861908d51c28914ca5"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CE;;2;F",
+      "programme": "CE",
+      "study_year": 2,
+      "course_count": 22,
+      "index_count": 472,
+      "response_sha256": "f74899c070796864733ac91129abf942306f4fa504741e2c9a82845e10b5527c"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CE;;3;F",
+      "programme": "CE",
+      "study_year": 3,
+      "course_count": 28,
+      "index_count": 180,
+      "response_sha256": "9d9da60f523f237c0016672c8da8aa483049a221136d0a4a940fc6d17129f9f3"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CE;;4;F",
+      "programme": "CE",
+      "study_year": 4,
+      "course_count": 28,
+      "index_count": 138,
+      "response_sha256": "42a80840296477c3205821fb6c15ea2870fa8ab1c2953c9bf13966949496063a"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CSC;;1;F",
+      "programme": "CSC",
+      "study_year": 1,
+      "course_count": 34,
+      "index_count": 956,
+      "response_sha256": "5db2f56edabfaa20fb06647b4d88fb2c14a59174c3a47d26735584044edcf8c7"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CSC;;2;F",
+      "programme": "CSC",
+      "study_year": 2,
+      "course_count": 24,
+      "index_count": 499,
+      "response_sha256": "3913978a5d8ab2dbfa357db6b1220be964458007914032be816ee0e905b97e37"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CSC;;3;F",
+      "programme": "CSC",
+      "study_year": 3,
+      "course_count": 28,
+      "index_count": 168,
+      "response_sha256": "fbbefde982b37714a598c3685f0ca5712e5687ba757cf182731efb5bb32a91eb"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CSC;;4;F",
+      "programme": "CSC",
+      "study_year": 4,
+      "course_count": 29,
+      "index_count": 134,
+      "response_sha256": "e3617159e7c7a6a1e92f96d24d14bbef7ed594a28f7fbc442b8fc637a3de9fbf"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "DSAI;;1;F",
+      "programme": "DSAI",
+      "study_year": 1,
+      "course_count": 25,
+      "index_count": 833,
+      "response_sha256": "443f5299726cb0ec61fe7dfafa11213ef9317db8c81f3317abeef6f2fc92726d"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "DSAI;;2;F",
+      "programme": "DSAI",
+      "study_year": 2,
+      "course_count": 22,
+      "index_count": 431,
+      "response_sha256": "06d913791359be3acffc6cdcfd0540cad52602723c94d73dd041e0cfb290925b"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "DSAI;;3;F",
+      "programme": "DSAI",
+      "study_year": 3,
+      "course_count": 34,
+      "index_count": 134,
+      "response_sha256": "b655e683d9ff9d2654a0126e3687e9f7f7e065d17d79045e35af04b3bcb6ab56"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "DSAI;;4;F",
+      "programme": "DSAI",
+      "study_year": 4,
+      "course_count": 34,
+      "index_count": 123,
+      "response_sha256": "deedfa37edb8b96b9eee306f7c1404d3684f42e22b9311c568d337e4a4c4a0ca"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ECDS;;1;F",
+      "programme": "ECDS",
+      "study_year": 1,
+      "course_count": 29,
+      "index_count": 848,
+      "response_sha256": "d6b44d77bb32796a10d9a97b376443eb82bb0cc7e4229464fd7f4ff6dca7a183"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ECDS;;2;F",
+      "programme": "ECDS",
+      "study_year": 2,
+      "course_count": 33,
+      "index_count": 453,
+      "response_sha256": "121a5f8c8a1bfcf5e2989a532930b15231e37977285600a545edfac92363c1a1"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ECDS;;3;F",
+      "programme": "ECDS",
+      "study_year": 3,
+      "course_count": 42,
+      "index_count": 201,
+      "response_sha256": "13a694aa09a86850b9f4f594e482e7dac296778a9cbdc5673fd2c57f9449f324"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ECDS;;4;F",
+      "programme": "ECDS",
+      "study_year": 4,
+      "course_count": 40,
+      "index_count": 199,
+      "response_sha256": "1b7d579580f1d72c30350ed04d1349750562f5a677ebd6c96d6a9d27b34e0b1c"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "MACS;;1;F",
+      "programme": "MACS",
+      "study_year": 1,
+      "course_count": 20,
+      "index_count": 815,
+      "response_sha256": "c7bc631c716b6ad852ed6d6aab3e60c37a14b2eacf3917039ed0d27785cd7833"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "MACS;;2;F",
+      "programme": "MACS",
+      "study_year": 2,
+      "course_count": 29,
+      "index_count": 449,
+      "response_sha256": "e20a346fbb772603d158e4c0e1ffe7f4aee1a6ec83394778707baadfe24591bb"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "MACS;;3;F",
+      "programme": "MACS",
+      "study_year": 3,
+      "course_count": 36,
+      "index_count": 163,
+      "response_sha256": "2e9930d9ff9e3e730d7795fc9e5a50ae7333bfac9068bfc63da2bebedb9e873c"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "MACS;;4;F",
+      "programme": "MACS",
+      "study_year": 4,
+      "course_count": 39,
+      "index_count": 127,
+      "response_sha256": "3d0b277e8b8aef4e8b9fbf3124084cb5224d7ff6677dc593931b45b5ef50d31c"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ACDA;;1;F",
+      "programme": "ACDA",
+      "study_year": 1,
+      "course_count": 26,
+      "index_count": 929,
+      "response_sha256": "783628d3fc334d637c6956eb067f863a792f38082f91bdc741880522e4c8b710"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ACDA;;2;F",
+      "programme": "ACDA",
+      "study_year": 2,
+      "course_count": 27,
+      "index_count": 520,
+      "response_sha256": "775e3dd77b83b8f40741830cc77a16e0dbed1170a72ba4cfa3a39d02fd09e3f4"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ACDA;;3;F",
+      "programme": "ACDA",
+      "study_year": 3,
+      "course_count": 39,
+      "index_count": 238,
+      "response_sha256": "e26920e08174811c58f0a1f19bd4d5634821994864241c7c4114bbf013916be8"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ACDA;;4;F",
+      "programme": "ACDA",
+      "study_year": 4,
+      "course_count": 34,
+      "index_count": 183,
+      "response_sha256": "fe5b0c274cdf005d17825cc2d70a8da7d86070aa042a2e35b7cd47722d5f3428"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ACDA;;5;F",
+      "programme": "ACDA",
+      "study_year": 5,
+      "course_count": 10,
+      "index_count": 47,
+      "response_sha256": "10c7758c636aba8a6c7aff8bacc8f20f20060aa4be6754d4c4cbdf087dcef56d"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BCE;;1;F",
+      "programme": "BCE",
+      "study_year": 1,
+      "course_count": 34,
+      "index_count": 1011,
+      "response_sha256": "6d22aa109291a148c0367c90f2778b24917fd4b3229888be3b946a5c0db8d46e"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BCE;;2;F",
+      "programme": "BCE",
+      "study_year": 2,
+      "course_count": 38,
+      "index_count": 616,
+      "response_sha256": "7183a57c353e02d7b86d1cbf720e09d6a1a8d7ea984fda348e5d157b574ec092"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BCE;;3;F",
+      "programme": "BCE",
+      "study_year": 3,
+      "course_count": 48,
+      "index_count": 352,
+      "response_sha256": "32bf28e6c47aa316453ceb94e929c0eac1406b179c58ea74254fe97918a10161"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BCE;;4;F",
+      "programme": "BCE",
+      "study_year": 4,
+      "course_count": 37,
+      "index_count": 251,
+      "response_sha256": "6d4f5ea2de9cc8cd66cd00701a6088498a5fd4df9469edb0f4f55026b9e7783c"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BCG;;1;F",
+      "programme": "BCG",
+      "study_year": 1,
+      "course_count": 33,
+      "index_count": 1009,
+      "response_sha256": "b82f355b572b7c9e039cae7a440042690a9245a8111cd68ddd41f2cacd1da6e8"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BCG;;2;F",
+      "programme": "BCG",
+      "study_year": 2,
+      "course_count": 35,
+      "index_count": 616,
+      "response_sha256": "280a68d27f94acb07b0c6b5801addc34657f215d010a46ce0c1cb4881d3980d3"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BCG;;3;F",
+      "programme": "BCG",
+      "study_year": 3,
+      "course_count": 44,
+      "index_count": 334,
+      "response_sha256": "73994937191530867ddaf330d4d9cf01b5ef78ce56fd8ce93c2b6e44687d53ca"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BCG;;4;F",
+      "programme": "BCG",
+      "study_year": 4,
+      "course_count": 36,
+      "index_count": 240,
+      "response_sha256": "9f2c582d469904d314983239a4aec33b1a4556e8a8dde3fe0e6ca04ea05438c3"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CEEC;;1;F",
+      "programme": "CEEC",
+      "study_year": 1,
+      "course_count": 31,
+      "index_count": 909,
+      "response_sha256": "db707948094a4119081ec62d9ac6afb9bd7706804c968479ae60b2e9b8d5db94"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CEEC;;2;F",
+      "programme": "CEEC",
+      "study_year": 2,
+      "course_count": 31,
+      "index_count": 451,
+      "response_sha256": "89ffacbb3f10461dcfedaaa2c595c1d822a7f145df5212d9270f4b367c5ae29d"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CEEC;;3;F",
+      "programme": "CEEC",
+      "study_year": 3,
+      "course_count": 39,
+      "index_count": 190,
+      "response_sha256": "4d3d7f19bf59694d2ab611360662f91f813f5d87e8b1f82ed94656f747d06de5"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CEEC;;4;F",
+      "programme": "CEEC",
+      "study_year": 4,
+      "course_count": 43,
+      "index_count": 150,
+      "response_sha256": "697d0c6172f1068ad1b4bd77754b892bfcef60263058c0664f59c37d65fd3d63"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CEEC;;5;F",
+      "programme": "CEEC",
+      "study_year": 5,
+      "course_count": 19,
+      "index_count": 41,
+      "response_sha256": "8ae57ee8575aeec3c2d86c916444de20bbdd087aaad75ce075372bd36774987a"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CSEC;;1;F",
+      "programme": "CSEC",
+      "study_year": 1,
+      "course_count": 30,
+      "index_count": 899,
+      "response_sha256": "7d7cb93f2cfd2ffca735406e62fc78ddddd8e17553347ee06a207e2424e56cc7"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CSEC;;2;F",
+      "programme": "CSEC",
+      "study_year": 2,
+      "course_count": 30,
+      "index_count": 466,
+      "response_sha256": "ba595167019586dd2b1b71746bf21b858acc8712babcc2ed06cf53eac41077a1"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CSEC;;3;F",
+      "programme": "CSEC",
+      "study_year": 3,
+      "course_count": 39,
+      "index_count": 186,
+      "response_sha256": "9b4ce7aba4e220741a78a292abb53abe0436a81cf68cdf427693d4996d17d701"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CSEC;;4;F",
+      "programme": "CSEC",
+      "study_year": 4,
+      "course_count": 42,
+      "index_count": 140,
+      "response_sha256": "59e73da1c96f10e507563a67c2e90334ea2f3acf3907cd48bc7e8858c5655d92"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CSEC;;5;F",
+      "programme": "CSEC",
+      "study_year": 5,
+      "course_count": 22,
+      "index_count": 35,
+      "response_sha256": "08c27c1b7306d9998b0993537a0b3273a3c6eee973d6b8daa72bb8abdc2b3646"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ACDA;GA;1;F",
+      "programme": "ACDA",
+      "study_year": 1,
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "a6af1ce7ccb72569eb32b93c2eb155a9d93f830df6e589c1b68575584a1f0327"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ACDA;GA;2;F",
+      "programme": "ACDA",
+      "study_year": 2,
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "552a3ab669f207955cf9e76b74eac4924d41480f143441575338bfad9dc2bef6"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ACDA;GB;1;F",
+      "programme": "ACDA",
+      "study_year": 1,
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "f4f25c8e39e97142b979a8124768df1e4e7bef143c11d08ac3612d11cbdc5b8b"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ACDA;GB;2;F",
+      "programme": "ACDA",
+      "study_year": 2,
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "6c26679f237ed0e37224f7230dc7bd385f4fedc30f4c1b530171e44fb03fd685"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB0602",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 34,
+      "response_sha256": "dcd0fdf1777bf3f77209e1fddf157377effabb50068de0ea6cc8f0914b1a5741"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB0602",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "cc349b4b85902a8674724c17edd52c612bfce90b3f47c484fb8acaa9ca435153"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB0603",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "09dbae27332b7ceda9f0b5a933826325e915ca719fad02ec57bcaf38b56008c3"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB0603",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "d0a1fc3509a30272fe7af55cc09839858aeb8d1a71935adb2879e4dcfc5fe987"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB1088",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 15,
+      "response_sha256": "e62e7d2cae96589bb471d5f963aaf4b3152ad04fb603d3e381578c734914e15a"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB1088",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "9bcae90285351704c1c5a42bd97d90d63bee7970c5011dcc7e98f638fb87631b"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB1201",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 20,
+      "response_sha256": "4ab050eb9979b5a05136f330cff3409861a79a4474228ad22a234d6318dd954c"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB1201",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "90a3ff15f4a13d54b034036bc9035e57cd1895b3f57e6ddaa34cd0dd7d291e04"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB1202",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 19,
+      "response_sha256": "3c8b306edb267cbd0ae939e443433e98eee4e2b733088758b34d70bbfd7ffe16"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB1202",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "eacdc8a873d146e8429669e38882a04a83fa615c0ba6e83b7c56412eea783b7e"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB1301",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 20,
+      "response_sha256": "b1c65c50189324e8f4d8fbaff5156f658cef5435951f5d1470a6eba1fc8d4de5"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB1301",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "decdc42167d556d689413d32d6e2a6999256ba383a4d3d536aed4a347e5dcfca"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB1501",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 26,
+      "response_sha256": "961f37d6d8f12131697663e9e5545aff0208f9c53ee2f5bef6f2781572bb0232"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB1501",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "ca660093856809c525da3d68439c9e7db98ab575473c97d956c5800c10b00592"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB1600",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 35,
+      "response_sha256": "f7923602c32b4b8a33b155df36e41a423577693d678873f62a7a82850a4ae643"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB1600",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "9bc49f45b894ea1f76ddf4d4c29f9f20a177926c88d8193637260a641022558c"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB1601",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 22,
+      "response_sha256": "6bdb5751e008867503d536b1aeccf121c2ed7b312d80104c39fa294a868eb0fc"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB1601",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "1bc14b44494caaed930f041627791496ccb7673197c14dceb3be78fe8559779c"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB2008",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 16,
+      "response_sha256": "22145d7c1c38822db59d56939f33f47328ae1baccff216f05e9727a9f5c95f1b"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB2008",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "282dcb37f2ab0e585474384b2965a8cafd42a32897bc4d777df42fe23dae35d5"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB3601",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 17,
+      "response_sha256": "8fb58f0c0797e7e4d5d2bbffca92ba7b8a0c5dde1ab2782c2dc8696cb7624422"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB3601",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "e590a9f62334765a422efbfff41da539062da23456ab87e3e43454d6ba405982"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB3602",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 17,
+      "response_sha256": "934f82045d4d0418545959ff3c4af561a62a4bc2ab19783ac9bb0d755c834533"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AB3602",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "3a29c168092c4186ab7e5cc3502d0cb8b500213566d33d470347afb01b207673"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AC1103",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 11,
+      "response_sha256": "131adec6e709b43050a403e171513b6d5277a8d32303c485c8cef6ed7fc744e4"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AC1103",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "bca2ec3e3e51737cfd0f15ab3856fdeaf6b83117ae887d96cf6e10a7515577b7"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AC1104",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "4aed772e771109024dde5160afecac60c21b489afa140cf9aa1bc27a82138d43"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AC1104",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "71bb9bee4b356b57cd4845859ac054501b48aa13ada0e09cee464fd074f0b0e4"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AC2101",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 6,
+      "response_sha256": "075185f8ce138c931840e89950b77fe256198c7fb9683624bf55207de1327e75"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AC2101",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "5b7c250fd107085756a07e13661c9c4d767b3de63120131f46b0c8ae366cd8c9"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AC2104",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 6,
+      "response_sha256": "b99a4ee0947b837be6cf7511b7228a5341fef21921bf566ef0df636c5c4b1085"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AC2104",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "b2033ab262c6e149cfd43e46d4fd4ca6f131bbf72c595e99bbb40af722ed066c"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AC2105",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 5,
+      "response_sha256": "46f7661d583f2377614cb6d995c809f69142fb4323f855c36bcf2b9e8087e04d"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AC2105",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "a8734cdbf18a956aafad3785dbc4e2a9365db2a177f7d48187e116d2cc26be63"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AC2301",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 6,
+      "response_sha256": "ef5675afdfae5ea96143016697a02e02e5a25e00af681caa7de9dae696d6ba25"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AC2301",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "345bcf67b174cfcf58c045487576596bea0c772f1a6c9b2a3ab165017419512b"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AC2302",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 4,
+      "response_sha256": "77596d1ea6fbd718ea92783e418580a42482073423dad5e053c1f871ab0d19dc"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AC2302",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "1b1e0d212f88ca8f46a7f9a4e19a5daf0681084eaf269e0936766a9af265bddc"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AC2401",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 6,
+      "response_sha256": "a8a1178a33f4fbab28f89247617d807c997989d62399cf2643bcd8119f0a984b"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AC2401",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "bf9779260a7efb559f6b3a1b8b4e8f1d51757faf392e5d5c0d9a793debd1a59e"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AC3102",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 6,
+      "response_sha256": "ee08e3c24d9533e59716f455010832330477a56e1d34c1c455b5323a7c3de86d"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AC3102",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "452470351d3d0b5be6730c9307d9d452e7e26195715c47405bfe0919c06763c5"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AC3103",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 5,
+      "response_sha256": "206fd34ece03b27bf394b9dbacda8832f6c64bc9950463df6ad3de2159de6fc3"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AC3103",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "c95721bdf21e6100e934690d7db5166bc6a636815c8d925c44611ab197659b02"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AC3104",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 5,
+      "response_sha256": "e2afb69210a61c1c7abf0b0700f234627f31d55ea469817351c8880a566a5cc0"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AC3104",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "cfd8412fa4dd73957b95ec14819e9547eab4693dc6c2d2a44ab4dd420ebb6761"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AD1101",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "0dca35a07eaf3aee6d8c2d2b6c3d4bd67730658bc7227098f6fd871c2e5c7d40"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AD1101",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "8175cbcfdf09a78ad3b3a4a4cec4168778425211bc1900971639993b03d6cf8e"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AD1102",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 14,
+      "response_sha256": "55c2f86c1a36e4ac2c7c8cf83fd396687323e1ea9a83ca4c3d223da7d8d1b9bd"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AD1102",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "f1060bec236d324c4a3aa20e96bd29cbbd1dd685c763346463bec2ec3a824dbb"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AD2101",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 14,
+      "response_sha256": "7993f0188f0d8be1c4c1cbe99e50aee5a48debd736b2d0ffa2f5305d8ac2649e"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AD2101",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "d88f279f7aa1b20e89cf6447842b4dea2e73eb686c3161df2d4d5dc7141d7404"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AD2102",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 14,
+      "response_sha256": "c3189b86441f9ea495e28fd39a28703722bd13908593d12e709935da11fe9d89"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AD2102",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "14718db047707c4481a493dcb295442e8375f6208c71574744e3bdc3f2dca310"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AL1301",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "123e5ce5564b73c9ad21859305526b392b60b2ab6ac7b693dbbfc65276716f7f"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AL1301",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "582f1f79873ad75af2ef11fa11c89273b74425db2bd369544f225cb37bda1b8c"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AL2001",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "609fd352113fd94ebdd29f9b38c6eb043cfefbdf9339b49ad0ff4ba9713533dc"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "AL2001",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "11c5b474088b564f9fcecb9f54fb200a1f2d53ef5e0cb36a73a9001a52ce3728"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BC2402",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 10,
+      "response_sha256": "1b40806762be0df1ad27ddba954e75c39fd2b9903a8e1b6dec3d0766b578d6d2"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BC2402",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "f43bb90beba386d4d8baf6da6f9c901f01979c53ad71f52ecf22115a69d80538"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BC2406",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 10,
+      "response_sha256": "cf3cb7b18009f397670dae93fde0240bf5f4fd8c7964ffdd21707a5df9aeaca1"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BC2406",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "1891c5f17f00ba1f386c21cc65c44c556f880a24d22f7c384b18a6ad4ab0f0f4"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BC2412",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 10,
+      "response_sha256": "c4698e703f00db8b25426ac47ef32374637928f029f98a39f43997d0f3dd0aca"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BC2412",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "6bc5064a9f4fd3f3e75f764ab449f3150e1ae5e9d6e6d63d12c4a1a6ebb066f7"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BC2416",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 10,
+      "response_sha256": "c9eb1442ed8fc0fa3f026997ce4728ce843a7c5535f5d8da2a545e80b0eeec34"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BC2416",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "67a90b29ebaa128d54b953cec0ac4643dfab50b0848692b2d2e4f05700f8b9d1"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BC3405",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 3,
+      "response_sha256": "dd9408aae7b0674c15bd4ab34efb9b456462a1d0717136d0ea4a12fae1896e4f"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BC3405",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "8e658fa9a9fe219e90dfc14c7348feea6b20983e1e6ff883f6c138ff96efaeae"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BC3409",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 3,
+      "response_sha256": "a19691bfa2b129ba4987482a31fcf43463e79494e9223db154b3b8045f775e3a"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BC3409",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "dad8fec5db854280cd5eea9dc5063969fd097487766de544a95ac4a2b7a9ea2b"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BC3411",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 3,
+      "response_sha256": "b54ead8c92f57e0b323cc1dbd545c800e689df5ed6c3b1a00902f79c1121cc57"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BC3411",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "b4fc7d6db08d5931e2ab16a57ffd00d9c39f4e07a30d1a0a0c33c39f3c717b10"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BC3415",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 3,
+      "response_sha256": "7d39d49beb3c4ea44fc871e15b2d9ecde738493eba3af5d953a9cf54f25abd55"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BC3415",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "0ac1b4be9093b072cea8d31e5fd728587e2de139863de0cd846511302f11331d"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BE1402",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 18,
+      "response_sha256": "3daaaa9d0fb38feea64629b02c2c222497d524acf1f104f6ab1ed3ce2d849296"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BE1402",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "f2fe18df59eaabda14a3ba0c8da88f221424d4795b15eb8c4458d531ddab50c3"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BE2602",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 18,
+      "response_sha256": "2cfcf7958251b7b1527c364f16ba426dfc73e5c123b7e941b44f8222bada602e"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BE2602",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "41138849ef4f2a3565e58a24afc6b8673491c670ad0b7022fb7e1dc6c287d5f1"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2100",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "12065f4ca76886ad39f6eaa86135ee853ddf895885bfd1ed29048877b8abca9f"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2100",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "63ab6c8ddf97375d9182701d828ded6956563bf43f9b046e004b3cabf0b3a5a5"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2219",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 11,
+      "response_sha256": "d79065ee5842e00ffacc23113c666332413f5356f998de00e9b638159e31c13b"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2219",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "296882b008e70ac9041fafba0784bbd27fda8448c0e5b8c28e0ad74df1c0c31f"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2220",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "32bbd04b381d034af1ceb8e9f3fbf6de143a4f3502c8078005a718700fe36787"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2220",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "a8f4978f5bbd43d50b5893fe3e58d6023d3f91f4d595e0a469c57bd4b9f00604"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2221",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "35e6f6a3ecb6485ae5478aa5f4d82b989f4181ba0d301ae984a9e05cf89330e5"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2221",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "f0763a225ad76ee345b5d3e5821794b68462e1350351defb25174daa3c95d5c1"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2222",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "4746474d1c207982b76a48e6822049a237b86dfa4c833fc826103b6fe9a0b8e3"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2222",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "2eadc1f3c83e5652f826baa811d938606d4cea8416dac1a370d9dd7a24f8a525"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2223",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 4,
+      "response_sha256": "3402c96b3a4316812989d31ef29e5584f732662d3dfe87182797be2a9144e1c4"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2223",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "93337a93df76e020300740fc4ccc1e9bab7b061a4c4cfdfe175234dc318d5c25"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2225",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "21446a15f678ec71eaec31d54c0312535c5478838b9bacef3e08632d0986bc2b"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2225",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "9c74891034e925de8e5c5f443578fb4ac97ec8789664b1f3d5eaa44d64a1a4e3"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2226",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "608bd032c0235c25a0309fefe840f8c6e6b4ad00280931bd4cb418067f3256c7"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2226",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "36f344ceb9a4f8dbebead1f74e7599588ac4bf762b6376cb68791ee4e3fcae4c"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2227",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "6c61bae4129e9f5366220c6a647ee0aff8cc1d8e27eed1ac26a60ddc45757cc6"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2227",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "416fd263c0efa52530f42da0ee74d2cc5a234b92957d55906a119bc0aa1f71d9"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2228",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 3,
+      "response_sha256": "f716e2c62656e5dd65ec7a986bce0db6d084b17097a13371664518708bb13390"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2228",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "89e188603451fba71ec9a9c4c3c38753739f5ee8139a6b15c2d36d0cefb90986"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2229",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "8c6469273dfec62ea441791e6240ff4c62e0a901b1090b2bacb29aeeaa7a7ce5"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2229",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "a14770a4d9c8ae1661a17210de2a3f2c9e4c612bc7cc3df3ac8d7bdcb7c9cce8"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2302",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "652f9e03fb61df2a831666ee360df32cb84db4b6bab925d4a4a440eb684d922f"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF2302",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "b51ec957c3506ccc3a10b4de0d297971a264779d2c6b9458c65fcbdfa58c7c99"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF3123",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "77ced46c741a487f9f00241f08c87af4969173e0e7bdeb860a8437c8192d0345"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF3123",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "f7e4800ce6afb70593de3b701b94a7e8fc65cb1b4a220219f3a508024691f656"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF3124",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "10802c749a256e63531b3fbc3371772f59e93d93d9917e5cf5155375e7f03756"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF3124",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "95f8bd567e86d4c97fc59331fcdcd65637a6b729c15839cefbb2c3d4497f5ed0"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF3212",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "6192a89a9576b05bd91763ef3f9c074a7418a0da7b03d07f6572df75c97715d2"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF3212",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "14526eed1561292156a8402201a5b0cef0a8a26ddded2aa3b098ecd6da9644d4"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF3213",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "24f6f3abc6f9fec82cda803688de0e2e24671749a2504f236dfc6b747850e8b0"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF3213",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "de72c7a6320da9d310a92f90fb1e5024a60100221cabb2c859d8cfa4e5c9fa9a"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF3214",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "7ca021ed8a962743ebd6dccea4f159a5aa17d4b9ab2b7a722ebe607fb60587f7"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF3214",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "ec201e8bfc22f78aad6db64e6e4461107db0c48431efa4627ce4ed2dac3742e2"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF3226",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "36fbc472bb2f0f9b17cd15106a6a1bb45a7a149d6679cda1268352b16cfca06b"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF3226",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "33ab3ce21adc34b18a8bc2f9d66c29cb00f049f76e767c52bc49480f45918e05"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF3228",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "8f7aaeb57c8068ea2b7f4f0fd5ed341531e95355b88c7815541f82391b62a9ad"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF3228",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "1eb41003f25a220fde1025c7563d76917a8486a7d31e637115f9380f9f4c20cc"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF4201",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "2509c0546208e0eab03a5d373b8659bab17eb5b13ed3db2c4854a7b8d6e8dcb2"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF4201",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "6e961381243af47af0bf03feb332abb8d549eb42b1b85ae22655afc2473a0527"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF4202",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "d03475474797d131b18b3a9347de5da15b752dce5d998fe6395ae84302ba46ae"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BF4202",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "ae3f956d172b5498c488bfa482fe7d88d0870ebdc1b6505f7742acce2e3020b2"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BM2509",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 5,
+      "response_sha256": "124294dbb638cbf83a0a3599c62a5192b834bd9abc1269c1a46f121fc856ba2d"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BM2509",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "4e7ad60815a81cbd391a0491c95a158bbb9a4b9a2daebab9380a53f95c4281af"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BT2403",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "1469df576b10bf18a26373c4e0c30c1111c8635d983ead4c9633a937661b49bf"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BT2403",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "777523cf9f8a6438b7c3a8509d219abdc7875c4507aa4c4dbaa7330ac350533a"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BT2404",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "a16767d2c0f56feb134d875c80441a0a0de39d6ade7d12b70c394fe8c7e9001c"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "BT2404",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "7895a90e65d94d42b318b51ed0c1853201e05507f03672f3157858902221e1a5"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CB1131",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "a5966fdab28c48908e9b4601b1a5881184f46560c4c804e777594bf8735c0638"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CB1131",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "10bcf626f1c018bdfb6f898cd1c7cec0d43109357da2882fc4df1efa38a9f1fa"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CC0001",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 180,
+      "response_sha256": "b0cb1d99fda615ca94fd8bc08cab030b7aaee3e4d1dba1c3d3f34a013fac0426"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CC0001",
+      "full_part": "P",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "003beeb07699e7e541fc17f16422bba64cd83a0ecadbfe6f2129c9c7cc80df62"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CC0002",
+      "full_part": "F",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "06547126f9fb79647227200b220e2224a69e52c50bbfe2de55b7936e7a143fa8"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CC0002",
+      "full_part": "P",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "a56201645262fd7fae4137b36797fb41471f4ce3edf28802159f199a14883b8d"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CC0003",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 78,
+      "response_sha256": "f77f1528d4ca207f724cc38305fcbce5af815ab7d718f830c62decf444a7cf04"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CC0003",
+      "full_part": "P",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "184b1d98bdc0b7a2bede60edf21271457e314137f388e42c8e1510d88a290bda"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CC0005",
+      "full_part": "F",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "45803d78e1b4dbd206c113820ee2229cb66e03df156340634b136bae73a4b44b"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CC0005",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "157d394687bb150d97576141e3271ac63fabd4503e2942049696e97535255272"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CC0006",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 80,
+      "response_sha256": "f9777eeee304a32730acdb98bef490940912c6e18c7b9d423e57b0be457321e0"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CC0006",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "3955858b3dd3d344b4718fdf38d013f0b5efef36b2ea771f50274a82325c94b6"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CC0007",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 116,
+      "response_sha256": "a2582817ef9a1757e872083ad063064bc1d37b6ccfc0a5621a9631b040f21cbb"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CC0007",
+      "full_part": "P",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "43afda2a90de7060ddfcd45f42464e94a5b192968840ce9f22ebaf063a1dd970"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CC0015",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 96,
+      "response_sha256": "61643bb02e2cf2dec12f0ec1d7b09f2057ce550b4411f7ec844eb199d96673e4"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CC0015",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "21440e246b1e8c613889b0d82aa71925d09ac91b3c27aacbd6ae4782887bbadb"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CE6190",
+      "full_part": "F",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "fc3dcbc6f6757cf85b14c50b8771a9894d68433fb9c402242046a296e4f1681f"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CE6190",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "f55cdf62b55e3eaa90614d7dd91019772437676ffb58efcca5b0e8ea54678339"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CL0103",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 6,
+      "response_sha256": "4a919a108d2f641b38d33a7b72da1fec74e1d61019589b96f4badf029cc27942"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CL0103",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "e1be5205429034eb485b07e6221c0ff3e41a8d55c1f274a79ca8596673763903"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CL0104",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 7,
+      "response_sha256": "02ed561f3a8bd8c9e8a0d10d674bbc4e27044c28b305373ba403694e28e0dbb2"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CL0104",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "2c3bb5517adbbd9e46c72e6e21baa0279dca7d22661f80512eb4962a087253aa"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CL0105",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 9,
+      "response_sha256": "ffacdee4a5be172672e249df101530465bef7288250b3049899d0d6639933565"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CL0105",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "4e5df8635eb9e710f7145171be2ebdb8b30303bf97fa149675ffc66852ee96f4"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CL0106",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 4,
+      "response_sha256": "7ccde262a6c9c695fc14aa4c1ca82e3c79833cb7df26d197bf263c5c1d63663f"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CL0106",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "fb8284a37278256d6739e670f4582244ab283a21f80214b5292b1ee11781bbc8"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CS4031",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "97b6015f80d89ea74479acc6cf2c15f86251dba95cad29d9d42ad6083e194d71"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CS4031",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "1de142655dd1334659a0793831cda3ae60ee4b9ce8ab0bcec660cb65f8720931"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CV1011",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 5,
+      "response_sha256": "a4b921bf1fbb439eea60ab0aedbaf3c2f970f14903fde84f1698fb6a6d068ed6"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CV1011",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "4d41ba14dedbb3ee18daf688799f3760c0c7572c34413933c676366248e5d768"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CV1012",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 7,
+      "response_sha256": "451815b2bf03bf4a3904bfbc61ab28119a368a18d2ca308c1a84639ee70edc61"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "CV1012",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "bd51d5af48e91e573fcff9d801a490017f63065dcf96f0ad5c58cf0e3f0a3a6b"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "EE1102",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 3,
+      "response_sha256": "e61030a7389ed61de40b8ff9e1ffc50a8ea49d03263a42121f34231b02135ed2"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "EE1102",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "c5b16f3aede1fc4b1fb7faf1951b448235a12c528a82704a4d3e2cc17b385009"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "EG1001",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 48,
+      "response_sha256": "0d7f7ed6f6240153ddd00e41f4e77db200807faa2933ffb949f0a4b5a5bcb9d9"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "EG1001",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "9c0101fbec66a85f34f9816cc7285a515555d54c2511aeae11a4a510d6486caa"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "ES5100",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "e44c647ce2de39d4b284d5f930dcf99c11f8a2cee7305e6a0f889fb19661606d"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "ES5100",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "1ab40af785c17cc2cb28310a664b677d1e1632fa1ecde29f37b0b1724db5e265"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "ET0001",
+      "full_part": "F",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "28d84fe260955e45ebbca4b38a6f9365aecda1f9d7f8c3eaac06bc3f5536c3c4"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "ET0001",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "405b50c8701c918c15791624cfd9e0568534e2e40b447c0e9aa6182debc136e0"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "ET5212",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "75a721da5f6bd7c292c185faf9499c700318fd32aedc973ea91ed38f2f7f3edb"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "ET5212",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "429c1afda9736d82df31bc17fe232c16572821a3b372de91e9fd9576ba599910"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "ET5213",
+      "full_part": "F",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "a00437a936c1336a1977b420ee52318a5eab16e12e6206ef07da0452413981a0"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "ET5213",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "8907cddcca2f43ff9fbc179a2568839cd294e0e7e5708ad85259397fe61195d9"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HA1012",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 4,
+      "response_sha256": "760e15db81a2b83cf30219d72dc23400c9af5a882f4bd12e3f65042f97090ab6"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HA1012",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "b328a07e3ba43bbede5819e3e4b96083581cf738cd36dc8cfcab3946e524c0f8"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE1001",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 10,
+      "response_sha256": "223e3d08856835b2dd62f584831e8f2cd8ad9229cad26195422749f9067499c8"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE1001",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "b81aeb71df000583aaab845b124a9e3755802c35208cd1434b300aa704e3cb79"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE1002",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 8,
+      "response_sha256": "ad861a61aa5759bc0aa7791c1a7fb88f574d0c24fbf00d7ce059070c0414b804"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE1002",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "c307403d8a4a335cca69a31badd98957e4183a8f3bd1b9fac3087a81f9a3a3a2"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE2003",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 8,
+      "response_sha256": "a2e814a5104f43886c46c0ab5f202a2a20a345c4fd4222564259124d04d0133e"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE2003",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "9dbb19e1404ceee7375b966cd30b133234010b2ba404d2b877b8085e447ca7ae"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3001",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 8,
+      "response_sha256": "1ce4a9391c3c99833f7427ea54b9e50b2576b59ab4b839c9287ca4e29f438270"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3001",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "5bb0fbd4840e28a6ce380ed398ed32899421ce7d5d1a330e49bb90a0125a14f0"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3002",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 7,
+      "response_sha256": "a4ab62160ff4eda50a6001d8474648625a97ef570e45ddcefc436223083d455a"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3002",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "63248409c85080ba8f4ab5d4c264c7a64de3fb9e06bb1c9cbf3c1052d5c34461"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3020",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 3,
+      "response_sha256": "e32a175a6ffffb01d07ac4ef63f290418ea4dd78bb1012df40add8e1a51e93e2"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3020",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "c462e16947f54388492cd8b9789b884ceb38f2c87aa9d18fad93ff4c30f4255c"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3022",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "c8c4d04ce175421f76546fb0003c1f6a885d3eec230382f33db4a4245e2d9a86"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3022",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "3aed29d2793a6b4b51a5189a71ba0d6653784c7c72c98370c8e5bf5135b2db97"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3024",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "0aae7ae6302e5ad13e882685b23ce07ce56242c4c4d564c3a9478e2753507bb9"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3024",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "3abc8f6f8a621a308f66a9a6b47dd4f7814e9fd14cee97e0be72fd51abe3623a"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3027",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "2940a983b618144877af42581f93cfca8c2e9d1f9209cec6404fc51a2a358a90"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3027",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "11ee549c77d5ccd9fa0163e20cd6f46cc6618c38385b40996330d52ddb6a3462"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3031",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 4,
+      "response_sha256": "2c90784af2ad509bb5fe7daf10fe1841967303b4abafd8223be9805fa1fff5f2"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3031",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "81f371283ea709e0348135a31432681e8e9e8fd1ae2100ea5f2c11c31151f20f"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3032",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 3,
+      "response_sha256": "b73d98e8163024a872fed268d2f864ab0890e6e2ee2876b445f2012a213d127d"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3032",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "9f052002c2137d72643de180be45c194bf24336efa3bd7aba1494c83658cdbac"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3033",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 3,
+      "response_sha256": "edfc216e207a599a3857e7b5793b4e822fad4af25a308e6c2c5c2385b904a0a9"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3033",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "f2133d86d80a40745d46639123b2d910f6b2b0f108ed5cd1099af25dcde58ee4"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3040",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 3,
+      "response_sha256": "03b4cc78b421c1ce0b836051774f51a5822231acc19481fed4ef3e7b3ba36c5d"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3040",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "5392f5b64672753bf03a28745aee47dae30efec5185ccc876fe96cf40a5fa540"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3112",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 3,
+      "response_sha256": "cc396b4cd0fe23a44b604dd72e131f91d058ff217b986cff5fca5f6036b6c994"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3112",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "4d78daabf74261f89d2d8080bd6ac0fdcdf807f681cee2a1bbee5e679f3ffd7e"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3125",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 4,
+      "response_sha256": "568a2cddc6642f0107b94916621cc8375e427f7f1fce51e4474961bfdee09d60"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3125",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "5b74be58f3affa672caf9a33afa928ef6ee49d15f3c739b56682b1232510fde6"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3602",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "d6eabce475651140ec73942e2bcd3f69d497855fba4139f83f5d40f8e55e55be"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE3602",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "b96daac31b5eb21fd4e55f08071c36bdcf18dba6d9cff492974f45ba83be5ebc"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE4040",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "1b67611b0bc331376dda8989b2b35e8a913e44d50ad8920bff49673a4fa33c5a"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE4040",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "1bcddc33ce0e45f3e5a16d55bdc5d68890799172a230cc1c2207665e8eece3e5"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE4044",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "032f58e0ecb67449011a6023f0b28b7203147bb4de3d2718d63d7602dca05dab"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE4044",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "0bc0e1f15847b39185e306f6f4101f177fd58053b3716d380afd5341ddc73022"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE4045",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "8420cfb132664a95772748475c2944420bd6800a25dd02c152511be2b06e5405"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE4045",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "2ffc8d40d2683cac10ef0657a398aef0829825e0a9c957498d19e38c37a3d467"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE4140",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "4c1d69f52ad715d65da7bbaa4d87d38491a2a03ec570593943607babae7228aa"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE4140",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "50b206cb98fc27593304d9b4d03f5842e76d6401b14f9f49a21b67dbd2196fbf"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE5091",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 21,
+      "response_sha256": "5f4e787c23ea9bfb86ed9ceb277cd0b93db5901d69131d2aa870af63d70db9a1"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HE5091",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "50df863cefc97e7ad185083bb14e675d33cf2f3543cfc9374487ef9b6b1393b2"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HG1001",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 8,
+      "response_sha256": "721b37ff33f05acf1da8f64f568f2df9fa5e8f47e171ba427a9d7741ceda94f1"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HG1001",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "e1040fa64fd860b999492a9e2754308046a207b4816736fecdb8be143b7eff41"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HG2020",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 6,
+      "response_sha256": "f511f58c32fc2358c46feb3dc893b78e4f5d93689b1cf3ee20e96166b6fe86ca"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HG2020",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "a03b60d8b6dc41261d313e447c70e9d45ce8b36364642f0554859f1128a3b277"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HL1001",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 10,
+      "response_sha256": "750d85f8e82d0159731b8f8c7e4d5b31bc02a5bd48bee6950fce0003627f9839"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HL1001",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "ecbb1313b80b992a8fe5cc791213fa7f9a24854cbdf6f7d5561b00174cfa2637"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HP1000",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 8,
+      "response_sha256": "6b456acbefad5a8d5b38a20260d25a448c73ecaa4c9fcf7ad38ec22a3259e77a"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HP1000",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "f8bcbf6724b72ee2590c1115b86e8b926ebca96affee852dd4c7902635adfb13"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HP1100",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 8,
+      "response_sha256": "e1e0197585bc32cf11eda912102ca8a28a1167f7bdb1c8aece347b4ce9b8c087"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HP1100",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "2322c87b2fbea115ed22d1874126c857d04460f912ed7e9df649655825ea3234"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HR1001",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "275cf04a4d7106a5826dc2212b5093e7919fa18630595691c5f2bfb83b822620"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HR1001",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "d848ec1c6d067a3e5cf9161acd81b9eb03fb088fca6a447b6fdbb66c78e89fef"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HR3005",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "0334693c0976326e9fd63f41ec4532f83a1d415cfcc01bcedb6533a7f943adb2"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HR3005",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "f96339175e726e2a8be8a7b2519e2f2f34a7269d774844555a4f02a9180f8e87"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HS1001",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 5,
+      "response_sha256": "4c3a58dd091d7f65de8c23432521010d42ce447534912e5d115ac6dbe1b97ebe"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HS1001",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "8451f20ef4fdac39ba3dbfda2b06bf302e2bd9a5922cbf7d1b77d240992bcb5b"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HS2001",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 4,
+      "response_sha256": "f7fbb0b828df2e76371d23d4629b9ba0541f191e4296905c8f0ee859b4eb55c9"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HS2001",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "1763a2ee93e37339053510b0609d065969e38be0c8f4df264265313213f133a7"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HW0001",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 22,
+      "response_sha256": "4cc7f2d7d8a8e258f6caa70e866487c8771f91f0193e6dd2271bbb86b95509b1"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HW0001",
+      "full_part": "P",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "04faea1f15c6c1915fcdc1fd85c5cd0ff00b8d5b2c1b6f34c0b3b9da70139f7e"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HW0218",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 26,
+      "response_sha256": "8414972f20c2d98159af3661a16a3bc85e864d6bd25c292c051b5a2271780636"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HW0218",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "2ddbf8eba8c12bf6a9f7b7b2fa8d137ec4690488b1ecd1d0fb4b3222ee4efa45"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HW0288",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 84,
+      "response_sha256": "83ecc0b845bb2fcc87d7aa1b20f59d19fd8bad74860c4dff4c205f0b66777400"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HW0288",
+      "full_part": "P",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "4adb85754927c4202d4e1d667d549a2e00f671770b3a33274864cc4aabf0b4ad"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HY0001",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "e31dc84f23984fe5f650220ab841b21d4166e1e6c271e773a89c38ed790497d8"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HY0001",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "1f25011ecd9fbf834a9ffd342bdfcf938bd43a9e95a3a32184bf3a9dcf69d1f3"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HY1001",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 4,
+      "response_sha256": "d0a79b61f530bb2a1b0ecda8f0a2d0d312edac6467d1d7c0fc3c54092a0251e3"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "HY1001",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "5ae9d2750ff1d5bdeecb4429ced71e676f26e83f41cd95087fb8acc6cf326004"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MA2003",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 13,
+      "response_sha256": "bffe45a75fbdafe436eda1fc2a3e4121ff504325ba9f1b5a2c25563a2c1da4f7"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MA2003",
+      "full_part": "P",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "d640db6ee009eb31d9334ea5f1a55f2919c1172e1b31e269ecc0657bf5863a33"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MA2024",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 9,
+      "response_sha256": "62bc1237eae91dc99005100c5fc491f7166fb83679ef49d4d1aeb6a74cbec44f"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MA2024",
+      "full_part": "P",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "1bffe1471a35eab5b0325531272d429d2d0c017b55c0a9e438af9ebb9a091d7b"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH1100",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 12,
+      "response_sha256": "e0069ba9705bd58d95717f0b2982e319469132db9f7e2ad52e20be54e6aab766"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH1100",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "79192eb35f9a4665a7c41a44b8ca5d709ea76273574c8dd586b055298d560e6e"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH1200",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 12,
+      "response_sha256": "b0e974aa9c8b3d457010a8c3823c0fbd8779bd181ffcb1fc95b2ae6de98372d3"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH1200",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "dc96fbbe61d20fb74be5c8e64bd6f16f9a9c213fec0e8e72a0ccb2f91d2ab867"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH1300",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 12,
+      "response_sha256": "7fa918d6e28b6d910785391bbe0df87448f222deadaf038540c5f63212be43eb"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH1300",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "0580464a313ceac7697cfcc3fe513bf0a8454870bc4d9335c72334b2798e0b01"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH1805",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 11,
+      "response_sha256": "423762bd273fc428ab6a843f6d6bf586c36db7c84091d65f7d203d2ac78988b4"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH1805",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "b93c931c90b67b311ff43acf5d75ad45e2e45a219f354e9c7274351552b4a943"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH1812",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 27,
+      "response_sha256": "5fd26e1f4eb683d5609497dcf6c1c0a32072d927b751ce213adc2aff5477e0ff"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH1812",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "171b8d74bf18042e7cde5fd2aed7ad0327b3b1a97eaf54a881cfa097c9e96463"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH2100",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 16,
+      "response_sha256": "a28f72c5058e52e2c30f5a41785f9528495c85aaee1530dcee1651aa031ea953"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH2100",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "555a3eb022166d8217ca7ae0dd0d28cd45b3d383399c5f19067320c07796cddc"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH2500",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 19,
+      "response_sha256": "016ee3ca38ad158c295c78233b5cd4f2785a0f19c67440ac57f33c3e9fed217d"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH2500",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "e9115d34bd2bbad93991e93e2e2e99a6bae1d85b37290eaf779563a9e6552638"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH2802",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 12,
+      "response_sha256": "ac3d09800bc86984adb54368bfdc335ae41fc4fb1a3cdd31cb5f5250aad3ee11"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH2802",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "ba3f056cf5928baa58577062e914c96354280520ee1c94c07698784f90358731"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH3100",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 8,
+      "response_sha256": "cfda058106512beb3470b57acb6bb748f2905103f460c85200d6f6c464a11d00"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH3100",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "080536512b4d4d14e05a33de6d193a3a27914a337ae11b533a1ced23a1cebb87"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH3101",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "c81360aa4b74f7b07475cd36bc9e2ceae0ec45034f9ddf7834a733e2302eb54b"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH3101",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "0d2ff552beeaa80ccf2e5c37fdaff29a984a1bcb67f6712297b5398b08049b6d"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH3210",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "575d5b6c4c93df770b651db103074bada738433f987ba4d36cb90f0e346b80cb"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH3210",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "176e0e013deaa300fb681d0e75764426a21d3574a4829dee0b92e9c0d9d17a17"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH3220",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "01320a5b30bf22bd60a85b2e70c707dcef4e52716570d84f53f94e76fab7ac98"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH3220",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "6dcc6be6d46a69a365232214cb5b86a073abaaeada4ddbf6bf7a02fa53197b24"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH3300",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "b34250d341313dc64e20cdb13efb7df4d36b5cdf58296b2fc88735fe616f73cb"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH3300",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "d0341a2d6cdb47c98a856979ae236ce43d984ceb0919ab00851a80170e5607ec"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH3510",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "703492462e14dc283ea578e10aea1f1b73f0a1c81c78b86da5af2928d66b0c09"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH3510",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "cf59786737ebdd054c75ed42f337557fa8b94fa1e0a471e7962152658d4ae2c7"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH3512",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "1e150ef7cdb6b19920bd2ee1dc991d174eb117d59dc92c401448ef34aba9123d"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH3512",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "22c3b82966bc82fb582dc3e3d2c4b55692014ece70a9757207b1d70d7b531061"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH3520",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "8447d4e543065ed06736d1f7ecf73a41802071ac0c05ae7eee8aa1daaf4a8062"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH3520",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "906789aae114d146fc8d304bb666b4bf860f0f5f4c41e31a09adf43811e97677"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH3702",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "d72439c972f0b5c170eb551c793ca527d2aeb9de16f81feae573c511ecaffa60"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH3702",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "2f6fa09e093a08b4a06bced9c91d78f3315cc57df87ab766ed7c85e0ab6b00cc"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH4310",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "7c3a1af6c0930e13e7839ed4a1cc949b77859bdd8709bdaa8962479156062ea7"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH4310",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "e8234da1e64ba48cc2e4a3f50e3c865b1b166477b8ffd6489fc1594ba05b30dd"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH4311",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "59f1ec8661c5f83b1b2ff9cea1e4cc2d1028f6086c751be78e3382d0d3177c9f"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH4311",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "4102b1d47fc423e867dd01316eeb090adfcfb92810d86ced5bb513ab6d4ef6e4"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH4320",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "e444258bdacc575985f814811e76c608b6087f93825de9ede34d233b9d435d33"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH4320",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "1a015a2182b6db075693607699d093a6e52dc72be8102fb605b8c5bcf4108fca"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH4510",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "7c98748f7f65c21e4d082feb571df2f0484e42884919166b3173fd810d675e24"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH4510",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "41727554b07aa745e355398d40b3262ccfbf9af3dc8703ff30553f74b5e06d2e"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH4511",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "bfa22fb6ee73dc26d6fcd70118482fc75b582f83db8dc80f47b85b469ec588fc"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH4511",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "550bdfa0392bbf9596716f4910990affcc391f03d8e0930f6d5cc4beba7c735c"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH4513",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "247b737feda84143d86ec5c16fff06505bc901456cdb48673fc3bb28105daf84"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH4513",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "591e6d797fe48679ca7f8fd5404914c3da2743f99b3280a832b501527295e5e2"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH4514",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "445705473c708b06da72237e17bb06d2e8fcdc323180d1341c42603a7d5a5940"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH4514",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "63ab507eb105f3e2ebc078379683e4a201ee0ec28b8db9b9def44db3fcfe534b"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH4521",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "09c2c120404c2c8b2a50ef8af9d7904fb232bde86754ef971ab6dc4ca8d6b192"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH4521",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "8a81127e41e51621de4b2c9ef22be8f344028012898ce4f1b33e8af7e5dd2026"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH4700",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "568bcef9855ccd26beb09d5fe84a12b2b450c7288c9eed9beaead213953561a1"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MH4700",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "48fab52c93db46eaeeaad1e02f4a763f19da5e766f962c1e1150eb0d7749b4ee"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "ML0003",
+      "full_part": "F",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "2c9458b951f92cd7f4844245cfe89551ed1456df156e1cd4874d32b335c9c8e4"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "ML0003",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "18cf8b706039fb0009ab8d8a103bc611f2417182c5638181af2272c3c2ff1891"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "ML0004",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 90,
+      "response_sha256": "e5875347724d326725ccdfe6cc93ddcc497c817fdaa94ae820e94591f22d3113"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "ML0004",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "7d8f9f7ab67cea41d72f578fcc017ae5d993e8c2e04c1404bee144687a8a46d9"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MS1013",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 5,
+      "response_sha256": "c4cebfd0e13a2429cabb95b5fc3a92646c9467b551dfe291bcb827efbdd09dd5"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "MS1013",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "3cba5fbc26f4cee583bfb3f9a6cbb0b985cbaa1ca4f5cc0d7ebde8d170d4a08c"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "NH0001",
+      "full_part": "F",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "f10bea5607822507ea04f3eacd2e26982972a6106ac28a4f1aed9e7203a4bde6"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "NH0001",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "6f54b82d20596b2e6917c06825178cbbe01249875b4c1f0677b4b5e7262c420e"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "NH0003",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 4,
+      "response_sha256": "3706b1accc4e0c4fddf57c934de027555dbfe25559da72ec36fa109e2cd09517"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "NH0003",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "52ec676eb0e0d41b0d28c9f4586d1a98f1447cf2c3bc7e6cdb9060b0c595f4d4"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "NH0007",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 8,
+      "response_sha256": "6225317c3a053010c849441c814bdeb449d6dffb3ce28fa0445f80fbb5ea8515"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "NH0007",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "70796568dff7b6e541d8f661569280354cf82727e1f0d2b43d3630f0b4202a4b"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC1001",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 47,
+      "response_sha256": "2811faac58aa49770d2fd5f14a61db7aba1fc0f081eafd6bac260faafd315ff5"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC1001",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "f286bb02274176ace635e64ea83e867d36fab2ffcefc40f90a8e8bc50786451a"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC1003",
+      "full_part": "F",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "7220f94bdf86f7272a306b77200f14ac168f855f42f6f6c26a3230526ce013f8"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC1003",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "8bd496ad4c7f8527142c47fe29fcf228fc96ec60eedc2d93c24865ec2c7eb50d"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC1004",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 29,
+      "response_sha256": "d5534495459125485693798f494291fc51b674e0a87fb2d39e1c0613cb2e4270"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC1004",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "29e8b0182109533dac62ea80d259389a0a7a3fcc6791b491caf443ec26250c63"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC1005",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 26,
+      "response_sha256": "73ff8bf1c8d5d9d92efdc99f335e96c3185fef6bebaf9dbee17b044d80031bac"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC1005",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "2877139dd2382565dbcc5e67b5668d1c3cde29afb4888be09a1d42335f611f90"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC1006",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 4,
+      "response_sha256": "45affaebffcfe12cc8860fec55f981460306c7bdf6d7632e4918b82e8b2644e3"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC1006",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "8b676c9af0bcb6fc898cf756c92bfb038ada4164d2447adb833ca44855014052"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC1007",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 4,
+      "response_sha256": "e69204d47841cba52594c63c8e05e75ad7ae084198401aef0fb86560b0e09699"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC1007",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "9de8dedf3999b24df0eb9c510f89b120addb107cdafa052b68932d8348f41deb"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC1008",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "3d25d6f60a08e59e86d7cab2a813530ddb6c15239570e88dbe544b2aa253aad0"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC1008",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "3d8c973de815194601724bfc8e8cbec573a3d8612fc4cc3a6eff54433fafcd8a"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC1013",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 10,
+      "response_sha256": "ca64d0b68acf2029d3789a0dd188f583de59aaa2be624fa305a40d007d4389a7"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC1013",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "72ad606ac5a63cd07eba42b9e83ef4c2ab06c9227285ae90176be137470824d0"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC1123",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "d9934ca0e223393dd447ad80b48db7ab6a26ad280c5c1a713e8c9605e3077e87"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC1123",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "d3241a54167aac5a84190352db6239618feccf0e66322510a0f2e36f250db35e"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC1301",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 6,
+      "response_sha256": "57e7324eec8ffc2c0de907ede60b5ee52362eb792361eebaa5b30a3385a59b26"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC1301",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "fb42c9a7cfc9f19b1a6249f618f4caae8c13f6539215ff5924f4e53b00a3df1d"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC1303",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "4d63a8fb11269acf0638f133b0e2267749d0ad3a8028dc9baa4d64515e643760"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC1303",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "b9d2a55303eecd27e6a604e722c1ec02db955bd135e96fe61187c50f6c493882"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2000",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 9,
+      "response_sha256": "355c910425ae2be7b850a347944477d5180a9f48e840e42e3d8f87de61f19a29"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2000",
+      "full_part": "P",
+      "course_count": 1,
+      "index_count": 3,
+      "response_sha256": "6011c5d9fb6d3c8c67dfabb209f84b1e740d5da0babcba57c46f7c86dd494022"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2001",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 36,
+      "response_sha256": "0512962fb2ffb0100245578275990ee71f9fff511ecfc9e8b97dcf08663072d8"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2001",
+      "full_part": "P",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "5df76e3cac422b209c5cd5c978381e5fd3cbdeb821eded2a527bfb4a94418b5b"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2002",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 19,
+      "response_sha256": "2e65af498a55336fbdde1e99f435e96cd97e23a3d9a125ce785c192c38cc01a4"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2002",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "c87212d40eab8bd1d7929f9dd05c229496026e20dba233730774e741e195c626"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2005",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 22,
+      "response_sha256": "652936083ab174b898bef6b1238326f957f948bd8aa3f04db8b9b3372a189aa9"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2005",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "5c62715710d5960368c9fd9fe806b7d24f070890f9d8722fb2e06f4b33d43e62"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2006",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 30,
+      "response_sha256": "3d8e5438fa0ebdea532b99348eb725a3c89f5850c4e77ca6a54d2261c0a60fbb"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2006",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "74c5ae1ed9ad35da5610d9a0342ffc51f81ab6bdcf34e4ad078e4bcb647e6e91"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2008",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 28,
+      "response_sha256": "19f1256bce3f804f7a23d7b506525d5df28adc3dbce12e24dc6c32749d85574c"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2008",
+      "full_part": "P",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "fb56f7578aee00c70057af95aaecd4d168f62602b8dfae2333906894f8d4a8a5"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2079",
+      "full_part": "F",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "9aef005aac35bb7fa58cd52fbd961f7e2654676d828cc6dfbf019663544c5ae9"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2079",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "7a4da7306821059c70fc5d34c9c89a2e1867b8cf038f71b2ad7cf68b7b84bb43"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2103",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "1ae998728d62d2276e9ca019fc227830d5cf3b5db32762ccc06595d6fa1d6758"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2103",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "163bd5e4e2125fcb9824d464d6d7dbc60c8782b3cf91c2e6ff9fd3d13f4d492c"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2104",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "fcd50ff10b95324026997d01d038ba896c5ebd1ae1b33b4118d019662aa644ab"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2104",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "b22c89a07b858b1522a15f33fc6c7628b7c20e685b2dfc56ab727d620bcc95ff"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2107",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 10,
+      "response_sha256": "26ce29367194b48e39233df058f29ed1cb0cf330ffebf079d4d9aeec9b01a34f"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2107",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "6b5ef2974b1ea7fd2d60e2ff2366bf13fa0f37e1529b13bdb619f65dd3aa33e8"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2203",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 15,
+      "response_sha256": "0441c6803e0a1680450714b5696990c18dc17b25af2fd2afb472652f1735d28d"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2203",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "7e643a4ee439e4af8d0f244cfe35e5489502fa462ae5b4157ce3ed66c2d97261"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2207",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 13,
+      "response_sha256": "732c3d4fa28b4ce6503b67ad548cffdbcbe887b769e56e444ef08f3f5d1443da"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2207",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "cdacb16f8e1062e77f7108d0e2006b59eff1559955735fdf382f388bc76d2b21"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2301",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "9e68fe6e88f355827f99b8b82f8e930168526c0d3927441d6d5a4999425e2ddd"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2301",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "5f0f107b036ff0d712bc186ddef1b091de2c45f62b705def97b347b49d1bf178"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2302",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "dbc38b59a5432834e1a83b8cd11f495350782bf9e30d34aaa1a38152fd541081"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2302",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "adbc48dd39124664102aad50e980023aadac7300b357064d136b1cf2ca4ad9cc"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2304",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "8ed83938479ebfa7f067fb672ceadea07f93ea4e86843b3f27be4c08665385db"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC2304",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "28cbd2f713822c12e6a46ea09b004752058355fd2a81a27450cfbdc541ef42ad"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3000",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 7,
+      "response_sha256": "4ddbc646067d285f7ea05017b2b40c56c0823137e78f182e6558fdcbfb4c1ba8"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3000",
+      "full_part": "P",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "0751f575d7325403af4e04edc421c49eb205d8a60a53bf08866c96de02f7c779"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3010",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "da3a76a5c71ca15d7d01f0f9c8c6d089169c5cbde81f732bea32701c452ddb6d"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3010",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "a55131c551e63ca29a44423661a82a28257f6d50d2dbd59ddab2583e14d3a4be"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3020",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "1b16f15010011caebc7d598205138a13b7042b69bef6cf93955c718f391d1630"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3020",
+      "full_part": "P",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "067fc2743a09abab8f10c79a964a6a616e013910459391b83819bcb3199ebc6d"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3030",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "a6530488a95e294723b2b23e88ffe03740ece62c44f2c80af80c502d8c761cfe"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3030",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "e873765e8a75b176e0e72010c30cc45c256266cfe4780ca05d7f390ebd59c508"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3040",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 5,
+      "response_sha256": "cfe872fd2f7558ba43d450b0badc3ecc74fd8b1838a74a1663f2660d98cd656b"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3040",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "29a8b0d74e38c370789672bebf48fd009dbad2461c7e5618a62a9d7348df8193"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3050",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 4,
+      "response_sha256": "b8da07c674fae569829555d0bed2e524073acc514eadc57d56700a09441aa593"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3050",
+      "full_part": "P",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "bf77a10e5118b74c0b97348d0c555e2c679334cbad0f5e2529a4cc78a18185b4"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3060",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "c0a51b9386a77d136344f5575d5c3a7fcb01bb45d04b3ac9fb8fa9391d0460c3"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3060",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "21031e3588e527181b942f5d0c4c0d2dd313c79b857c075588f6815cdfad3202"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3061",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 5,
+      "response_sha256": "bb5479db13bf7cd8762f22c1ff9afc352a886413f546bf8068790813a03f9f85"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3061",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "2c16d418b67b3764947f301a539f4c677c3c50e7c66a13aaeb2421c2127b3038"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3098",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "e93d58d661238b9abd7a364f707b307ea73ae89f8eb309d7f0166b4e53b3de20"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3098",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "53b1726d58b78126f0ccce82a0c8f371ed6370be854c5fadd68e9829cc8574c1"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3099",
+      "full_part": "F",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "3d079b856a065c7b95d0abc0ddcf79f12655b4498d85aaf1cd6209e6543afe86"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3099",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "ae6dd17b5510a2f1fd79efbaf8721b57a4a097f4c4d8741e5e69f84a4632a703"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3102",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 4,
+      "response_sha256": "491be421a63ef42e506c35cc261817834b6fc69fce76dcbc90f2ae114171758f"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3102",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "ae16f93608a8b7820899d455f3817bb0e608372d7359e1c9b4d2516d591428db"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3103",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 5,
+      "response_sha256": "9e8e069547b75f72ba4ff9affb65a071957421bc32728c861d58552f6728f02e"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3103",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "9cedaad10d8477bc0c8abb8defd0cb222c9a1ef1c008a9ace43180301884a3c7"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3270",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "25dbe8ecc842841e5b8e6cadc292cb1636bde393e0f427113e62c207f29cc4e9"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3270",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "46e8a346d61e0811e17bd1cef637e08e5be23eedb941c487b2b34ffdb50d961a"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3271",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "fd9d6b3fc95c00a417a04bc49d759f1d5a353c6dff137c7f9a88e261264940d5"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC3271",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "378d6a744c0a371b91a6818d62c523f24a15e31d070f92cb533f9479ee68fe2c"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4000",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "ec84702d9324bb8c048cfbaf172f53230394569101a93da8ef145958ecbec9cb"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4000",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "92781772c6bbe55dd084c8c436d5f5fdd5542228983f9a8aea7389fe332edac5"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4001",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "8c154446b011b3edc2daa39f557abaa1dcf2daf5d6e1d73eced0f7387fe2af61"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4001",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "2a5d35118cecc87100ef3584f7818def12ddf5b3819b10248dba55851ef5bc25"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4002",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "79bb1a3d4bf137007fb1e81aca6c18ac6bee4b61655fb8592f3ffaf7999d69f5"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4002",
+      "full_part": "P",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "98696b2ce392f6b1015e70e917fb7567d97d021b993ef732852693bf26615e5f"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4010",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 5,
+      "response_sha256": "c236b1e18885b3cdc5a4137b1bcb08e252e4286d28b2c76b53ea099e062cde04"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4010",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "62036d04f738ae1055d64302eb683c495f511d0a9003006bc8e242a3b711b568"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4011",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "866d395b09e51c6c89098b84402ef8ee1a10d9b4385ca9cb57b55f7fa5ca424b"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4011",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "141d706c4ccd01db7fb8179240ab2998f1f2f71ad1ec4eb2dd6ad01ac204fbf4"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4013",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "bb66579d8beb5840b4a6f55e7c563b935bf88f4b1d92c443b46b2312995cc137"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4013",
+      "full_part": "P",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "3ef76afafab9b195a57e6b8721cf3a40e9d39b30076f453bee66911232348d31"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4016",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "f53f29bfc9b87127233a8d226e61ff5a2d9b5a14f4fa8f5bf21926dfbfdaeda8"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4016",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "a6dea898b4a794db3793126da4c708ddf19661b08306e6cba3a5c86a151e98d4"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4017",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "8c4c9bbb08d0dda8d23461071512e2d76daab8961ef9906196edbfd21d4395e2"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4017",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "ea347b4f60069ac95c71c4539cfb3603098f1351f772b6fe2f523ed9865b83c5"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4020",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "416708ea80d737c9fc9bec2d67191d37eda31bd9805da0c6bb733d642a47433a"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4020",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "754b7c3a64f497019c07e5d5b6dda522e67e2577580860acf868e5a947a11a3e"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4024",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "1641fb644e3fea8bd394d968b8252c1d8fd3fd82f7cdaad69f9aabe6cd14bebe"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4024",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "dbfcc05a75e03c3943ec70f79afd0275c4075d9874ae53a14b24e9f4cd3c11d4"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4025",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "f164a1a7a6a9a561c454c3b7eaffabc6d55cfdea69f4317edda79e4aebdff30e"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4025",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "989dccd1415c761fa2231013353999da72e550a4c8766eb7e29e5f0355ebbf86"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4030",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "e845ce15d4e648b61d04d680a62c50e3b001c6deb2a7ac32f4a5c753b62f6b84"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4030",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "dbbbae83d48def4c317b5546700157f9ecc57bff8803346e8b4dca6f8ab3d0b1"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4040",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "f5c79d955a0b50387e6169f39f7e5825ebe1d265b2602aeebdf0d03d22e59bed"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4040",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "b6b574dfa57aafd52836c580854fc2487057ab09afec743b872b1bffccaaeb53"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4050",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 2,
+      "response_sha256": "88ce925511ebe9dffa61949d65ea78f1b2ac321bae9724f5600ffbb30e6767fd"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4050",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "266328c29999b45edb57b57be2caf1b670b81e60042c7ba44575104c461b7284"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4053",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "6501acaa488a2d7646910a63aaaee1d919cb5202c611b0c9db6643eebb28ce65"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4053",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "d62f1eff9ddd6db98df224722519dffad7a30cb17573b9582993270cc38243f2"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4055",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "7faaefdfa5b86053ab95d4292daf9209d872554c56fcc254de0f33bee2b316a6"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4055",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "d0b9d149e1fc232a5ec466687bf2b962d2b4b8eb34862d347e9a4359ebd46a02"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4061",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "659e7af074e74d29cd439ff850df3d8ddd94dc65c2b674aafa0e91ccb17029f2"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4061",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "822a68bd94cb5993f6ad3bc8573d6627de37dc4ae775ab18fd515eb70f31ec5b"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4090",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "3bc7df4c1d5cf79e9a92717c368f9dae9886136689ebd65ba789a1c67e1315d1"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC4090",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "b2ebf73be17ec711d62312b8d98bfe8fc7615d738015cb12062c892d1a46fc50"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC5002",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "d5c38bc061d45e013b42ac34c789dd1e2724ee41cb3fb10168e9685eaae19a96"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC5002",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "289585036e32eae60775cd4a792096832032e4c5b9d0f9477b9cfac215555732"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC5006",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "bbc4123dd356fd8c1002ff9763fe58ef9532c9c49867ca1e5cff992beae26f45"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC5006",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "0d712c314f196054f3275bc340f89b4a4edb75ceb6e540339a1fe05a0a6c85d2"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC5008",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "aa0f9a11d0381b927d201f2b3685c37b3cd686f3f0ccd43f2f8097d901a1c4b7"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC5008",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "ebceb19f90e81ccbdab94141a005a0ae59f069f929f531194aabb5b5cf2c6f3e"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC5401",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "baff96a8cf7b995992f3f6242ef07ad35ff5f5fe2b8dd262658d5bb91e14b6de"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC5401",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "db453770ef0aa3f2b7ab02ea2cf7b7a4dabf5f2e32967f9bc65bb539501085b6"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC5403",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 1,
+      "response_sha256": "8165e3e72eeec0b53a740bb26a2d25f851685ea5349f3f7469a2251aa8b4708d"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SC5403",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "61827f7a3cabf5cd8f461aff1c7c82e4d7f5fb192733892a904bcb246271b10f"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SP0061",
+      "full_part": "F",
+      "course_count": 1,
+      "index_count": 4,
+      "response_sha256": "1de62bda23169b28d1f702f58211bbbc177e6f7d02367073731775f699bd366c"
+    },
+    {
+      "query_type": "DIRECT_COURSE",
+      "course_code": "SP0061",
+      "full_part": "P",
+      "course_count": 0,
+      "index_count": 0,
+      "response_sha256": "27314fe78669d6eb750823e6a7dba2cce9de136c5937155b83ea3e8fb7dfcc5c"
+    }
+  ],
+  "offering_count": 210,
+  "index_count": 2108,
+  "normalized_sha256": "bb425b22761e27b463d55427c64881d8e5870f709d9dffa7c064f702dfc97a08",
+  "direct_unscheduled_codes": [
+    "CC0005",
+    "CE6190",
+    "ET0001",
+    "ET5213",
+    "ML0003",
+    "NH0001",
+    "SC1003",
+    "SC2079",
+    "SC3099"
+  ],
+  "known_limits": [
+    "Programme-schedule exposure is not proof of individual eligibility.",
+    "Capacity, vacancies, waitlist order, and allocation priority are not present in this source.",
+    "Some courses without conventional timetable rows may still be active project or self-paced courses."
+  ]
+}

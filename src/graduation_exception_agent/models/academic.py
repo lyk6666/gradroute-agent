@@ -32,6 +32,7 @@ class DataCompleteness(StrEnum):
 
     COMPLETE = "COMPLETE"
     PARTIAL = "PARTIAL"
+    UNAVAILABLE = "UNAVAILABLE"
     UNKNOWN = "UNKNOWN"
 
 
@@ -40,6 +41,21 @@ class Semester(StrEnum):
     SEMESTER_2 = "SEMESTER_2"
     SPECIAL_TERM_1 = "SPECIAL_TERM_1"
     SPECIAL_TERM_2 = "SPECIAL_TERM_2"
+
+
+class CurriculumConfigurationKind(StrEnum):
+    """Whether a curriculum is a base degree plan or an additive overlay."""
+
+    BASE = "BASE"
+    OVERLAY = "OVERLAY"
+
+
+class CourseCatalogueContext(StrEnum):
+    """Meaning of one course appearance in the official catalogue UI."""
+
+    PROGRAMME = "PROGRAMME"
+    BDE_POOL = "BDE_POOL"
+    AUXILIARY = "AUXILIARY"
 
 
 class DayOfWeek(StrEnum):
@@ -102,7 +118,8 @@ class CurriculumRequirement(DomainModel):
             raise ValueError("a requirement must define an AU, course, or count condition")
         if (
             (self.required_courses or self.elective_pool)
-            and self.course_lists_completeness is DataCompleteness.UNKNOWN
+            and self.course_lists_completeness
+            not in {DataCompleteness.COMPLETE, DataCompleteness.PARTIAL}
         ):
             raise ValueError(
                 "known requirement course lists require COMPLETE or PARTIAL coverage"
@@ -138,22 +155,61 @@ class GraduationPath(DomainModel):
         return value
 
 
+class CurriculumCoursePlanItem(DomainModel):
+    """One source-order row from a published curriculum study plan."""
+
+    plan_item_id: Identifier
+    study_year: int = Field(ge=1, le=8)
+    semester: Semester
+    position: int = Field(ge=1)
+    path_label: NonEmptyText | None = None
+    course_code: CourseCode | None = None
+    raw_course_code: NonEmptyText | None = None
+    label: NonEmptyText
+    category: Identifier
+    aus: Decimal | None = Field(default=None, ge=0, le=40)
+    requirement_id: Identifier | None = None
+    notes: list[NonEmptyText] = Field(default_factory=list)
+    source_ids: list[Identifier] = Field(min_length=1)
+
+    @field_validator("notes", "source_ids")
+    @classmethod
+    def unique_plan_lists(cls, value: list[str], info: object) -> list[str]:
+        field_name = getattr(info, "field_name", "values")
+        return _ensure_unique(value, field_name)
+
+
 class Curriculum(DomainModel):
     curriculum_id: Identifier
+    name: NonEmptyText | None = None
     programme: ProgrammeCode
+    configuration_kind: CurriculumConfigurationKind = (
+        CurriculumConfigurationKind.BASE
+    )
+    additional_applicable_programmes: list[ProgrammeCode] = Field(
+        default_factory=list
+    )
     admission_cohort: AdmissionCohort
     effective_academic_year: AcademicYear
     graduation_aus: Decimal | None = Field(default=None, gt=0)
     graduation_paths: list[GraduationPath] = Field(default_factory=list)
-    requirements: list[CurriculumRequirement] = Field(min_length=1)
+    requirements: list[CurriculumRequirement] = Field(default_factory=list)
+    study_plan: list[CurriculumCoursePlanItem] = Field(default_factory=list)
     programme_constraints: list[NonEmptyText] = Field(default_factory=list)
     rules_completeness: DataCompleteness = DataCompleteness.UNKNOWN
+    known_gaps: list[NonEmptyText] = Field(default_factory=list)
+    unavailable_reason: NonEmptyText | None = None
     source_ids: list[Identifier] = Field(min_length=1)
 
-    @field_validator("source_ids")
+    @field_validator(
+        "source_ids",
+        "additional_applicable_programmes",
+        "known_gaps",
+    )
     @classmethod
-    def unique_sources(cls, value: list[str]) -> list[str]:
-        return _ensure_unique(value, "source_ids")
+    def unique_sources(cls, value: list[str], info: object) -> list[str]:
+        field_name = getattr(info, "field_name", "values")
+        return _ensure_unique(value, field_name)
 
     @model_validator(mode="after")
     def unique_requirements(self) -> Curriculum:
@@ -167,14 +223,110 @@ class Curriculum(DomainModel):
             [path.path_id for path in self.graduation_paths],
             "graduation_path_ids",
         )
-        if (self.graduation_aus is None) == (not self.graduation_paths):
+        _ensure_unique(
+            [item.plan_item_id for item in self.study_plan],
+            "plan_item_ids",
+        )
+        plan_positions = [
+            (item.study_year, item.semester, item.position, item.path_label)
+            for item in self.study_plan
+        ]
+        if len(plan_positions) != len(set(plan_positions)):
             raise ValueError(
-                "define exactly one fixed graduation_aus or graduation_paths"
+                "study_plan positions must be unique within year and semester"
+            )
+        undeclared_plan_sources = {
+            source_id
+            for item in self.study_plan
+            for source_id in item.source_ids
+            if source_id not in self.source_ids
+        }
+        if undeclared_plan_sources:
+            raise ValueError(
+                "study-plan source_ids must be declared by the curriculum: "
+                f"{sorted(undeclared_plan_sources)}"
+            )
+        known_requirement_ids = {
+            requirement.requirement_id for requirement in self.requirements
+        }
+        unknown_plan_requirements = {
+            item.requirement_id
+            for item in self.study_plan
+            if item.requirement_id is not None
+            and item.requirement_id not in known_requirement_ids
+        }
+        if unknown_plan_requirements:
+            raise ValueError(
+                "study_plan requirement_id must resolve within the curriculum: "
+                f"{sorted(unknown_plan_requirements)}"
+            )
+        if self.programme in self.additional_applicable_programmes:
+            raise ValueError(
+                "additional_applicable_programmes cannot repeat the primary programme"
+            )
+        has_fixed_total = self.graduation_aus is not None
+        has_paths = bool(self.graduation_paths)
+        if has_fixed_total and has_paths:
+            raise ValueError(
+                "define at most one fixed graduation_aus or graduation_paths"
             )
         if self.rules_completeness is DataCompleteness.UNKNOWN:
             raise ValueError(
-                "a populated curriculum must declare COMPLETE or PARTIAL rule coverage"
+                "a curriculum must declare COMPLETE, PARTIAL, or UNAVAILABLE coverage"
             )
+        if self.rules_completeness is DataCompleteness.COMPLETE:
+            if self.name is None:
+                raise ValueError("complete curricula require a name")
+            if not (has_fixed_total or has_paths):
+                raise ValueError(
+                    "complete curricula require exactly one graduation total or paths"
+                )
+            if not self.requirements:
+                raise ValueError("complete curricula require requirements")
+            if self.known_gaps:
+                raise ValueError("complete curricula cannot contain known_gaps")
+            if self.unavailable_reason is not None:
+                raise ValueError(
+                    "complete curricula cannot contain unavailable_reason"
+                )
+        elif self.rules_completeness is DataCompleteness.PARTIAL:
+            if self.name is None:
+                raise ValueError("partial curricula require a name")
+            has_rule_payload = bool(
+                has_fixed_total
+                or has_paths
+                or self.requirements
+                or self.study_plan
+                or self.programme_constraints
+            )
+            if not has_rule_payload:
+                raise ValueError("partial curricula require at least one sourced rule")
+            if not self.known_gaps:
+                raise ValueError("partial curricula require known_gaps")
+            if self.unavailable_reason is not None:
+                raise ValueError(
+                    "partial curricula cannot contain unavailable_reason"
+                )
+        elif self.rules_completeness is DataCompleteness.UNAVAILABLE:
+            has_rule_payload = bool(
+                has_fixed_total
+                or has_paths
+                or self.requirements
+                or self.study_plan
+                or self.programme_constraints
+            )
+            if has_rule_payload:
+                raise ValueError(
+                    "unavailable curricula cannot contain unverified rule payloads"
+                )
+            if self.unavailable_reason is None:
+                raise ValueError(
+                    "unavailable curricula require unavailable_reason"
+                )
+            if self.known_gaps:
+                raise ValueError(
+                    "unavailable curricula use unavailable_reason, not known_gaps"
+                )
         return self
 
 
@@ -197,12 +349,50 @@ class CoursePrerequisite(DomainModel):
         return self
 
 
+class CourseCatalogueAppearance(DomainModel):
+    """Observed catalogue presence; it is not a live class offering."""
+
+    academic_year: AcademicYear
+    semester: Semester
+    catalogue_context: CourseCatalogueContext = CourseCatalogueContext.PROGRAMME
+    programme: ProgrammeCode | None = None
+    study_years: list[int] = Field(default_factory=list)
+    source_ids: list[Identifier] = Field(min_length=1)
+
+    @field_validator("study_years")
+    @classmethod
+    def valid_study_years(cls, value: list[int]) -> list[int]:
+        if any(year < 1 or year > 8 for year in value):
+            raise ValueError("study years must be between 1 and 8")
+        if len(value) != len(set(value)):
+            raise ValueError("study_years must not contain duplicates")
+        return sorted(value)
+
+    @field_validator("source_ids")
+    @classmethod
+    def unique_appearance_sources(cls, value: list[str]) -> list[str]:
+        return _ensure_unique(value, "source_ids")
+
+    @model_validator(mode="after")
+    def validate_context(self) -> CourseCatalogueAppearance:
+        if (
+            self.catalogue_context is CourseCatalogueContext.PROGRAMME
+            and self.programme is None
+        ):
+            raise ValueError("PROGRAMME catalogue appearances require programme")
+        return self
+
+
 class Course(DomainModel):
     code: CourseCode
     title: NonEmptyText
-    aus: Decimal = Field(gt=0, le=20)
+    aus: Decimal = Field(ge=0, le=20)
     prerequisites: CoursePrerequisite = Field(default_factory=CoursePrerequisite)
     exclusions: list[CourseCode] = Field(default_factory=list)
+    exclusions_raw_text: NonEmptyText | None = None
+    catalogue_appearances: list[CourseCatalogueAppearance] = Field(
+        default_factory=list
+    )
     applicable_programmes: list[ProgrammeCode] = Field(default_factory=list)
     programme_categories: dict[ProgrammeCode, list[Identifier]] = Field(
         default_factory=dict
@@ -235,6 +425,29 @@ class Course(DomainModel):
             raise ValueError("a course cannot exclude itself")
         if self.code in self.prerequisites.all_of or self.code in self.prerequisites.any_of:
             raise ValueError("a course cannot be its own prerequisite")
+        appearance_keys = [
+            (
+                appearance.academic_year,
+                appearance.semester,
+                appearance.catalogue_context,
+                appearance.programme,
+            )
+            for appearance in self.catalogue_appearances
+        ]
+        if len(appearance_keys) != len(set(appearance_keys)):
+            raise ValueError("catalogue appearances must be unique by observed context")
+        declared_sources = set(self.source_ids)
+        undeclared_appearance_sources = {
+            source_id
+            for appearance in self.catalogue_appearances
+            for source_id in appearance.source_ids
+            if source_id not in declared_sources
+        }
+        if undeclared_appearance_sources:
+            raise ValueError(
+                "catalogue-appearance source_ids must be declared by the course: "
+                f"{sorted(undeclared_appearance_sources)}"
+            )
         unknown_programmes = set(self.programme_categories) - set(
             self.applicable_programmes
         )
@@ -250,34 +463,46 @@ class Course(DomainModel):
         )
         if (
             has_prerequisite_data
-            and self.prerequisites_completeness is DataCompleteness.UNKNOWN
+            and self.prerequisites_completeness
+            not in {DataCompleteness.COMPLETE, DataCompleteness.PARTIAL}
         ):
             raise ValueError(
                 "known prerequisite data requires COMPLETE or PARTIAL coverage"
             )
-        if self.exclusions and self.exclusions_completeness is DataCompleteness.UNKNOWN:
+        has_exclusion_data = bool(self.exclusions or self.exclusions_raw_text)
+        if (
+            has_exclusion_data
+            and self.exclusions_completeness
+            not in {DataCompleteness.COMPLETE, DataCompleteness.PARTIAL}
+        ):
             raise ValueError("known exclusions require COMPLETE or PARTIAL coverage")
         if (
             (self.applicable_programmes or self.programme_categories)
-            and self.applicability_completeness is DataCompleteness.UNKNOWN
+            and self.applicability_completeness
+            not in {DataCompleteness.COMPLETE, DataCompleteness.PARTIAL}
         ):
             raise ValueError(
                 "known programme applicability requires COMPLETE or PARTIAL coverage"
             )
         if (
             self.documented_constraints
-            and self.constraints_completeness is DataCompleteness.UNKNOWN
+            and self.constraints_completeness
+            not in {DataCompleteness.COMPLETE, DataCompleteness.PARTIAL}
         ):
             raise ValueError("known constraints require COMPLETE or PARTIAL coverage")
         return self
 
 
 class TimetableMeeting(DomainModel):
-    class_type: Identifier
-    day: DayOfWeek
-    start_time: time
-    end_time: time
+    class_type: NonEmptyText
+    group: NonEmptyText | None = None
+    day: DayOfWeek | None = None
+    start_time: time | None = None
+    end_time: time | None = None
+    raw_day: NonEmptyText | None = None
+    raw_time: NonEmptyText | None = None
     venue: NonEmptyText | None = None
+    remark: NonEmptyText | None = None
     teaching_weeks: list[int] = Field(default_factory=list)
 
     @field_validator("teaching_weeks")
@@ -291,17 +516,40 @@ class TimetableMeeting(DomainModel):
 
     @model_validator(mode="after")
     def end_after_start(self) -> TimetableMeeting:
-        if self.end_time <= self.start_time:
+        parsed_values = (self.day, self.start_time, self.end_time)
+        if any(value is not None for value in parsed_values) and not all(
+            value is not None for value in parsed_values
+        ):
+            raise ValueError(
+                "day, start_time, and end_time must be provided or omitted together"
+            )
+        if (
+            self.start_time is not None
+            and self.end_time is not None
+            and self.end_time <= self.start_time
+        ):
             raise ValueError("end_time must be after start_time")
+        if all(value is None for value in parsed_values) and not (
+            self.raw_day or self.raw_time or self.remark
+        ):
+            raise ValueError(
+                "unparsed/TBA meetings require raw_day, raw_time, or remark"
+            )
         return self
 
 
 class CourseIndex(DomainModel):
     index_id: Identifier
     meetings: list[TimetableMeeting] = Field(default_factory=list)
+    observed_programmes: list[ProgrammeCode] = Field(default_factory=list)
     capacity: int | None = Field(default=None, ge=0)
     vacancies: int | None = Field(default=None, ge=0)
     waitlist_count: int | None = Field(default=None, ge=0)
+
+    @field_validator("observed_programmes")
+    @classmethod
+    def unique_observed_programmes(cls, value: list[str]) -> list[str]:
+        return _ensure_unique(value, "observed_programmes")
 
     @model_validator(mode="after")
     def vacancies_within_capacity(self) -> CourseIndex:
@@ -320,6 +568,8 @@ class CourseOffering(DomainModel):
     academic_year: AcademicYear
     semester: Semester
     status: OfferingStatus
+    observed_programmes: list[ProgrammeCode] = Field(default_factory=list)
+    scope_completeness: DataCompleteness = DataCompleteness.UNKNOWN
     indexes: list[CourseIndex] = Field(default_factory=list)
     snapshot_at: datetime | None = None
     source_ids: list[Identifier] = Field(min_length=1)
@@ -331,10 +581,11 @@ class CourseOffering(DomainModel):
             raise ValueError("snapshot_at must include a timezone")
         return value
 
-    @field_validator("source_ids")
+    @field_validator("source_ids", "observed_programmes")
     @classmethod
-    def unique_sources(cls, value: list[str]) -> list[str]:
-        return _ensure_unique(value, "source_ids")
+    def unique_sources(cls, value: list[str], info: object) -> list[str]:
+        field_name = getattr(info, "field_name", "values")
+        return _ensure_unique(value, field_name)
 
     @model_validator(mode="after")
     def validate_indexes(self) -> CourseOffering:
@@ -342,6 +593,19 @@ class CourseOffering(DomainModel):
         _ensure_unique(index_ids, "index_ids")
         if self.status is OfferingStatus.OFFERED and not self.indexes:
             raise ValueError("an offered course must contain at least one index")
+        if self.observed_programmes and self.scope_completeness not in {
+            DataCompleteness.COMPLETE,
+            DataCompleteness.PARTIAL,
+        }:
+            raise ValueError(
+                "observed programme scope requires COMPLETE or PARTIAL coverage"
+            )
+        offering_scope = set(self.observed_programmes)
+        for index in self.indexes:
+            if set(index.observed_programmes) - offering_scope:
+                raise ValueError(
+                    "index observed_programmes must be within offering scope"
+                )
         return self
 
 

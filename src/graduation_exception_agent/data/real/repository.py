@@ -12,6 +12,7 @@ from typing import Iterable, Mapping
 from pydantic import Field
 
 from graduation_exception_agent.data.real.loaders import (
+    load_coverage_contract,
     load_course_offerings,
     load_courses,
     load_curricula,
@@ -26,6 +27,9 @@ from graduation_exception_agent.models import (
     Course,
     CourseOffering,
     CourseOfferingCollection,
+    CoverageContract,
+    CoverageDataset,
+    CoverageStatus,
     Curriculum,
     DomainModel,
     Identifier,
@@ -65,6 +69,7 @@ class RealDataBundle:
     programmes: tuple[Programme, ...]
     curricula: tuple[Curriculum, ...]
     courses: tuple[Course, ...]
+    coverage: CoverageContract
     offering_collection: CourseOfferingCollection
     academic_calendar: AcademicCalendarDocument
     policies: tuple[PolicyDocument, ...]
@@ -125,6 +130,9 @@ class RealDataRepository:
                 data_root / "curriculum.json", sources=sources
             ),
             courses=load_courses(data_root / "courses.json", sources=sources),
+            coverage=load_coverage_contract(
+                data_root / "coverage.json", sources=sources
+            ),
             offering_collection=load_course_offerings(
                 data_root / "course_offerings.json", sources=sources
             ),
@@ -163,6 +171,10 @@ class RealDataRepository:
         return deepcopy(self._bundle.courses)
 
     @property
+    def coverage(self) -> CoverageContract:
+        return deepcopy(self._bundle.coverage)
+
+    @property
     def offerings(self) -> tuple[CourseOffering, ...]:
         return deepcopy(self._bundle.offerings)
 
@@ -189,7 +201,11 @@ class RealDataRepository:
         matches = tuple(
             curriculum
             for curriculum in self._bundle.curricula
-            if curriculum.programme == programme.upper()
+            if (
+                curriculum.programme == programme.upper()
+                or programme.upper()
+                in curriculum.additional_applicable_programmes
+            )
             and (
                 admission_cohort is None
                 or curriculum.admission_cohort == admission_cohort.upper()
@@ -308,6 +324,19 @@ def validate_real_data(bundle: RealDataBundle) -> tuple[ConsistencyIssue, ...]:
     _check_source_links(links, sources, issues)
     _check_policy_source_scopes(bundle, sources, issues)
 
+    for programme in bundle.programmes:
+        for base_programme in programme.ccds_base_programmes:
+            if base_programme not in programmes:
+                _add_issue(
+                    issues,
+                    code="UNKNOWN_BASE_PROGRAMME",
+                    dataset="programmes",
+                    record_id=programme.programme_id,
+                    field="ccds_base_programmes",
+                    referenced_id=base_programme,
+                    message="CCDS base programme has no programmes.json record",
+                )
+
     for curriculum in bundle.curricula:
         _check_curriculum_au_totals(curriculum, issues)
         if curriculum.programme not in programmes:
@@ -320,11 +349,25 @@ def validate_real_data(bundle: RealDataBundle) -> tuple[ConsistencyIssue, ...]:
                 referenced_id=curriculum.programme,
                 message="curriculum programme has no programmes.json record",
             )
+        for applicable_programme in curriculum.additional_applicable_programmes:
+            if applicable_programme not in programmes:
+                _add_issue(
+                    issues,
+                    code="UNKNOWN_PROGRAMME",
+                    dataset="curricula",
+                    record_id=curriculum.curriculum_id,
+                    field="additional_applicable_programmes",
+                    referenced_id=applicable_programme,
+                    message="additional curriculum programme is not in programmes.json",
+                )
         for source_id in curriculum.source_ids:
             source = sources.get(source_id)
             if source is None:
                 continue
-            if source.programme is not None and source.programme != curriculum.programme:
+            if source.programme is not None and source.programme not in {
+                curriculum.programme,
+                *curriculum.additional_applicable_programmes,
+            }:
                 _add_issue(
                     issues,
                     code="SOURCE_PROGRAMME_MISMATCH",
@@ -373,18 +416,34 @@ def validate_real_data(bundle: RealDataBundle) -> tuple[ConsistencyIssue, ...]:
                         referenced_id=course_code,
                         message="curriculum course reference is absent from course subset",
                     )
+        for item in curriculum.study_plan:
+            if item.course_code is not None and item.course_code not in courses:
+                _add_issue(
+                    issues,
+                    code="UNKNOWN_CURRICULUM_COURSE",
+                    dataset="curricula",
+                    record_id=curriculum.curriculum_id,
+                    field="study_plan",
+                    referenced_id=item.course_code,
+                    message="typed study-plan course is absent from the catalogue",
+                )
 
     curriculum_categories: dict[str, set[str]] = {}
     for curriculum in bundle.curricula:
-        curriculum_categories.setdefault(curriculum.programme, set()).update(
-            requirement.category for requirement in curriculum.requirements
-        )
+        for programme in (
+            curriculum.programme,
+            *curriculum.additional_applicable_programmes,
+        ):
+            curriculum_categories.setdefault(programme, set()).update(
+                requirement.category for requirement in curriculum.requirements
+            )
 
     for course in bundle.courses:
         for source_id in course.source_ids:
             source = sources.get(source_id)
             if (
                 source is not None
+                and source.source_type == "curriculum"
                 and source.programme is not None
                 and source.programme not in course.applicable_programmes
             ):
@@ -422,7 +481,11 @@ def validate_real_data(bundle: RealDataBundle) -> tuple[ConsistencyIssue, ...]:
                     record_id=f"course.{course.code}",
                     field="prerequisites_or_exclusions",
                     referenced_id=related_code,
-                    message="course relation is outside the closed catalogue subset",
+                    message=(
+                        "course relation is outside the collected CCDS catalogue; "
+                        "the source relation is retained without inventing metadata"
+                    ),
+                    severity=ConsistencySeverity.WARNING,
                 )
         for programme, categories in course.programme_categories.items():
             available = curriculum_categories.get(programme, set())
@@ -436,6 +499,38 @@ def validate_real_data(bundle: RealDataBundle) -> tuple[ConsistencyIssue, ...]:
                         field="programme_categories",
                         referenced_id=category,
                         message="course category is absent from programme curriculum",
+                    )
+        for appearance in course.catalogue_appearances:
+            if (
+                appearance.programme is not None
+                and appearance.programme not in programmes
+            ):
+                _add_issue(
+                    issues,
+                    code="UNKNOWN_PROGRAMME",
+                    dataset="courses",
+                    record_id=f"course.{course.code}",
+                    field="catalogue_appearances",
+                    referenced_id=appearance.programme,
+                    message="catalogue appearance references an unknown programme",
+                )
+            for source_id in appearance.source_ids:
+                source = sources.get(source_id)
+                if (
+                    source is not None
+                    and source.offering_academic_year is not None
+                    and source.offering_academic_year != appearance.academic_year
+                ):
+                    _add_issue(
+                        issues,
+                        code="SOURCE_ACADEMIC_YEAR_MISMATCH",
+                        dataset="courses",
+                        record_id=f"course.{course.code}",
+                        field="catalogue_appearances",
+                        referenced_id=source_id,
+                        message=(
+                            "catalogue source offering year does not match appearance"
+                        ),
                     )
 
     for offering in bundle.offerings:
@@ -465,6 +560,29 @@ def validate_real_data(bundle: RealDataBundle) -> tuple[ConsistencyIssue, ...]:
                     referenced_id=source_id,
                     message="source offering year does not match offering",
                 )
+        for programme in offering.observed_programmes:
+            if programme not in programmes:
+                _add_issue(
+                    issues,
+                    code="UNKNOWN_PROGRAMME",
+                    dataset="course_offerings",
+                    record_id=offering.offering_id,
+                    field="observed_programmes",
+                    referenced_id=programme,
+                    message="offering observation references an unknown programme",
+                )
+        for index in offering.indexes:
+            for programme in index.observed_programmes:
+                if programme not in programmes:
+                    _add_issue(
+                        issues,
+                        code="UNKNOWN_PROGRAMME",
+                        dataset="course_offerings",
+                        record_id=offering.offering_id,
+                        field="indexes.observed_programmes",
+                        referenced_id=programme,
+                        message="index observation references an unknown programme",
+                    )
 
     for source_id in bundle.academic_calendar.source_ids:
         source = sources.get(source_id)
@@ -484,6 +602,7 @@ def validate_real_data(bundle: RealDataBundle) -> tuple[ConsistencyIssue, ...]:
                 message="source academic year does not match calendar",
             )
 
+    _check_coverage(bundle, sources, issues)
     _check_manifest_dependencies(bundle, links, sources, issues)
 
     return tuple(
@@ -510,7 +629,7 @@ def _source_links(bundle: RealDataBundle) -> tuple[_SourceLink, ...]:
                 programme.programme_id,
                 "source_ids",
                 tuple(programme.source_ids),
-                frozenset({"programme"}),
+                frozenset({"programme", "programme_index"}),
             )
         )
     for curriculum in bundle.curricula:
@@ -520,7 +639,7 @@ def _source_links(bundle: RealDataBundle) -> tuple[_SourceLink, ...]:
                 curriculum.curriculum_id,
                 "source_ids",
                 tuple(curriculum.source_ids),
-                frozenset({"curriculum"}),
+                frozenset({"curriculum", "curriculum_index", "programme"}),
             )
         )
     for course in bundle.courses:
@@ -533,6 +652,16 @@ def _source_links(bundle: RealDataBundle) -> tuple[_SourceLink, ...]:
                 frozenset({"curriculum", "course_catalogue"}),
             )
         )
+        for appearance in course.catalogue_appearances:
+            links.append(
+                _SourceLink(
+                    "courses",
+                    f"course.{course.code}",
+                    "catalogue_appearances",
+                    tuple(appearance.source_ids),
+                    frozenset({"course_catalogue"}),
+                )
+            )
     if bundle.offering_collection.source_ids:
         links.append(
             _SourceLink(
@@ -540,7 +669,14 @@ def _source_links(bundle: RealDataBundle) -> tuple[_SourceLink, ...]:
                 "dataset.course_offerings",
                 "source_ids",
                 tuple(bundle.offering_collection.source_ids),
-                frozenset({"course_offering", "class_schedule", "vacancy_snapshot"}),
+                frozenset(
+                    {
+                        "course_offering",
+                        "class_schedule",
+                        "course_schedule",
+                        "vacancy_snapshot",
+                    }
+                ),
             )
         )
     for offering in bundle.offerings:
@@ -550,7 +686,14 @@ def _source_links(bundle: RealDataBundle) -> tuple[_SourceLink, ...]:
                 offering.offering_id,
                 "source_ids",
                 tuple(offering.source_ids),
-                frozenset({"course_offering", "class_schedule", "vacancy_snapshot"}),
+                frozenset(
+                    {
+                        "course_offering",
+                        "class_schedule",
+                        "course_schedule",
+                        "vacancy_snapshot",
+                    }
+                ),
             )
         )
     links.append(
@@ -607,6 +750,48 @@ def _source_links(bundle: RealDataBundle) -> tuple[_SourceLink, ...]:
                         section.origin,
                     )
                 )
+    coverage_source_types = frozenset(
+        {
+            "programme",
+            "programme_index",
+            "curriculum",
+            "curriculum_index",
+            "course_catalogue",
+            "course_offering",
+            "class_schedule",
+            "course_schedule",
+            "vacancy_snapshot",
+            "academic_calendar",
+            "academic_schedule",
+            "academic_handbook",
+            "registration_guidance",
+            "ccds_guidance",
+            "ccds_contacts",
+            "exception_guidance",
+        }
+    )
+    for target in bundle.coverage.targets:
+        coverage_sources = tuple(
+            dict.fromkeys(
+                [
+                    *target.discovery_source_ids,
+                    *(
+                        source_id
+                        for gap in target.gaps
+                        for source_id in gap.source_ids
+                    ),
+                ]
+            )
+        )
+        links.append(
+            _SourceLink(
+                "coverage",
+                target.target_id,
+                "source_ids",
+                coverage_sources,
+                coverage_source_types,
+            )
+        )
     return tuple(links)
 
 
@@ -807,6 +992,163 @@ def _check_policy_source_scopes(
                         referenced_id=source_id,
                         message="typed policy academic year conflicts with its source",
                     )
+
+
+def _coverage_actual_ids(bundle: RealDataBundle) -> dict[CoverageDataset, set[str]]:
+    policy_documents = {
+        document.document_type: document for document in bundle.policies
+    }
+
+    def policy_ids(document_type: PolicyDocumentType) -> set[str]:
+        document = policy_documents.get(document_type)
+        if document is None:
+            return set()
+        return {document.document_id, *(section.section_id for section in document.sections)}
+
+    return {
+        CoverageDataset.PROGRAMMES: {
+            programme.programme_id for programme in bundle.programmes
+        },
+        CoverageDataset.CURRICULA: {
+            curriculum.curriculum_id for curriculum in bundle.curricula
+        },
+        CoverageDataset.COURSES: {
+            f"course.{course.code}" for course in bundle.courses
+        },
+        CoverageDataset.COURSE_OFFERINGS: {
+            offering.offering_id for offering in bundle.offerings
+        },
+        CoverageDataset.ACADEMIC_CALENDAR: {
+            bundle.academic_calendar.document_id,
+            *(event.event_id for event in bundle.academic_calendar.events),
+        },
+        CoverageDataset.REGISTRATION_GUIDANCE: policy_ids(
+            PolicyDocumentType.REGISTRATION
+        ),
+        CoverageDataset.EXCEPTION_POLICIES: policy_ids(
+            PolicyDocumentType.EXCEPTIONS
+        ),
+        CoverageDataset.APPROVAL_STRUCTURE: policy_ids(
+            PolicyDocumentType.APPROVAL_STRUCTURE
+        ),
+    }
+
+
+def _check_coverage(
+    bundle: RealDataBundle,
+    sources: dict[str, SourceProvenance],
+    issues: list[ConsistencyIssue],
+) -> None:
+    actual_by_dataset = _coverage_actual_ids(bundle)
+    for target in bundle.coverage.targets:
+        expected = set(target.expected_record_ids)
+        actual = actual_by_dataset[target.dataset]
+        missing = expected - actual
+        unexpected = actual - expected
+
+        if target.inventory_status is CoverageStatus.COMPLETE:
+            for record_id in sorted(missing):
+                _add_issue(
+                    issues,
+                    code="COVERAGE_EXPECTED_RECORD_MISSING",
+                    dataset="coverage",
+                    record_id=target.target_id,
+                    field="expected_record_ids",
+                    referenced_id=record_id,
+                    message="complete inventory is missing an expected record",
+                )
+            for record_id in sorted(unexpected):
+                _add_issue(
+                    issues,
+                    code="COVERAGE_UNDECLARED_RECORD",
+                    dataset="coverage",
+                    record_id=target.target_id,
+                    field="expected_record_ids",
+                    referenced_id=record_id,
+                    message="complete inventory contains an undeclared record",
+                )
+        elif target.inventory_status is CoverageStatus.PARTIAL:
+            for record_id in sorted(unexpected):
+                _add_issue(
+                    issues,
+                    code="COVERAGE_UNDECLARED_RECORD",
+                    dataset="coverage",
+                    record_id=target.target_id,
+                    field="expected_record_ids",
+                    referenced_id=record_id,
+                    message="partial inventory contains an undeclared record",
+                )
+            if not missing:
+                _add_issue(
+                    issues,
+                    code="COVERAGE_STATUS_MISMATCH",
+                    dataset="coverage",
+                    record_id=target.target_id,
+                    field="inventory_status",
+                    message="PARTIAL inventory has no missing expected records",
+                )
+        elif actual:
+            for record_id in sorted(actual):
+                _add_issue(
+                    issues,
+                    code="COVERAGE_UNAVAILABLE_HAS_RECORDS",
+                    dataset="coverage",
+                    record_id=target.target_id,
+                    field="inventory_status",
+                    referenced_id=record_id,
+                    message="UNAVAILABLE inventory cannot contain substantive records",
+                )
+
+        coverage_source_ids = {
+            *target.discovery_source_ids,
+            *(source_id for gap in target.gaps for source_id in gap.source_ids),
+        }
+        for source_id in sorted(coverage_source_ids):
+            source = sources.get(source_id)
+            if source is None:
+                continue
+            missing_fields: list[str] = []
+            if source.access_status is None:
+                missing_fields.append("access_status")
+            if source.classification is None:
+                missing_fields.append("classification")
+            if source.checked_at is None and source.retrieved_at is None:
+                missing_fields.append("checked_at")
+            if missing_fields:
+                _add_issue(
+                    issues,
+                    code="INCOMPLETE_SOURCE_PROVENANCE",
+                    dataset="coverage",
+                    record_id=target.target_id,
+                    field="discovery_source_ids",
+                    referenced_id=source_id,
+                    message=(
+                        "coverage source is missing explicit provenance fields: "
+                        + ", ".join(missing_fields)
+                    ),
+                )
+
+        if (
+            target.dataset is CoverageDataset.COURSES
+            and target.content_status is CoverageStatus.COMPLETE
+        ):
+            for course in bundle.courses:
+                if f"course.{course.code}" not in expected:
+                    continue
+                if not course.catalogue_appearances:
+                    _add_issue(
+                        issues,
+                        code="COURSE_WITHOUT_CATALOGUE_APPEARANCE",
+                        dataset="coverage",
+                        record_id=target.target_id,
+                        field="content_status",
+                        referenced_id=f"course.{course.code}",
+                        message=(
+                            "course catalogue record has no observed semester appearance"
+                        ),
+                    )
+
+
 def _check_source_links(
     links: tuple[_SourceLink, ...],
     sources: dict[str, SourceProvenance],
@@ -882,6 +1224,8 @@ def _check_manifest_dependencies(
         section.section_id
         for document in bundle.policies
         for section in document.sections
+    } | {
+        target.target_id for target in bundle.coverage.targets
     }
     if bundle.offering_collection.source_ids:
         all_record_ids.add("dataset.course_offerings")

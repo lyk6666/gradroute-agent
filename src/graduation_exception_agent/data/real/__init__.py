@@ -2,6 +2,7 @@
 
 from graduation_exception_agent.data.real.loaders import (
     load_academic_calendar,
+    load_coverage_contract,
     load_course_offerings,
     load_courses,
     load_curricula,
@@ -22,6 +23,7 @@ __all__ = [
     "RealDataBundle",
     "RealDataRepository",
     "load_academic_calendar",
+    "load_coverage_contract",
     "load_course_offerings",
     "load_courses",
     "load_curricula",

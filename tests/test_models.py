@@ -239,7 +239,13 @@ def test_simulated_policy_is_explicitly_distinct_from_verified_source(
             "source_type": "policy",
             "source_url": None,
             "retrieved_at": None,
+            "checked_at": None,
             "origin": "SIMULATED_POLICY",
+            "access_status": None,
+            "classification": None,
+            "retrieval_method": None,
+            "content_sha256": None,
+            "checksum_scope": None,
         }
     )
     source = SourceProvenance.model_validate(payload)

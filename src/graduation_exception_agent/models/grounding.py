@@ -28,6 +28,7 @@ class DocumentStatus(StrEnum):
     """How complete a collected document or dataset is."""
 
     AVAILABLE = "AVAILABLE"
+    COLLECTED = "COLLECTED"
     PARTIAL = "PARTIAL"
     PLACEHOLDER = "PLACEHOLDER"
 
@@ -50,8 +51,17 @@ class CalendarEventType(StrEnum):
     TEACHING = "TEACHING"
     RECESS = "RECESS"
     REVISION_EXAMINATION = "REVISION_EXAMINATION"
+    VACATION = "VACATION"
+    SPECIAL_TERM = "SPECIAL_TERM"
+    INTERNSHIP = "INTERNSHIP"
     COURSE_REGISTRATION = "COURSE_REGISTRATION"
     ADD_DROP = "ADD_DROP"
+    SCHEDULE_RELEASE = "SCHEDULE_RELEASE"
+    ALLOCATION_RESULTS = "ALLOCATION_RESULTS"
+    RESULTS = "RESULTS"
+    FGO = "FGO"
+    RESULT_REVIEW = "RESULT_REVIEW"
+    CONVOCATION_CUTOFF = "CONVOCATION_CUTOFF"
 
 
 class DatePrecision(StrEnum):
@@ -145,6 +155,8 @@ class PolicyDocument(DomainModel):
 
     @model_validator(mode="after")
     def validate_document_state(self) -> PolicyDocument:
+        if self.status is DocumentStatus.COLLECTED:
+            raise ValueError("COLLECTED status is reserved for offering collections")
         _unique([section.section_id for section in self.sections], "section_ids")
         undeclared_sources = {
             source_id
@@ -299,6 +311,8 @@ class AcademicCalendarDocument(DomainModel):
 
     @model_validator(mode="after")
     def validate_document(self) -> AcademicCalendarDocument:
+        if self.status is DocumentStatus.COLLECTED:
+            raise ValueError("COLLECTED status is reserved for offering collections")
         _unique([event.event_id for event in self.events], "event_ids")
         undeclared_sources = {
             source_id
@@ -355,4 +369,9 @@ class CourseOfferingCollection(DomainModel):
                 raise ValueError("placeholder collections cannot contain offerings")
         elif self.placeholder_reason is not None:
             raise ValueError("only placeholder collections may have placeholder_reason")
+        if self.status is DocumentStatus.COLLECTED:
+            if not self.source_ids or not self.offerings:
+                raise ValueError(
+                    "collected offering collections require sources and offerings"
+                )
         return self

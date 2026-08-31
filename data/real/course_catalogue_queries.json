@@ -1,0 +1,902 @@
+{
+  "source_id": "ntu.course_content.ay2026-27.s1",
+  "source_url": "https://wish.wis.ntu.edu.sg/webexe/owa/AUS_SUBJ_CONT.main_display1",
+  "academic_period": "2026_1",
+  "retrieved_at": "2026-08-31T12:03:49.676521+08:00",
+  "queries": [
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "AISC;;1;F",
+      "programme": "AISC",
+      "study_year": 1,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 26,
+      "response_sha256": "70375e21f26e0fce5ed8e7597ac3feb9b818e55e704c19e61f3652daca058c0c"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "AISC;;2;F",
+      "programme": "AISC",
+      "study_year": 2,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 24,
+      "response_sha256": "6218576321e326f8bcc5081664ab330ed9e5b8a6354cdae143b45a60bc22d117"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "AISC;;3;F",
+      "programme": "AISC",
+      "study_year": 3,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 40,
+      "response_sha256": "a3ef66eb5feff353742614b1ba0b988a5784e960ccbf2bbecd6755621a0e8355"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "AISC;;4;F",
+      "programme": "AISC",
+      "study_year": 4,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 30,
+      "response_sha256": "0558b347a6ba94477876a2957328357ee42136408d8ca4a45ceb5fc16fed9e0c"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BACF;;1;F",
+      "programme": "BACF",
+      "study_year": 1,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 19,
+      "response_sha256": "faf3d368118af9c514f36429511705024f40dae6402961757f9f465ca7d8caf2"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BACF;;2;F",
+      "programme": "BACF",
+      "study_year": 2,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 35,
+      "response_sha256": "639b35a1b43868ed220edde329113763581e7e1e82285e4fed1f11cccb7db605"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BACF;;3;F",
+      "programme": "BACF",
+      "study_year": 3,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 28,
+      "response_sha256": "bb9266c8e686f8ec63a60b7caaf517c46e31d4ce06329f3ae1d0a7c6d820c412"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BACF;;4;F",
+      "programme": "BACF",
+      "study_year": 4,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 27,
+      "response_sha256": "30e79a8f8487720669c206f41f06f0acc77c2f734497ee4ff85c76920a1120cf"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CE;;1;F",
+      "programme": "CE",
+      "study_year": 1,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 35,
+      "response_sha256": "15a91cb113ef856b58c04ffcb830ce871058e6b86c8cfec63af3602e4bf2a856"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CE;;2;F",
+      "programme": "CE",
+      "study_year": 2,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 24,
+      "response_sha256": "4621d07601e8a4f551b1ae34c14cb63a6f05fdc6613930f4e7ec085cf3d65c2c"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CE;;3;F",
+      "programme": "CE",
+      "study_year": 3,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 29,
+      "response_sha256": "916d594a1efc3b895038783b9cc70ccb394a1658dd548fe7c48ff184b28e3001"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CE;;4;F",
+      "programme": "CE",
+      "study_year": 4,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 28,
+      "response_sha256": "f003cb62f62a124c23b3c073746193649890c851e1a65bbfae50c93aaab14b52"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CSC;;1;F",
+      "programme": "CSC",
+      "study_year": 1,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 40,
+      "response_sha256": "f376a7f87b9807ad557d734fc7bb586a2f3cb251fb0d09f8e6fd646c1d3fb85a"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CSC;;2;F",
+      "programme": "CSC",
+      "study_year": 2,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 29,
+      "response_sha256": "4a855683cc4f739deb1c8509ab76e2072d1900e0939baa242c1f6f365718f15e"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CSC;;3;F",
+      "programme": "CSC",
+      "study_year": 3,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 33,
+      "response_sha256": "c98dbae73a59549b87ade3b9db6c9c98655ee274efd2d6fd22a445a9e5c75def"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CSC;;4;F",
+      "programme": "CSC",
+      "study_year": 4,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 35,
+      "response_sha256": "6d7626dd5ecc86d81c805d066733d8f3b98018d9433221a72bbe0a1493697164"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "DSAI;;1;F",
+      "programme": "DSAI",
+      "study_year": 1,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 27,
+      "response_sha256": "5545043a1565e2c9871842113638ffff148d81bb3296635e69198dec88f1a6b5"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "DSAI;;2;F",
+      "programme": "DSAI",
+      "study_year": 2,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 26,
+      "response_sha256": "37c184379c0b282daa567069e4df64dd1186f0104e5dff49037ec278414f2590"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "DSAI;;3;F",
+      "programme": "DSAI",
+      "study_year": 3,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 36,
+      "response_sha256": "1b3871c2a6e16e0e6f8a8391ac1e756a12b0e9af10de3fa5f423dc18217d96be"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "DSAI;;4;F",
+      "programme": "DSAI",
+      "study_year": 4,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 35,
+      "response_sha256": "9370325bc56d3b5260de512aa5d0e069cf48f9f4a21faa84c2a64119f3cfcb1f"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ECDS;;1;F",
+      "programme": "ECDS",
+      "study_year": 1,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 32,
+      "response_sha256": "dbc6b812dbc7528681d8a16ffbe5e68f36c0c4b0c49171f01354e1ddfa3536b5"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ECDS;;2;F",
+      "programme": "ECDS",
+      "study_year": 2,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 34,
+      "response_sha256": "fc44d124410e43b764ec8e9a903f5b131ad3e871ee13f4979209cbc33aba9a54"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ECDS;;3;F",
+      "programme": "ECDS",
+      "study_year": 3,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 42,
+      "response_sha256": "1d997ce120c0f1d83cc6285a256336b006e5edb4fc24432b356def39eecae2e7"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ECDS;;4;F",
+      "programme": "ECDS",
+      "study_year": 4,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 40,
+      "response_sha256": "0c4a2f56baafd938c07246b13d0ce54052e1f10aa12d2079d90577c31a5fd3d9"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "MACS;;1;F",
+      "programme": "MACS",
+      "study_year": 1,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 23,
+      "response_sha256": "15e3e00278188ff31031ee017c9495945ae31c6c41d0e042f3d96f7fffb1373b"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "MACS;;2;F",
+      "programme": "MACS",
+      "study_year": 2,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 31,
+      "response_sha256": "9b22e1663200dd05a5dfdaa753e6a1a0b023b860df57d7f30075e441ebc44add"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "MACS;;3;F",
+      "programme": "MACS",
+      "study_year": 3,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 37,
+      "response_sha256": "d4c23dff6e567fb5dadbd1fdf38ad9a03e949fcfbbf5bb5f4518bc3109303a8d"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "MACS;;4;F",
+      "programme": "MACS",
+      "study_year": 4,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 39,
+      "response_sha256": "3fc03f010bd3a7d4404f440d87005effba1fb5897e85b0a598a704d25d31ecaa"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ACDA;;1;F",
+      "programme": "ACDA",
+      "study_year": 1,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 28,
+      "response_sha256": "7345bfb93445702b8ced8de9bddacfb345a5a2c6ef5e334f4ba3a3ec5c07b64d"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ACDA;;2;F",
+      "programme": "ACDA",
+      "study_year": 2,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 29,
+      "response_sha256": "e2ea3b3d33dc5ce8e1a8aaf2585498b2c8ded54b0528af6f9bf59a92f478d622"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ACDA;;3;F",
+      "programme": "ACDA",
+      "study_year": 3,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 40,
+      "response_sha256": "51d0984b356e1137418b902ab8dced6af27915dcc9113fa4eb404ad00076fcff"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ACDA;;4;F",
+      "programme": "ACDA",
+      "study_year": 4,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 34,
+      "response_sha256": "6fa41b2802c7bc9658b8cd6130162030b73c30517fa3cde2a64811121e373bd2"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ACDA;;5;F",
+      "programme": "ACDA",
+      "study_year": 5,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 10,
+      "response_sha256": "9fdbb28ff97d05d19a621b71ff0115c0fcbf6b5d44223d8614a897c92b93b9b8"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BCE;;1;F",
+      "programme": "BCE",
+      "study_year": 1,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 43,
+      "response_sha256": "e7feaabf4c47206746486c8d861c430330c7d92cd04e3fad232566e88472bebc"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BCE;;2;F",
+      "programme": "BCE",
+      "study_year": 2,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 39,
+      "response_sha256": "c83183df43e48e060ebf8b1f609a4db86d445a8343bc8aed9f97cda5d572b151"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BCE;;3;F",
+      "programme": "BCE",
+      "study_year": 3,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 49,
+      "response_sha256": "0e45ef0e92ef4aa15fb8700419e5f7db2507551dffd2c75a47418c6ec12c0ae9"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BCE;;4;F",
+      "programme": "BCE",
+      "study_year": 4,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 37,
+      "response_sha256": "ec0f0c0f97f4416a6059ef8bfd6d52bd6e947d2f270cd1fca89aa1969bfb0ade"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BCG;;1;F",
+      "programme": "BCG",
+      "study_year": 1,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 43,
+      "response_sha256": "298ad3e064745069f11bda21519b4e3e862ae9e1b5169de6c75878b05e6feac6"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BCG;;2;F",
+      "programme": "BCG",
+      "study_year": 2,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 37,
+      "response_sha256": "4b39288082aca229ee885cfe9ca805c1b10e2de0ee692333202461b82d15bb0e"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BCG;;3;F",
+      "programme": "BCG",
+      "study_year": 3,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 47,
+      "response_sha256": "58af48bcba9f836d64aa6f69a004db4d99834760db28235759e596a1ebf479b0"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "BCG;;4;F",
+      "programme": "BCG",
+      "study_year": 4,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 38,
+      "response_sha256": "9678a941a287b98ea346dcf5a2a43d64f9712f41e127f6aaf824c1162b452dc9"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CEEC;;1;F",
+      "programme": "CEEC",
+      "study_year": 1,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 40,
+      "response_sha256": "469522410e5f05c0c6cbeb7a50e2bf1af5fd3be0305654ebc4ec22e574d65729"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CEEC;;2;F",
+      "programme": "CEEC",
+      "study_year": 2,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 34,
+      "response_sha256": "41027750226785e93bd22c52186e994916b4438cbda107f4cfad5f0b86ea2745"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CEEC;;3;F",
+      "programme": "CEEC",
+      "study_year": 3,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 41,
+      "response_sha256": "51fd91c2847bdf691009f2fcf869259661da87cfa43278e596741731ee1ee678"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CEEC;;4;F",
+      "programme": "CEEC",
+      "study_year": 4,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 44,
+      "response_sha256": "7287790255f5e401a9e8cb3442c388da11c6878b09dca694b5e9c2bcadf48930"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CEEC;;5;F",
+      "programme": "CEEC",
+      "study_year": 5,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 19,
+      "response_sha256": "c27adcc3cefe70347045ed621c2926d913e83989cf0cdb6f30f110448f3d4b5d"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CSEC;;1;F",
+      "programme": "CSEC",
+      "study_year": 1,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 38,
+      "response_sha256": "d0fb67e21c9a4e78b3d83b489834314819e9343d7ceefa08b7968586e6059e42"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CSEC;;2;F",
+      "programme": "CSEC",
+      "study_year": 2,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 33,
+      "response_sha256": "50d8798717b6297a67c23835825c29ccc5878c08813a2648dca3ace93e115e56"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CSEC;;3;F",
+      "programme": "CSEC",
+      "study_year": 3,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 42,
+      "response_sha256": "6fdf5b76c72e8edd4aea2d3c9bafe22ae5beed88362d994bfb7c1faa54d1f4bd"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CSEC;;4;F",
+      "programme": "CSEC",
+      "study_year": 4,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 45,
+      "response_sha256": "cc4b34936703d0a6cbe64e6de190eca404b979857f69fd78d36a1b4ab7638a85"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "CSEC;;5;F",
+      "programme": "CSEC",
+      "study_year": 5,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 22,
+      "response_sha256": "0c1d1f1d86e8ae83bfc6485be1ebd561e15551e62647264a69b7695c80a661de"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ACDA;GA;1;F",
+      "programme": "ACDA",
+      "study_year": 1,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 0,
+      "response_sha256": "9bdb04e38781e08f33d77374414c96a17710a957cc0d04eb88381720b7bfb713"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ACDA;GA;2;F",
+      "programme": "ACDA",
+      "study_year": 2,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 0,
+      "response_sha256": "9bdb04e38781e08f33d77374414c96a17710a957cc0d04eb88381720b7bfb713"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ACDA;GB;1;F",
+      "programme": "ACDA",
+      "study_year": 1,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 0,
+      "response_sha256": "9bdb04e38781e08f33d77374414c96a17710a957cc0d04eb88381720b7bfb713"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "ACDA;GB;2;F",
+      "programme": "ACDA",
+      "study_year": 2,
+      "catalogue_context": "PROGRAMME",
+      "record_count": 0,
+      "response_sha256": "9bdb04e38781e08f33d77374414c96a17710a957cc0d04eb88381720b7bfb713"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "GLOAD;CE;X;F",
+      "programme": "CE",
+      "study_year": null,
+      "catalogue_context": "BDE_POOL",
+      "record_count": 1,
+      "response_sha256": "8723abbcdd3563794120425e4cbd97bc94f362d585e975c0110622a6a69ec3fc"
+    },
+    {
+      "query_type": "PROGRAMME_MATRIX",
+      "selector": "GLOAD;CSC;X;F",
+      "programme": "CSC",
+      "study_year": null,
+      "catalogue_context": "BDE_POOL",
+      "record_count": 46,
+      "response_sha256": "e7168b60dd97f492cf9c83b09dbb2eded1c694c84f1243b7a541f7bdc5e16e99"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "AB1003",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "5711fe09265fa91e0060ddfe8c2148dffccff5628ccdb0e71b5fe6bf66f9a709"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "BC2407",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "987bb8aa5fec516c7201e6ab62c6dd3977742a749ca0b69eea05d6262ced55d9"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "BE1402",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 1,
+      "response_sha256": "d3340de012391334ccb69b59007bc480d97fa41d969ae26cc5c666b7c4e7e52a"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "BE2602",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 1,
+      "response_sha256": "b07e08f6e43efb9d38d675d4017cb097fd175051ad7550ada8f67803e9fca667"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "BF2226",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 1,
+      "response_sha256": "544e73a0d31020febdee8b50a7654eb840214a2e555099d1536cc58fa49ca260"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "BF2227",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 1,
+      "response_sha256": "36ff01a7b7afa3deaa353834cd5e7f20512e7865f7599c3fd210bf02a4adc215"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "BF2302",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 1,
+      "response_sha256": "5d0ae5d47129c16e645b00f33773b5af4293a1cc010f7dd85d2f09c7c4834bdc"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "BF3212",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 1,
+      "response_sha256": "0cb507e02d5b1bcb13345fc079b584c27b52ad25290ba6d47632d25bc4aec88b"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "BF3213",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 1,
+      "response_sha256": "cf4482233058330df09c3e624bfb7976f7b1ded90d7a756b61ce454f929b804a"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "BF3214",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 1,
+      "response_sha256": "e970f090352f0d9466974e4b086925db170e22c0453af8b46660f329419fe600"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "BF3226",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 1,
+      "response_sha256": "b8628906b831d99f0a0690a07c89848642f354baee38201f2ed06ea55ed7c1d7"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "BM2509",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 1,
+      "response_sha256": "3136743ae94e2f08457b2b48d56ddcb8febfe1807be4fc0829add5880efaa56c"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "ES5100",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 1,
+      "response_sha256": "33eb9e2d2052e8e12b4743d8acec9b0c803f4ed39d4fd76119008543fb45d1ac"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "ET5211",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "0ad8186055175bb672641fcd6118e138882f89ad3cc1f7346cb74c928f8f4a70"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "ET5212",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 1,
+      "response_sha256": "6d903389b942a893622029333dca7c4cbce49e5039f6e6841c42fdfbe0db2b4a"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "ET5213",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 1,
+      "response_sha256": "1eef1c415d8af3cb8dd370cfeeb0b60fb313ba0aa616b4358b9629a4306182ac"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "ET5214",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "be3283f4c6ab951d07f5509a5ae5b828ead7121011dd5120b4a123997ee6d1d5"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "HE2001",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "576ceb4cd85f3f976b8b4363d46b4e348a207dd65fff2fc3231a555eaf7d104a"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "HE2002",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "91c37e12c268ff0a496a774a0a0a1ebfe9f892b34b18248c64f24ef470b93ec7"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "HE3003",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "bc75d3375aa9b59390f4428fdf2c2bc07475b4250febc8f55b11b4b252699650"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "HW0002",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "ca4753062145167c999674ad0bd6f74c19f598a0bcbd9970c49281086619f7e9"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "MH1101",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "2fbf519370a39d4d522539b4505c74037d8e735ff2c297cb9b65898e72412e36"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "MH1201",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "ee5e542ad0f6aa45ec2f4a026f699ba79da96a090e82927cf7989c3f4a36668b"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "MH1301",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "a0341316520de2c9555b8d2d83c251e9f68adb680f8591595a55184ced7eb917"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "MH1820",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "aba5a99257a2202eb799c3a88e12c289b8769708352e8040fe680f05394bc8b6"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "MH2510",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "5b73ae63b1a434a0d912be3d4332ecad5ffb78c5fff45f49573e3ffbbd7c777c"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "MH3500",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "b88f16da711b825fddb21b6ae0df7a5a5e9b6f16293e1bad0ec82e01c5936a18"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "ML0015",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "778300237d0c9df2fdda060b8340023e4b69ff629e9c6b26568146da2275b247"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "PS0002",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "132ad1b73354ee142bfe35f14840eb4103fd5982bb78d37f6b0c1b7d2e7d483a"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "SC1304",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "b37c90ced9664825a45f1a1cab3314511c85b9d11bce12538326073573c5fca5"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "SC2306",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "a06d8c0ccdc875c24073a0c50ed4cf4f7697bc9b4105b9c87252fe7f3646ee1d"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "SC3021",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "c2e0c6f5cb9afe1764657720db23558ea44702ff7d15d22cb179f45aabe8880b"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "SC3026",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "773532a2eaf600a9aa8e1ed402b2d5ba16799a0784fd9ad893031a0ac45ef6c9"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "SC3079",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "8dc43d0f127869983b00479def74405132eacee88bb6b48e41b7de7a7414da27"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "SC3910",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "2f862b02b55b1b87056824ce5d123e2a5ff11371d5508628e2566c7435e95a46"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "SC3920",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "ada71d64a5283da3959b153281626416a300a857438b084bfe1f193742b33c33"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "SC4079",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "ce1c28fa96b5460655fe78336ef820450160566cb38994db99204371ca858f99"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "SC4262",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "acbe16ab01972b903bb52d70a21c9edc8ef09792115933a03c93312d8385042a"
+    },
+    {
+      "query_type": "EXACT_CURRICULUM_COURSE",
+      "course_code": "SD3920",
+      "programme": null,
+      "study_year": null,
+      "catalogue_context": "AUXILIARY",
+      "record_count": 0,
+      "response_sha256": "0d1d1b3f25b01c6b2150e801b83738b37c6e1979f69362fa9a4478c615ac2ddb"
+    }
+  ],
+  "course_record_count": 219,
+  "normalized_sha256": "3602c59a1b40e6c12ed03b414c22e574958ae9280421e209423c6f04c4d01521",
+  "unresolved_supplemental_codes": [
+    "AB1003",
+    "BC2407",
+    "ET5211",
+    "ET5214",
+    "HE2001",
+    "HE2002",
+    "HE3003",
+    "HW0002",
+    "MH1101",
+    "MH1201",
+    "MH1301",
+    "MH1820",
+    "MH2510",
+    "MH3500",
+    "ML0015",
+    "PS0002",
+    "SC1304",
+    "SC2306",
+    "SC3021",
+    "SC3026",
+    "SC3079",
+    "SC3910",
+    "SC3920",
+    "SC4079",
+    "SC4262",
+    "SD3920"
+  ]
+}
