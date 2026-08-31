@@ -11,7 +11,7 @@ def test_package_imports_cleanly() -> None:
     assert package.Scenario.__name__ == "Scenario"
 
 
-def test_stage_one_does_not_declare_langgraph_dependency() -> None:
+def test_stage_five_declares_supported_langgraph_dependency() -> None:
     project_root = Path(__file__).parents[1]
     pyproject = (project_root / "pyproject.toml").read_text(encoding="utf-8")
-    assert "langgraph" not in pyproject.lower()
+    assert '"langgraph>=1.2.10,<1.3"' in pyproject

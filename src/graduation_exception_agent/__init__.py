@@ -2,6 +2,7 @@
 
 from graduation_exception_agent.config import AppSettings, ExecutionMode, load_settings
 from graduation_exception_agent.models import (
+    ActionReceipt,
     Approval,
     Course,
     CourseCatalogueAppearance,
@@ -12,6 +13,7 @@ from graduation_exception_agent.models import (
     DatasetCoverage,
     DegreeAudit,
     ExceptionCase,
+    ExecutionContract,
     Programme,
     Registration,
     Scenario,
@@ -19,10 +21,18 @@ from graduation_exception_agent.models import (
     SourceAccessStatus,
     Student,
     TransactionResult,
+    ToolResponse,
 )
+from graduation_exception_agent.runtime.factory import (
+    ScenarioRuntime,
+    ScenarioRuntimeFactory,
+    Stage4Tools,
+)
+from graduation_exception_agent.orchestration import Stage5ControlPlane
 
 __all__ = [
     "AppSettings",
+    "ActionReceipt",
     "Approval",
     "Course",
     "CourseCatalogueAppearance",
@@ -33,14 +43,20 @@ __all__ = [
     "DatasetCoverage",
     "DegreeAudit",
     "ExceptionCase",
+    "ExecutionContract",
     "ExecutionMode",
     "Programme",
     "Registration",
     "Scenario",
+    "ScenarioRuntime",
+    "ScenarioRuntimeFactory",
     "SourceProvenance",
     "SourceAccessStatus",
     "Student",
     "TransactionResult",
+    "ToolResponse",
+    "Stage4Tools",
+    "Stage5ControlPlane",
     "load_settings",
 ]
 

@@ -9,6 +9,7 @@ description = "NTU CCDS-grounded graduation and registration exception agent pro
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "langgraph>=1.2.10,<1.3",
     "pydantic>=2.10,<3",
     "pydantic-settings>=2.7,<3",
 ]
