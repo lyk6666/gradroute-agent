@@ -6,10 +6,8 @@ contracts unambiguous. It does not introduce NTU academic rules.
 ## Scenario ground truth
 
 The scenario contract uses `valid_initial_paths`, `valid_final_paths`, and
-`invalid_paths` from the evaluation specification. This is more expressive than
-the data-design example's `expected_valid_paths` and `expected_invalid_paths`
-because a dynamic event can invalidate the initial route and produce a different
-valid final route.
+`invalid_paths`. This distinguishes a route that is valid before a dynamic
+event from the different route that may remain valid after replanning.
 
 Ground truth is grouped under `ScenarioGroundTruth`. The future agent receives
 only `Scenario.to_agent_context()`, which excludes ground truth and future event
