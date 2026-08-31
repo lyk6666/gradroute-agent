@@ -86,6 +86,55 @@ class RequirementStatus(StrEnum):
     SATISFIED = "SATISFIED"
     PARTIALLY_SATISFIED = "PARTIALLY_SATISFIED"
     OUTSTANDING = "OUTSTANDING"
+    INDETERMINATE = "INDETERMINATE"
+
+
+class AuditBasis(StrEnum):
+    """What an audit result is allowed to claim."""
+
+    SCENARIO_BOUNDED_SIMULATION = "SCENARIO_BOUNDED_SIMULATION"
+
+
+class AuditOutcome(StrEnum):
+    READY = "READY"
+    NOT_READY = "NOT_READY"
+    INDETERMINATE = "INDETERMINATE"
+
+
+class TerminalProfile(StrEnum):
+    REQUIREMENT_OUTSTANDING = "REQUIREMENT_OUTSTANDING"
+    INDEX_TIMETABLE_WORKLOAD_CONSTRAINED = (
+        "INDEX_TIMETABLE_WORKLOAD_CONSTRAINED"
+    )
+    PREREQUISITE_OR_EVIDENCE_DEPENDENT = (
+        "PREREQUISITE_OR_EVIDENCE_DEPENDENT"
+    )
+    NO_VERIFIED_RESOLUTION = "NO_VERIFIED_RESOLUTION"
+
+
+class CreditStatus(StrEnum):
+    EARNED = "EARNED"
+    NOT_EARNED = "NOT_EARNED"
+    PENDING_TRANSFER = "PENDING_TRANSFER"
+
+
+class RegistrationPhase(StrEnum):
+    NORMAL_REGISTRATION = "NORMAL_REGISTRATION"
+    ADD_DROP = "ADD_DROP"
+    POST_ADD_DROP = "POST_ADD_DROP"
+
+
+class RuntimeOfferingStatus(StrEnum):
+    OPEN = "OPEN"
+    UNAVAILABLE = "UNAVAILABLE"
+    CLOSED = "CLOSED"
+    CANCELLED = "CANCELLED"
+
+
+class EligibilityStatus(StrEnum):
+    ELIGIBLE = "ELIGIBLE"
+    INELIGIBLE = "INELIGIBLE"
+    UNKNOWN = "UNKNOWN"
 
 
 class CurriculumRequirement(DomainModel):
@@ -613,20 +662,47 @@ class OfferingState(GeneratedModel):
     """Mutable simulated availability, separate from the sourced offering."""
 
     state_id: Identifier
-    offering_id: Identifier
-    index_id: Identifier
+    simulation_period_id: Identifier
+    template_offering_id: Identifier
+    template_index_id: Identifier
+    template_academic_year: AcademicYear
+    template_semester: Semester
     capacity: int = Field(ge=0)
     vacancies: int = Field(ge=0)
     waitlist_count: int = Field(default=0, ge=0)
+    runtime_status: RuntimeOfferingStatus
     available: bool
+    unavailable_reason: NonEmptyText | None = None
     version: int = Field(default=1, ge=1)
+    assumption_ids: list[Identifier] = Field(default_factory=list)
+
+    @field_validator("assumption_ids")
+    @classmethod
+    def unique_assumptions(cls, value: list[str]) -> list[str]:
+        return _ensure_unique(value, "assumption_ids")
 
     @model_validator(mode="after")
     def validate_runtime_capacity(self) -> OfferingState:
         if self.vacancies > self.capacity:
             raise ValueError("vacancies cannot exceed capacity")
-        if self.available != (self.vacancies > 0):
-            raise ValueError("available must reflect whether vacancies are positive")
+        unavailable = self.runtime_status in {
+            RuntimeOfferingStatus.UNAVAILABLE,
+            RuntimeOfferingStatus.CLOSED,
+            RuntimeOfferingStatus.CANCELLED,
+        }
+        if unavailable and self.unavailable_reason is None:
+            raise ValueError(
+                "unavailable, closed, or cancelled states require unavailable_reason"
+            )
+        if not unavailable and self.unavailable_reason is not None:
+            raise ValueError("open states cannot contain unavailable_reason")
+        expected_available = (
+            self.runtime_status is RuntimeOfferingStatus.OPEN and self.vacancies > 0
+        )
+        if self.available is not expected_available:
+            raise ValueError(
+                "available must equal runtime_status == OPEN and vacancies > 0"
+            )
         return self
 
 
@@ -634,9 +710,16 @@ class CompletedCourse(DomainModel):
     course_code: CourseCode
     grade: NonEmptyText
     aus_earned: Decimal = Field(ge=0, le=20)
+    credit_status: CreditStatus
     academic_year: AcademicYear
     semester: Semester
     attempt: int = Field(default=1, ge=1)
+
+    @model_validator(mode="after")
+    def validate_credit(self) -> CompletedCourse:
+        if self.credit_status is not CreditStatus.EARNED and self.aus_earned != 0:
+            raise ValueError("only EARNED attempts may award AUs")
+        return self
 
 
 class Exemption(DomainModel):
@@ -655,16 +738,24 @@ class Exemption(DomainModel):
 
 class Student(GeneratedModel):
     student_id: SyntheticStudentId
+    simulation_scope_id: Identifier
+    simulation_period_id: Identifier
     programme: ProgrammeCode
     additional_programmes: list[ProgrammeCode] = Field(default_factory=list)
-    curriculum_ids: list[Identifier] = Field(min_length=1)
+    curriculum_id: Identifier
+    graduation_path_id: Identifier | None = None
+    study_plan_path_label: NonEmptyText | None = None
     admission_cohort: AdmissionCohort
     study_year: int = Field(ge=1, le=8)
+    terminal_profile: TerminalProfile
+    academic_standing: NonEmptyText
+    has_outstanding_fees: bool
     completed_courses: list[CompletedCourse] = Field(default_factory=list)
     earned_aus: Decimal = Field(ge=0)
     exemptions: list[Exemption] = Field(default_factory=list)
+    assumption_ids: list[Identifier] = Field(default_factory=list)
 
-    @field_validator("additional_programmes", "curriculum_ids")
+    @field_validator("additional_programmes", "assumption_ids")
     @classmethod
     def unique_programme_links(cls, value: list[str], info: object) -> list[str]:
         field_name = getattr(info, "field_name", "values")
@@ -682,19 +773,90 @@ class Student(GeneratedModel):
             raise ValueError("completed course attempts must be unique")
         exemption_ids = [item.exemption_id for item in self.exemptions]
         _ensure_unique(exemption_ids, "exemption_ids")
+        earned_attempts = [
+            item.course_code
+            for item in self.completed_courses
+            if item.credit_status is CreditStatus.EARNED
+        ]
+        _ensure_unique(earned_attempts, "earned course credits")
+        exempt_course_codes = {
+            exemption.course_code
+            for exemption in self.exemptions
+            if exemption.course_code is not None
+        }
+        duplicate_credit = exempt_course_codes & set(earned_attempts)
+        if duplicate_credit:
+            raise ValueError(
+                "course credit cannot be both earned and exempted: "
+                f"{sorted(duplicate_credit)}"
+            )
+        calculated_aus = sum(
+            (
+                item.aus_earned
+                for item in self.completed_courses
+                if item.credit_status is CreditStatus.EARNED
+            ),
+            Decimal("0"),
+        ) + sum(
+            (item.aus_awarded for item in self.exemptions),
+            Decimal("0"),
+        )
+        if calculated_aus != self.earned_aus:
+            raise ValueError(
+                "earned_aus must equal earned course AUs plus exemption AUs"
+            )
         return self
+
+
+class ObservableStudent(DomainModel):
+    """Agent-safe student record with evaluator-only profile metadata removed."""
+
+    student_id: SyntheticStudentId
+    simulation_scope_id: Identifier
+    simulation_period_id: Identifier
+    programme: ProgrammeCode
+    additional_programmes: list[ProgrammeCode] = Field(default_factory=list)
+    curriculum_id: Identifier
+    graduation_path_id: Identifier | None = None
+    study_plan_path_label: NonEmptyText | None = None
+    admission_cohort: AdmissionCohort
+    study_year: int = Field(ge=1, le=8)
+    academic_standing: NonEmptyText
+    has_outstanding_fees: bool
+    completed_courses: list[CompletedCourse] = Field(default_factory=list)
+    earned_aus: Decimal = Field(ge=0)
+    exemptions: list[Exemption] = Field(default_factory=list)
+    assumption_ids: list[Identifier] = Field(default_factory=list)
+    source_rule_ids: list[Identifier] = Field(default_factory=list)
+
+    @classmethod
+    def from_student(cls, student: Student) -> ObservableStudent:
+        return cls.model_validate(
+            student.model_dump(
+                exclude={"terminal_profile", "generator_version", "seed"}
+            )
+        )
 
 
 class RequirementProgress(DomainModel):
     requirement_id: Identifier
     status: RequirementStatus
-    required_aus: Decimal = Field(ge=0)
+    required_aus: Decimal | None = Field(default=None, ge=0)
     earned_aus: Decimal = Field(ge=0)
     completed_courses: list[CourseCode] = Field(default_factory=list)
     outstanding_courses: list[CourseCode] = Field(default_factory=list)
     explanation: NonEmptyText
+    evidence_rule_ids: list[Identifier] = Field(min_length=1)
+    assumption_ids: list[Identifier] = Field(default_factory=list)
+    limitations: list[NonEmptyText] = Field(default_factory=list)
 
-    @field_validator("completed_courses", "outstanding_courses")
+    @field_validator(
+        "completed_courses",
+        "outstanding_courses",
+        "evidence_rule_ids",
+        "assumption_ids",
+        "limitations",
+    )
     @classmethod
     def unique_progress_courses(cls, value: list[str], info: object) -> list[str]:
         field_name = getattr(info, "field_name", "courses")
@@ -704,78 +866,163 @@ class RequirementProgress(DomainModel):
     def validate_progress(self) -> RequirementProgress:
         if set(self.completed_courses) & set(self.outstanding_courses):
             raise ValueError("a course cannot be both completed and outstanding")
+        if self.required_aus is None and self.status is not RequirementStatus.INDETERMINATE:
+            raise ValueError("unknown required_aus requires INDETERMINATE status")
         if (
             self.status is RequirementStatus.SATISFIED
+            and self.required_aus is not None
             and self.required_aus > 0
             and self.earned_aus < self.required_aus
         ):
             raise ValueError("a satisfied AU requirement must meet its required AUs")
+        if (
+            self.status is RequirementStatus.INDETERMINATE
+            and not self.limitations
+        ):
+            raise ValueError("indeterminate requirements require limitations")
         return self
 
 
 class DegreeAudit(GeneratedModel):
     audit_id: Identifier
     student_id: SyntheticStudentId
-    curriculum_ids: list[Identifier] = Field(min_length=1)
-    academic_year: AcademicYear
+    simulation_scope_id: Identifier
+    simulation_period_id: Identifier
+    curriculum_id: Identifier
+    audit_basis: AuditBasis
+    audit_outcome: AuditOutcome
+    graduation_path_id: Identifier | None = None
+    study_plan_path_label: NonEmptyText | None = None
+    simulation_academic_year: AcademicYear
     semester: Semester
     requirement_results: list[RequirementProgress] = Field(min_length=1)
     total_earned_aus: Decimal = Field(ge=0)
-    total_required_aus: Decimal = Field(gt=0)
-    graduation_ready: bool
+    total_required_aus: Decimal | None = Field(default=None, gt=0)
+    assumption_ids: list[Identifier] = Field(default_factory=list)
+    limitations: list[NonEmptyText] = Field(default_factory=list)
 
-    @field_validator("curriculum_ids")
+    @field_validator("assumption_ids", "limitations")
     @classmethod
-    def unique_curricula(cls, value: list[str]) -> list[str]:
-        return _ensure_unique(value, "curriculum_ids")
+    def unique_audit_lists(cls, value: list[str], info: object) -> list[str]:
+        field_name = getattr(info, "field_name", "values")
+        return _ensure_unique(value, field_name)
 
     @model_validator(mode="after")
     def validate_audit_result(self) -> DegreeAudit:
         requirement_ids = [item.requirement_id for item in self.requirement_results]
         _ensure_unique(requirement_ids, "requirement_ids")
-        computed_ready = self.total_earned_aus >= self.total_required_aus and all(
-            item.status is RequirementStatus.SATISFIED
+        indeterminate = self.total_required_aus is None or any(
+            item.status is RequirementStatus.INDETERMINATE
             for item in self.requirement_results
         )
-        if self.graduation_ready != computed_ready:
-            raise ValueError(
-                "graduation_ready must agree with AU and requirement completion"
+        if indeterminate:
+            expected = AuditOutcome.INDETERMINATE
+        else:
+            assert self.total_required_aus is not None
+            ready = self.total_earned_aus >= self.total_required_aus and all(
+                item.status is RequirementStatus.SATISFIED
+                for item in self.requirement_results
             )
+            expected = AuditOutcome.READY if ready else AuditOutcome.NOT_READY
+        if self.audit_outcome is not expected:
+            raise ValueError(
+                "audit_outcome must agree with AU and requirement completion"
+            )
+        if self.audit_outcome is AuditOutcome.INDETERMINATE and not self.limitations:
+            raise ValueError("indeterminate audits require limitations")
         return self
 
 
 class RegistrationItem(DomainModel):
+    registration_item_id: Identifier
     course_code: CourseCode
-    index_id: Identifier
-    aus: Decimal = Field(gt=0, le=20)
+    template_offering_id: Identifier
+    template_index_id: Identifier
+    offering_state_id: Identifier
+    expected_state_version: int = Field(ge=1)
+    aus: Decimal = Field(ge=0, le=20)
     status: RegistrationItemStatus
+    eligibility: EligibilityStatus
+    eligibility_reason: NonEmptyText
+
+
+class RegistrationMeeting(DomainModel):
+    meeting_id: Identifier
+    registration_item_id: Identifier
+    course_code: CourseCode
+    template_offering_id: Identifier
+    template_index_id: Identifier
+    meeting: TimetableMeeting
 
 
 class Registration(GeneratedModel):
     registration_id: Identifier
     student_id: SyntheticStudentId
-    academic_year: AcademicYear
+    simulation_scope_id: Identifier
+    simulation_period_id: Identifier
+    simulation_academic_year: AcademicYear
     semester: Semester
+    template_academic_year: AcademicYear
+    template_semester: Semester
+    scenario_time: datetime
+    phase: RegistrationPhase
     registered_courses: list[RegistrationItem] = Field(default_factory=list)
-    timetable: list[TimetableMeeting] = Field(default_factory=list)
+    timetable: list[RegistrationMeeting] = Field(default_factory=list)
     workload_aus: Decimal = Field(ge=0)
+    workload_limit_aus: Decimal = Field(ge=0)
     missing_required_courses: list[CourseCode] = Field(default_factory=list)
+    assumption_ids: list[Identifier] = Field(default_factory=list)
 
-    @field_validator("missing_required_courses")
+    @field_validator("scenario_time")
     @classmethod
-    def unique_missing_courses(cls, value: list[str]) -> list[str]:
-        return _ensure_unique(value, "missing_required_courses")
+    def timezone_aware_scenario_time(cls, value: datetime) -> datetime:
+        if value.tzinfo is None:
+            raise ValueError("scenario_time must include a timezone")
+        return value
+
+    @field_validator("missing_required_courses", "assumption_ids")
+    @classmethod
+    def unique_registration_lists(
+        cls, value: list[str], info: object
+    ) -> list[str]:
+        field_name = getattr(info, "field_name", "values")
+        return _ensure_unique(value, field_name)
 
     @model_validator(mode="after")
     def validate_registration(self) -> Registration:
-        registrations = [
-            (item.course_code, item.index_id) for item in self.registered_courses
-        ]
+        registrations = [item.registration_item_id for item in self.registered_courses]
         if len(registrations) != len(set(registrations)):
-            raise ValueError("registered course/index pairs must be unique")
+            raise ValueError("registration_item_ids must be unique")
+        course_indexes = [
+            (item.course_code, item.template_offering_id, item.template_index_id)
+            for item in self.registered_courses
+        ]
+        if len(course_indexes) != len(set(course_indexes)):
+            raise ValueError("registered course/offering/index triples must be unique")
         calculated_workload = sum(
             (item.aus for item in self.registered_courses), Decimal("0")
         )
         if calculated_workload != self.workload_aus:
             raise ValueError("workload_aus must equal registered course AUs")
+        if self.workload_aus > self.workload_limit_aus:
+            raise ValueError("workload_aus cannot exceed workload_limit_aus")
+        by_id = {item.registration_item_id: item for item in self.registered_courses}
+        meeting_ids = [item.meeting_id for item in self.timetable]
+        _ensure_unique(meeting_ids, "meeting_ids")
+        for attributed in self.timetable:
+            registration_item = by_id.get(attributed.registration_item_id)
+            if registration_item is None:
+                raise ValueError(
+                    "timetable registration_item_id must resolve in registered_courses"
+                )
+            if (
+                attributed.course_code != registration_item.course_code
+                or attributed.template_offering_id
+                != registration_item.template_offering_id
+                or attributed.template_index_id
+                != registration_item.template_index_id
+            ):
+                raise ValueError(
+                    "timetable attribution must match its registration item"
+                )
         return self

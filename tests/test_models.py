@@ -13,6 +13,7 @@ from graduation_exception_agent.models import (
     DegreeAudit,
     EventType,
     ExceptionCase,
+    OfferingState,
     Programme,
     Registration,
     Scenario,
@@ -31,6 +32,7 @@ from graduation_exception_agent.models import (
         (Curriculum, "curriculum"),
         (Course, "course"),
         (CourseOffering, "offering"),
+        (OfferingState, "offering_state"),
         (Student, "student"),
         (DegreeAudit, "audit"),
         (Registration, "registration"),
@@ -104,12 +106,12 @@ def test_registration_workload_must_match_items(
         Registration.model_validate(payload)
 
 
-def test_graduation_ready_must_match_requirement_results(
+def test_audit_outcome_must_match_requirement_results(
     payloads: dict[str, dict[str, object]],
 ) -> None:
     payload = deepcopy(payloads["audit"])
-    payload["graduation_ready"] = False
-    with pytest.raises(ValidationError, match="graduation_ready"):
+    payload["audit_outcome"] = "NOT_READY"
+    with pytest.raises(ValidationError, match="audit_outcome"):
         DegreeAudit.model_validate(payload)
 
 
@@ -140,14 +142,36 @@ def test_transaction_script_supports_ordered_multi_step_recovery(
             "transaction_id": "transaction.sim.001.failure",
             "result_code": "MODULE_FULL",
             "observation": "MODULE_FULL",
-            "retryable": False,
+            "retryable": True,
             "error_code": "MODULE_FULL",
-            "state_changes": {"vacancies": 0},
+            "occurred_at": "2028-08-30T12:04:30+08:00",
+            "event": {
+                "event_id": "event.sim.001.vacancy",
+                "event_type": "VACANCY_BECOMES_ZERO",
+                "target_type": "OFFERING_STATE",
+                "target_id": "offering-state.sc1001.10001.v1",
+                "expected_version": 1,
+                "occurs_at": "2028-08-30T12:04:00+08:00",
+            },
+            "precondition_state_versions": {
+                "offering-state.sc1001.10001.v1": 1
+            },
+            "mutations": [
+                {
+                    "mutation_id": "mutation.sim.001.vacancy",
+                    "target_type": "OFFERING_STATE",
+                    "target_id": "offering-state.sc1001.10001.v1",
+                    "expected_version": 1,
+                    "resulting_version": 2,
+                    "changes": {"vacancies": 0, "available": False},
+                }
+            ],
         }
     )
     success = deepcopy(payloads["transaction"])
     success["transaction_id"] = "transaction.sim.001.recovery"
     success["attempt_number"] = 2
+    success["occurred_at"] = "2028-08-30T12:06:00+08:00"
     payload = deepcopy(payloads["transaction_script"])
     payload["steps"] = [failure, success]
     assert len(TransactionScript.model_validate(payload).steps) == 2
