@@ -2,32 +2,61 @@
 
 This package contains the current implementation specification for the NTU CCDS-grounded administrative exception-resolution prototype.
 
-Files:
+Current status: Stage 5 is implemented. The project now has a typed,
+checkpointed LangGraph control plane over the deterministic Stage 4 tools,
+including explicit verifier phases, selective specialist routing,
+clarification and approval interrupts, bounded loops, advisory memory ports,
+and evaluator-safe traces.
 
-1. `01_data_design.md` — real vs simulated data contracts and structure
-2. `02_solution_architecture.md` — LangGraph architecture, memory, tools, loops
-3. `03_demo_scenarios.md` — seven scenario families and dataset split
-4. `04_simulation_design.md` — exact medium-scale simulation design
-5. `05_evaluation_plan.md` — 315-run evaluation methodology and metrics
-6. `06_stage_1_contract_decisions.md` — explicit resolutions for schema ambiguities
-7. `07_stage_2_grounding_conventions.md` — real-data provenance, unknown, and parsing conventions
+Foundation specifications:
+
+- [`01_data_design.md`](01_data_design.md) — real vs simulated data contracts and structure
+- [`02_solution_architecture.md`](02_solution_architecture.md) — frozen LangGraph topology, memory semantics, tool domains, safety edges, and staged migration
+- [`03_demo_scenarios.md`](03_demo_scenarios.md) — seven materialized scenario families plus their graph-trace expectations
+- [`04_simulation_design.md`](04_simulation_design.md) — implemented medium-scale simulation design
+- [`05_evaluation_plan.md`](05_evaluation_plan.md) — planned 315-run final-state, control-flow, memory, and robustness evaluation
+
+Stage records:
+
+- [`stage_1_contract_decisions.md`](stage_1_contract_decisions.md) — explicit resolutions for schema ambiguities
+- [`stage_2_grounding_conventions.md`](stage_2_grounding_conventions.md) — grounding conventions plus the detailed
+  real-data inventory, sources, coverage, limitations, and rebuild instructions
+- [`stage_3_simulation_data_details.md`](stage_3_simulation_data_details.md) — deterministic simulation package,
+  exact populations, temporal mapping, provenance boundaries, replay rules,
+  and readiness checks
+- [`stage_4_runtime_and_tools.md`](stage_4_runtime_and_tools.md) — typed four-domain tools, isolated runtime,
+  atomic transaction guarantees, execution contracts, and the boundary now
+  consumed by Stage 5
+- [`stage_5_langgraph_control_plane.md`](stage_5_langgraph_control_plane.md) — typed state, exact graph topology,
+  checkpointed interrupts, loop controls, advisory memory, evaluator isolation,
+  limitations, and the Stage 6 handoff
+
+Stage-specific documents use `stage_<number>_<topic>.md`. They do not receive
+an additional sequence prefix such as `06_`, `07_`, or `08_`; the same rule
+applies to later stages.
 
 Recommended implementation order:
 
 ```text
-01 Data Design
+Stage 3 Models + Data + Validation (complete)
     ↓
-04 Simulation Design
+Architecture Alignment + Freeze (complete)
     ↓
-Deterministic Rule Engine + Tools
+Stage 4 — Deterministic Tools + Transaction Runtime (complete)
     ↓
-02 Solution Architecture
+Stage 5 — LangGraph Control Plane + Checkpoint/Memory Interfaces (complete)
     ↓
-03 Demo Scenarios
+Stage 6 — Grounded LLM Specialists + Advisory Experience Memory
     ↓
-05 Evaluation Plan
+Stage 7 — Scenario Trace Evaluation + Robustness Hardening
+    ↓
+Stage 8 — Demo/UI Delivery + Operational Hardening
 ```
 
 Key principle:
 
 > Real NTU/CCDS rules + synthetic student/operational state + controlled failures → agent execution → deterministic evaluation.
+
+The architecture document's conditional-edge table is normative. Long-term
+memory stores verified experience only and can never override current academic,
+course, availability, or policy tools.

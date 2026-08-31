@@ -2,7 +2,9 @@
 
 ## Objective
 
-Measure whether the LangGraph agent can solve administrative cases **correctly, efficiently, safely, and adaptively**.
+Measure whether the LangGraph agent can solve administrative cases **correctly,
+efficiently, safely, and adaptively**, while following the frozen graph,
+treating memory as advisory, and verifying the world state after action.
 
 Primary correctness must come from deterministic evaluation, not from the same LLM judging itself.
 
@@ -52,40 +54,90 @@ The simulated environment and failure injection remain deterministic for the sam
 
 # 3. Ground Truth
 
-Every scenario must provide machine-readable expected behavior.
+Every scenario provides machine-readable expected behavior. The evaluator fields
+are nested under `ground_truth`, while an injected event is a typed object:
 
-Minimum fields:
+Selected fields:
 
 ```json
 {
-  "scenario_id": "S7-E08",
-  "valid_initial_paths": ["PATH-A"],
-  "valid_final_paths": ["PATH-C"],
-  "invalid_paths": ["PATH-B"],
-  "requires_human": false,
-  "injected_event": "VACANCY_BECOMES_ZERO",
-  "expected_outcome": "RESOLVED"
+  "scenario_id": "S7-M01",
+  "injected_event": {
+    "event_type": "VACANCY_BECOMES_ZERO",
+    "target_type": "OFFERING_STATE",
+    "target_id": "state.ay2026-27.s1.sc2000.14503",
+    "expected_version": 1
+  },
+  "ground_truth": {
+    "valid_initial_paths": [{"path_id": "path.s7-m01.initial"}],
+    "valid_final_paths": [{"path_id": "path.s7-m01.final"}],
+    "invalid_paths": [],
+    "requires_human": false,
+    "expected_outcome": "RESOLVED"
+  }
 }
 ```
 
-The agent cannot access these fields during execution.
+The agent cannot access these evaluator-only fields during execution. The full
+schema and materialized records are documented in
+[`stage_3_simulation_data_details.md`](stage_3_simulation_data_details.md) and
+stored in [`../data/tests/scenarios.json`](../data/tests/scenarios.json).
 
-# 4. Deterministic Final-State Evaluator
+# 4. Execution and Control-Flow Oracle
+
+Stage 4 provides the checked-in companion evaluator fixture at
+`data/tests/execution_contracts.json` without exposing it to the agent. It is
+keyed by the existing evaluator `scenario_id` and, for each scenario, declares:
+
+```text
+required and forbidden graph edges
+PRE_ACTION verifier decisions
+POST_ACTION verifier decisions
+clarification impact and resume node
+approval requirement and approval outcome
+human/admin escalation expectation
+goal-completion predicates and postconditions
+memory-update permission
+loop-counter expectations
+```
+
+The execution evaluator deterministically checks that:
+
+```text
+✓ Memory Retriever runs after intake and before the first plan
+✓ current tools revalidate every memory-suggested academic or policy claim
+✓ every consequential write follows PRE_ACTION VALID and the Action Gate
+✓ every transaction is followed by Observation and POST_ACTION verification
+✓ REQUEST_APPROVAL success is treated as intermediate, not goal completion
+✓ rejected approval returns to Planner
+✓ pending approval persists a checkpoint and pauses
+✓ escalation is not substituted for approval, or approval for escalation
+✓ Final Response and Memory Updater follow only a verified DONE
+✓ no graph edge executes beyond the hard loop limits
+```
+
+The evaluator records the exact edge trace; reaching the correct final label by
+an unsafe shortcut is a failure.
+
+# 5. Deterministic Final-State Evaluator
 
 Evaluate the final world state against real/simulated rules.
 
 Checks:
 
 ```text
-✓ correct graduation requirement addressed
-✓ curriculum/category requirement satisfied
-✓ prerequisite valid or approved exception exists
-✓ course is actually offered
-✓ timetable constraints satisfied
-✓ availability/transaction state valid
-✓ required approval obtained
-✓ policy/action path valid
-✓ final transaction state consistent
+✓ target requirement is source-backed or explicitly simulated
+✓ selected integrated curriculum and graduation path are respected
+✓ prerequisite is PASS, covered by the exact exception route, or safely UNKNOWN
+✓ course/index uses a real template and valid simulated operational state
+✓ timetable and workload constraints are satisfied
+✓ state version and transaction result are coherent
+✓ required human decision is observable before action
+✓ policy is applied only to its published context or visibly simulated
+✓ escalation is accepted when the oracle says no verified path exists
+✓ action-specific postconditions or durable receipts prove the goal effect
+✓ transaction success alone is never interpreted as completion
+✓ final world state matches the scenario-bounded oracle
 ```
 
 Result:
@@ -100,7 +152,12 @@ Result:
 }
 ```
 
-# 5. Component Metrics
+# 6. Component Metrics
+
+## Memory Retriever
+
+Measure relevant experience retrieval, empty-store behavior, current-tool
+revalidation, and memory-override violations.
 
 ## Planner
 
@@ -126,13 +183,24 @@ Measure:
 - tool-call success rate;
 - invalid/unnecessary calls.
 
-## Verifier
+## Pre-Action Verifier
 
 Measure:
 
 - invalid-plan detection;
 - false acceptance;
-- false rejection.
+- false rejection; and
+- correct `VALID` / `REPLAN` / `CLARIFY` / `ESCALATE` routing.
+
+## Clarification
+
+Measure question necessity, small-versus-material classification, and correct
+resume node.
+
+## Action Gate and Observation
+
+Measure write gating, state-version/idempotency enforcement, transaction-result
+normalization, and presence of an observation before further reasoning.
 
 ## Human Approval
 
@@ -140,9 +208,31 @@ Measure:
 
 - approval requested when required;
 - no prohibited write action before approval;
-- correct handling of rejection/pending states.
+- rejection-to-planner behavior; and
+- pending checkpoint/pause/resume integrity.
 
-# 6. End-to-End Metrics
+## Human / Admin Review
+
+Measure correct escalation when no legitimate autonomous route exists and
+confusion between escalation and approval.
+
+## Post-Action Verifier
+
+Measure completion-predicate accuracy, false completion after API success,
+correct replan after failure/partial success, and final-state fidelity.
+
+## Memory Updater
+
+Measure verified-DONE gating, deidentification, strategy usefulness, and
+violations that store PII, evaluator data, temporary state, or current academic
+and policy facts as memory truth.
+
+## Loop Safety
+
+Measure termination at each cap and whether cap exhaustion produces a safe,
+auditable escalation.
+
+# 7. End-to-End Metrics
 
 | Metric | Definition |
 |---|---|
@@ -152,6 +242,14 @@ Measure:
 | Recovery Success Rate | Failure-injected runs that recover to a valid outcome |
 | Correct Escalation Rate | No-path cases correctly escalated |
 | Approval Compliance Rate | Approval requirements correctly respected |
+| Approval-Rejection Replan Rate | Rejected approvals that return to planning before any terminal decision |
+| Approval/Escalation Confusion Rate | Runs substituting approval for admin review or vice versa |
+| Clarification Routing Accuracy | Small changes sent to verifier and material changes to planner |
+| Post-Action False Completion Rate | Runs declaring completion without satisfying the goal predicate |
+| Checkpoint Resume Integrity | Pending approvals that resume with consistent state |
+| Memory Override Violation Rate | Runs where advisory memory overrides current grounded tools |
+| Memory Write-Gate Violation Rate | Memory writes made without verified `DONE` |
+| Memory Privacy/Truth Violation Rate | Writes containing prohibited PII, evaluator data, or authoritative current facts |
 | Tool-Call Success Rate | Valid usable tool calls / total tool calls |
 | Schema Validation Pass Rate | Structured outputs validating on first attempt |
 | Loop Cap Hit Rate | Runs reaching hard iteration limits |
@@ -160,37 +258,53 @@ Measure:
 | Latency per Run | End-to-end execution time |
 | Token Cost per Run | Total model usage/cost |
 
-# 7. Scenario-Specific Success Criteria
+# 8. Scenario-Specific Success Criteria
 
 ## S1 — Normal Recovery
 
-Success: finds a valid alternative without unnecessary escalation.
+Success: finds another valid index for the same required course without
+inventing a course substitution or escalating unnecessarily.
 
 ## S2 — Exception / Waiver
 
-Success: uses the correct policy path, requests approval when required, and does not act before approval.
+Success: uses the narrow pending-exchange route when its evidence matches, does
+not act before the simulated decision is observable, and escalates a generic
+waiver request whose policy remains unknown. Rejection must return to planning;
+pending must checkpoint and pause; approval success must not itself count as
+the completed student goal.
 
 ## S3 — Multi-Source
 
-Success: uses all required rule sources and produces one consistent valid conclusion.
+Success: selects sources by cohort and effective period, preserves conflicts,
+and never averages or merges incompatible rule versions.
 
 ## S4 — Scheduling
 
-Success: final plan contains no timetable/workload conflicts.
+Success: the final plan uses source-backed index templates and contains no
+simulated timetable, workload, prerequisite, eligibility, or availability
+conflict.
 
 ## S5 — Cross-Programme
 
-Success: final plan satisfies both relevant rule sets.
+Success: the final plan satisfies the selected integrated programme/pathway
+configuration and graduation path without blindly combining independent rule
+sets.
 
 ## S6 — No Valid Path
 
-Success: does not hallucinate a solution and escalates with correct blockers.
+Success: proves that no valid path exists in the declared scenario scope,
+discloses what remains unknown, and escalates without claiming that no route
+exists anywhere at NTU. Missing obtainable information uses clarification;
+absence of a legitimate autonomous route uses human/admin review, not approval.
 
 ## S7 — Dynamic Failure
 
-Success: detects the invalidated plan, updates state, replans, and reaches another valid outcome when one exists.
+Success: detects the invalidated state version, replans, and either reaches a
+different proven path or escalates correctly when none remains. The trace must
+show failed transaction → observation → post-action verifier → planner → fresh
+pre-action verification before retry.
 
-# 8. Robustness Analysis
+# 9. Robustness Analysis
 
 Compare:
 
@@ -212,7 +326,7 @@ Track:
 - additional token cost;
 - recovery success.
 
-# 9. Consistency Across Repeated Runs
+# 10. Consistency Across Repeated Runs
 
 For each of the 105 evaluation scenarios, calculate:
 
@@ -231,7 +345,31 @@ Report:
 
 A high average score with poor repeatability should not be considered robust.
 
-# 10. Optional LLM-Based Quality Evaluation
+# 11. Memory and Checkpoint Evaluation Protocol
+
+Each of the 315 measured runs starts from the same frozen long-term-memory and
+checkpoint snapshot. The seed memory contains only deidentified patterns
+derived from development scenarios. Writes produced by one held-out run are
+captured for evaluation but cannot influence a later case or repetition.
+
+Test three memory conditions:
+
+```text
+empty memory
+relevant development-derived advice
+stale or misleading advice that conflicts with a current tool
+```
+
+Correctness must be unchanged across the first two conditions, while the third
+must demonstrate current-tool precedence. Memory content is scanned for
+student PII, current-rule assertions, evaluator IDs, future events, scripts,
+ground-truth paths, and expected outcomes.
+
+Pending-approval checkpoint tests use isolated threads. Resume must preserve
+the case, plan, approval version, observations, and counters without replaying
+an already committed write.
+
+# 12. Optional LLM-Based Quality Evaluation
 
 An independent LLM judge may assess only qualitative dimensions:
 
@@ -242,7 +380,7 @@ An independent LLM judge may assess only qualitative dimensions:
 
 It must not override deterministic rule-engine correctness.
 
-# 11. Baseline Comparison
+# 13. Baseline Comparison
 
 If time allows, compare the full agent against:
 
@@ -258,7 +396,7 @@ Compare:
 - escalation quality;
 - cost.
 
-# 12. Evaluation Outputs
+# 14. Evaluation Outputs
 
 Produce:
 
@@ -281,8 +419,46 @@ violations
 tool calls
 graph steps
 replans
+tool retries and total steps
+memory hits and candidate IDs
+memory writes and rejection reasons
+verifier phase and decision
+clarification impact and resume node
+observations and completion predicates
+approval transitions
+admin escalation
+checkpoint / pause / resume events
 human approvals
 latency
 token usage
 cost
 ```
+
+# 15. Stage 3 to Runtime Migration Deliverables
+
+The Stage 3 academic and scenario corpus remains the grounded basis. Stage 4
+now provides:
+
+- separate approval and human/admin-review expectations rather than overloading
+  `ground_truth.requires_human`;
+- an explicit intermediate observation or runtime classification for an
+  approval grant, so `REQUEST_APPROVAL → SUCCESS` cannot imply goal completion;
+- durable action-specific postconditions, transaction receipts, or goal queries
+  for successful registration/waiver/exception actions;
+- clarification fixtures labelled small or material with an expected resume
+  node;
+- pending-approval checkpoint and pause/resume expectations;
+- required rejection → Planner traces before any later escalation;
+- explicit loop budgets and expected retry/replan counts; and
+- a control-flow oracle containing both verifier phases and the memory-update
+  gate.
+
+The Stage 4 runtime fixtures also make the approval basis explicit: a conflict-free
+alternative should require approval only when a declared simulated exception
+rule—not the absence of a timetable conflict—still requires it.
+
+Stage 5 materializes the actual graph traces, clarification response cycle,
+pending-approval checkpoint/resume behavior, rejection-to-replan route, and
+hard-cap termination runs. The resulting architecture-conformance evidence is
+recorded in
+[`stage_5_langgraph_control_plane.md`](stage_5_langgraph_control_plane.md).
