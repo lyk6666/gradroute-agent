@@ -357,6 +357,7 @@ class Stage5Nodes:
         plan_dump = plan.model_dump(mode="json")
         return {
             "loop_counters": advanced.model_dump(mode="json"),
+            "reasoning_audit": self._reasoning_audit(state),
             "plan": plan_dump,
             "plan_history": [*state.get("plan_history", []), plan_dump],
             "specialist_selection": selection.model_dump(mode="json"),
@@ -809,6 +810,7 @@ class Stage5Nodes:
             }[assessment.decision]
             update: dict[str, Any] = {
                 "loop_counters": advanced.model_dump(mode="json"),
+                "reasoning_audit": self._reasoning_audit(state),
                 "verifier_decision": decision.model_dump(mode="json"),
                 "verification_history": [
                     *state.get("verification_history", []),
@@ -1249,6 +1251,43 @@ class Stage5Nodes:
             }
         )
         return update
+
+    def _reasoning_audit(self, state: WorkflowState) -> list[dict[str, Any]]:
+        """Copy only the bounded typed audit surface exposed by Stage 6."""
+
+        raw = getattr(self._decisions, "audit_log", None)
+        if raw is None:
+            return list(state.get("reasoning_audit", []))
+        items = raw if isinstance(raw, tuple) else tuple(raw)
+        normalized: list[dict[str, Any]] = []
+        for item in items:
+            payload = (
+                item.model_dump(mode="json")
+                if hasattr(item, "model_dump")
+                else item
+            )
+            if not isinstance(payload, dict):
+                raise ValueError("reasoning audit items must be typed objects")
+            normalized.append(
+                {
+                    "sequence": int(payload["sequence"]),
+                    "task": str(payload["task"]),
+                    "status": str(payload["status"]),
+                    "model_id": (
+                        str(payload["model_id"])
+                        if payload.get("model_id") is not None
+                        else None
+                    ),
+                    "applied": bool(payload["applied"]),
+                    "safety_rule": str(payload["safety_rule"]),
+                    "usage": (
+                        dict(payload["usage"])
+                        if isinstance(payload.get("usage"), dict)
+                        else None
+                    ),
+                }
+            )
+        return normalized
 
     def pause_checkpoint(self, state: WorkflowState) -> dict[str, Any]:
         pause = ApprovalPause.model_validate(state["approval_pause"])

@@ -4,9 +4,8 @@
 
 This is the frozen high-level architecture for the current prototype. Stage 5
 implements it as a controlled, checkpointed LangGraph workflow over the Stage
-4 deterministic tool boundary. Stage 6 will use the existing typed decision
-seam and add typed ports where further grounded LLM reasoning is introduced,
-without weakening these routes or gates.
+4 deterministic tool boundary. Stage 6 uses the existing typed decision seam
+for grounded Bedrock reasoning without weakening these routes or gates.
 
 ```text
 UNDERSTAND
@@ -485,7 +484,7 @@ The frozen architecture is implemented incrementally:
 ```text
 Stage 4  deterministic tools + isolated transaction runtime (complete)
 Stage 5  typed LangGraph state, nodes, edges, checkpointing, and memory ports (complete)
-Stage 6  grounded LLM reasoning + advisory experience-memory retrieval/update
+Stage 6  grounded LLM reasoning + ranked advisory-memory retrieval (complete)
 Stage 7  scenario runner, deterministic evaluation, and robustness hardening
 Stage 8  user-facing demo integration and delivery hardening
 ```
@@ -496,7 +495,7 @@ contracts before Stage 6 adds probabilistic reasoning. UI work remains outside
 this architecture update and is not required before the runtime and evaluation
 gates pass.
 
-## 14. Implemented migration and Stage 6 handoff
+## 14. Implemented Stage 6 boundary and Stage 7 handoff
 
 Stage 5 implements the architecture without changing the grounded Stage 3
 academic corpus. It adds:
@@ -561,11 +560,16 @@ those threads, but it cannot manufacture an approved or rejected decision from
 a resume payload. A real approval source or later evaluator fixture must update
 the authoritative state first.
 
-Stage 6 now owns grounded LLM reasoning and richer advisory retrieval. It can
-replace the existing specialist-selection/pre-action decision provider, but
-must add typed ports before applying LLM reasoning elsewhere. Stage 7 owns the 315-run trace,
+Stage 6 now implements grounded Bedrock reasoning for the existing
+specialist-selection/pre-action decision provider plus deterministic
+exact-and-related advisory retrieval. Forced structured output, allowlisted
+prompt projections, deterministic safety dominance, and bounded checkpoint
+audit prevent the model from broadening an unsafe route. The offline suite and
+the opt-in two-request Bedrock integration gate pass. Stage 7 owns the 315-run trace,
 robustness, and regression campaign. Neither stage may bypass current tools,
 approval/version gates, loop caps, checkpoint identity, or verified-only memory
 writes. See
 [`stage_5_langgraph_control_plane.md`](stage_5_langgraph_control_plane.md) for
-the implementation record and completion gate.
+the control-plane record and
+[`stage_6_grounded_llm_reasoning.md`](stage_6_grounded_llm_reasoning.md) for the
+reasoning boundary and live gate.

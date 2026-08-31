@@ -29,6 +29,11 @@ from graduation_exception_agent.runtime.factory import (
     Stage4Tools,
 )
 from graduation_exception_agent.orchestration import Stage5ControlPlane
+from graduation_exception_agent.reasoning import (
+    BedrockConverseClient,
+    GroundedBedrockDecisionProvider,
+    decision_provider_from_settings,
+)
 
 __all__ = [
     "AppSettings",
@@ -57,6 +62,9 @@ __all__ = [
     "ToolResponse",
     "Stage4Tools",
     "Stage5ControlPlane",
+    "BedrockConverseClient",
+    "GroundedBedrockDecisionProvider",
+    "decision_provider_from_settings",
     "load_settings",
 ]
 

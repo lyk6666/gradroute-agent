@@ -4,6 +4,7 @@ from graduation_exception_agent.memory.in_memory import (
     InMemoryExperienceMemory,
     NullExperienceMemory,
 )
+from graduation_exception_agent.memory.ranked import RankedInMemoryExperienceMemory
 from graduation_exception_agent.memory.ports import (
     MAX_MEMORY_RESULTS,
     MAX_MEMORY_STEPS,
@@ -34,4 +35,5 @@ __all__ = [
     "MemoryWriteResult",
     "MemoryWriteStatus",
     "NullExperienceMemory",
+    "RankedInMemoryExperienceMemory",
 ]

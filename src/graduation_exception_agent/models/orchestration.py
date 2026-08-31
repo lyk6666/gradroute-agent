@@ -627,6 +627,7 @@ class WorkflowState(TypedDict, total=False):
     scenario_context: JsonObject
     intake_error: JsonObject
     advisory_memories: list[JsonObject]
+    reasoning_audit: list[JsonObject]
     plan: JsonObject
     plan_history: list[JsonObject]
     specialist_selection: JsonObject

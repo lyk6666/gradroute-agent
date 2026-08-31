@@ -361,6 +361,7 @@ class Stage5ControlPlane:
             "intake_context": validated.model_dump(mode="json"),
             "scenario_context": self.tools.context.model_dump(mode="json"),
             "advisory_memories": [],
+            "reasoning_audit": [],
             "plan_history": [],
             "specialist_evidence": [],
             "verification_history": [],
