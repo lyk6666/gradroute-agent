@@ -162,7 +162,10 @@ across intake, graph, inspector, timeline, and response surfaces. The node-detai
 and human-interaction surfaces were then consolidated into one embedded canvas
 inspector that pans and zooms with the architecture. Graph branches use
 separated connection ports and offset return lanes so conditional, approval,
-clarification, and replanning edges do not share the same visible track.
+clarification, and replanning edges do not share the same visible track. The
+scenario preview grid now constrains provenance badges to their intrinsic size
+and preserves content-sized rows, while the timeline row is intentionally
+shorter to return vertical space to the execution canvas.
 
 ## 7. Acceptance record
 
