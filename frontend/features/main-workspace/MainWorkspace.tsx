@@ -28,6 +28,7 @@ export function MainWorkspace() {
 
   return (
     <AppShell activeSection="main" workspace>
+      <h1 className="sr-only">Graduation exception case execution workspace</h1>
       <div className="main-dashboard-grid" aria-label="Case execution workspace">
         <InputPanel
           intakeMode={intakeMode}

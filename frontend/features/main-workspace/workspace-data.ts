@@ -342,7 +342,7 @@ function edge(
     animated: kind === 'active',
     labelBgPadding: [4, 2],
     labelBgBorderRadius: 4,
-    labelStyle: { fontSize: 8, fontWeight: 700, fill: '#475569' },
+    labelStyle: { fontSize: 10, fontWeight: 700, fill: '#475569' },
     labelBgStyle: { fill: '#ffffff', fillOpacity: 0.92 },
   };
 }

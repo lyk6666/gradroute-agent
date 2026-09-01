@@ -4,12 +4,7 @@ import type { ScenarioPreview } from './workspace-data';
 
 export function FinalResponsePanel({ scenario }: { scenario: ScenarioPreview }) {
   return (
-    <section className="workspace-panel response-panel">
-      <header className="workspace-panel-header compact response-header">
-        <div><span className="panel-kicker">Verified outcome</span><h2>Final response</h2></div>
-        <span className="response-preview-status"><Clock3 aria-hidden="true" size={11} /> Pending</span>
-      </header>
-
+    <section aria-label="Final response" className="workspace-panel response-panel">
       <div className="response-content">
         <div className="response-checks" aria-label="Resolution checks">
           <span className="is-complete"><CheckCircle2 size={13} />Academic path</span>

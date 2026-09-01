@@ -155,7 +155,10 @@ does not claim that a case has executed. Manual cases, run controls,
 clarification, approval decisions, checkpoint resume, transactions, and final
 response export remain disabled until UI-3 connects the stable backend facade
 and event stream. The Main surface shows processed summaries only and continues
-to hide evaluator-only ground truth.
+to hide evaluator-only ground truth. A subsequent UI-2 density refinement
+removed the five decorative panel title/subtitle bands, retained only compact
+operational context such as the graph legend, and enlarged content typography
+across intake, graph, inspector, timeline, and response surfaces.
 
 ## 7. Acceptance record
 
@@ -175,6 +178,7 @@ to hide evaluator-only ground truth.
 - [x] Selected-node tool highlighting and processed memory summaries
 - [x] Horizontal human-readable timeline and pending final-response preview
 - [x] Responsive desktop, tablet and mobile composition
+- [x] Header-free content panels with larger working typography
 - [ ] Runtime/API integration — UI-3
 - [ ] Complete data explorer — UI-4
 - [ ] Complete evaluation explorer — UI-5

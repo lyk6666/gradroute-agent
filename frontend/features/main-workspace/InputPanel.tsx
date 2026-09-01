@@ -6,7 +6,6 @@ import {
   FilePlus2,
   FlaskConical,
   ListChecks,
-  PanelLeft,
   UserRoundPlus,
 } from 'lucide-react';
 import { ProvenanceBadge } from '@/components/common/ProvenanceBadge';
@@ -184,12 +183,7 @@ function ScenarioForm({
 
 export function InputPanel(props: InputPanelProps) {
   return (
-    <aside className="workspace-panel intake-panel">
-      <header className="workspace-panel-header">
-        <div><span className="panel-kicker">Case setup</span><h1>{props.intakeMode === 'manual' ? 'Create a new case' : 'Scenario runner'}</h1></div>
-        <PanelLeft aria-hidden="true" size={18} />
-      </header>
-
+    <aside aria-label="Case input" className="workspace-panel intake-panel">
       <div className="mode-tabs" aria-label="Input mode">
         <button className={props.intakeMode === 'scenario' ? 'is-active' : ''} onClick={() => props.onIntakeModeChange('scenario')} type="button">
           <FlaskConical size={13} /> Scenario

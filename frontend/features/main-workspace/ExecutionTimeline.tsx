@@ -15,11 +15,7 @@ function TimelineStatus({ status }: { status: NodeStatus }) {
 
 export function ExecutionTimeline({ onSelectNode, selectedNodeId }: ExecutionTimelineProps) {
   return (
-    <section className="workspace-panel timeline-panel">
-      <header className="workspace-panel-header compact timeline-header">
-        <div><span className="panel-kicker">Human-readable trace</span><h2>Execution timeline</h2></div>
-        <span className="timeline-live"><i /> Static run preview</span>
-      </header>
+    <section aria-label="Execution timeline" className="workspace-panel timeline-panel">
       <div className="timeline-scroll" aria-label="Execution events">
         {TIMELINE_EVENTS.map((event) => {
           const node = NODE_SUMMARIES[event.nodeId];

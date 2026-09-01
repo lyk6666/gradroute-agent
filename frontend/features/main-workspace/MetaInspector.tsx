@@ -63,12 +63,7 @@ export function MetaInspector({ selectedNodeId }: MetaInspectorProps) {
   const selectedTools = new Set(selected.tools);
 
   return (
-    <aside className="workspace-panel meta-panel">
-      <header className="workspace-panel-header meta-panel-header">
-        <div><span className="panel-kicker">Processed summaries</span><h2>Tools & memory</h2></div>
-        <span className="selected-node-pill">{selected.label}</span>
-      </header>
-
+    <aside aria-label="Tools and memory inspector" className="workspace-panel meta-panel">
       <div className="meta-scroll-content">
         <section className="selected-node-callout">
           <Info aria-hidden="true" size={14} />

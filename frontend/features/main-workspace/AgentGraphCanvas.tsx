@@ -150,17 +150,16 @@ export function AgentGraphCanvas({ onSelectNode, selectedNodeId }: AgentGraphCan
   const nodes = INITIAL_GRAPH_NODES.map((node) => ({ ...node, selected: node.id === selectedNodeId }));
 
   return (
-    <section className="workspace-panel graph-panel">
-      <header className="workspace-panel-header graph-panel-header">
-        <div><span className="panel-kicker">Plan → Act → Observe → Verify → Replan</span><h2>Agent execution graph</h2></div>
-        <div className="graph-legend" aria-label="Graph status legend">
+    <section aria-label="Agent execution graph" className="workspace-panel graph-panel">
+      <div className="graph-toolbar" aria-label="Graph status legend" role="group">
+        <div className="graph-legend">
           <span><i className="legend-running" />Current</span>
           <span><i className="legend-selected" />Selected</span>
           <span><i className="legend-completed" />Completed</span>
           <span><i className="legend-idle" />Not visited</span>
           <b>Static preview</b>
         </div>
-      </header>
+      </div>
 
       <div className="agent-canvas-shell">
         <ReactFlow
