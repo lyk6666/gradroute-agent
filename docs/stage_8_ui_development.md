@@ -95,6 +95,8 @@ memory writes.
 - represented clarification, bounded replanning, approval rejection, pending
   approval checkpoint/resume, no-safe-route escalation, transaction-domain
   handoff, observation, verified completion, and verified-only memory update;
+- assigned every branch and return path an explicit orthogonal route, dedicated
+  corridor and independently positioned label so edges remain visually distinct;
 - added selectable node cards with purpose, status, processed input/output/state
   summaries and related-tool summaries;
 - added an in-canvas human interaction area for clarification, simulated
@@ -181,6 +183,16 @@ scenario preview grid now constrains provenance badges to their intrinsic size
 and preserves content-sized rows, while the timeline row is intentionally
 shorter to return vertical space to the execution canvas.
 
+The final graph-legibility pass replaced automatic edge placement with rounded
+orthogonal routes, reserved three independent right-side replan/rejection lanes
+and two left-side recovery lanes, and moved the approval wait/resume loop below
+its approval node. Edge labels use opaque semantic pills and explicit positions
+rather than path midpoints. Desktop checks at 1920×1080 and 1440×900 found no
+label-to-label or label-to-node collisions, no unrelated edge-to-node crossings,
+no independent edge intersections and no clipped route labels. At compact
+desktop widths the processed inspector moves below the graph so the architecture
+retains a readable canvas width.
+
 ### 1 September 2026 — UI-3
 
 The Main workspace now runs the real checkpointed control plane through a
@@ -215,6 +227,7 @@ produces its terminal outcome.
 - [x] Responsive desktop, tablet and mobile composition
 - [x] Header-free content panels with larger working typography
 - [x] Embedded pannable canvas inspector and separated edge-routing lanes
+- [x] Collision-audited orthogonal routes and explicit edge-label placement
 - [x] Runtime/API integration — UI-3
 - [ ] Complete data explorer — UI-4
 - [ ] Complete evaluation explorer — UI-5

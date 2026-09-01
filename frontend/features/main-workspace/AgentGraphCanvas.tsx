@@ -1,12 +1,15 @@
 import { useState, type MouseEvent as ReactMouseEvent } from 'react';
 import {
+  BaseEdge,
   Background,
   BackgroundVariant,
   Controls,
+  EdgeLabelRenderer,
   Handle,
   MarkerType,
   Position,
   ReactFlow,
+  type EdgeProps,
   type Node,
   type NodeProps,
 } from '@xyflow/react';
@@ -29,6 +32,7 @@ import {
   INITIAL_GRAPH_NODES,
   NODE_SUMMARIES,
   type AgentNodeData,
+  type GraphEdgeData,
   type NodeStatus,
   type NodeSummary,
 } from './workspace-data';
@@ -100,6 +104,72 @@ function AgentFlowNode({ data }: NodeProps<Node<AgentNodeData>>) {
       <Handle id="bottom-left" position={Position.Bottom} style={{ left: '28%' }} type="target" />
       <Handle id="bottom-right" position={Position.Bottom} style={{ left: '72%' }} type="target" />
     </div>
+  );
+}
+
+function roundedOrthogonalPath(points: Array<{ x: number; y: number }>): string {
+  const compact = points.filter((point, index) => {
+    const previous = points[index - 1];
+    return !previous || previous.x !== point.x || previous.y !== point.y;
+  });
+  if (compact.length < 2) return '';
+  let path = `M ${compact[0].x} ${compact[0].y}`;
+  for (let index = 1; index < compact.length - 1; index += 1) {
+    const previous = compact[index - 1];
+    const current = compact[index];
+    const next = compact[index + 1];
+    const incoming = Math.hypot(current.x - previous.x, current.y - previous.y);
+    const outgoing = Math.hypot(next.x - current.x, next.y - current.y);
+    const radius = Math.min(9, incoming / 2, outgoing / 2);
+    const before = {
+      x: current.x - ((current.x - previous.x) / incoming) * radius,
+      y: current.y - ((current.y - previous.y) / incoming) * radius,
+    };
+    const after = {
+      x: current.x + ((next.x - current.x) / outgoing) * radius,
+      y: current.y + ((next.y - current.y) / outgoing) * radius,
+    };
+    path += ` L ${before.x} ${before.y} Q ${current.x} ${current.y} ${after.x} ${after.y}`;
+  }
+  const last = compact.at(-1)!;
+  path += ` L ${last.x} ${last.y}`;
+  return path;
+}
+
+function RoutedFlowEdge({
+  data,
+  id,
+  label,
+  markerEnd,
+  sourceX,
+  sourceY,
+  style,
+  targetX,
+  targetY,
+}: EdgeProps) {
+  const route = (data ?? { kind: 'conditional', waypoints: [] }) as GraphEdgeData;
+  const points = [{ x: sourceX, y: sourceY }, ...route.waypoints, { x: targetX, y: targetY }];
+  const path = roundedOrthogonalPath(points);
+  const labelPosition = route.labelPosition ?? {
+    x: (sourceX + targetX) / 2,
+    y: (sourceY + targetY) / 2,
+  };
+
+  return (
+    <>
+      <BaseEdge id={id} markerEnd={markerEnd} path={path} style={style} />
+      {label ? (
+        <EdgeLabelRenderer>
+          <div
+            aria-hidden="true"
+            className={`flow-edge-label label-${route.kind}`}
+            style={{ transform: `translate(-50%, -50%) translate(${labelPosition.x}px, ${labelPosition.y}px)` }}
+          >
+            {String(label)}
+          </div>
+        </EdgeLabelRenderer>
+      ) : null}
+    </>
   );
 }
 
@@ -221,6 +291,10 @@ const nodeTypes = {
   inspectorNode: CanvasInspectorNode,
 };
 
+const edgeTypes = {
+  routedEdge: RoutedFlowEdge,
+};
+
 export function AgentGraphCanvas({
   onApprovalRecheck,
   onClarificationSubmit,
@@ -234,7 +308,7 @@ export function AgentGraphCanvas({
   const inspectorNode: Node<CanvasInspectorNodeData> = {
     id: 'canvas_inspector',
     type: 'inspectorNode',
-    position: { x: 0, y: 115 },
+    position: { x: 0, y: 130 },
     data: {
       selectedNode,
       selectedNodeId,
@@ -282,10 +356,11 @@ export function AgentGraphCanvas({
         <ReactFlow
           defaultEdgeOptions={{ markerEnd: { type: MarkerType.ArrowClosed, width: 12, height: 12 } }}
           edges={edges}
+          edgeTypes={edgeTypes}
           edgesFocusable
           elementsSelectable
           fitView
-          fitViewOptions={{ padding: 0.06, maxZoom: 0.86 }}
+          fitViewOptions={{ padding: 0.075, maxZoom: 0.9 }}
           maxZoom={1.45}
           minZoom={0.34}
           nodeTypes={nodeTypes}

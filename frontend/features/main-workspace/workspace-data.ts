@@ -303,12 +303,12 @@ const summaries: NodeSummary[] = [
 export const NODE_SUMMARIES = Object.fromEntries(summaries.map((item) => [item.id, item]));
 
 const nodePositions: Record<string, { x: number; y: number }> = {
-  student_case: { x: 0, y: 0 }, intake_context: { x: 220, y: 0 }, memory_retriever: { x: 450, y: 0 }, planner: { x: 680, y: 0 },
-  supervisor_router: { x: 680, y: 95 }, degree_audit_agent: { x: 390, y: 190 }, policy_agent: { x: 680, y: 190 }, course_agent: { x: 970, y: 190 },
-  resolution_builder: { x: 680, y: 285 }, clarification: { x: 970, y: 285 }, pre_action_verifier: { x: 680, y: 380 },
-  human_admin_review: { x: 390, y: 475 }, action_gate: { x: 680, y: 475 }, human_approval: { x: 970, y: 475 }, pause_checkpoint: { x: 1165, y: 565 },
-  observation: { x: 390, y: 580 }, transaction: { x: 680, y: 580 }, post_action_verifier: { x: 390, y: 685 },
-  final_response: { x: 680, y: 685 }, memory_updater: { x: 970, y: 685 },
+  student_case: { x: 0, y: 0 }, intake_context: { x: 240, y: 0 }, memory_retriever: { x: 480, y: 0 }, planner: { x: 720, y: 0 },
+  supervisor_router: { x: 720, y: 110 }, degree_audit_agent: { x: 400, y: 230 }, policy_agent: { x: 720, y: 230 }, course_agent: { x: 1040, y: 230 },
+  resolution_builder: { x: 720, y: 360 }, clarification: { x: 1040, y: 360 }, pre_action_verifier: { x: 720, y: 490 },
+  human_admin_review: { x: 400, y: 630 }, action_gate: { x: 720, y: 630 }, human_approval: { x: 1040, y: 630 }, pause_checkpoint: { x: 1040, y: 770 },
+  observation: { x: 400, y: 770 }, transaction: { x: 720, y: 770 }, post_action_verifier: { x: 400, y: 910 },
+  final_response: { x: 720, y: 910 }, memory_updater: { x: 1040, y: 910 },
 };
 
 export const INITIAL_GRAPH_NODES: Node<AgentNodeData>[] = summaries.map((summary) => ({
@@ -321,7 +321,13 @@ export const INITIAL_GRAPH_NODES: Node<AgentNodeData>[] = summaries.map((summary
 }));
 
 type EdgeKind = 'completed' | 'active' | 'conditional' | 'replan' | 'success' | 'danger' | 'waiting';
-type RoutedEdge = Edge & { pathOptions: { borderRadius: number; offset: number } };
+type RoutePoint = { x: number; y: number };
+export type GraphEdgeData = Record<string, unknown> & {
+  kind: EdgeKind;
+  labelPosition?: RoutePoint;
+  waypoints: RoutePoint[];
+};
+type RoutedEdge = Edge<GraphEdgeData>;
 
 function edge(
   id: string,
@@ -330,7 +336,8 @@ function edge(
   label?: string,
   kind: EdgeKind = 'conditional',
   handles: [string, string] = ['bottom', 'top'],
-  offset = 18,
+  waypoints: RoutePoint[] = [],
+  labelPosition?: RoutePoint,
 ): RoutedEdge {
   return {
     id,
@@ -339,8 +346,8 @@ function edge(
     label,
     sourceHandle: handles[0],
     targetHandle: handles[1],
-    type: 'smoothstep',
-    pathOptions: { borderRadius: 8, offset },
+    type: 'routedEdge',
+    data: { kind, labelPosition, waypoints },
     className: `flow-edge edge-${kind}`,
     animated: kind === 'active',
     labelBgPadding: [4, 2],
@@ -350,42 +357,42 @@ function edge(
   };
 }
 
-export const GRAPH_EDGES: Edge[] = [
+export const GRAPH_EDGES: RoutedEdge[] = [
   edge('e-student-intake', 'student_case', 'intake_context', undefined, 'completed', ['right', 'left']),
   edge('e-intake-memory', 'intake_context', 'memory_retriever', undefined, 'completed', ['right', 'left']),
   edge('e-memory-planner', 'memory_retriever', 'planner', undefined, 'completed', ['right', 'left']),
   edge('e-planner-router', 'planner', 'supervisor_router', undefined, 'completed'),
-  edge('e-planner-admin', 'planner', 'human_admin_review', 'No safe route', 'conditional', ['left-bottom', 'top-right'], 26),
-  edge('e-router-audit', 'supervisor_router', 'degree_audit_agent', 'Academic', 'conditional', ['bottom-left', 'top']),
-  edge('e-router-policy', 'supervisor_router', 'policy_agent', 'Policy', 'completed'),
-  edge('e-router-course', 'supervisor_router', 'course_agent', 'Course', 'conditional', ['bottom-right', 'top']),
-  edge('e-audit-policy', 'degree_audit_agent', 'policy_agent', 'Next specialist', 'conditional', ['right-top', 'left-top'], 22),
-  edge('e-audit-course', 'degree_audit_agent', 'course_agent', 'Next specialist', 'conditional', ['top-right', 'top-left'], 34),
-  edge('e-policy-course', 'policy_agent', 'course_agent', 'Next specialist', 'conditional', ['right-bottom', 'left-bottom'], 22),
-  edge('e-audit-builder', 'degree_audit_agent', 'resolution_builder', undefined, 'conditional', ['bottom-right', 'top-left']),
+  edge('e-planner-admin', 'planner', 'human_admin_review', 'No safe route', 'conditional', ['left-bottom', 'top-left'], [{ x: 680, y: 39 }, { x: 680, y: 88 }, { x: 375, y: 88 }, { x: 375, y: 600 }, { x: 453, y: 600 }], { x: 386, y: 555 }),
+  edge('e-router-audit', 'supervisor_router', 'degree_audit_agent', 'Academic', 'conditional', ['bottom-left', 'top'], [{ x: 773, y: 188 }, { x: 494, y: 188 }], { x: 600, y: 178 }),
+  edge('e-router-policy', 'supervisor_router', 'policy_agent', 'Policy', 'completed', ['bottom', 'top'], [], { x: 835, y: 195 }),
+  edge('e-router-course', 'supervisor_router', 'course_agent', 'Course', 'conditional', ['bottom-right', 'top'], [{ x: 855, y: 208 }, { x: 1134, y: 208 }], { x: 1030, y: 198 }),
+  edge('e-audit-policy', 'degree_audit_agent', 'policy_agent', 'Next', 'conditional', ['right-top', 'left-top'], [], { x: 654, y: 235 }),
+  edge('e-audit-course', 'degree_audit_agent', 'course_agent', undefined, 'conditional', ['bottom-right', 'bottom-left'], [{ x: 535, y: 316 }, { x: 1093, y: 316 }]),
+  edge('e-policy-course', 'policy_agent', 'course_agent', 'Next', 'conditional', ['right-bottom', 'left-bottom'], [], { x: 974, y: 286 }),
+  edge('e-audit-builder', 'degree_audit_agent', 'resolution_builder', undefined, 'conditional', ['bottom-right', 'top-left'], [{ x: 535, y: 338 }, { x: 773, y: 338 }]),
   edge('e-policy-builder', 'policy_agent', 'resolution_builder', undefined, 'completed'),
-  edge('e-course-builder', 'course_agent', 'resolution_builder', undefined, 'conditional', ['bottom-left', 'top-right']),
+  edge('e-course-builder', 'course_agent', 'resolution_builder', undefined, 'conditional', ['bottom-left', 'top-right'], [{ x: 1093, y: 342 }, { x: 855, y: 342 }]),
   edge('e-builder-pre', 'resolution_builder', 'pre_action_verifier', undefined, 'active'),
-  edge('e-pre-action', 'pre_action_verifier', 'action_gate', 'Valid', 'conditional'),
-  edge('e-pre-planner', 'pre_action_verifier', 'planner', 'Replan', 'replan', ['right-top', 'right-bottom'], 36),
-  edge('e-pre-clarify', 'pre_action_verifier', 'clarification', 'Clarify', 'waiting', ['right', 'left-bottom'], 22),
-  edge('e-pre-admin', 'pre_action_verifier', 'human_admin_review', 'Escalate', 'danger', ['left-bottom', 'right-top'], 22),
-  edge('e-clarify-pre', 'clarification', 'pre_action_verifier', 'Small change', 'waiting', ['bottom-left', 'right-bottom'], 28),
-  edge('e-clarify-planner', 'clarification', 'planner', 'Material change', 'replan', ['right-top', 'right'], 52),
-  edge('e-gate-transaction', 'action_gate', 'transaction', 'No approval', 'conditional'),
-  edge('e-gate-approval', 'action_gate', 'human_approval', 'Approval required', 'waiting', ['right-top', 'top-left'], 24),
-  edge('e-gate-admin', 'action_gate', 'human_admin_review', 'Blocked', 'danger', ['left-top', 'right-bottom'], 24),
-  edge('e-approval-transaction', 'human_approval', 'transaction', 'Approved', 'success', ['bottom-left', 'right-top'], 24),
-  edge('e-approval-planner', 'human_approval', 'planner', 'Rejected', 'danger', ['right-top', 'right-top'], 68),
-  edge('e-approval-pause', 'human_approval', 'pause_checkpoint', 'Pending', 'waiting', ['right-bottom', 'left-top'], 24),
-  edge('e-pause-approval', 'pause_checkpoint', 'human_approval', 'Resume', 'waiting', ['top-left', 'right-bottom'], 34),
-  edge('e-transaction-observation', 'transaction', 'observation', undefined, 'conditional', ['left-bottom', 'right-bottom'], 24),
-  edge('e-transaction-admin', 'transaction', 'human_admin_review', 'Domain limit', 'danger', ['left-top', 'bottom-right'], 28),
+  edge('e-pre-action', 'pre_action_verifier', 'action_gate', 'Valid', 'conditional', ['bottom', 'top'], [], { x: 835, y: 586 }),
+  edge('e-pre-planner', 'pre_action_verifier', 'planner', 'Replan', 'replan', ['right-top', 'right-bottom'], [{ x: 1270, y: 505 }, { x: 1270, y: 104 }, { x: 908, y: 104 }], { x: 1260, y: 455 }),
+  edge('e-pre-clarify', 'pre_action_verifier', 'clarification', 'Clarify', 'waiting', ['right-top', 'left-bottom'], [{ x: 990, y: 505 }, { x: 990, y: 399 }], { x: 979, y: 456 }),
+  edge('e-pre-admin', 'pre_action_verifier', 'human_admin_review', 'Escalate', 'danger', ['left-bottom', 'top-right'], [{ x: 650, y: 529 }, { x: 650, y: 594 }, { x: 535, y: 594 }], { x: 620, y: 583 }),
+  edge('e-clarify-pre', 'clarification', 'pre_action_verifier', 'Small change', 'waiting', ['bottom-left', 'right-bottom'], [{ x: 1093, y: 570 }, { x: 950, y: 570 }, { x: 950, y: 529 }], { x: 1017, y: 559 }),
+  edge('e-clarify-planner', 'clarification', 'planner', 'Material change', 'replan', ['right-top', 'right'], [{ x: 1300, y: 375 }, { x: 1300, y: 90 }, { x: 908, y: 90 }], { x: 1235, y: 305 }),
+  edge('e-gate-transaction', 'action_gate', 'transaction', 'No approval', 'conditional', ['bottom', 'top'], [], { x: 851, y: 727 }),
+  edge('e-gate-approval', 'action_gate', 'human_approval', 'Approval', 'waiting', ['right-top', 'left-top'], [], { x: 974, y: 623 }),
+  edge('e-gate-admin', 'action_gate', 'human_admin_review', 'Blocked', 'danger', ['left-top', 'right-bottom'], [{ x: 680, y: 645 }, { x: 680, y: 669 }], { x: 641, y: 660 }),
+  edge('e-approval-transaction', 'human_approval', 'transaction', 'Approved', 'success', ['bottom-left', 'top-right'], [{ x: 1093, y: 735 }, { x: 855, y: 735 }], { x: 979, y: 725 }),
+  edge('e-approval-planner', 'human_approval', 'planner', 'Rejected', 'danger', ['right-top', 'right-top'], [{ x: 1330, y: 645 }, { x: 1330, y: 74 }, { x: 908, y: 74 }], { x: 1240, y: 584 }),
+  edge('e-approval-pause', 'human_approval', 'pause_checkpoint', 'Pending', 'waiting', ['bottom-right', 'top-right'], [], { x: 1192, y: 724 }),
+  edge('e-pause-approval', 'pause_checkpoint', 'human_approval', 'Resume', 'waiting', ['right-top', 'right-bottom'], [{ x: 1260, y: 785 }, { x: 1260, y: 669 }], { x: 1274, y: 724 }),
+  edge('e-transaction-observation', 'transaction', 'observation', undefined, 'conditional', ['left-bottom', 'right-bottom']),
+  edge('e-transaction-admin', 'transaction', 'human_admin_review', 'Domain limit', 'danger', ['left-top', 'bottom-right'], [{ x: 650, y: 785 }, { x: 650, y: 720 }, { x: 535, y: 720 }], { x: 615, y: 709 }),
   edge('e-observation-post', 'observation', 'post_action_verifier', undefined, 'conditional'),
-  edge('e-post-planner', 'post_action_verifier', 'planner', 'Continue / failure', 'replan', ['right-top', 'right-bottom'], 92),
-  edge('e-post-final', 'post_action_verifier', 'final_response', 'Done', 'success', ['right-bottom', 'left-top'], 22),
-  edge('e-post-memory', 'post_action_verifier', 'memory_updater', 'Verified DONE', 'success', ['bottom-right', 'bottom-left'], 34),
-  edge('e-admin-final', 'human_admin_review', 'final_response', 'Handoff', 'conditional', ['bottom-left', 'left-bottom'], 26),
+  edge('e-post-planner', 'post_action_verifier', 'planner', 'Continue / failure', 'replan', ['left-top', 'left'], [{ x: 345, y: 925 }, { x: 345, y: 96 }, { x: 680, y: 96 }, { x: 680, y: 27 }], { x: 357, y: 850 }),
+  edge('e-post-final', 'post_action_verifier', 'final_response', 'Done', 'success', ['right-top', 'left-top'], [], { x: 654, y: 908 }),
+  edge('e-post-memory', 'post_action_verifier', 'memory_updater', 'Verified DONE', 'success', ['bottom-right', 'bottom-left'], [{ x: 535, y: 995 }, { x: 1093, y: 995 }], { x: 814, y: 982 }),
+  edge('e-admin-final', 'human_admin_review', 'final_response', 'Handoff', 'conditional', ['right-bottom', 'left'], [{ x: 650, y: 669 }, { x: 650, y: 937 }], { x: 663, y: 858 }),
 ];
 
 export const TIMELINE_EVENTS = [

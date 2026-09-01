@@ -371,7 +371,7 @@ a:focus-visible {
 .graph-legend b { padding: 4px 7px; color: #92400e; border-radius: 999px; background: #fef3c7; font-size: 9px; }
 .agent-canvas-shell { position: relative; min-height: 0; flex: 1; background: #fbfdff; }
 .agent-canvas-shell > .react-flow { width: 100%; min-width: 0; height: 100%; min-height: 0; }
-.canvas-embedded-inspector { display: grid; width: 330px; height: 570px; grid-template-rows: minmax(0, 1.12fr) minmax(0, .88fr); overflow: hidden; border: 1px solid #cbd5e1; border-radius: 12px; background: rgb(248 250 252 / 97%); box-shadow: 0 9px 26px rgb(15 23 42 / 11%); }
+.canvas-embedded-inspector { display: grid; width: 330px; height: 700px; grid-template-rows: minmax(0, 1.12fr) minmax(0, .88fr); overflow: hidden; border: 1px solid #cbd5e1; border-radius: 12px; background: rgb(248 250 252 / 97%); box-shadow: 0 9px 26px rgb(15 23 42 / 11%); }
 .canvas-embedded-inspector .canvas-detail-card { border: 0; border-radius: 0; box-shadow: none; }
 .canvas-embedded-inspector .canvas-detail-card:first-child { border-bottom: 1px solid var(--border); }
 .react-flow__node-inspectorNode { cursor: default; }
@@ -424,14 +424,42 @@ a:focus-visible {
 .agent-flow-node .react-flow__handle[data-handleid*="-"] { opacity: 0; }
 .react-flow__controls { overflow: hidden; border: 1px solid var(--border); border-radius: 8px; box-shadow: var(--shadow-sm); }
 .react-flow__controls-button { width: 24px; height: 24px; border-bottom-color: var(--border); }
-.flow-edge { stroke-width: 1.5; }
+.flow-edge { stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.flow-edge.edge-completed,
 .flow-edge.edge-completed path { stroke: var(--success); }
-.flow-edge.edge-active path { stroke: var(--primary); stroke-width: 2; }
+.flow-edge.edge-active,
+.flow-edge.edge-active path { stroke: var(--primary); stroke-width: 2.25; }
+.flow-edge.edge-replan,
 .flow-edge.edge-replan path { stroke: var(--replan); stroke-dasharray: 5 3; }
+.flow-edge.edge-danger,
 .flow-edge.edge-danger path { stroke: var(--danger); }
+.flow-edge.edge-success,
 .flow-edge.edge-success path { stroke: var(--success); }
+.flow-edge.edge-waiting,
 .flow-edge.edge-waiting path { stroke: var(--warning); stroke-dasharray: 4 3; }
+.flow-edge.edge-conditional,
 .flow-edge.edge-conditional path { stroke: #94a3b8; }
+.flow-edge-label {
+  position: absolute;
+  z-index: 4;
+  max-width: 128px;
+  padding: 3px 7px;
+  color: #475569;
+  border: 1px solid #dbe3ee;
+  border-radius: 999px;
+  background: rgb(255 255 255 / 97%);
+  box-shadow: 0 2px 5px rgb(15 23 42 / 7%);
+  font-size: 10px;
+  font-weight: 750;
+  line-height: 1.15;
+  text-align: center;
+  white-space: nowrap;
+  pointer-events: none;
+}
+.flow-edge-label.label-replan { color: #6d28d9; border-color: #ddd6fe; background: #faf8ff; }
+.flow-edge-label.label-danger { color: #b91c1c; border-color: #fecaca; background: #fff8f8; }
+.flow-edge-label.label-waiting { color: #b45309; border-color: #fde68a; background: #fffdf5; }
+.flow-edge-label.label-success { color: #047857; border-color: #a7f3d0; background: #f5fffb; }
 @keyframes graph-spin { to { transform: rotate(360deg); } }
 
 /* UI-2 processed inspector */
@@ -513,7 +541,7 @@ a:focus-visible {
 .response-actions button.is-primary { color: white; border-color: var(--primary); background: var(--primary); }
 .response-actions button:disabled { cursor: not-allowed; opacity: .52; }
 
-@media (max-width: 1279px) {
+@media (max-width: 1535px) {
   .app-shell-workspace { height: auto; min-height: 100dvh; overflow: visible; }
   .page-content-workspace { overflow: visible; }
   .main-dashboard-grid {
