@@ -6,7 +6,9 @@ Current status: Stage 7 implements the frozen 315-run held-out evaluation over
 the Stage 5/6 system. Both the deterministic fixture baseline and the
 qualifying Amazon Bedrock campaign pass 315/315 with 105/105 scenarios at 3/3
 consistency. The live campaign also validates all 720 structured reasoning
-calls without fallback.
+calls without fallback. Stage 8 UI-1 now establishes the shared frontend shell,
+three product routes, visual tokens, and reusable interface primitives; UI-2 is
+the next approval checkpoint.
 
 Foundation specifications:
 
@@ -36,6 +38,9 @@ Stage records:
 - [`stage_7_evaluation_and_robustness.md`](stage_7_evaluation_and_robustness.md)
   — isolated 315-run campaign, deterministic oracles, report artifacts,
   acceptance thresholds, fixture results, and live robustness boundary
+- [`stage_8_ui_development.md`](stage_8_ui_development.md) — living UI plan,
+  page and frontend boundaries, implementation checkpoints, progress log, and
+  acceptance record
 
 Stage-specific documents use `stage_<number>_<topic>.md`. They do not receive
 an additional sequence prefix such as `06_`, `07_`, or `08_`; the same rule
@@ -56,7 +61,7 @@ Stage 6 — Grounded LLM Reasoning + Ranked Advisory Memory (complete)
     ↓
 Stage 7 — Scenario Trace Evaluation + Robustness Hardening (complete)
     ↓
-Stage 8 — Demo/UI Delivery + Operational Hardening
+Stage 8 — Demo/UI Delivery + Operational Hardening (UI-1 complete; UI-2 next)
 ```
 
 Key principle:

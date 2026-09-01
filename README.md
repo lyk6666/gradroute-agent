@@ -45,7 +45,7 @@ Stage 4  deterministic four-domain tools and isolated transaction runtime (compl
 Stage 5  LangGraph control plane, checkpointing, and memory interfaces (complete)
 Stage 6  grounded LLM reasoning and richer advisory-memory ranking (complete)
 Stage 7  315-run fixture and Bedrock evaluation plus robustness hardening (complete)
-Stage 8  polished demo/UI and operational delivery
+Stage 8  polished demo/UI and operational delivery (UI-1 complete; UI-2 next)
 ```
 
 See the [Stage 3 simulation data details](docs/stage_3_simulation_data_details.md),
@@ -55,6 +55,8 @@ See the [Stage 3 simulation data details](docs/stage_3_simulation_data_details.m
 delivered foundations, the
 [Stage 7 evaluation record](docs/stage_7_evaluation_and_robustness.md) for the
 held-out results and acceptance gates, and the
+[Stage 8 UI development record](docs/stage_8_ui_development.md) for the living
+frontend plan and progress, and the
 [Stage 2 grounding conventions](docs/stage_2_grounding_conventions.md) for its
 real-data basis and limitations.
 
@@ -123,4 +125,21 @@ Run the canonical Stage 7 fixture campaign:
 
 ```powershell
 .venv\Scripts\python.exe scripts\run_stage7_evaluation.py --mode fixture --output-dir evaluation
+```
+
+Run the Stage 8 frontend preview:
+
+```powershell
+cd frontend
+npm install
+npm run dev
+```
+
+Verify the current UI foundation:
+
+```powershell
+npm run typecheck
+npm run lint
+npm run build
+npm audit
 ```
