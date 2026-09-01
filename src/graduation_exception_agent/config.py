@@ -78,6 +78,9 @@ class AppSettings(BaseSettings):
         validation_alias="FRONTEND_ORIGIN",
     )
     data_dir: Path = Field(default=Path("data"), validation_alias="DATA_DIR")
+    evaluation_dir: Path = Field(
+        default=Path("evaluation"), validation_alias="EVALUATION_DIR"
+    )
     checkpoint_db: Path = Field(
         default=Path("var/checkpoints.sqlite3"),
         validation_alias="CHECKPOINT_DB",

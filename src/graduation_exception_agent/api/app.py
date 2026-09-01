@@ -16,12 +16,16 @@ from graduation_exception_agent.api.models import (
     ClarificationResumeRequest,
     DataCatalogResponse,
     DataPageResponse,
+    EvaluationCampaignsResponse,
+    EvaluationRunsResponse,
+    EvaluationScenariosResponse,
     RunSnapshot,
     ScenarioSummary,
     StartRunRequest,
     StartRunResponse,
 )
 from graduation_exception_agent.api.data_service import DataService
+from graduation_exception_agent.api.evaluation_service import EvaluationService
 from graduation_exception_agent.api.service import RunService
 from graduation_exception_agent.config import AppSettings, get_settings
 
@@ -30,10 +34,12 @@ def create_app(
     settings: AppSettings | None = None,
     service: RunService | None = None,
     data_service: DataService | None = None,
+    evaluation_service: EvaluationService | None = None,
 ) -> FastAPI:
     selected_settings = settings or get_settings()
     run_service = service or RunService(selected_settings)
     read_service = data_service or DataService(selected_settings)
+    report_service = evaluation_service or EvaluationService(selected_settings)
     app = FastAPI(
         title="Graduation Exception Agent API",
         version="1.0.0",
@@ -43,6 +49,7 @@ def create_app(
     )
     app.state.run_service = run_service
     app.state.data_service = read_service
+    app.state.evaluation_service = report_service
     origin = str(selected_settings.frontend_origin).rstrip("/")
     allowed_origins = sorted(
         {origin, "http://localhost:3000", "http://127.0.0.1:3000"}
@@ -100,6 +107,75 @@ def create_app(
             raise HTTPException(status_code=404, detail=str(exc)) from exc
         except PermissionError as exc:
             raise HTTPException(status_code=403, detail=str(exc)) from exc
+
+    @app.get(
+        "/api/v1/evaluation/campaigns", response_model=EvaluationCampaignsResponse
+    )
+    def evaluation_campaigns() -> EvaluationCampaignsResponse:
+        return report_service.campaigns()
+
+    @app.get("/api/v1/evaluation/runs", response_model=EvaluationRunsResponse)
+    def evaluation_runs(
+        lane: Annotated[Literal["fixture", "live"], Query()] = "live",
+        page: Annotated[int, Query(ge=1)] = 1,
+        page_size: Annotated[int, Query(ge=1, le=100)] = 25,
+        search: Annotated[str, Query(max_length=200)] = "",
+        family: Annotated[str, Query(max_length=16)] = "",
+        memory: Annotated[str, Query(max_length=32)] = "",
+        status: Annotated[Literal["", "passed", "failed"], Query()] = "",
+        outcome: Annotated[str, Query(max_length=64)] = "",
+        sort: Annotated[str, Query(max_length=80)] = "scenario_id",
+        direction: Annotated[Literal["asc", "desc"], Query()] = "asc",
+    ) -> EvaluationRunsResponse:
+        return report_service.runs(
+            lane,
+            page=page,
+            page_size=page_size,
+            search=search,
+            family=family,
+            memory=memory,
+            status=status,
+            outcome=outcome,
+            sort=sort,
+            direction=direction,
+        )
+
+    @app.get(
+        "/api/v1/evaluation/scenarios", response_model=EvaluationScenariosResponse
+    )
+    def evaluation_scenarios(
+        lane: Annotated[Literal["fixture", "live"], Query()] = "live",
+        page: Annotated[int, Query(ge=1)] = 1,
+        page_size: Annotated[int, Query(ge=1, le=100)] = 25,
+        search: Annotated[str, Query(max_length=200)] = "",
+        family: Annotated[str, Query(max_length=16)] = "",
+        outcome: Annotated[str, Query(max_length=64)] = "",
+        sort: Annotated[str, Query(max_length=80)] = "scenario_id",
+        direction: Annotated[Literal["asc", "desc"], Query()] = "asc",
+    ) -> EvaluationScenariosResponse:
+        return report_service.scenarios(
+            lane,
+            page=page,
+            page_size=page_size,
+            search=search,
+            family=family,
+            outcome=outcome,
+            sort=sort,
+            direction=direction,
+        )
+
+    @app.get("/api/v1/evaluation/failures", response_model=EvaluationRunsResponse)
+    def evaluation_failures(
+        lane: Annotated[Literal["fixture", "live"], Query()] = "live",
+        page: Annotated[int, Query(ge=1)] = 1,
+        page_size: Annotated[int, Query(ge=1, le=100)] = 25,
+    ) -> EvaluationRunsResponse:
+        return report_service.runs(
+            lane,
+            page=page,
+            page_size=page_size,
+            failures_only=True,
+        )
 
     @app.post("/api/v1/runs", response_model=StartRunResponse, status_code=202)
     def start_run(request: StartRunRequest) -> StartRunResponse:

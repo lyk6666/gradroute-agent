@@ -8,6 +8,11 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
+from graduation_exception_agent.evaluation.models import (
+    CampaignMetricsSummary,
+    EvaluationRunResult,
+)
+
 
 class ApiModel(BaseModel):
     model_config = ConfigDict(extra="forbid")
@@ -247,6 +252,60 @@ class DataPageResponse(ApiModel):
     filters: DataFilterOptions
 
 
+class EvaluationCampaignArtifact(ApiModel):
+    lane: Literal["fixture", "live"]
+    updated_at: datetime
+    metrics: CampaignMetricsSummary
+
+
+class EvaluationCampaignsResponse(ApiModel):
+    api_version: Literal["1.0"] = "1.0"
+    campaigns: list[EvaluationCampaignArtifact]
+
+
+class EvaluationFilterOptions(ApiModel):
+    families: list[str] = Field(default_factory=list)
+    memory_conditions: list[str] = Field(default_factory=list)
+    statuses: list[str] = Field(default_factory=list)
+    outcomes: list[str] = Field(default_factory=list)
+
+
+class EvaluationRunsResponse(ApiModel):
+    api_version: Literal["1.0"] = "1.0"
+    lane: Literal["fixture", "live"]
+    page: int
+    page_size: int
+    total: int
+    records: list[EvaluationRunResult]
+    filters: EvaluationFilterOptions
+
+
+class EvaluationScenarioRecord(ApiModel):
+    scenario_id: str
+    family: str
+    expected_outcome: str
+    passed_runs: int
+    consistency: str
+    empty_passed: bool
+    relevant_passed: bool
+    misleading_passed: bool
+    average_tool_calls: float
+    average_graph_steps: float
+    average_latency_ms: float
+    total_tokens: int
+    violation_codes: list[str] = Field(default_factory=list)
+
+
+class EvaluationScenariosResponse(ApiModel):
+    api_version: Literal["1.0"] = "1.0"
+    lane: Literal["fixture", "live"]
+    page: int
+    page_size: int
+    total: int
+    records: list[EvaluationScenarioRecord]
+    filters: EvaluationFilterOptions
+
+
 class RunEvent(ApiModel):
     sequence: int
     event_type: str
@@ -271,6 +330,12 @@ __all__ = [
     "DataRecord",
     "DataRelationship",
     "DataSection",
+    "EvaluationCampaignArtifact",
+    "EvaluationCampaignsResponse",
+    "EvaluationFilterOptions",
+    "EvaluationRunsResponse",
+    "EvaluationScenarioRecord",
+    "EvaluationScenariosResponse",
     "FinalResponseSummary",
     "MemorySummary",
     "NodeStatus",
