@@ -7,7 +7,7 @@ clear demonstration interface. The design is based on `main_page_reference.png`
 and `UI_IMPLEMENTATION_GUIDE.md`, while the repository's frozen graph, safety
 contracts, provenance boundaries, and evaluator isolation remain normative.
 
-Current status: **UI-3 complete; UI-4 is next.**
+Current status: **UI-4 complete; UI-5 is next.**
 
 The UI is a Team AIGO research prototype grounded in public NTU CCDS sources.
 It must not be represented as an official NTU service.
@@ -17,7 +17,7 @@ It must not be represented as an official NTU service.
 | Page | Purpose | Main surfaces |
 | --- | --- | --- |
 | Main | Execute and understand one exception case | Case rail, frozen agent graph, node/case inspector, timeline, human checkpoints, final response |
-| Data | Inspect the data used by the agent | Domain navigation, read-only table, search/filters, relationships, provenance and developer JSON |
+| Data | Inspect the data used by the agent | Domain navigation, read-only tables, search/filters, relationships, processed summaries, provenance and quality boundaries |
 | Evaluation | Inspect Stage 7 quality evidence | Overview metrics, scenario-family performance, run explorer, run inspector and failure diagnostics |
 
 Ground truth is permitted only on Evaluation/Developer surfaces. The Main page
@@ -130,12 +130,27 @@ separate simulation builder can create a mutually consistent student, degree
 audit, registration, offering and exception record; the interface does not
 pretend that arbitrary text has entered the authoritative runtime.
 
-### UI-4 — Data explorer — pending
+### UI-4 — Data explorer — complete
 
-- academic, operational and case-operation domains;
-- search, filters, sorting and pagination;
-- relationships, record details and provenance inspection;
-- developer-only JSON view.
+- added 21 catalogued data sets across Academic & Policy, Operational
+  Simulation, Case Operations, and Sources & Quality;
+- exposed 6,246 read-only processed records through versioned, paginated API
+  contracts, including parsed calendar/policy Markdown rather than only JSON
+  files;
+- added global record/lineage search, programme and status filters, sortable
+  sticky table headers, pagination, loading, empty and error states;
+- added a responsive record inspector with processed summaries, cross-data-set
+  navigation, authoritative source IDs, simulation rule lineage, and explicit
+  known gaps or limitations;
+- included curricula, offerings, flattened timetable indexes, simulation scopes,
+  audit assumptions, source manifest, coverage targets and consistency checks in
+  addition to the primary student/case records;
+- protected all 140 transaction scripts and 140 evaluation contracts behind a
+  non-readable catalogue boundary; scenario projections omit ground truth,
+  injected events, expected paths and transaction-script identifiers, while
+  student projections omit evaluator terminal profiles; and
+- added API tests for exact catalogue counts, search/filter/sort/pagination,
+  parsed document availability, restricted access and recursive leakage guards.
 
 ### UI-5 — Evaluation evidence — pending
 
@@ -219,6 +234,21 @@ only be re-checked against the authoritative scenario state—the agent and UI
 cannot self-approve. Final student-facing output appears only after the runtime
 produces its terminal outcome.
 
+### 1 September 2026 — UI-4
+
+The Data route is now a full-screen, table-first inspection workspace backed by
+the validated Stage 2 and Stage 3 packages. A left catalogue groups every
+available data set by domain, the centre table supports bounded server-side
+querying, and the right inspector explains one selected record through readable
+facts, relationships, provenance and quality notes. Relationship actions move
+between linked data sets without exposing raw payloads.
+
+The UI includes official-public calendar and policy Markdown as parsed records,
+as well as derived coverage and consistency evidence that does not exist as a
+single primary JSON table. Evaluator-only transaction behavior and ground-truth
+contracts remain visible only as locked catalogue counts. They return HTTP 403
+when requested from UI-4 and will be handled under UI-5's evaluator boundary.
+
 ## 7. Acceptance record
 
 - [x] Shared dark-header/light-workspace shell
@@ -241,6 +271,6 @@ produces its terminal outcome.
 - [x] Embedded pannable canvas inspector and separated edge-routing lanes
 - [x] Collision-audited orthogonal routes and explicit edge-label placement
 - [x] Runtime/API integration — UI-3
-- [ ] Complete data explorer — UI-4
+- [x] Complete data explorer — UI-4
 - [ ] Complete evaluation explorer — UI-5
 - [ ] End-to-end and production delivery gate — UI-6

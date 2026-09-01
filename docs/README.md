@@ -10,8 +10,9 @@ calls without fallback. Stage 8 UI-1 established the shared frontend shell,
 three product routes, visual tokens, and reusable interface primitives. UI-2
 now adds the approved five-region Main workspace, complete selectable graph,
 manual/scenario intake composition, processed tool and memory inspector,
-human-checkpoint previews, timeline, and final-response preview; UI-3 is the
-next approval checkpoint.
+human-checkpoint previews, timeline, and final-response preview. UI-3 connects
+that workspace to the live runtime, and UI-4 adds the comprehensive, read-only
+grounded data explorer; UI-5 is the next approval checkpoint.
 
 Foundation specifications:
 
@@ -64,7 +65,7 @@ Stage 6 — Grounded LLM Reasoning + Ranked Advisory Memory (complete)
     ↓
 Stage 7 — Scenario Trace Evaluation + Robustness Hardening (complete)
     ↓
-Stage 8 — Demo/UI Delivery + Operational Hardening (UI-2 complete; UI-3 next)
+Stage 8 — Demo/UI Delivery + Operational Hardening (UI-4 complete; UI-5 next)
 ```
 
 Key principle:
