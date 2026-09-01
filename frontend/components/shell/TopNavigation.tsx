@@ -5,6 +5,7 @@ export type AppSection = 'main' | 'data' | 'evaluation';
 type TopNavigationProps = {
   activeSection: AppSection;
   preview?: boolean;
+  systemStatus?: 'checking' | 'operational' | 'offline';
 };
 
 const links: Array<{ href: string; label: string; section: AppSection }> = [
@@ -13,7 +14,13 @@ const links: Array<{ href: string; label: string; section: AppSection }> = [
   { href: '/evaluation', label: 'Evaluation', section: 'evaluation' },
 ];
 
-export function TopNavigation({ activeSection, preview = false }: TopNavigationProps) {
+export function TopNavigation({ activeSection, preview = false, systemStatus }: TopNavigationProps) {
+  const status = systemStatus ?? (preview ? 'checking' : 'operational');
+  const statusLabel = {
+    checking: 'Connecting',
+    operational: 'Operational',
+    offline: 'Runtime offline',
+  }[status];
   return (
     <header className="topbar">
       <div className="brand-lockup">
@@ -39,8 +46,8 @@ export function TopNavigation({ activeSection, preview = false }: TopNavigationP
 
       <div className="topbar-actions">
         <span className="event-badge">✦ IGNITE 2026 Prototype</span>
-        <span className={`system-health${preview ? ' is-preview' : ''}`}>
-          <i /> {preview ? 'Static preview' : 'Interface ready'}
+        <span className={`system-health is-${status}`}>
+          <i /> {statusLabel}
         </span>
         <span className="team-badge"><b>A</b> Team AIGO</span>
       </div>

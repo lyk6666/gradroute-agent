@@ -25,8 +25,10 @@ matrix recorded in `data/real/coverage.json`. Authenticated curriculum plans,
 personalised registration slots, capacity, eligibility, general late-registration
 workflows, and undocumented approval chains remain explicit gaps. The project
 does not yet contain embedding/vector retrieval or a durable production
-checkpointer. Stage 8 UI-2 provides the static Main execution workspace; live
-runtime integration remains intentionally deferred to UI-3. The deterministic and Amazon Bedrock held-out campaigns
+checkpointer. Stage 8 UI-3 provides the live Main execution workspace over a
+versioned API and replayable event stream. Scenario runs now update the graph,
+trace, tools, memory, checkpoints, and verified final response from the real
+Stage 4/5 runtime; evaluator ground truth remains isolated. The deterministic and Amazon Bedrock held-out campaigns
 both pass 315/315 runs with 105/105 scenarios at 3/3 consistency. The live lane
 also passes all 720 structured reasoning calls without fallback, satisfying
 the Stage 7 model-coverage gate.
@@ -46,7 +48,7 @@ Stage 4  deterministic four-domain tools and isolated transaction runtime (compl
 Stage 5  LangGraph control plane, checkpointing, and memory interfaces (complete)
 Stage 6  grounded LLM reasoning and richer advisory-memory ranking (complete)
 Stage 7  315-run fixture and Bedrock evaluation plus robustness hardening (complete)
-Stage 8  polished demo/UI and operational delivery (UI-2 complete; UI-3 next)
+Stage 8  polished demo/UI and operational delivery (UI-3 complete; UI-4 next)
 ```
 
 See the [Stage 3 simulation data details](docs/stage_3_simulation_data_details.md),
@@ -131,10 +133,22 @@ Run the canonical Stage 7 fixture campaign:
 Run the Stage 8 frontend preview:
 
 ```powershell
+.venv\Scripts\python.exe -m graduation_exception_agent.api
+```
+
+In a second terminal:
+
+```powershell
 cd frontend
 npm install
 npm run dev
 ```
+
+The API defaults to `http://127.0.0.1:8000` and the frontend to
+`http://localhost:3000`. Set `NEXT_PUBLIC_API_BASE_URL` in `frontend/.env.local`
+only when using a different API address. The runtime honors `EXECUTION_MODE`:
+`fixture` uses deterministic grounded decisions, while `bedrock` uses the
+configured Amazon Bedrock provider.
 
 Verify the current UI foundation:
 

@@ -4,13 +4,14 @@ import { TopNavigation, type AppSection } from './TopNavigation';
 type AppShellProps = {
   activeSection: AppSection;
   children: ReactNode;
+  systemStatus?: 'checking' | 'operational' | 'offline';
   workspace?: boolean;
 };
 
-export function AppShell({ activeSection, children, workspace = false }: AppShellProps) {
+export function AppShell({ activeSection, children, systemStatus, workspace = false }: AppShellProps) {
   return (
     <div className={`app-shell${workspace ? ' app-shell-workspace' : ''}`}>
-      <TopNavigation activeSection={activeSection} preview={workspace} />
+      <TopNavigation activeSection={activeSection} preview={workspace} systemStatus={systemStatus} />
       <main className={`page-content${workspace ? ' page-content-workspace' : ''}`}>
         {children}
       </main>

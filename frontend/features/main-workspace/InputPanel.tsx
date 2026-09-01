@@ -10,8 +10,6 @@ import {
 } from 'lucide-react';
 import { ProvenanceBadge } from '@/components/common/ProvenanceBadge';
 import {
-  DEMO_SCENARIOS,
-  EVALUATION_SCENARIOS,
   PROGRAMMES,
   REQUEST_TYPES,
   type ScenarioPreview,
@@ -22,11 +20,19 @@ export type ScenarioSplit = 'demo' | 'evaluation';
 export type RunMode = 'normal' | 'step';
 
 type InputPanelProps = {
+  canAdvance: boolean;
+  demoScenarios: ScenarioPreview[];
+  evaluationScenarios: ScenarioPreview[];
   intakeMode: IntakeMode;
+  onAdvance: () => void;
   onIntakeModeChange: (mode: IntakeMode) => void;
   onRunModeChange: (mode: RunMode) => void;
   onScenarioChange: (scenario: ScenarioPreview) => void;
+  onStart: () => void;
+  runError: string | null;
   runMode: RunMode;
+  runStatus: 'idle' | 'queued' | 'running' | 'waiting' | 'completed' | 'failed';
+  runtimeStatus: 'checking' | 'operational' | 'offline';
   scenario: ScenarioPreview;
   scenarioSplit: ScenarioSplit;
   onScenarioSplitChange: (split: ScenarioSplit) => void;
@@ -106,7 +112,7 @@ function ManualInputForm() {
 
       <div className="intake-boundary-note">
         <UserRoundPlus aria-hidden="true" size={15} />
-        <span>UI-3 will validate these fields and create isolated simulated student, audit, registration and case records.</span>
+        <span>New-case composition is retained as a guarded input surface. This UI-3 increment executes the frozen scenario package first; manual records will require an explicit validated simulation builder.</span>
       </div>
     </div>
   );
@@ -115,19 +121,21 @@ function ManualInputForm() {
 function ScenarioForm({
   scenario,
   scenarioSplit,
+  demoScenarios,
+  evaluationScenarios,
   onScenarioChange,
   onScenarioSplitChange,
-}: Pick<InputPanelProps, 'scenario' | 'scenarioSplit' | 'onScenarioChange' | 'onScenarioSplitChange'>) {
-  const options = scenarioSplit === 'demo' ? DEMO_SCENARIOS : EVALUATION_SCENARIOS;
+}: Pick<InputPanelProps, 'scenario' | 'scenarioSplit' | 'demoScenarios' | 'evaluationScenarios' | 'onScenarioChange' | 'onScenarioSplitChange'>) {
+  const options = scenarioSplit === 'demo' ? demoScenarios : evaluationScenarios;
 
   return (
     <div className="intake-scroll-content">
       <div className="split-selector" aria-label="Scenario set">
         <button className={scenarioSplit === 'demo' ? 'is-active' : ''} onClick={() => onScenarioSplitChange('demo')} type="button">
-          <CirclePlay size={13} /> Demo <span>7</span>
+          <CirclePlay size={13} /> Demo <span>{demoScenarios.length}</span>
         </button>
         <button className={scenarioSplit === 'evaluation' ? 'is-active' : ''} onClick={() => onScenarioSplitChange('evaluation')} type="button">
-          <FlaskConical size={13} /> Evaluation <span>105</span>
+          <FlaskConical size={13} /> Evaluation <span>{evaluationScenarios.length}</span>
         </button>
       </div>
 
@@ -182,6 +190,23 @@ function ScenarioForm({
 }
 
 export function InputPanel(props: InputPanelProps) {
+  const activeRun = ['queued', 'running', 'waiting'].includes(props.runStatus);
+  const startDisabled = props.runtimeStatus !== 'operational' || props.intakeMode !== 'scenario' || activeRun;
+  const stepAction = props.runMode === 'step' && props.runStatus === 'running';
+  const buttonLabel = stepAction
+    ? (props.canAdvance ? 'Run next graph step' : 'Executing current step…')
+    : props.runStatus === 'waiting'
+      ? 'Respond in the canvas'
+      : props.intakeMode === 'manual'
+        ? 'Manual builder not connected'
+        : props.runtimeStatus === 'offline'
+          ? 'Runtime offline'
+          : activeRun
+            ? 'Run in progress…'
+            : props.runStatus === 'completed'
+              ? 'Start a new run'
+              : 'Start grounded run';
+
   return (
     <aside aria-label="Case input" className="workspace-panel intake-panel">
       <div className="mode-tabs" aria-label="Input mode">
@@ -201,8 +226,14 @@ export function InputPanel(props: InputPanelProps) {
           <button className={props.runMode === 'normal' ? 'is-active' : ''} onClick={() => props.onRunModeChange('normal')} type="button">Normal run</button>
           <button className={props.runMode === 'step' ? 'is-active' : ''} onClick={() => props.onRunModeChange('step')} type="button">Step-by-step</button>
         </div>
-        <button className="start-run-button" disabled title="Enabled with the UI-3 runtime integration" type="button">
-          <CirclePlay size={15} /> Start run in UI-3
+        {props.runError ? <p className="run-error" role="alert">{props.runError}</p> : null}
+        <button
+          className="start-run-button"
+          disabled={stepAction ? !props.canAdvance : startDisabled}
+          onClick={stepAction ? props.onAdvance : props.onStart}
+          type="button"
+        >
+          <CirclePlay size={15} /> {buttonLabel}
         </button>
       </footer>
     </aside>

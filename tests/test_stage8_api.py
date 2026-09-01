@@ -64,6 +64,8 @@ def test_normal_run_streams_both_verifier_phases_and_final_response() -> None:
     assert "pre_action_verifier" in node_ids
     assert "post_action_verifier" in node_ids
     assert node_ids.count("transaction") == 2
+    assert "e-post-planner" in final.traversed_edges
+    assert "e-post-final" in final.traversed_edges
     assert final.final_response is not None
     assert final.final_response.status == "DONE"
     assert final.final_response.academic_verified is True
@@ -76,7 +78,10 @@ def test_step_run_waits_for_explicit_advance() -> None:
         StartRunRequest(scenario_id="S1-M01", mode=RunMode.STEP)
     )
     deadline = monotonic() + 4.0
-    while monotonic() < deadline and not service.snapshot(accepted.run_id).timeline:
+    while monotonic() < deadline:
+        current = service.snapshot(accepted.run_id)
+        if current.timeline and current.can_advance:
+            break
         sleep(0.02)
     before = service.snapshot(accepted.run_id)
     assert len(before.timeline) == 1
@@ -100,6 +105,7 @@ def test_clarification_checkpoint_resumes_with_validated_answers() -> None:
     waiting = _wait_for(service, accepted.run_id, RunStatus.WAITING)
     assert waiting.pause is not None
     assert waiting.pause.kind == "clarification"
+    assert "resume_token" not in waiting.model_dump_json()
 
     answers = {field: True for field in waiting.pause.fields}
     service.resume(
@@ -116,10 +122,13 @@ def test_clarification_checkpoint_resumes_with_validated_answers() -> None:
 def test_fastapi_health_and_scenario_contract() -> None:
     client = TestClient(create_app(_settings()))
 
-    health = client.get("/api/v1/health")
+    health = client.get(
+        "/api/v1/health", headers={"Origin": "http://localhost:3000"}
+    )
     scenarios = client.get("/api/v1/scenarios", params={"split": "demo"})
 
     assert health.status_code == 200
     assert health.json()["status"] == "operational"
+    assert health.headers["access-control-allow-origin"] == "http://localhost:3000"
     assert scenarios.status_code == 200
     assert len(scenarios.json()) == 7

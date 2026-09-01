@@ -148,6 +148,43 @@ TOOL_NAMES = {
     "transaction_status": ("Transaction Status", "Action"),
 }
 
+TRACE_EDGE_IDS = {
+    ("INTAKE", "MEMORY_RETRIEVER"): "e-intake-memory",
+    ("MEMORY_RETRIEVER", "PLANNER"): "e-memory-planner",
+    ("PLANNER", "SUPERVISOR_ROUTER"): "e-planner-router",
+    ("PLANNER", "HUMAN_ADMIN_REVIEW"): "e-planner-admin",
+    ("SUPERVISOR_ROUTER", "DEGREE_AUDIT_AGENT"): "e-router-audit",
+    ("SUPERVISOR_ROUTER", "POLICY_AGENT"): "e-router-policy",
+    ("SUPERVISOR_ROUTER", "COURSE_AGENT"): "e-router-course",
+    ("DEGREE_AUDIT_AGENT", "POLICY_AGENT"): "e-audit-policy",
+    ("DEGREE_AUDIT_AGENT", "COURSE_AGENT"): "e-audit-course",
+    ("DEGREE_AUDIT_AGENT", "RESOLUTION_BUILDER"): "e-audit-builder",
+    ("POLICY_AGENT", "COURSE_AGENT"): "e-policy-course",
+    ("POLICY_AGENT", "RESOLUTION_BUILDER"): "e-policy-builder",
+    ("COURSE_AGENT", "RESOLUTION_BUILDER"): "e-course-builder",
+    ("RESOLUTION_BUILDER", "VERIFIER_PRE_ACTION"): "e-builder-pre",
+    ("VERIFIER_PRE_ACTION", "ACTION_GATE"): "e-pre-action",
+    ("VERIFIER_PRE_ACTION", "PLANNER"): "e-pre-planner",
+    ("VERIFIER_PRE_ACTION", "CLARIFICATION"): "e-pre-clarify",
+    ("VERIFIER_PRE_ACTION", "HUMAN_ADMIN_REVIEW"): "e-pre-admin",
+    ("CLARIFICATION", "VERIFIER_PRE_ACTION"): "e-clarify-pre",
+    ("CLARIFICATION", "PLANNER"): "e-clarify-planner",
+    ("ACTION_GATE", "TRANSACTION"): "e-gate-transaction",
+    ("ACTION_GATE", "HUMAN_APPROVAL"): "e-gate-approval",
+    ("ACTION_GATE", "HUMAN_ADMIN_REVIEW"): "e-gate-admin",
+    ("HUMAN_APPROVAL", "TRANSACTION"): "e-approval-transaction",
+    ("HUMAN_APPROVAL", "PLANNER"): "e-approval-planner",
+    ("HUMAN_APPROVAL", "PAUSE_CHECKPOINT"): "e-approval-pause",
+    ("PAUSE_CHECKPOINT", "HUMAN_APPROVAL"): "e-pause-approval",
+    ("TRANSACTION", "OBSERVATION"): "e-transaction-observation",
+    ("TRANSACTION", "HUMAN_ADMIN_REVIEW"): "e-transaction-admin",
+    ("OBSERVATION", "VERIFIER_POST_ACTION"): "e-observation-post",
+    ("VERIFIER_POST_ACTION", "PLANNER"): "e-post-planner",
+    ("VERIFIER_POST_ACTION", "FINAL_RESPONSE"): "e-post-final",
+    ("VERIFIER_POST_ACTION", "MEMORY_UPDATER"): "e-post-memory",
+    ("HUMAN_ADMIN_REVIEW", "FINAL_RESPONSE"): "e-admin-final",
+}
+
 
 class RunRecord:
     """Mutable state for one isolated case execution."""
@@ -177,10 +214,12 @@ class RunRecord:
         self.timeline: list[TimelineItem] = []
         self.values: dict[str, Any] = {}
         self.pause: PauseSummary | None = None
+        self.resume_token: dict[str, Any] | None = None
         self.error: str | None = None
         self.events: list[RunEvent] = []
         self.latest_event_sequence = 0
         self.step_permits = 1 if mode is RunMode.STEP else 0
+        self.awaiting_step = False
         self.worker_active = False
 
 
@@ -285,8 +324,9 @@ class RunService:
         with record.condition:
             if record.mode is not RunMode.STEP:
                 raise ValueError("advance is available only for step-by-step runs")
-            if record.status is not RunStatus.RUNNING:
+            if record.status is not RunStatus.RUNNING or not record.awaiting_step:
                 raise ValueError("this run is not waiting between executable steps")
+            record.awaiting_step = False
             record.step_permits += 1
             record.condition.notify_all()
         self._publish(record, "run.advanced", "The next graph step was released.")
@@ -302,7 +342,7 @@ class RunService:
             pause = record.pause
             if record.status is not RunStatus.WAITING or pause is None:
                 raise ValueError("run does not have an active human checkpoint")
-            token = deepcopy(pause.resume_token)
+            token = deepcopy(record.resume_token or {})
             if request.kind != pause.kind:
                 raise ValueError("resume kind does not match the active checkpoint")
             if request.kind == "clarification":
@@ -324,12 +364,14 @@ class RunService:
                     observed_at=datetime.now(UTC),
                 )
             record.pause = None
+            record.resume_token = None
             record.status = RunStatus.RUNNING
             record.node_statuses[record.current_node or "pause_checkpoint"] = (
                 NodeStatus.COMPLETED
             )
             if record.mode is RunMode.STEP:
                 record.step_permits = 1
+                record.awaiting_step = False
         self._publish(record, "run.resumed", "Human checkpoint response validated.")
         self._start_worker(record, resume_payload=payload)
         return self.snapshot(run_id)
@@ -397,6 +439,7 @@ class RunService:
                 record.current_node = None
                 record.status = RunStatus.COMPLETED
                 record.pause = None
+                record.resume_token = None
             self._publish(record, "run.completed", "Run reached a terminal response.")
         except Exception as exc:  # The facade must normalize worker failures.
             with record.lock:
@@ -413,10 +456,22 @@ class RunService:
     def _await_step(self, record: RunRecord) -> None:
         if record.mode is not RunMode.STEP:
             return
+        should_publish = False
+        with record.condition:
+            if record.step_permits <= 0 and record.status is RunStatus.RUNNING:
+                record.awaiting_step = True
+                should_publish = True
+        if should_publish:
+            self._publish(
+                record,
+                "run.step_waiting",
+                "Step-by-step execution is waiting for the next release.",
+            )
         with record.condition:
             while record.step_permits <= 0 and record.status is RunStatus.RUNNING:
                 record.condition.wait()
             if record.status is RunStatus.RUNNING:
+                record.awaiting_step = False
                 record.step_permits -= 1
 
     def _node_update(
@@ -463,11 +518,11 @@ class RunService:
                 message=str(interrupt_value["question"]),
                 fields=[str(item) for item in interrupt_value["missing_fields"]],
                 impact=str(interrupt_value["impact"]),
-                resume_token={
-                    "clarification_id": interrupt_value["clarification_id"],
-                    "impact": interrupt_value["impact"],
-                },
             )
+            token = {
+                "clarification_id": interrupt_value["clarification_id"],
+                "impact": interrupt_value["impact"],
+            }
         elif kind == "APPROVAL":
             node_id = "pause_checkpoint"
             pause = PauseSummary(
@@ -478,11 +533,11 @@ class RunService:
                     "decision before continuing."
                 ),
                 fields=[],
-                resume_token={
-                    "approval_id": interrupt_value["approval_id"],
-                    "approval_version": interrupt_value["approval_version"],
-                },
             )
+            token = {
+                "approval_id": interrupt_value["approval_id"],
+                "approval_version": interrupt_value["approval_version"],
+            }
         else:
             raise ValueError(f"unsupported interrupt kind {kind!r}")
         with record.lock:
@@ -490,6 +545,7 @@ class RunService:
             record.current_node = node_id
             record.node_statuses[node_id] = NodeStatus.WAITING
             record.pause = pause
+            record.resume_token = token
             record.status = RunStatus.WAITING
             record.timeline.append(
                 TimelineItem(
@@ -577,8 +633,14 @@ class RunService:
             thread_id=record.thread_id,
             mode=record.mode,
             status=record.status,
+            can_advance=(
+                record.mode is RunMode.STEP
+                and record.status is RunStatus.RUNNING
+                and record.awaiting_step
+            ),
             current_node=record.current_node,
             node_statuses=dict(record.node_statuses),
+            traversed_edges=_traversed_edges(values, record.timeline),
             timeline=list(record.timeline),
             working_state=WorkingStateSummary(
                 current_step=str(current_label),
@@ -678,6 +740,27 @@ def _approval_state(values: dict[str, Any]) -> str:
         return str(response["status"])
     candidate = _mapping(values.get("action_candidate"))
     return "REQUIRED" if candidate.get("requires_approval") else "NOT_REQUIRED"
+
+
+def _traversed_edges(
+    values: dict[str, Any], timeline: list[TimelineItem]
+) -> list[str]:
+    traversed: list[str] = []
+    if "intake_context" in values or any(
+        item.node_id == "intake_context" for item in timeline
+    ):
+        traversed.append("e-student-intake")
+    trace = values.get("trace")
+    if not isinstance(trace, list):
+        return traversed
+    for item in trace:
+        event = _mapping(item)
+        edge_id = TRACE_EDGE_IDS.get(
+            (str(event.get("source", "")), str(event.get("destination", "")))
+        )
+        if edge_id and edge_id not in traversed:
+            traversed.append(edge_id)
+    return traversed
 
 
 __all__ = ["RunService"]

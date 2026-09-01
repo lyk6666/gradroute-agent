@@ -1,4 +1,4 @@
-import type { MouseEvent as ReactMouseEvent } from 'react';
+import { useState, type MouseEvent as ReactMouseEvent } from 'react';
 import {
   Background,
   BackgroundVariant,
@@ -23,6 +23,7 @@ import {
   UserCog,
 } from 'lucide-react';
 import { ProvenanceBadge } from '@/components/common/ProvenanceBadge';
+import type { RunSnapshot } from '@/lib/runtime-api';
 import {
   GRAPH_EDGES,
   INITIAL_GRAPH_NODES,
@@ -34,13 +35,19 @@ import {
 import '@xyflow/react/dist/style.css';
 
 type AgentGraphCanvasProps = {
+  onApprovalRecheck: () => void | Promise<void>;
+  onClarificationSubmit: (answers: Record<string, string | boolean>) => void | Promise<void>;
   onSelectNode: (nodeId: string) => void;
+  runSnapshot: RunSnapshot | null;
   selectedNodeId: string;
 };
 
 type CanvasInspectorNodeData = {
   selectedNode: NodeSummary;
   selectedNodeId: string;
+  pause: RunSnapshot['pause'];
+  onApprovalRecheck: () => void | Promise<void>;
+  onClarificationSubmit: (answers: Record<string, string | boolean>) => void | Promise<void>;
 } & Record<string, unknown>;
 
 const statusLabels: Record<NodeStatus, string> = {
@@ -119,19 +126,49 @@ function NodeDetail({ node }: { node: NodeSummary }) {
   );
 }
 
-function HumanInteraction({ selectedNodeId }: { selectedNodeId: string }) {
+function HumanInteraction({
+  onApprovalRecheck,
+  onClarificationSubmit,
+  pause,
+  selectedNodeId,
+}: {
+  onApprovalRecheck: () => void | Promise<void>;
+  onClarificationSubmit: (answers: Record<string, string | boolean>) => void | Promise<void>;
+  pause: RunSnapshot['pause'];
+  selectedNodeId: string;
+}) {
+  const [answers, setAnswers] = useState<Record<string, string | boolean>>({});
+
   if (selectedNodeId === 'clarification') {
+    const active = pause?.kind === 'clarification';
+    const complete = active && pause.fields.every((field) => {
+      const value = answers[field];
+      return field === 'submission_declaration' ? value === true : Boolean(String(value ?? '').trim());
+    });
     return (
       <section className="canvas-detail-card human-interaction-card">
         <header><MessageCircleQuestion size={15} /><div><span className="panel-kicker">Human interaction</span><h3>Clarification required</h3></div></header>
-        <p>Confirm whether the pending external prerequisite credit has supporting evidence.</p>
-        <label><span>Response</span><textarea disabled placeholder="Clarification response is enabled in UI-3." rows={2} /></label>
-        <button disabled type="button">Submit clarification in UI-3</button>
+        <p>{active ? pause.message : 'Select a run that is waiting for clarification to respond here.'}</p>
+        {active ? pause.fields.map((field) => (
+          field === 'submission_declaration' ? (
+            <label className="clarification-checkbox" key={field}>
+              <input checked={answers[field] === true} onChange={(event) => setAnswers((current) => ({ ...current, [field]: event.target.checked }))} type="checkbox" />
+              <span>I confirm the submission declaration.</span>
+            </label>
+          ) : (
+            <label key={field}>
+              <span>{field.replaceAll('_', ' ')}</span>
+              <textarea onChange={(event) => setAnswers((current) => ({ ...current, [field]: event.target.value }))} placeholder="Provide the missing fact or evidence reference." rows={2} value={String(answers[field] ?? '')} />
+            </label>
+          )
+        )) : null}
+        <button disabled={!complete} onClick={() => onClarificationSubmit(answers)} type="button">Submit validated clarification</button>
       </section>
     );
   }
 
   if (selectedNodeId === 'human_approval' || selectedNodeId === 'pause_checkpoint') {
+    const active = pause?.kind === 'approval';
     return (
       <section className="canvas-detail-card human-interaction-card approval-preview-card">
         <header><UserCheck size={15} /><div><span className="panel-kicker">Simulated approver</span><h3>Approval decision</h3></div><span className="simulated-role">Demo only</span></header>
@@ -140,8 +177,8 @@ function HumanInteraction({ selectedNodeId }: { selectedNodeId: string }) {
           <div><dt>Approver</dt><dd>CCDS Undergraduate Office</dd></div>
           <div><dt>Version</dt><dd>Approval v1</dd></div>
         </dl>
-        <p><ShieldCheck size={12} /> Evidence and policy basis must remain authoritative at resume.</p>
-        <div className="approval-buttons"><button disabled type="button">Approve</button><button disabled type="button">Reject</button><button disabled type="button">Leave pending</button></div>
+        <p><ShieldCheck size={12} /> {active ? pause.message : 'Evidence and policy basis remain authoritative; the agent cannot approve its own action.'}</p>
+        <div className="approval-buttons approval-recheck"><button disabled={!active} onClick={onApprovalRecheck} type="button">Re-check authoritative status</button></div>
       </section>
     );
   }
@@ -168,7 +205,13 @@ function CanvasInspectorNode({ data }: NodeProps<Node<CanvasInspectorNodeData>>)
   return (
     <aside aria-label="Selected node and human interaction" className="canvas-embedded-inspector nodrag nowheel nopan">
       <NodeDetail node={data.selectedNode} />
-      <HumanInteraction selectedNodeId={data.selectedNodeId} />
+      <HumanInteraction
+        key={`${data.pause?.kind ?? 'none'}-${data.pause?.message ?? 'idle'}`}
+        onApprovalRecheck={data.onApprovalRecheck}
+        onClarificationSubmit={data.onClarificationSubmit}
+        pause={data.pause}
+        selectedNodeId={data.selectedNodeId}
+      />
     </aside>
   );
 }
@@ -178,21 +221,50 @@ const nodeTypes = {
   inspectorNode: CanvasInspectorNode,
 };
 
-export function AgentGraphCanvas({ onSelectNode, selectedNodeId }: AgentGraphCanvasProps) {
-  const selectedNode = NODE_SUMMARIES[selectedNodeId] ?? NODE_SUMMARIES.pre_action_verifier;
+export function AgentGraphCanvas({
+  onApprovalRecheck,
+  onClarificationSubmit,
+  onSelectNode,
+  runSnapshot,
+  selectedNodeId,
+}: AgentGraphCanvasProps) {
+  const statuses = runSnapshot?.node_statuses ?? {};
+  const selectedBase = NODE_SUMMARIES[selectedNodeId] ?? NODE_SUMMARIES.pre_action_verifier;
+  const selectedNode = { ...selectedBase, status: statuses[selectedNodeId] ?? 'idle' };
   const inspectorNode: Node<CanvasInspectorNodeData> = {
     id: 'canvas_inspector',
     type: 'inspectorNode',
     position: { x: 0, y: 115 },
-    data: { selectedNode, selectedNodeId },
+    data: {
+      selectedNode,
+      selectedNodeId,
+      pause: runSnapshot?.pause ?? null,
+      onApprovalRecheck,
+      onClarificationSubmit,
+    },
     draggable: false,
     selectable: false,
     zIndex: 3,
   };
   const nodes: Node[] = [
-    ...INITIAL_GRAPH_NODES.map((node) => ({ ...node, selected: node.id === selectedNodeId })),
+    ...INITIAL_GRAPH_NODES.map((node) => ({
+      ...node,
+      data: { ...node.data, status: statuses[node.id] ?? 'idle' },
+      selected: node.id === selectedNodeId,
+    })),
     inspectorNode,
   ];
+  const traversedEdges = new Set(runSnapshot?.traversed_edges ?? []);
+  const edges = GRAPH_EDGES.map((edge) => {
+    const targetStatus = statuses[edge.target];
+    if (traversedEdges.has(edge.id) && (targetStatus === 'running' || targetStatus === 'waiting')) {
+      return { ...edge, animated: targetStatus === 'running', className: 'flow-edge edge-active' };
+    }
+    if (traversedEdges.has(edge.id)) {
+      return { ...edge, animated: false, className: 'flow-edge edge-completed' };
+    }
+    return { ...edge, animated: false };
+  });
 
   return (
     <section aria-label="Agent execution graph" className="workspace-panel graph-panel">
@@ -202,14 +274,14 @@ export function AgentGraphCanvas({ onSelectNode, selectedNodeId }: AgentGraphCan
           <span><i className="legend-selected" />Selected</span>
           <span><i className="legend-completed" />Completed</span>
           <span><i className="legend-idle" />Not visited</span>
-          <b>Static preview</b>
+          <b>{runSnapshot ? runSnapshot.status.replaceAll('_', ' ') : 'Awaiting run'}</b>
         </div>
       </div>
 
       <div className="agent-canvas-shell">
         <ReactFlow
           defaultEdgeOptions={{ markerEnd: { type: MarkerType.ArrowClosed, width: 12, height: 12 } }}
-          edges={GRAPH_EDGES}
+          edges={edges}
           edgesFocusable
           elementsSelectable
           fitView

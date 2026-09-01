@@ -360,6 +360,7 @@ export const GRAPH_EDGES: Edge[] = [
   edge('e-router-policy', 'supervisor_router', 'policy_agent', 'Policy', 'completed'),
   edge('e-router-course', 'supervisor_router', 'course_agent', 'Course', 'conditional', ['bottom-right', 'top']),
   edge('e-audit-policy', 'degree_audit_agent', 'policy_agent', 'Next specialist', 'conditional', ['right-top', 'left-top'], 22),
+  edge('e-audit-course', 'degree_audit_agent', 'course_agent', 'Next specialist', 'conditional', ['top-right', 'top-left'], 34),
   edge('e-policy-course', 'policy_agent', 'course_agent', 'Next specialist', 'conditional', ['right-bottom', 'left-bottom'], 22),
   edge('e-audit-builder', 'degree_audit_agent', 'resolution_builder', undefined, 'conditional', ['bottom-right', 'top-left']),
   edge('e-policy-builder', 'policy_agent', 'resolution_builder', undefined, 'completed'),

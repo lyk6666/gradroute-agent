@@ -37,9 +37,12 @@ def create_app(
     )
     app.state.run_service = run_service
     origin = str(selected_settings.frontend_origin).rstrip("/")
+    allowed_origins = sorted(
+        {origin, "http://localhost:3000", "http://127.0.0.1:3000"}
+    )
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=[origin, "http://127.0.0.1:3000"],
+        allow_origins=allowed_origins,
         allow_credentials=False,
         allow_methods=["GET", "POST"],
         allow_headers=["Content-Type", "Last-Event-ID"],

@@ -7,7 +7,7 @@ clear demonstration interface. The design is based on `main_page_reference.png`
 and `UI_IMPLEMENTATION_GUIDE.md`, while the repository's frozen graph, safety
 contracts, provenance boundaries, and evaluator isolation remain normative.
 
-Current status: **UI-2 complete; UI-3 awaiting approval.**
+Current status: **UI-3 complete; UI-4 is next.**
 
 The UI is a Team AIGO research prototype grounded in public NTU CCDS sources.
 It must not be represented as an official NTU service.
@@ -106,13 +106,27 @@ memory writes.
   response preview; and
 - implemented desktop five-region sizing plus stacked tablet/mobile layouts.
 
-### UI-3 — Main Page runtime integration — pending
+### UI-3 — Main Page runtime integration — complete
 
-- stable backend facade and SSE run events;
-- live node/edge and timeline updates;
-- selected-node tool/state/memory inspection;
-- clarification and approval checkpoint/resume dialogs;
-- final response, copy and export behavior.
+- added a versioned FastAPI facade over an isolated Stage 4/5 runtime per run;
+- projected all 7 demo and 105 held-out evaluation scenarios without exposing
+  ground truth, expected outcomes, injected scripts, or raw LangGraph state;
+- added replayable SSE events and processed snapshots for live node, edge,
+  timeline, tool, working-state, thread-memory and long-term-memory updates;
+- preserved two visual verifier phases while keeping the single frozen backend
+  verifier implementation;
+- implemented normal and true step-by-step execution, where the graph generator
+  waits between nodes until the user releases the next step;
+- implemented persisted clarification resume with required-field validation and
+  approval re-check through the authoritative simulated approval state;
+- enabled verified final-response copy and text export; and
+- added API, projection, execution, step-mode, checkpoint and leakage tests.
+
+UI-3 deliberately executes only records already validated in the frozen Stage 3
+scenario package. Manual Input remains a guarded composition surface until a
+separate simulation builder can create a mutually consistent student, degree
+audit, registration, offering and exception record; the interface does not
+pretend that arbitrary text has entered the authoritative runtime.
 
 ### UI-4 — Data explorer — pending
 
@@ -167,6 +181,20 @@ scenario preview grid now constrains provenance badges to their intrinsic size
 and preserves content-sized rows, while the timeline row is intentionally
 shorter to return vertical space to the execution canvas.
 
+### 1 September 2026 — UI-3
+
+The Main workspace now runs the real checkpointed control plane through a
+stable API instead of replaying static frontend samples. The backend exposes
+processed UI summaries only, supports event replay after reconnect, and keeps
+each mutable case runtime bound to one run/thread. Graph nodes and traversed
+edges update from actual LangGraph events; the timeline records repeated nodes
+for replans and dynamic recovery rather than forcing a fixed sequence. The
+right inspector follows real tool calls and memory summaries. Clarification
+answers resume the matching persisted interrupt, while pending approval can
+only be re-checked against the authoritative scenario state—the agent and UI
+cannot self-approve. Final student-facing output appears only after the runtime
+produces its terminal outcome.
+
 ## 7. Acceptance record
 
 - [x] Shared dark-header/light-workspace shell
@@ -187,7 +215,7 @@ shorter to return vertical space to the execution canvas.
 - [x] Responsive desktop, tablet and mobile composition
 - [x] Header-free content panels with larger working typography
 - [x] Embedded pannable canvas inspector and separated edge-routing lanes
-- [ ] Runtime/API integration — UI-3
+- [x] Runtime/API integration — UI-3
 - [ ] Complete data explorer — UI-4
 - [ ] Complete evaluation explorer — UI-5
 - [ ] End-to-end and production delivery gate — UI-6

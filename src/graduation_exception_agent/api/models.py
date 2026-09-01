@@ -79,7 +79,6 @@ class PauseSummary(ApiModel):
     message: str
     fields: list[str] = Field(default_factory=list)
     impact: str | None = None
-    resume_token: dict[str, Any]
 
 
 class FinalResponseSummary(ApiModel):
@@ -121,8 +120,10 @@ class RunSnapshot(ApiModel):
     thread_id: str
     mode: RunMode
     status: RunStatus
+    can_advance: bool = False
     current_node: str | None = None
     node_statuses: dict[str, NodeStatus]
+    traversed_edges: list[str] = Field(default_factory=list)
     timeline: list[TimelineItem] = Field(default_factory=list)
     working_state: WorkingStateSummary
     tools: list[ToolSummary] = Field(default_factory=list)

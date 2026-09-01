@@ -178,6 +178,14 @@ a:focus-visible {
   background: #f59e0b;
   box-shadow: 0 0 0 4px rgb(245 158 11 / 13%);
 }
+.system-health.is-checking i {
+  background: #f59e0b;
+  box-shadow: 0 0 0 4px rgb(245 158 11 / 13%);
+}
+.system-health.is-offline i {
+  background: #ef4444;
+  box-shadow: 0 0 0 4px rgb(239 68 68 / 13%);
+}
 .team-badge b {
   display: grid;
   width: 25px;
@@ -346,7 +354,9 @@ a:focus-visible {
 .snapshot-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 9px; padding: 0 10px 10px; }
 .run-setup-footer { display: grid; gap: 7px; margin-top: auto; padding: 11px 12px 12px; border-top: 1px solid var(--border); background: white; }
 .start-run-button { display: flex; min-height: 38px; align-items: center; justify-content: center; gap: 6px; color: white; border: 0; border-radius: 8px; background: var(--primary); font-size: 12px; font-weight: 800; }
+.start-run-button:not(:disabled) { cursor: pointer; }
 .start-run-button:disabled { cursor: not-allowed; opacity: 0.55; }
+.run-error { margin: 0; padding: 6px 8px; color: #b91c1c; border-radius: 6px; background: #fef2f2; font-size: 9px; line-height: 1.4; }
 
 /* UI-2 graph and in-canvas interaction rail */
 .graph-panel { position: relative; }
@@ -394,6 +404,10 @@ a:focus-visible {
 .approval-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
 .approval-buttons button { min-height: 29px; border: 1px solid var(--border); border-radius: 6px; background: #f8fafc; font-size: 9px; font-weight: 800; }
 .approval-buttons button:last-child { grid-column: 1 / -1; }
+.approval-buttons.approval-recheck { grid-template-columns: 1fr; }
+.clarification-checkbox { display: flex !important; align-items: flex-start; gap: 7px !important; padding: 7px; border: 1px solid var(--border); border-radius: 7px; background: #f8fafc; }
+.clarification-checkbox input { width: 14px; height: 14px; margin: 1px 0 0; }
+.clarification-checkbox span { color: #334155; font-size: 10px; line-height: 1.35; }
 .interaction-empty { background: #fbfcfe; }
 .agent-flow-node { display: flex; width: 188px; min-height: 54px; align-items: center; gap: 9px; padding: 8px 10px; border: 1px solid #94a3b8; border-radius: 9px; background: white; box-shadow: 0 3px 9px rgb(15 23 42 / 7%); transition: opacity 130ms ease, filter 130ms ease, box-shadow 130ms ease; }
 .agent-flow-node.status-idle,
@@ -464,7 +478,7 @@ a:focus-visible {
 
 /* UI-2 execution timeline */
 .timeline-scroll { position: relative; display: flex; min-height: 0; flex: 1; align-items: center; gap: 0; padding: 5px 18px 1px; overflow-x: auto; scrollbar-width: thin; }
-.timeline-scroll::before { position: absolute; top: calc(50% - 16px); left: 40px; width: calc(100% - 80px); height: 2px; content: ''; background: linear-gradient(90deg, var(--success) 0 53%, #dbe3ee 53%); }
+.timeline-scroll::before { position: absolute; top: calc(50% - 16px); left: 40px; width: calc(100% - 80px); height: 2px; content: ''; background: #dbe3ee; }
 .timeline-event { position: relative; z-index: 1; display: grid; min-width: 104px; flex: 1; justify-items: center; gap: 4px; padding: 0 5px; color: var(--text); border: 0; background: transparent; cursor: pointer; }
 .timeline-node-icon { position: relative; display: grid; width: 36px; height: 36px; margin-bottom: 3px; place-items: center; color: var(--muted); border: 2px solid #dbe3ee; border-radius: 50%; background: white; }
 .timeline-node-icon i { position: absolute; right: -4px; bottom: -3px; display: grid; width: 14px; height: 14px; place-items: center; border: 1px solid white; border-radius: 50%; background: #e2e8f0; }
@@ -477,6 +491,7 @@ a:focus-visible {
 .timeline-event strong { max-width: 100px; overflow: hidden; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
 .timeline-event small { color: var(--muted); font-size: 9px; }
 .timeline-event.status-idle { color: #94a3b8; }
+.timeline-empty { position: relative; z-index: 1; width: 100%; color: #94a3b8; font-size: 11px; text-align: center; }
 .timeline-hint { display: flex; align-items: center; justify-content: center; gap: 5px; padding: 1px 10px 4px; color: #94a3b8; font-size: 9px; }
 
 /* UI-2 final response */
@@ -485,6 +500,7 @@ a:focus-visible {
 .response-checks span { display: flex; min-height: 36px; align-items: center; justify-content: center; gap: 5px; padding: 5px; border: 1px solid var(--border); border-radius: 7px; font-size: 9px; font-weight: 800; text-align: center; }
 .response-checks .is-complete { color: #047857; background: #f0fdf9; }
 .response-checks .is-waiting { color: #b45309; background: #fffbeb; }
+.response-checks .is-failed { color: #b91c1c; background: #fef2f2; }
 .response-summary { display: grid; gap: 3px; }
 .response-summary > span { color: var(--primary); font-size: 9px; font-weight: 800; text-transform: uppercase; }
 .response-summary strong { font-size: 11px; line-height: 1.35; }
