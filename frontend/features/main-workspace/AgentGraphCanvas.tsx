@@ -38,6 +38,11 @@ type AgentGraphCanvasProps = {
   selectedNodeId: string;
 };
 
+type CanvasInspectorNodeData = {
+  selectedNode: NodeSummary;
+  selectedNodeId: string;
+} & Record<string, unknown>;
+
 const statusLabels: Record<NodeStatus, string> = {
   idle: 'Not visited',
   completed: 'Completed',
@@ -62,20 +67,34 @@ function AgentFlowNode({ data }: NodeProps<Node<AgentNodeData>>) {
   return (
     <div className={`agent-flow-node status-${data.status}`} title={`${data.label}: ${statusLabels[data.status]}`}>
       <Handle id="top" position={Position.Top} type="target" />
+      <Handle id="top-left" position={Position.Top} style={{ left: '28%' }} type="target" />
+      <Handle id="top-right" position={Position.Top} style={{ left: '72%' }} type="target" />
       <Handle id="left" position={Position.Left} type="target" />
+      <Handle id="left-top" position={Position.Left} style={{ top: '28%' }} type="target" />
+      <Handle id="left-bottom" position={Position.Left} style={{ top: '72%' }} type="target" />
       <Handle id="top" position={Position.Top} type="source" />
+      <Handle id="top-left" position={Position.Top} style={{ left: '28%' }} type="source" />
+      <Handle id="top-right" position={Position.Top} style={{ left: '72%' }} type="source" />
       <Handle id="left" position={Position.Left} type="source" />
+      <Handle id="left-top" position={Position.Left} style={{ top: '28%' }} type="source" />
+      <Handle id="left-bottom" position={Position.Left} style={{ top: '72%' }} type="source" />
       <span className="agent-node-icon"><Icon aria-hidden="true" size={14} /></span>
       <span className="agent-node-copy"><strong>{data.label}</strong><small><StatusIcon status={data.status} /> {statusLabels[data.status]}</small></span>
       <Handle id="right" position={Position.Right} type="source" />
+      <Handle id="right-top" position={Position.Right} style={{ top: '28%' }} type="source" />
+      <Handle id="right-bottom" position={Position.Right} style={{ top: '72%' }} type="source" />
       <Handle id="bottom" position={Position.Bottom} type="source" />
+      <Handle id="bottom-left" position={Position.Bottom} style={{ left: '28%' }} type="source" />
+      <Handle id="bottom-right" position={Position.Bottom} style={{ left: '72%' }} type="source" />
       <Handle id="right" position={Position.Right} type="target" />
+      <Handle id="right-top" position={Position.Right} style={{ top: '28%' }} type="target" />
+      <Handle id="right-bottom" position={Position.Right} style={{ top: '72%' }} type="target" />
       <Handle id="bottom" position={Position.Bottom} type="target" />
+      <Handle id="bottom-left" position={Position.Bottom} style={{ left: '28%' }} type="target" />
+      <Handle id="bottom-right" position={Position.Bottom} style={{ left: '72%' }} type="target" />
     </div>
   );
 }
-
-const nodeTypes = { agentNode: AgentFlowNode };
 
 function NodeDetail({ node }: { node: NodeSummary }) {
   const Icon = node.icon;
@@ -145,9 +164,35 @@ function HumanInteraction({ selectedNodeId }: { selectedNodeId: string }) {
   );
 }
 
+function CanvasInspectorNode({ data }: NodeProps<Node<CanvasInspectorNodeData>>) {
+  return (
+    <aside aria-label="Selected node and human interaction" className="canvas-embedded-inspector nodrag nowheel nopan">
+      <NodeDetail node={data.selectedNode} />
+      <HumanInteraction selectedNodeId={data.selectedNodeId} />
+    </aside>
+  );
+}
+
+const nodeTypes = {
+  agentNode: AgentFlowNode,
+  inspectorNode: CanvasInspectorNode,
+};
+
 export function AgentGraphCanvas({ onSelectNode, selectedNodeId }: AgentGraphCanvasProps) {
   const selectedNode = NODE_SUMMARIES[selectedNodeId] ?? NODE_SUMMARIES.pre_action_verifier;
-  const nodes = INITIAL_GRAPH_NODES.map((node) => ({ ...node, selected: node.id === selectedNodeId }));
+  const inspectorNode: Node<CanvasInspectorNodeData> = {
+    id: 'canvas_inspector',
+    type: 'inspectorNode',
+    position: { x: 0, y: 115 },
+    data: { selectedNode, selectedNodeId },
+    draggable: false,
+    selectable: false,
+    zIndex: 3,
+  };
+  const nodes: Node[] = [
+    ...INITIAL_GRAPH_NODES.map((node) => ({ ...node, selected: node.id === selectedNodeId })),
+    inspectorNode,
+  ];
 
   return (
     <section aria-label="Agent execution graph" className="workspace-panel graph-panel">
@@ -168,14 +213,16 @@ export function AgentGraphCanvas({ onSelectNode, selectedNodeId }: AgentGraphCan
           edgesFocusable
           elementsSelectable
           fitView
-          fitViewOptions={{ padding: 0.04, maxZoom: 0.8 }}
+          fitViewOptions={{ padding: 0.06, maxZoom: 0.86 }}
           maxZoom={1.45}
           minZoom={0.34}
           nodeTypes={nodeTypes}
           nodes={nodes}
           nodesConnectable={false}
           nodesDraggable={false}
-          onNodeClick={(_event: ReactMouseEvent, node) => onSelectNode(node.id)}
+          onNodeClick={(_event: ReactMouseEvent, node) => {
+            if (node.type === 'agentNode') onSelectNode(node.id);
+          }}
           panOnScroll
           proOptions={{ hideAttribution: true }}
           zoomOnDoubleClick={false}
@@ -183,11 +230,6 @@ export function AgentGraphCanvas({ onSelectNode, selectedNodeId }: AgentGraphCan
           <Background color="#dbe5f2" gap={24} size={1} variant={BackgroundVariant.Lines} />
           <Controls position="top-right" showInteractive={false} />
         </ReactFlow>
-
-        <aside className="canvas-internal-rail">
-          <NodeDetail node={selectedNode} />
-          <HumanInteraction selectedNodeId={selectedNodeId} />
-        </aside>
       </div>
     </section>
   );

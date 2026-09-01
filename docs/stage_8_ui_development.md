@@ -158,7 +158,11 @@ and event stream. The Main surface shows processed summaries only and continues
 to hide evaluator-only ground truth. A subsequent UI-2 density refinement
 removed the five decorative panel title/subtitle bands, retained only compact
 operational context such as the graph legend, and enlarged content typography
-across intake, graph, inspector, timeline, and response surfaces.
+across intake, graph, inspector, timeline, and response surfaces. The node-detail
+and human-interaction surfaces were then consolidated into one embedded canvas
+inspector that pans and zooms with the architecture. Graph branches use
+separated connection ports and offset return lanes so conditional, approval,
+clarification, and replanning edges do not share the same visible track.
 
 ## 7. Acceptance record
 
@@ -179,6 +183,7 @@ across intake, graph, inspector, timeline, and response surfaces.
 - [x] Horizontal human-readable timeline and pending final-response preview
 - [x] Responsive desktop, tablet and mobile composition
 - [x] Header-free content panels with larger working typography
+- [x] Embedded pannable canvas inspector and separated edge-routing lanes
 - [ ] Runtime/API integration — UI-3
 - [ ] Complete data explorer — UI-4
 - [ ] Complete evaluation explorer — UI-5
