@@ -200,6 +200,11 @@ branch, all replan/rejection paths now enter Planner horizontally with inward
 arrowheads, and the administrative Handoff uses a separate neutral corridor
 from the red transaction-domain escalation path.
 
+The untraversed Student/Case-to-agent backbone is uniformly neutral grey. Blue
+and green on that backbone are reserved for live and completed runtime traversal
+rather than being baked into the static topology; outcome-specific branches
+retain their purple, amber, red or green semantics.
+
 ### 1 September 2026 — UI-3
 
 The Main workspace now runs the real checkpointed control plane through a
