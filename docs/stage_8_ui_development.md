@@ -193,6 +193,13 @@ no independent edge intersections and no clipped route labels. At compact
 desktop widths the processed inspector moves below the graph so the architecture
 retains a readable canvas width.
 
+A follow-up routing correction keeps Degree Audit, Policy and Course as
+independent Supervisor/Router branches rather than implying a fixed specialist
+sequence. Runtime specialist transitions highlight the corresponding Supervisor
+branch, all replan/rejection paths now enter Planner horizontally with inward
+arrowheads, and the administrative Handoff uses a separate neutral corridor
+from the red transaction-domain escalation path.
+
 ### 1 September 2026 — UI-3
 
 The Main workspace now runs the real checkpointed control plane through a
