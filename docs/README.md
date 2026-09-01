@@ -2,8 +2,9 @@
 
 This package contains the current implementation specification for the NTU CCDS-grounded administrative exception-resolution prototype.
 
-Current status: Stage 7 implements the frozen 315-run held-out evaluation over
-the Stage 5/6 system. Both the deterministic fixture baseline and the
+Current status: Stage 8 is complete for the local research-prototype boundary.
+Its UI is backed by the Stage 7 frozen 315-run held-out evaluation over the
+Stage 5/6 system. Both the deterministic fixture baseline and the
 qualifying Amazon Bedrock campaign pass 315/315 with 105/105 scenarios at 3/3
 consistency. The live campaign also validates all 720 structured reasoning
 calls without fallback. Stage 8 UI-1 established the shared frontend shell,
@@ -13,7 +14,8 @@ manual/scenario intake composition, processed tool and memory inspector,
 human-checkpoint previews, timeline, and final-response preview. UI-3 connects
 that workspace to the live runtime, and UI-4 adds the comprehensive, read-only
 grounded data explorer. UI-5 now provides the accepted fixture/Bedrock
-evaluation dashboard; UI-6 hardening is the next approval checkpoint.
+evaluation dashboard. UI-6 completes accessibility, recovery, readiness,
+performance and local delivery hardening for the Stage 8 research prototype.
 
 Foundation specifications:
 
@@ -66,7 +68,7 @@ Stage 6 — Grounded LLM Reasoning + Ranked Advisory Memory (complete)
     ↓
 Stage 7 — Scenario Trace Evaluation + Robustness Hardening (complete)
     ↓
-Stage 8 — Demo/UI Delivery + Operational Hardening (UI-5 complete; UI-6 next)
+Stage 8 — Demo/UI Delivery + Operational Hardening (complete for local research prototype)
 ```
 
 Key principle:

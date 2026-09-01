@@ -9,7 +9,10 @@ The implementation specifications are indexed in [`docs/README.md`](docs/README.
 
 ## Current stage
 
-Stage 7 now adds an isolated 315-run evaluator over the grounded Amazon Bedrock
+Stage 8 is complete for the local research-prototype boundary. It packages the
+live Main workspace, grounded Data explorer, accepted Evaluation dashboard,
+route recovery, accessibility semantics, readiness checks and offline delivery
+smoke gate. Stage 7 provides the isolated 315-run evaluator over the grounded Amazon Bedrock
 reasoning layer and the Stage 5 typed, checkpointed LangGraph control plane. The project provides
 forced structured Nova output, deterministic safety dominance, allowlisted
 prompt projection, checkpointed reasoning audit metadata, and ranked advisory
@@ -50,7 +53,7 @@ Stage 4  deterministic four-domain tools and isolated transaction runtime (compl
 Stage 5  LangGraph control plane, checkpointing, and memory interfaces (complete)
 Stage 6  grounded LLM reasoning and richer advisory-memory ranking (complete)
 Stage 7  315-run fixture and Bedrock evaluation plus robustness hardening (complete)
-Stage 8  polished demo/UI and operational delivery (UI-5 complete; UI-6 next)
+Stage 8  polished demo/UI and local prototype delivery (complete)
 ```
 
 See the [Stage 3 simulation data details](docs/stage_3_simulation_data_details.md),
@@ -132,7 +135,7 @@ Run the canonical Stage 7 fixture campaign:
 .venv\Scripts\python.exe scripts\run_stage7_evaluation.py --mode fixture --output-dir evaluation
 ```
 
-Run the Stage 8 frontend preview:
+Run the Stage 8 backend:
 
 ```powershell
 .venv\Scripts\python.exe -m graduation_exception_agent.api
@@ -151,6 +154,25 @@ The API defaults to `http://127.0.0.1:8000` and the frontend to
 only when using a different API address. The runtime honors `EXECUTION_MODE`:
 `fixture` uses deterministic grounded decisions, while `bedrock` uses the
 configured Amazon Bedrock provider.
+
+Run the offline Stage 8 delivery smoke gate before a demo:
+
+```powershell
+.venv\Scripts\python.exe scripts\check_stage8_delivery.py
+```
+
+For a production-like local frontend after the backend has started:
+
+```powershell
+cd frontend
+npm ci
+npm run build
+npm run start
+```
+
+This is research-prototype packaging, not an authorized public NTU deployment.
+The evaluator boundary is logically isolated from agent context but is not yet
+protected by role-based authentication.
 
 Verify the current UI foundation:
 

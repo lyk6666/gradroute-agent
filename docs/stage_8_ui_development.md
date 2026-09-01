@@ -7,7 +7,7 @@ clear demonstration interface. The design is based on `main_page_reference.png`
 and `UI_IMPLEMENTATION_GUIDE.md`, while the repository's frozen graph, safety
 contracts, provenance boundaries, and evaluator isolation remain normative.
 
-Current status: **UI-5 complete; UI-6 hardening is next.**
+Current status: **UI-6 complete; Stage 8 local prototype delivery accepted.**
 
 The UI is a Team AIGO research prototype grounded in public NTU CCDS sources.
 It must not be represented as an official NTU service.
@@ -171,14 +171,33 @@ pretend that arbitrary text has entered the authoritative runtime.
 - kept evaluation contracts and result signatures on this evaluator boundary;
   tests confirm they remain absent from the agent scenario catalogue.
 
-### UI-6 — Hardening and delivery — pending
+### UI-6 — Hardening and delivery — complete
 
-- loading, error and empty states;
-- responsive and keyboard/accessibility audit;
-- reduced motion and performance checks;
-- component, integration and end-to-end smoke tests;
-- Demo/Developer mode review; and
-- production packaging and final delivery.
+- added shared route-level loading, contained error/retry and not-found states;
+- added a skip link, page-specific metadata, system-status live regions,
+  expanded focus-visible treatment and forced-colour fallbacks;
+- made Data and Evaluation table rows keyboard-selectable and exposed selected,
+  sorted, pressed and tab states to assistive technology;
+- added keyboard-aware graph-node selection, live run-state announcements and
+  explicit text labels alongside every colour-coded state;
+- retained the global reduced-motion override for graph, loading and status
+  animation and preserved responsive stacked layouts for narrow screens;
+- changed the heavy Data and Evaluation report services to lazy singletons so
+  API startup and the Main route no longer load both inspection packages;
+- added `/api/v1/ready` for non-secret package/artifact readiness checks;
+- added `scripts/check_stage8_delivery.py`, an offline delivery smoke gate over
+  API readiness, all three route contracts, exact safe record counts, both
+  evaluation lanes and evaluator-field isolation;
+- verified lint, type checking, production build, focused Stage 8 integration
+  tests and the complete Python suite; and
+- documented development and production-like local startup commands.
+
+UI-6 completes the research-prototype delivery boundary, not an institutional
+production deployment. Manual record construction remains guarded, runtime
+state is not a multi-user service, and the Evaluation route has logical
+agent/evaluator isolation but no role-based authentication. A public or
+multi-user deployment must add identity, authorization, durable state, secret
+management, audit retention and institutional review.
 
 ## 6. Progress log
 
@@ -274,6 +293,21 @@ outcomes, signatures, trace oracles and violations are legitimate here but must
 not influence planning or grading inside the agent. Focused tests compare the
 evaluation endpoint with `/api/v1/scenarios` and preserve that one-way boundary.
 
+### 1 September 2026 — UI-6
+
+The final hardening pass treats Main, Data and Evaluation as one product rather
+than three isolated demos. Navigation can be skipped, interactive table rows
+work from the keyboard, sort and toggle state is machine-readable, asynchronous
+status changes use polite live regions, and route failures recover without
+submitting a case action. Loading and empty states remain truthful about what is
+known, including the accepted zero-length failure artifacts.
+
+Backend inspection services now load only when their corresponding routes are
+first requested. The readiness endpoint checks the minimum grounded and
+evaluation artifacts without loading them into agent context or returning local
+paths. The delivery smoke command validates the complete offline package and
+the one-way evaluator boundary before a demo is started.
+
 ## 7. Acceptance record
 
 - [x] Shared dark-header/light-workspace shell
@@ -298,4 +332,4 @@ evaluation endpoint with `/api/v1/scenarios` and preserve that one-way boundary.
 - [x] Runtime/API integration — UI-3
 - [x] Complete data explorer — UI-4
 - [x] Complete evaluation explorer — UI-5
-- [ ] End-to-end and production delivery gate — UI-6
+- [x] End-to-end and local prototype delivery gate — UI-6
