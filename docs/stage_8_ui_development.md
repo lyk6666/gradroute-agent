@@ -7,7 +7,7 @@ clear demonstration interface. The design is based on `main_page_reference.png`
 and `UI_IMPLEMENTATION_GUIDE.md`, while the repository's frozen graph, safety
 contracts, provenance boundaries, and evaluator isolation remain normative.
 
-Current status: **UI-4 complete; UI-5 is next.**
+Current status: **UI-5 complete; UI-6 hardening is next.**
 
 The UI is a Team AIGO research prototype grounded in public NTU CCDS sources.
 It must not be represented as an official NTU service.
@@ -152,12 +152,24 @@ pretend that arbitrary text has entered the authoritative runtime.
 - added API tests for exact catalogue counts, search/filter/sort/pagination,
   parsed document availability, restricted access and recursive leakage guards.
 
-### UI-5 — Evaluation evidence — pending
+### UI-5 — Evaluation evidence — complete
 
-- Stage 7 overview metrics and scenario-family performance;
-- 315-run search/filter table and run inspector;
-- consistency summary, failure categories and zero-failure state;
-- evaluator-only visibility controls.
+- added a fixture/live campaign switch over both accepted Stage 7 artifact sets;
+- added acceptance summaries for 315/315 runs, 105/105 scenarios at 3/3
+  consistency, deterministic safety gates, latency, tool calls and violations;
+- added family-level and empty/relevant/misleading memory-condition comparisons;
+- added Bedrock reasoning coverage, schema validation, fallback, token and
+  explicitly priced cost summaries without embedding model pricing in the UI;
+- added server-paginated 315-run search, family/memory/result/outcome filters,
+  sorting, and a processed evaluator inspector for expected/actual outcomes,
+  canonical traces, verifier decisions, memory/checkpoints, approval paths,
+  reasoning coverage and violations;
+- added the 105-scenario consistency table with all three memory-condition
+  results, averages and token totals;
+- added failure-artifact diagnostics, including an explicit accepted empty state
+  for both zero-length `failures.jsonl` files; and
+- kept evaluation contracts and result signatures on this evaluator boundary;
+  tests confirm they remain absent from the agent scenario catalogue.
 
 ### UI-6 — Hardening and delivery — pending
 
@@ -249,6 +261,19 @@ single primary JSON table. Evaluator-only transaction behavior and ground-truth
 contracts remain visible only as locked catalogue counts. They return HTTP 403
 when requested from UI-4 and will be handled under UI-5's evaluator boundary.
 
+### 1 September 2026 — UI-5
+
+The Evaluation route now reads the frozen fixture and accepted Bedrock reports
+through a separate read-only API service. Overview cards and cohort tables are
+derived from each lane's typed `metrics_summary.json`; the Runs inspector reads
+validated `run_results.jsonl` records, the Scenarios view reads the 105-row CSV,
+and Failures reflects the actual evaluator file rather than a hard-coded claim.
+
+The interface labels this as an evaluator-only surface because expected
+outcomes, signatures, trace oracles and violations are legitimate here but must
+not influence planning or grading inside the agent. Focused tests compare the
+evaluation endpoint with `/api/v1/scenarios` and preserve that one-way boundary.
+
 ## 7. Acceptance record
 
 - [x] Shared dark-header/light-workspace shell
@@ -272,5 +297,5 @@ when requested from UI-4 and will be handled under UI-5's evaluator boundary.
 - [x] Collision-audited orthogonal routes and explicit edge-label placement
 - [x] Runtime/API integration — UI-3
 - [x] Complete data explorer — UI-4
-- [ ] Complete evaluation explorer — UI-5
+- [x] Complete evaluation explorer — UI-5
 - [ ] End-to-end and production delivery gate — UI-6

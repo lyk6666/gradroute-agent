@@ -12,7 +12,8 @@ now adds the approved five-region Main workspace, complete selectable graph,
 manual/scenario intake composition, processed tool and memory inspector,
 human-checkpoint previews, timeline, and final-response preview. UI-3 connects
 that workspace to the live runtime, and UI-4 adds the comprehensive, read-only
-grounded data explorer; UI-5 is the next approval checkpoint.
+grounded data explorer. UI-5 now provides the accepted fixture/Bedrock
+evaluation dashboard; UI-6 hardening is the next approval checkpoint.
 
 Foundation specifications:
 
@@ -65,7 +66,7 @@ Stage 6 — Grounded LLM Reasoning + Ranked Advisory Memory (complete)
     ↓
 Stage 7 — Scenario Trace Evaluation + Robustness Hardening (complete)
     ↓
-Stage 8 — Demo/UI Delivery + Operational Hardening (UI-4 complete; UI-5 next)
+Stage 8 — Demo/UI Delivery + Operational Hardening (UI-5 complete; UI-6 next)
 ```
 
 Key principle:

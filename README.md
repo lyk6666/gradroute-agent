@@ -28,7 +28,9 @@ does not yet contain embedding/vector retrieval or a durable production
 checkpointer. Stage 8 UI-3 provides the live Main execution workspace over a
 versioned API and replayable event stream. Scenario runs now update the graph,
 trace, tools, memory, checkpoints, and verified final response from the real
-Stage 4/5 runtime; evaluator ground truth remains isolated. The deterministic and Amazon Bedrock held-out campaigns
+Stage 4/5 runtime. UI-4 provides a processed, read-only view over grounded and
+simulated data, while UI-5 provides a separate dashboard over the accepted
+evaluation reports; evaluator ground truth remains isolated from the agent. The deterministic and Amazon Bedrock held-out campaigns
 both pass 315/315 runs with 105/105 scenarios at 3/3 consistency. The live lane
 also passes all 720 structured reasoning calls without fallback, satisfying
 the Stage 7 model-coverage gate.
@@ -48,7 +50,7 @@ Stage 4  deterministic four-domain tools and isolated transaction runtime (compl
 Stage 5  LangGraph control plane, checkpointing, and memory interfaces (complete)
 Stage 6  grounded LLM reasoning and richer advisory-memory ranking (complete)
 Stage 7  315-run fixture and Bedrock evaluation plus robustness hardening (complete)
-Stage 8  polished demo/UI and operational delivery (UI-3 complete; UI-4 next)
+Stage 8  polished demo/UI and operational delivery (UI-5 complete; UI-6 next)
 ```
 
 See the [Stage 3 simulation data details](docs/stage_3_simulation_data_details.md),
