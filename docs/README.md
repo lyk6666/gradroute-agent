@@ -6,9 +6,12 @@ Current status: Stage 7 implements the frozen 315-run held-out evaluation over
 the Stage 5/6 system. Both the deterministic fixture baseline and the
 qualifying Amazon Bedrock campaign pass 315/315 with 105/105 scenarios at 3/3
 consistency. The live campaign also validates all 720 structured reasoning
-calls without fallback. Stage 8 UI-1 now establishes the shared frontend shell,
-three product routes, visual tokens, and reusable interface primitives; UI-2 is
-the next approval checkpoint.
+calls without fallback. Stage 8 UI-1 established the shared frontend shell,
+three product routes, visual tokens, and reusable interface primitives. UI-2
+now adds the approved five-region Main workspace, complete selectable graph,
+manual/scenario intake composition, processed tool and memory inspector,
+human-checkpoint previews, timeline, and final-response preview; UI-3 is the
+next approval checkpoint.
 
 Foundation specifications:
 
@@ -61,7 +64,7 @@ Stage 6 — Grounded LLM Reasoning + Ranked Advisory Memory (complete)
     ↓
 Stage 7 — Scenario Trace Evaluation + Robustness Hardening (complete)
     ↓
-Stage 8 — Demo/UI Delivery + Operational Hardening (UI-1 complete; UI-2 next)
+Stage 8 — Demo/UI Delivery + Operational Hardening (UI-2 complete; UI-3 next)
 ```
 
 Key principle:

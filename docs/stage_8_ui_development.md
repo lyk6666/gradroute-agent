@@ -7,7 +7,7 @@ clear demonstration interface. The design is based on `main_page_reference.png`
 and `UI_IMPLEMENTATION_GUIDE.md`, while the repository's frozen graph, safety
 contracts, provenance boundaries, and evaluator isolation remain normative.
 
-Current status: **UI-1 complete; UI-2 awaiting approval.**
+Current status: **UI-2 complete; UI-3 awaiting approval.**
 
 The UI is a Team AIGO research prototype grounded in public NTU CCDS sources.
 It must not be represented as an official NTU service.
@@ -81,13 +81,30 @@ memory writes.
   the final production and development dependency audit reporting zero known
   vulnerabilities.
 
-### UI-2 — Main Page static workspace — pending approval
+### UI-2 — Main Page static workspace — complete
 
-- cases/demo-scenario rail;
-- complete frozen graph with collision-free nodes and typed edge styles;
-- case/node inspector shell;
-- execution timeline and final-response composition;
-- target desktop and responsive layouts.
+- replaced the foundation placeholder with a full-screen five-region workspace:
+  input, graph, processed inspector, timeline, and final response;
+- added Scenario and Manual Input modes, with grounded CCDS programme choices,
+  required academic-snapshot fields, Demo/Evaluation scenario selection, and
+  Normal or Step-by-step run selection;
+- represented the complete frozen control plane with distinguishable current,
+  selected, completed, skipped, waiting, and unvisited states;
+- kept the Student/Case marker outside the control-step count and represented
+  Pre-action Verifier and Post-action Verifier as separate visual nodes;
+- represented clarification, bounded replanning, approval rejection, pending
+  approval checkpoint/resume, no-safe-route escalation, transaction-domain
+  handoff, observation, verified completion, and verified-only memory update;
+- added selectable node cards with purpose, status, processed input/output/state
+  summaries and related-tool summaries;
+- added an in-canvas human interaction area for clarification, simulated
+  approval and administrative handoff, with backend-dependent controls disabled;
+- added a processed-only inspector for working state, tools, thread memory,
+  long-term advisory memory and provenance; no raw JSON or evaluator ground truth
+  is exposed on Main;
+- added a selectable horizontal execution timeline and a truthful pending final
+  response preview; and
+- implemented desktop five-region sizing plus stacked tablet/mobile layouts.
 
 ### UI-3 — Main Page runtime integration — pending
 
@@ -130,7 +147,17 @@ the first Main route communicates the real product and safety boundaries. No
 runtime API, graph interaction, approval action, or evaluator-ground-truth
 exposure was added in this stage.
 
-## 7. UI-1 acceptance record
+### 1 September 2026 — UI-2
+
+The Main route now implements the approved static workspace and the corrected
+`Intake Guard (3)` topology. It supports local UI selection and inspection but
+does not claim that a case has executed. Manual cases, run controls,
+clarification, approval decisions, checkpoint resume, transactions, and final
+response export remain disabled until UI-3 connects the stable backend facade
+and event stream. The Main surface shows processed summaries only and continues
+to hide evaluator-only ground truth.
+
+## 7. Acceptance record
 
 - [x] Shared dark-header/light-workspace shell
 - [x] Main, Data and Evaluation navigation
@@ -140,7 +167,14 @@ exposure was added in this stage.
 - [x] Responsive foundation without page-level overflow by design
 - [x] Visible keyboard focus and reduced-motion support
 - [x] Production build, lint, type check and dependency audit
-- [ ] Interactive graph — UI-2
+- [x] Five-region full-screen Main workspace
+- [x] Scenario and entirely-new Manual Input composition
+- [x] Selectable complete graph with two verifier phases
+- [x] Distinct current and selected node states
+- [x] Node details and human checkpoint preview inside the canvas
+- [x] Selected-node tool highlighting and processed memory summaries
+- [x] Horizontal human-readable timeline and pending final-response preview
+- [x] Responsive desktop, tablet and mobile composition
 - [ ] Runtime/API integration — UI-3
 - [ ] Complete data explorer — UI-4
 - [ ] Complete evaluation explorer — UI-5

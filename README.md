@@ -24,8 +24,9 @@ evaluator-only execution contracts.
 matrix recorded in `data/real/coverage.json`. Authenticated curriculum plans,
 personalised registration slots, capacity, eligibility, general late-registration
 workflows, and undocumented approval chains remain explicit gaps. The project
-does not yet contain embedding/vector retrieval, a durable production
-checkpointer, or a UI. The deterministic and Amazon Bedrock held-out campaigns
+does not yet contain embedding/vector retrieval or a durable production
+checkpointer. Stage 8 UI-2 provides the static Main execution workspace; live
+runtime integration remains intentionally deferred to UI-3. The deterministic and Amazon Bedrock held-out campaigns
 both pass 315/315 runs with 105/105 scenarios at 3/3 consistency. The live lane
 also passes all 720 structured reasoning calls without fallback, satisfying
 the Stage 7 model-coverage gate.
@@ -45,7 +46,7 @@ Stage 4  deterministic four-domain tools and isolated transaction runtime (compl
 Stage 5  LangGraph control plane, checkpointing, and memory interfaces (complete)
 Stage 6  grounded LLM reasoning and richer advisory-memory ranking (complete)
 Stage 7  315-run fixture and Bedrock evaluation plus robustness hardening (complete)
-Stage 8  polished demo/UI and operational delivery (UI-1 complete; UI-2 next)
+Stage 8  polished demo/UI and operational delivery (UI-2 complete; UI-3 next)
 ```
 
 See the [Stage 3 simulation data details](docs/stage_3_simulation_data_details.md),

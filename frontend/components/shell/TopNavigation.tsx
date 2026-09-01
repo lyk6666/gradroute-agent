@@ -4,6 +4,7 @@ export type AppSection = 'main' | 'data' | 'evaluation';
 
 type TopNavigationProps = {
   activeSection: AppSection;
+  preview?: boolean;
 };
 
 const links: Array<{ href: string; label: string; section: AppSection }> = [
@@ -12,7 +13,7 @@ const links: Array<{ href: string; label: string; section: AppSection }> = [
   { href: '/evaluation', label: 'Evaluation', section: 'evaluation' },
 ];
 
-export function TopNavigation({ activeSection }: TopNavigationProps) {
+export function TopNavigation({ activeSection, preview = false }: TopNavigationProps) {
   return (
     <header className="topbar">
       <div className="brand-lockup">
@@ -38,7 +39,9 @@ export function TopNavigation({ activeSection }: TopNavigationProps) {
 
       <div className="topbar-actions">
         <span className="event-badge">✦ IGNITE 2026 Prototype</span>
-        <span className="system-health"><i /> Interface ready</span>
+        <span className={`system-health${preview ? ' is-preview' : ''}`}>
+          <i /> {preview ? 'Static preview' : 'Interface ready'}
+        </span>
         <span className="team-badge"><b>A</b> Team AIGO</span>
       </div>
     </header>
