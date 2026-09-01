@@ -157,6 +157,96 @@ class ApprovalResumeRequest(ApiModel):
     decision_reason: str | None = None
 
 
+DataProvenance = Literal["real", "simulated", "derived", "restricted"]
+DataDomain = Literal["academic", "operational", "cases", "governance"]
+
+
+class DataColumn(ApiModel):
+    key: str
+    label: str
+    kind: Literal["text", "number", "status", "date", "list"] = "text"
+
+
+class DataDatasetSummary(ApiModel):
+    dataset_id: str
+    domain: DataDomain
+    label: str
+    description: str
+    provenance: DataProvenance
+    record_count: int
+    accessible: bool = True
+    columns: list[DataColumn] = Field(default_factory=list)
+    default_sort: str | None = None
+
+
+class DataDomainSummary(ApiModel):
+    domain: DataDomain
+    label: str
+    description: str
+    dataset_ids: list[str]
+
+
+class DataCatalogStats(ApiModel):
+    datasets: int
+    accessible_records: int
+    real_records: int
+    simulated_records: int
+    restricted_records: int
+
+
+class DataCatalogResponse(ApiModel):
+    api_version: Literal["1.0"] = "1.0"
+    domains: list[DataDomainSummary]
+    datasets: list[DataDatasetSummary]
+    stats: DataCatalogStats
+
+
+class DataField(ApiModel):
+    label: str
+    value: str
+
+
+class DataSection(ApiModel):
+    title: str
+    fields: list[DataField]
+
+
+class DataRelationship(ApiModel):
+    label: str
+    dataset_id: str
+    record_ids: list[str]
+    total_count: int
+
+
+class DataRecord(ApiModel):
+    record_id: str
+    title: str
+    subtitle: str = ""
+    provenance: DataProvenance
+    status: str | None = None
+    cells: dict[str, str]
+    sections: list[DataSection] = Field(default_factory=list)
+    relationships: list[DataRelationship] = Field(default_factory=list)
+    source_ids: list[str] = Field(default_factory=list)
+    lineage_ids: list[str] = Field(default_factory=list)
+    quality_notes: list[str] = Field(default_factory=list)
+
+
+class DataFilterOptions(ApiModel):
+    programmes: list[str] = Field(default_factory=list)
+    statuses: list[str] = Field(default_factory=list)
+
+
+class DataPageResponse(ApiModel):
+    api_version: Literal["1.0"] = "1.0"
+    dataset: DataDatasetSummary
+    page: int
+    page_size: int
+    total: int
+    records: list[DataRecord]
+    filters: DataFilterOptions
+
+
 class RunEvent(ApiModel):
     sequence: int
     event_type: str
@@ -170,6 +260,17 @@ class RunEvent(ApiModel):
 __all__ = [
     "ApprovalResumeRequest",
     "ClarificationResumeRequest",
+    "DataCatalogResponse",
+    "DataCatalogStats",
+    "DataColumn",
+    "DataDatasetSummary",
+    "DataDomainSummary",
+    "DataField",
+    "DataFilterOptions",
+    "DataPageResponse",
+    "DataRecord",
+    "DataRelationship",
+    "DataSection",
     "FinalResponseSummary",
     "MemorySummary",
     "NodeStatus",
