@@ -37,7 +37,7 @@ export function FinalResponsePanel({ runSnapshot, scenario }: { runSnapshot: Run
       </div>
 
       <footer className="response-actions">
-        <button disabled={!response} onClick={copyResponse} type="button"><Copy size={13} /> {copied ? 'Copied' : 'Copy'}</button>
+        <button aria-live="polite" disabled={!response} onClick={copyResponse} type="button"><Copy size={13} /> {copied ? 'Copied' : 'Copy'}</button>
         <button className="is-primary" disabled={!response || !runSnapshot} onClick={() => runSnapshot && exportResolution(runSnapshot)} type="button">Export resolution <Download size={13} /></button>
       </footer>
     </section>

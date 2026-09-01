@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -8,6 +8,11 @@ export const metadata: Metadata = {
   },
   description:
     'Team AIGO prototype for transparent, grounded NTU CCDS graduation exception resolution.',
+};
+
+export const viewport: Viewport = {
+  colorScheme: 'light',
+  themeColor: '#111827',
 };
 
 export default function RootLayout({

@@ -11,8 +11,9 @@ type AppShellProps = {
 export function AppShell({ activeSection, children, systemStatus, workspace = false }: AppShellProps) {
   return (
     <div className={`app-shell${workspace ? ' app-shell-workspace' : ''}`}>
+      <a className="skip-link" href="#main-content">Skip to main content</a>
       <TopNavigation activeSection={activeSection} preview={workspace} systemStatus={systemStatus} />
-      <main className={`page-content${workspace ? ' page-content-workspace' : ''}`}>
+      <main className={`page-content${workspace ? ' page-content-workspace' : ''}`} id="main-content" tabIndex={-1}>
         {children}
       </main>
       {!workspace ? (

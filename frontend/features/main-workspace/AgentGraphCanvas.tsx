@@ -324,6 +324,7 @@ export function AgentGraphCanvas({
     ...INITIAL_GRAPH_NODES.map((node) => ({
       ...node,
       data: { ...node.data, status: statuses[node.id] ?? 'idle' },
+      ariaLabel: `${node.data.label}, ${statusLabels[statuses[node.id] ?? 'idle']}`,
       selected: node.id === selectedNodeId,
     })),
     inspectorNode,
@@ -348,7 +349,7 @@ export function AgentGraphCanvas({
           <span><i className="legend-selected" />Selected</span>
           <span><i className="legend-completed" />Completed</span>
           <span><i className="legend-idle" />Not visited</span>
-          <b>{runSnapshot ? runSnapshot.status.replaceAll('_', ' ') : 'Awaiting run'}</b>
+          <b aria-live="polite">{runSnapshot ? runSnapshot.status.replaceAll('_', ' ') : 'Awaiting run'}</b>
         </div>
       </div>
 
@@ -367,8 +368,13 @@ export function AgentGraphCanvas({
           nodes={nodes}
           nodesConnectable={false}
           nodesDraggable={false}
+          nodesFocusable
           onNodeClick={(_event: ReactMouseEvent, node) => {
             if (node.type === 'agentNode') onSelectNode(node.id);
+          }}
+          onSelectionChange={({ nodes: selectedNodes }) => {
+            const selected = selectedNodes.find((node) => node.type === 'agentNode');
+            if (selected) onSelectNode(selected.id);
           }}
           panOnScroll
           proOptions={{ hideAttribution: true }}

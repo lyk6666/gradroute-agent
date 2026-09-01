@@ -200,6 +200,7 @@ export function DataExplorer() {
                           className={`data-dataset-button${dataset.dataset_id === datasetId ? ' is-active' : ''}${!dataset.accessible ? ' is-restricted' : ''}`}
                           onClick={() => chooseDataset(dataset)}
                           aria-pressed={dataset.dataset_id === datasetId}
+                          disabled={!dataset.accessible}
                           title={!dataset.accessible ? 'Evaluator-only data is protected' : dataset.description}
                         >
                           <span>{!dataset.accessible ? <LockKeyhole size={12} /> : null}{dataset.label}</span>
@@ -256,11 +257,11 @@ export function DataExplorer() {
             </div>
 
             <div className={`data-table-wrap${loading ? ' is-loading' : ''}`}>
-              <table className="data-record-table">
+              <table aria-label={`${dataPage?.dataset.label ?? 'Data'} records`} className="data-record-table">
                 <thead>
                   <tr>
                     {dataPage?.dataset.columns.map((column) => (
-                      <th key={column.key} scope="col">
+                      <th aria-sort={sort === column.key ? (direction === 'asc' ? 'ascending' : 'descending') : undefined} key={column.key} scope="col">
                         <button type="button" onClick={() => changeSort(column.key)}>
                           {column.label}
                           {sort === column.key
@@ -276,8 +277,16 @@ export function DataExplorer() {
                   {dataPage?.records.map((record) => (
                     <tr
                       key={record.record_id}
+                      aria-selected={record.record_id === selectedId}
                       className={record.record_id === selectedId ? 'is-selected' : ''}
                       onClick={() => setSelectedId(record.record_id)}
+                      onKeyDown={(event) => {
+                        if (event.key === 'Enter' || event.key === ' ') {
+                          event.preventDefault();
+                          setSelectedId(record.record_id);
+                        }
+                      }}
+                      tabIndex={0}
                     >
                       {dataPage.dataset.columns.map((column, index) => (
                         <td key={column.key}>
@@ -298,7 +307,7 @@ export function DataExplorer() {
               {!loading && dataPage?.records.length === 0 ? (
                 <div className="data-empty-state"><Search size={28} /><strong>No matching records</strong><span>Try clearing one of the filters.</span></div>
               ) : null}
-              {loading ? <div className="data-loading-overlay"><RefreshCw size={19} className="is-spinning" /> Updating table…</div> : null}
+              {loading ? <div aria-live="polite" className="data-loading-overlay" role="status"><RefreshCw size={19} className="is-spinning" /> Updating table…</div> : null}
             </div>
 
             <footer className="data-pagination">

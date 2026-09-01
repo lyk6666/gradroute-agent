@@ -50,10 +50,34 @@ body {
 button, a { font: inherit; }
 
 button:focus-visible,
-a:focus-visible {
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+summary:focus-visible,
+[tabindex]:focus-visible {
   outline: 3px solid rgb(96 165 250 / 65%);
   outline-offset: 2px;
 }
+
+.skip-link {
+  position: fixed;
+  z-index: 1000;
+  top: 8px;
+  left: 8px;
+  padding: 9px 12px;
+  color: white;
+  border-radius: 8px;
+  background: #1d4ed8;
+  box-shadow: var(--shadow-card);
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  transform: translateY(-150%);
+  transition: transform 120ms ease;
+}
+.skip-link:focus { transform: translateY(0); }
+#main-content:focus { outline: none; }
 
 .app-shell { min-height: 100vh; }
 
@@ -1117,6 +1141,7 @@ a:focus-visible {
 .data-dataset-button.is-active { color: #1d4ed8; border-color: #bfdbfe; background: #eff6ff; box-shadow: inset 3px 0 #3b82f6; }
 .data-dataset-button.is-restricted { color: #7c3aed; cursor: not-allowed; opacity: 0.72; }
 .data-dataset-button.is-restricted:hover { background: #faf5ff; }
+.data-dataset-button:disabled { cursor: not-allowed; }
 
 .data-boundary-note {
   display: flex;
@@ -1215,6 +1240,8 @@ a:focus-visible {
 .data-record-table tbody tr { cursor: pointer; transition: background 110ms ease; }
 .data-record-table tbody tr:hover { background: #f8fbff; }
 .data-record-table tbody tr.is-selected { background: #eff6ff; box-shadow: inset 3px 0 #3b82f6; }
+.data-record-table tbody tr:focus-visible,
+.evaluation-table tbody tr:focus-visible { position: relative; z-index: 1; outline: 3px solid rgb(37 99 235 / 55%); outline-offset: -3px; }
 .data-record-table th:nth-child(1) { width: 18%; }
 .data-record-table th:nth-child(2) { width: 29%; }
 .data-record-table th:nth-child(n+3) { width: 17%; }
@@ -1396,6 +1423,8 @@ a:focus-visible {
 .evaluation-tab-boundary { margin-left: auto; gap: 5px; padding-right: 6px; color: #7c3aed; font-size: 8px; font-weight: 700; }
 
 .evaluation-error { position: absolute; z-index: 30; top: 94px; right: 18px; max-width: 520px; gap: 8px; padding: 9px 11px; color: #991b1b; border: 1px solid #fecaca; border-radius: 9px; background: #fef2f2; box-shadow: var(--shadow-card); font-size: 10px; }
+.evaluation-error span { flex: 1; }
+.evaluation-error button { padding: 5px 8px; color: #991b1b; border: 1px solid #fecaca; border-radius: 6px; background: white; cursor: pointer; font-size: 8px; font-weight: 800; }
 .evaluation-view { min-height: 0; overflow: hidden; }
 .evaluation-overview-scroll { display: grid; height: 100%; min-height: 0; align-content: start; gap: 10px; overflow-y: auto; padding-right: 2px; scrollbar-width: thin; }
 
@@ -1596,4 +1625,64 @@ a:focus-visible {
   .evaluation-search { min-width: 0; }
   .evaluation-table { min-width: 780px; }
   .evaluation-zero-failures > div { align-items: stretch; flex-direction: column; }
+}
+
+/* Shared route recovery and production fallbacks */
+.route-state-page {
+  display: grid;
+  min-height: 100dvh;
+  place-items: center;
+  align-content: center;
+  gap: 10px;
+  padding: 28px;
+  color: #0f172a;
+  background:
+    radial-gradient(circle at 50% 35%, rgb(219 234 254 / 80%), transparent 280px),
+    #f3f4f6;
+  text-align: center;
+}
+.route-state-page .route-state-icon {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  place-items: center;
+  color: #2563eb;
+  border: 1px solid #bfdbfe;
+  border-radius: 16px;
+  background: white;
+  box-shadow: var(--shadow-card);
+}
+.route-state-page .route-state-icon.is-error { color: #dc2626; border-color: #fecaca; }
+.route-state-page .route-state-icon.is-loading svg { animation: data-spin 900ms linear infinite; }
+.route-state-page h1 { margin: 3px 0 0; font-size: 22px; letter-spacing: -0.03em; }
+.route-state-page p { max-width: 520px; margin: 0; color: #64748b; font-size: 12px; line-height: 1.55; }
+.route-state-page button,
+.route-state-page a {
+  display: inline-flex;
+  min-height: 39px;
+  align-items: center;
+  gap: 7px;
+  margin-top: 4px;
+  padding: 8px 13px;
+  color: white;
+  border: 0;
+  border-radius: 8px;
+  background: #2563eb;
+  cursor: pointer;
+  font-size: 11px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+@media (forced-colors: active) {
+  .agent-flow-node,
+  .workspace-panel,
+  .evaluation-panel,
+  .data-table-panel,
+  .data-catalog-panel,
+  .data-inspector-panel { forced-color-adjust: auto; }
+  .legend-running,
+  .legend-selected,
+  .legend-completed,
+  .legend-idle { border: 1px solid CanvasText; }
 }

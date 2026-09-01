@@ -209,11 +209,11 @@ export function EvaluationDashboard() {
               <small>Stage 7 deterministic oracles · evaluator-only surface</small>
             </div>
           </div>
-          <div className="evaluation-lane-switch" aria-label="Campaign lane">
-            <button type="button" className={lane === 'fixture' ? 'is-active' : ''} onClick={() => selectLane('fixture')}>
+          <div className="evaluation-lane-switch" aria-label="Campaign lane" role="group">
+            <button type="button" aria-pressed={lane === 'fixture'} className={lane === 'fixture' ? 'is-active' : ''} onClick={() => selectLane('fixture')}>
               <DatabaseZap size={15} /> Fixture baseline
             </button>
-            <button type="button" className={lane === 'live' ? 'is-active' : ''} onClick={() => selectLane('live')}>
+            <button type="button" aria-pressed={lane === 'live'} className={lane === 'live' ? 'is-active' : ''} onClick={() => selectLane('live')}>
               <Sparkles size={15} /> Bedrock live
             </button>
           </div>
@@ -223,23 +223,23 @@ export function EvaluationDashboard() {
           </div>
         </header>
 
-        {error ? <div className="evaluation-error"><AlertTriangle size={17} /><span>{error}</span></div> : null}
+        {error ? <div className="evaluation-error" role="alert"><AlertTriangle size={17} /><span>{error}</span><button type="button" onClick={() => window.location.reload()}>Retry</button></div> : null}
 
-        <nav className="evaluation-tabs" aria-label="Evaluation views">
+        <nav className="evaluation-tabs" aria-label="Evaluation views" role="tablist">
           {([
             ['overview', 'Overview', Gauge],
             ['runs', '315 Runs', Activity],
             ['scenarios', '105 Scenarios', ListChecks],
             ['failures', `Failures ${campaign ? `(${campaign.metrics.failed_runs})` : ''}`, AlertTriangle],
           ] as const).map(([key, label, Icon]) => (
-            <button type="button" key={key} className={tab === key ? 'is-active' : ''} onClick={() => selectTab(key)}>
+            <button type="button" aria-controls="evaluation-tab-panel" aria-selected={tab === key} id={`evaluation-tab-${key}`} key={key} className={tab === key ? 'is-active' : ''} onClick={() => selectTab(key)} role="tab">
               <Icon size={15} /> {label}
             </button>
           ))}
           <span className="evaluation-tab-boundary"><ShieldCheck size={13} /> Ground truth isolated from agent context</span>
         </nav>
 
-        <div className="evaluation-view">
+        <div aria-labelledby={`evaluation-tab-${tab}`} aria-live="polite" className="evaluation-view" id="evaluation-tab-panel" role="tabpanel" tabIndex={0}>
           {tab === 'overview' ? <Overview campaign={campaign} /> : null}
           {tab === 'runs' ? (
             <RunsView
@@ -434,10 +434,10 @@ function RunsView(props: RunsViewProps) {
           onSearch={props.onSearch} onFamily={props.onFamily} onMemory={props.onMemory} onStatus={props.onStatus} onOutcome={props.onOutcome}
         />
         <div className="evaluation-table-wrap">
-          <table className="evaluation-table evaluation-run-table">
+          <table aria-label="Evaluation runs" className="evaluation-table evaluation-run-table">
             <thead><tr>{columns.map(([key, label]) => <SortableHeader key={key} field={key} label={label} sort={props.sort} direction={props.direction} onSort={props.onSort} />)}<th aria-label="Open" /></tr></thead>
             <tbody>{data?.records.map((run) => (
-              <tr key={run.run_id} className={run.run_id === props.selectedRunId ? 'is-selected' : ''} onClick={() => props.onSelect(run.run_id)}>
+              <tr aria-selected={run.run_id === props.selectedRunId} key={run.run_id} className={run.run_id === props.selectedRunId ? 'is-selected' : ''} onClick={() => props.onSelect(run.run_id)} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); props.onSelect(run.run_id); } }} tabIndex={0}>
                 <td><strong>{run.scenario_id}</strong><small>R{run.repetition}</small></td>
                 <td><span className="evaluation-family-chip">{run.family}</span></td>
                 <td><span className={`evaluation-memory-chip memory-${run.memory_condition}`}>{run.memory_condition}</span></td>
@@ -531,7 +531,7 @@ function ScenariosView(props: ScenariosViewProps) {
     <section className="evaluation-panel evaluation-scenario-panel">
       <EvaluationToolbar search={props.search} family={props.family} memory="" status="" outcome={props.outcome} filters={data?.filters} onSearch={props.onSearch} onFamily={props.onFamily} onMemory={() => undefined} onStatus={() => undefined} onOutcome={props.onOutcome} />
       <div className="evaluation-table-wrap">
-        <table className="evaluation-table evaluation-scenario-table">
+        <table aria-label="Evaluation scenario consistency" className="evaluation-table evaluation-scenario-table">
           <thead><tr>{columns.map(([key, label]) => <SortableHeader key={key} field={key} label={label} sort={props.sort} direction={props.direction} onSort={props.onSort} />)}</tr></thead>
           <tbody>{data?.records.map((scenario) => <ScenarioRow key={scenario.scenario_id} scenario={scenario} />)}</tbody>
         </table>
@@ -593,7 +593,7 @@ function FilterSelect({ label, value, options, onChange }: { label: string; valu
 }
 
 function SortableHeader({ field, label, sort, direction, onSort }: { field: string; label: string; sort: string; direction: 'asc' | 'desc'; onSort: (field: string) => void }) {
-  return <th scope="col"><button type="button" onClick={() => onSort(field)}>{label}{sort === field ? direction === 'asc' ? <ArrowUp size={12} /> : <ArrowDown size={12} /> : null}</button></th>;
+  return <th aria-sort={sort === field ? (direction === 'asc' ? 'ascending' : 'descending') : undefined} scope="col"><button type="button" onClick={() => onSort(field)}>{label}{sort === field ? direction === 'asc' ? <ArrowUp size={12} /> : <ArrowDown size={12} /> : null}</button></th>;
 }
 
 function EvaluationPagination({ page, total, totalPages, onPage }: { page: number; total: number; totalPages: number; onPage: (page: number) => void }) {

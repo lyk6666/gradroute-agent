@@ -131,10 +131,10 @@ function ScenarioForm({
   return (
     <div className="intake-scroll-content">
       <div className="split-selector" aria-label="Scenario set">
-        <button className={scenarioSplit === 'demo' ? 'is-active' : ''} onClick={() => onScenarioSplitChange('demo')} type="button">
+        <button aria-pressed={scenarioSplit === 'demo'} className={scenarioSplit === 'demo' ? 'is-active' : ''} onClick={() => onScenarioSplitChange('demo')} type="button">
           <CirclePlay size={13} /> Demo <span>{demoScenarios.length}</span>
         </button>
-        <button className={scenarioSplit === 'evaluation' ? 'is-active' : ''} onClick={() => onScenarioSplitChange('evaluation')} type="button">
+        <button aria-pressed={scenarioSplit === 'evaluation'} className={scenarioSplit === 'evaluation' ? 'is-active' : ''} onClick={() => onScenarioSplitChange('evaluation')} type="button">
           <FlaskConical size={13} /> Evaluation <span>{evaluationScenarios.length}</span>
         </button>
       </div>
@@ -210,10 +210,10 @@ export function InputPanel(props: InputPanelProps) {
   return (
     <aside aria-label="Case input" className="workspace-panel intake-panel">
       <div className="mode-tabs" aria-label="Input mode">
-        <button className={props.intakeMode === 'scenario' ? 'is-active' : ''} onClick={() => props.onIntakeModeChange('scenario')} type="button">
+        <button aria-pressed={props.intakeMode === 'scenario'} className={props.intakeMode === 'scenario' ? 'is-active' : ''} onClick={() => props.onIntakeModeChange('scenario')} type="button">
           <FlaskConical size={13} /> Scenario
         </button>
-        <button className={props.intakeMode === 'manual' ? 'is-active' : ''} onClick={() => props.onIntakeModeChange('manual')} type="button">
+        <button aria-pressed={props.intakeMode === 'manual'} className={props.intakeMode === 'manual' ? 'is-active' : ''} onClick={() => props.onIntakeModeChange('manual')} type="button">
           <FilePlus2 size={13} /> Manual input
         </button>
       </div>
@@ -223,8 +223,8 @@ export function InputPanel(props: InputPanelProps) {
       <footer className="run-setup-footer">
         <span className="form-label">Run mode</span>
         <div className="run-mode-selector" aria-label="Run mode">
-          <button className={props.runMode === 'normal' ? 'is-active' : ''} onClick={() => props.onRunModeChange('normal')} type="button">Normal run</button>
-          <button className={props.runMode === 'step' ? 'is-active' : ''} onClick={() => props.onRunModeChange('step')} type="button">Step-by-step</button>
+          <button aria-pressed={props.runMode === 'normal'} className={props.runMode === 'normal' ? 'is-active' : ''} onClick={() => props.onRunModeChange('normal')} type="button">Normal run</button>
+          <button aria-pressed={props.runMode === 'step'} className={props.runMode === 'step' ? 'is-active' : ''} onClick={() => props.onRunModeChange('step')} type="button">Step-by-step</button>
         </div>
         {props.runError ? <p className="run-error" role="alert">{props.runError}</p> : null}
         <button
