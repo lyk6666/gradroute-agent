@@ -74,7 +74,7 @@ class AppSettings(BaseSettings):
     api_host: str = Field(default="127.0.0.1", validation_alias="API_HOST")
     api_port: int = Field(default=8000, ge=1, le=65535, validation_alias="API_PORT")
     frontend_origin: AnyHttpUrl = Field(
-        default="http://localhost:5173",
+        default="http://localhost:3000",
         validation_alias="FRONTEND_ORIGIN",
     )
     data_dir: Path = Field(default=Path("data"), validation_alias="DATA_DIR")

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from datetime import datetime
 from threading import Lock
-from typing import Any, Mapping
+from typing import Any, Iterator, Mapping
 
 from langgraph.checkpoint.memory import InMemorySaver
 from langgraph.graph import END, START, StateGraph
@@ -341,6 +341,29 @@ class Stage5ControlPlane:
     def start(self, intake: IntakeContext) -> dict[str, Any]:
         """Start a new checkpointed thread and run until terminal or interrupt."""
 
+        validated, initial = self._prepare_start(intake)
+        return self.graph.invoke(initial, config=self._config(validated.thread_id))
+
+    def start_stream(self, intake: IntakeContext) -> Iterator[dict[str, Any]]:
+        """Yield node updates for a new checkpointed thread.
+
+        The stream contains only graph updates derived from agent-observable
+        state. Evaluator scripts and ground truth remain behind the Stage 4
+        action boundary.
+        """
+
+        validated, initial = self._prepare_start(intake)
+        yield from self.graph.stream(
+            initial,
+            config=self._config(validated.thread_id),
+            stream_mode="updates",
+        )
+
+    def _prepare_start(
+        self, intake: IntakeContext
+    ) -> tuple[IntakeContext, WorkflowState]:
+        """Validate ownership and construct the shared start state."""
+
         validated = IntakeContext.model_validate(intake)
         if validated.session_id != self._session_id:
             raise ValueError("intake belongs to a different Stage 4 session")
@@ -374,7 +397,7 @@ class Stage5ControlPlane:
             "loop_counters": LoopCounters().model_dump(mode="json"),
             "run_status": "RUNNING",
         }
-        return self.graph.invoke(initial, config=self._config(validated.thread_id))
+        return validated, initial
 
     def resume(
         self,
@@ -390,6 +413,24 @@ class Stage5ControlPlane:
         value = self._validate_resume(snapshot, payload)
         return self.graph.invoke(
             Command(resume=value), config=self._config(thread_id)
+        )
+
+    def resume_stream(
+        self,
+        *,
+        thread_id: str,
+        payload: ApprovalResumePayload
+        | ClarificationResumePayload
+        | Mapping[str, Any],
+    ) -> Iterator[dict[str, Any]]:
+        """Yield node updates while resuming one persisted interrupt."""
+
+        snapshot = self._require_owned_checkpoint(thread_id)
+        value = self._validate_resume(snapshot, payload)
+        yield from self.graph.stream(
+            Command(resume=value),
+            config=self._config(thread_id),
+            stream_mode="updates",
         )
 
     def state(self, thread_id: str) -> Any:
