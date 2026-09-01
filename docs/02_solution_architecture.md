@@ -485,7 +485,7 @@ The frozen architecture is implemented incrementally:
 Stage 4  deterministic tools + isolated transaction runtime (complete)
 Stage 5  typed LangGraph state, nodes, edges, checkpointing, and memory ports (complete)
 Stage 6  grounded LLM reasoning + ranked advisory-memory retrieval (complete)
-Stage 7  scenario runner, deterministic evaluation, and robustness hardening
+Stage 7  scenario runner, deterministic and live evaluation, and robustness hardening (complete)
 Stage 8  user-facing demo integration and delivery hardening
 ```
 
@@ -495,7 +495,7 @@ contracts before Stage 6 adds probabilistic reasoning. UI work remains outside
 this architecture update and is not required before the runtime and evaluation
 gates pass.
 
-## 14. Implemented Stage 6 boundary and Stage 7 handoff
+## 14. Implemented Stage 6/7 boundary and Stage 8 handoff
 
 Stage 5 implements the architecture without changing the grounded Stage 3
 academic corpus. It adds:
@@ -520,7 +520,7 @@ src/graduation_exception_agent/tools/          Stage 4 environment boundary
 src/graduation_exception_agent/runtime/        isolated transaction runtime
 src/graduation_exception_agent/orchestration/  Stage 5 nodes and graph
 src/graduation_exception_agent/memory/         advisory memory ports
-src/graduation_exception_agent/evaluation/     evaluator-only contract loader
+src/graduation_exception_agent/evaluation/     evaluator contracts and Stage 7 campaign
 ```
 
 LangGraph is now an explicit Stage 5 dependency. The earlier Stage 4 import
@@ -565,8 +565,12 @@ specialist-selection/pre-action decision provider plus deterministic
 exact-and-related advisory retrieval. Forced structured output, allowlisted
 prompt projections, deterministic safety dominance, and bounded checkpoint
 audit prevent the model from broadening an unsafe route. The offline suite and
-the opt-in two-request Bedrock integration gate pass. Stage 7 owns the 315-run trace,
-robustness, and regression campaign. Neither stage may bypass current tools,
+the opt-in two-request Bedrock integration gate pass. Stage 7 now implements
+the 315-run trace, robustness, and regression campaign with isolated memory
+conditions and deterministic acceptance gates. Both the fixture and qualifying
+Bedrock campaigns pass 315/315 runs and all 105 scenarios at 3/3 consistency;
+the live campaign also validates 720/720 structured reasoning calls without
+fallback. Neither stage may bypass current tools,
 approval/version gates, loop caps, checkpoint identity, or verified-only memory
 writes. See
 [`stage_5_langgraph_control_plane.md`](stage_5_langgraph_control_plane.md) for

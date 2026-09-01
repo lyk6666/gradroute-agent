@@ -2,10 +2,11 @@
 
 This package contains the current implementation specification for the NTU CCDS-grounded administrative exception-resolution prototype.
 
-Current status: Stage 6 is complete over the typed Stage 5 control plane. It
-adds grounded Bedrock structured reasoning, deterministic safety dominance,
-bounded checkpoint audit, and ranked advisory retrieval. The opt-in live gate
-passes both configured model decisions.
+Current status: Stage 7 implements the frozen 315-run held-out evaluation over
+the Stage 5/6 system. Both the deterministic fixture baseline and the
+qualifying Amazon Bedrock campaign pass 315/315 with 105/105 scenarios at 3/3
+consistency. The live campaign also validates all 720 structured reasoning
+calls without fallback.
 
 Foundation specifications:
 
@@ -32,6 +33,9 @@ Stage records:
 - [`stage_6_grounded_llm_reasoning.md`](stage_6_grounded_llm_reasoning.md) —
   Bedrock Converse adapter, deterministic safety dominance, prompt projection,
   checkpoint audit, advisory-memory ranking, and live-test boundary
+- [`stage_7_evaluation_and_robustness.md`](stage_7_evaluation_and_robustness.md)
+  — isolated 315-run campaign, deterministic oracles, report artifacts,
+  acceptance thresholds, fixture results, and live robustness boundary
 
 Stage-specific documents use `stage_<number>_<topic>.md`. They do not receive
 an additional sequence prefix such as `06_`, `07_`, or `08_`; the same rule
@@ -50,7 +54,7 @@ Stage 5 — LangGraph Control Plane + Checkpoint/Memory Interfaces (complete)
     ↓
 Stage 6 — Grounded LLM Reasoning + Ranked Advisory Memory (complete)
     ↓
-Stage 7 — Scenario Trace Evaluation + Robustness Hardening
+Stage 7 — Scenario Trace Evaluation + Robustness Hardening (complete)
     ↓
 Stage 8 — Demo/UI Delivery + Operational Hardening
 ```

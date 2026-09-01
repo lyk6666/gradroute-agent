@@ -1,0 +1,124 @@
+{
+  "acceptance_failures": [],
+  "acceptance_passed": true,
+  "approval_compliance_rate": 1.0,
+  "average_graph_steps": 14.21,
+  "average_latency_ms": 244.165,
+  "average_tool_calls": 18.057,
+  "by_family": {
+    "S1": {
+      "average_graph_steps": 13.0,
+      "average_latency_ms": 230.022,
+      "average_tool_calls": 17.0,
+      "pass_rate": 1.0,
+      "passed_runs": 45,
+      "run_count": 45
+    },
+    "S2": {
+      "average_graph_steps": 13.133,
+      "average_latency_ms": 235.889,
+      "average_tool_calls": 19.4,
+      "pass_rate": 1.0,
+      "passed_runs": 45,
+      "run_count": 45
+    },
+    "S3": {
+      "average_graph_steps": 12.4,
+      "average_latency_ms": 247.711,
+      "average_tool_calls": 16.2,
+      "pass_rate": 1.0,
+      "passed_runs": 45,
+      "run_count": 45
+    },
+    "S4": {
+      "average_graph_steps": 12.133,
+      "average_latency_ms": 235.0,
+      "average_tool_calls": 19.4,
+      "pass_rate": 1.0,
+      "passed_runs": 45,
+      "run_count": 45
+    },
+    "S5": {
+      "average_graph_steps": 13.133,
+      "average_latency_ms": 244.0,
+      "average_tool_calls": 19.4,
+      "pass_rate": 1.0,
+      "passed_runs": 45,
+      "run_count": 45
+    },
+    "S6": {
+      "average_graph_steps": 12.667,
+      "average_latency_ms": 248.689,
+      "average_tool_calls": 17.0,
+      "pass_rate": 1.0,
+      "passed_runs": 45,
+      "run_count": 45
+    },
+    "S7": {
+      "average_graph_steps": 23.0,
+      "average_latency_ms": 267.844,
+      "average_tool_calls": 18.0,
+      "pass_rate": 1.0,
+      "passed_runs": 45,
+      "run_count": 45
+    }
+  },
+  "by_memory_condition": {
+    "empty": {
+      "average_graph_steps": 14.21,
+      "average_latency_ms": 244.314,
+      "average_tool_calls": 18.057,
+      "pass_rate": 1.0,
+      "passed_runs": 105,
+      "run_count": 105
+    },
+    "misleading": {
+      "average_graph_steps": 14.21,
+      "average_latency_ms": 243.381,
+      "average_tool_calls": 18.057,
+      "pass_rate": 1.0,
+      "passed_runs": 105,
+      "run_count": 105
+    },
+    "relevant": {
+      "average_graph_steps": 14.21,
+      "average_latency_ms": 244.8,
+      "average_tool_calls": 18.057,
+      "pass_rate": 1.0,
+      "passed_runs": 105,
+      "run_count": 105
+    }
+  },
+  "campaign_id": "stage7.ntu-ccds.ay2026-27s1.v1",
+  "checkpoint_resume_integrity": 1.0,
+  "clarification_routing_accuracy": 1.0,
+  "constraint_violation_rate": 0.0,
+  "correct_escalation_rate": 1.0,
+  "estimated_cost_usd": null,
+  "evaluation_mode": "fixture",
+  "failed_runs": 0,
+  "loop_cap_hit_rate": 0.0,
+  "memory_override_violation_rate": 0.0,
+  "memory_write_gate_violation_rate": 0.0,
+  "model_id": null,
+  "passed_runs": 315,
+  "post_action_false_completion_rate": 0.0,
+  "reasoning_calls": 0,
+  "reasoning_fallbacks": 0,
+  "reasoning_successes": 0,
+  "recovery_success_rate": 1.0,
+  "repetitions_per_scenario": 3,
+  "run_count": 315,
+  "runner_version": "stage7.0.0",
+  "scenario_consistency_rate": 1.0,
+  "scenario_count": 105,
+  "scenarios_passing_3_of_3": 105,
+  "schema_validation_pass_rate": null,
+  "task_completion_rate": 1.0,
+  "tool_call_success_rate": 0.938291,
+  "total_input_tokens": 0,
+  "total_output_tokens": 0,
+  "total_tokens": 0,
+  "valid_resolution_rate": 1.0,
+  "violation_counts": {}
+}

@@ -9,8 +9,8 @@ The implementation specifications are indexed in [`docs/README.md`](docs/README.
 
 ## Current stage
 
-Stage 6 is complete as a grounded Amazon Bedrock reasoning layer over the Stage
-5 typed, checkpointed LangGraph control plane. The project provides
+Stage 7 now adds an isolated 315-run evaluator over the grounded Amazon Bedrock
+reasoning layer and the Stage 5 typed, checkpointed LangGraph control plane. The project provides
 forced structured Nova output, deterministic safety dominance, allowlisted
 prompt projection, checkpointed reasoning audit metadata, and ranked advisory
 memory while retaining the frozen graph topology, selective specialist
@@ -25,9 +25,10 @@ matrix recorded in `data/real/coverage.json`. Authenticated curriculum plans,
 personalised registration slots, capacity, eligibility, general late-registration
 workflows, and undocumented approval chains remain explicit gaps. The project
 does not yet contain embedding/vector retrieval, a durable production
-checkpointer, the 315-run end-to-end evaluation campaign, or a UI. The
-configured Amazon Nova model has passed the opt-in two-request live gate for
-specialist selection and conservative pre-action review.
+checkpointer, or a UI. The deterministic and Amazon Bedrock held-out campaigns
+both pass 315/315 runs with 105/105 scenarios at 3/3 consistency. The live lane
+also passes all 720 structured reasoning calls without fallback, satisfying
+the Stage 7 model-coverage gate.
 
 The high-level graph is frozen in
 [`docs/02_solution_architecture.md`](docs/02_solution_architecture.md). It adds
@@ -43,7 +44,7 @@ Next delivery sequence:
 Stage 4  deterministic four-domain tools and isolated transaction runtime (complete)
 Stage 5  LangGraph control plane, checkpointing, and memory interfaces (complete)
 Stage 6  grounded LLM reasoning and richer advisory-memory ranking (complete)
-Stage 7  315-run evaluation and robustness hardening
+Stage 7  315-run fixture and Bedrock evaluation plus robustness hardening (complete)
 Stage 8  polished demo/UI and operational delivery
 ```
 
@@ -51,7 +52,9 @@ See the [Stage 3 simulation data details](docs/stage_3_simulation_data_details.m
 [Stage 4 runtime and tools](docs/stage_4_runtime_and_tools.md), and
 [Stage 5 control plane](docs/stage_5_langgraph_control_plane.md), and
 [Stage 6 grounded LLM reasoning](docs/stage_6_grounded_llm_reasoning.md) for the
-delivered foundations, and the
+delivered foundations, the
+[Stage 7 evaluation record](docs/stage_7_evaluation_and_robustness.md) for the
+held-out results and acceptance gates, and the
 [Stage 2 grounding conventions](docs/stage_2_grounding_conventions.md) for its
 real-data basis and limitations.
 
@@ -115,3 +118,9 @@ For a one-request credential/model readiness probe instead:
 
 Copying `.env.example` to `.env` is optional for schema and loader tests. Never
 commit `.env` or real credentials.
+
+Run the canonical Stage 7 fixture campaign:
+
+```powershell
+.venv\Scripts\python.exe scripts\run_stage7_evaluation.py --mode fixture --output-dir evaluation
+```

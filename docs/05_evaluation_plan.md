@@ -8,6 +8,14 @@ treating memory as advisory, and verifying the world state after action.
 
 Primary correctness must come from deterministic evaluation, not from the same LLM judging itself.
 
+Implementation status: Stage 7 now materializes this plan in
+`src/graduation_exception_agent/evaluation/campaign.py` and
+`scripts/run_stage7_evaluation.py`. The accepted fixture baseline and
+qualifying Bedrock report are stored in `../evaluation/` and
+`../evaluation/live/`; see
+[`stage_7_evaluation_and_robustness.md`](stage_7_evaluation_and_robustness.md)
+for the measured results and live acceptance boundary.
+
 The hackathon training material highlights metrics such as schema validation, tool-call success, task completion, token cost, loop discipline, and answer fidelity. This plan incorporates those concepts and adds domain-specific checks.
 
 # 1. Evaluation Dataset
@@ -462,3 +470,6 @@ pending-approval checkpoint/resume behavior, rejection-to-replan route, and
 hard-cap termination runs. The resulting architecture-conformance evidence is
 recorded in
 [`stage_5_langgraph_control_plane.md`](stage_5_langgraph_control_plane.md).
+
+Stage 7 now runs the 315 held-out repetitions in isolated runtimes, writes the
+four declared report artifacts, and applies deterministic acceptance gates.
