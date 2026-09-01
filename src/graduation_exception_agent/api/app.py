@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import json
 from collections.abc import AsyncIterator
+from functools import lru_cache
+from pathlib import Path
 from typing import Annotated, Literal
 
 from fastapi import FastAPI, HTTPException, Query
@@ -38,8 +40,15 @@ def create_app(
 ) -> FastAPI:
     selected_settings = settings or get_settings()
     run_service = service or RunService(selected_settings)
-    read_service = data_service or DataService(selected_settings)
-    report_service = evaluation_service or EvaluationService(selected_settings)
+
+    @lru_cache(maxsize=1)
+    def get_data_service() -> DataService:
+        return data_service or DataService(selected_settings)
+
+    @lru_cache(maxsize=1)
+    def get_evaluation_service() -> EvaluationService:
+        return evaluation_service or EvaluationService(selected_settings)
+
     app = FastAPI(
         title="Graduation Exception Agent API",
         version="1.0.0",
@@ -48,8 +57,8 @@ def create_app(
         ),
     )
     app.state.run_service = run_service
-    app.state.data_service = read_service
-    app.state.evaluation_service = report_service
+    app.state.data_service_provider = get_data_service
+    app.state.evaluation_service_provider = get_evaluation_service
     origin = str(selected_settings.frontend_origin).rstrip("/")
     allowed_origins = sorted(
         {origin, "http://localhost:3000", "http://127.0.0.1:3000"}
@@ -70,6 +79,36 @@ def create_app(
             "execution_mode": selected_settings.execution_mode.value,
         }
 
+    @app.get("/api/v1/ready")
+    def readiness() -> dict[str, str]:
+        data_root = Path(selected_settings.data_dir)
+        evaluation_root = Path(selected_settings.evaluation_dir)
+        data_ready = all(
+            (data_root / relative).is_file()
+            for relative in (
+                "real/source_manifest.json",
+                "real/courses.json",
+                "simulated/students.json",
+                "tests/scenarios.json",
+            )
+        )
+        evaluation_ready = all(
+            (evaluation_root / relative).is_file()
+            for relative in (
+                "metrics_summary.json",
+                "run_results.jsonl",
+                "live/metrics_summary.json",
+                "live/run_results.jsonl",
+            )
+        )
+        status = "ready" if data_ready and evaluation_ready else "degraded"
+        return {
+            "status": status,
+            "runtime": "ready",
+            "data_package": "available" if data_ready else "missing",
+            "evaluation_artifacts": "available" if evaluation_ready else "missing",
+        }
+
     @app.get("/api/v1/scenarios", response_model=list[ScenarioSummary])
     def scenarios(
         split: Annotated[Literal["demo", "evaluation"] | None, Query()] = None,
@@ -79,7 +118,7 @@ def create_app(
 
     @app.get("/api/v1/data/catalog", response_model=DataCatalogResponse)
     def data_catalog() -> DataCatalogResponse:
-        return read_service.catalog()
+        return get_data_service().catalog()
 
     @app.get("/api/v1/data/{dataset_id}", response_model=DataPageResponse)
     def data_page(
@@ -93,7 +132,7 @@ def create_app(
         direction: Annotated[Literal["asc", "desc"], Query()] = "asc",
     ) -> DataPageResponse:
         try:
-            return read_service.page(
+            return get_data_service().page(
                 dataset_id,
                 page=page,
                 page_size=page_size,
@@ -112,7 +151,7 @@ def create_app(
         "/api/v1/evaluation/campaigns", response_model=EvaluationCampaignsResponse
     )
     def evaluation_campaigns() -> EvaluationCampaignsResponse:
-        return report_service.campaigns()
+        return get_evaluation_service().campaigns()
 
     @app.get("/api/v1/evaluation/runs", response_model=EvaluationRunsResponse)
     def evaluation_runs(
@@ -127,7 +166,7 @@ def create_app(
         sort: Annotated[str, Query(max_length=80)] = "scenario_id",
         direction: Annotated[Literal["asc", "desc"], Query()] = "asc",
     ) -> EvaluationRunsResponse:
-        return report_service.runs(
+        return get_evaluation_service().runs(
             lane,
             page=page,
             page_size=page_size,
@@ -153,7 +192,7 @@ def create_app(
         sort: Annotated[str, Query(max_length=80)] = "scenario_id",
         direction: Annotated[Literal["asc", "desc"], Query()] = "asc",
     ) -> EvaluationScenariosResponse:
-        return report_service.scenarios(
+        return get_evaluation_service().scenarios(
             lane,
             page=page,
             page_size=page_size,
@@ -170,7 +209,7 @@ def create_app(
         page: Annotated[int, Query(ge=1)] = 1,
         page_size: Annotated[int, Query(ge=1, le=100)] = 25,
     ) -> EvaluationRunsResponse:
-        return report_service.runs(
+        return get_evaluation_service().runs(
             lane,
             page=page,
             page_size=page_size,

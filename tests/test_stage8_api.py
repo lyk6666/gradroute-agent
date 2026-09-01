@@ -54,6 +54,19 @@ def test_catalogue_projects_only_runnable_fields() -> None:
     assert "expected_outcome" not in serialized
 
 
+def test_readiness_checks_data_and_evaluation_packages() -> None:
+    with TestClient(create_app(_settings())) as client:
+        response = client.get("/api/v1/ready")
+
+    assert response.status_code == 200
+    assert response.json() == {
+        "status": "ready",
+        "runtime": "ready",
+        "data_package": "available",
+        "evaluation_artifacts": "available",
+    }
+
+
 def test_normal_run_streams_both_verifier_phases_and_final_response() -> None:
     service = RunService(_settings(), node_delay_seconds=0)
     accepted = service.start(StartRunRequest(scenario_id="S7-M01"))
