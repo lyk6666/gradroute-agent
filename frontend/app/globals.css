@@ -348,8 +348,7 @@ summary:focus-visible,
 .scenario-preview-card,
 .student-preview-card,
 .academic-snapshot { overflow: hidden; border: 1px solid var(--border); border-radius: 10px; background: #f8fafc; }
-.scenario-preview-card > header { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: start; gap: 8px; padding: 10px; border-bottom: 1px solid var(--border); background: white; }
-.scenario-preview-card .provenance-badge { align-self: start; justify-self: end; }
+.scenario-preview-card > header { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; gap: 8px; padding: 10px; border-bottom: 1px solid var(--border); background: white; }
 .scenario-preview-card header > div { display: grid; gap: 2px; }
 .scenario-preview-card header strong { font-size: 12px; line-height: 1.35; }
 .scenario-preview-card header small { color: var(--muted); font-size: 10px; text-transform: capitalize; }

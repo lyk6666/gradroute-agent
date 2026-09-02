@@ -160,7 +160,6 @@ function ScenarioForm({
         <header>
           <span className="scenario-family">{scenario.family}</span>
           <div><strong>{scenario.title}</strong><small>{scenario.id} · {scenario.caseType.replaceAll('_', ' ')}</small></div>
-          <ProvenanceBadge kind="injected" />
         </header>
         <div className="scenario-preview-section">
           <span className="preview-label">Expected challenge</span>
