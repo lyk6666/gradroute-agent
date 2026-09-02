@@ -110,7 +110,26 @@ aws sso login --profile ccds-sandbox
 
 Never commit `.env`, AWS access keys or session tokens.
 
-## Start the backend
+## Start the application
+
+### Start both services together
+
+The simplest local startup uses the repository-relative PowerShell launcher.
+It starts both services with matching API and CORS settings, waits until they
+are ready, and stops both when you press Enter:
+
+```powershell
+& .\scripts\start_local.ps1
+```
+
+The command may be run from any current directory when invoked with the
+script's absolute path. Optional ports can be supplied explicitly:
+
+```powershell
+& .\scripts\start_local.ps1 -BackendPort 8000 -FrontendPort 5173
+```
+
+### Start the backend separately
 
 From the repository root:
 
@@ -124,9 +143,10 @@ The backend starts at `http://127.0.0.1:8000`:
 - health check: `http://127.0.0.1:8000/api/v1/health`
 - readiness check: `http://127.0.0.1:8000/api/v1/ready`
 
-## Start the frontend
+### Start the frontend separately
 
-Keep the backend running and open a second PowerShell terminal:
+For separate-process startup, keep the backend running and open a second
+PowerShell terminal:
 
 ```powershell
 cd frontend
