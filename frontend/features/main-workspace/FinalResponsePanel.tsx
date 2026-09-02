@@ -12,6 +12,7 @@ export function FinalResponsePanel({ runSnapshot, scenario }: { runSnapshot: Run
     : response && !['PENDING', 'REQUIRED'].includes(response.approval_state)
       ? 'is-complete'
       : 'is-waiting';
+  const approvalLabel = response?.approval_state.replaceAll('_', ' ') ?? 'Not checked';
 
   async function copyResponse() {
     if (!response) return;
@@ -26,7 +27,11 @@ export function FinalResponsePanel({ runSnapshot, scenario }: { runSnapshot: Run
         <div className="response-checks" aria-label="Resolution checks">
           <span className={response?.academic_verified ? 'is-complete' : 'is-waiting'}>{response?.academic_verified ? <CheckCircle2 size={13} /> : <Clock3 size={13} />}Academic path</span>
           <span className={response?.policy_verified ? 'is-complete' : 'is-waiting'}>{response?.policy_verified ? <ShieldCheck size={13} /> : <Clock3 size={13} />}Policy path</span>
-          <span className={approvalClass}><Clock3 size={13} />{response?.approval_state.replaceAll('_', ' ') ?? 'Approval'}</span>
+          <span aria-label={`Approval ${approvalLabel}`} className={`approval-check ${approvalClass}`}>
+            <Clock3 aria-hidden="true" size={13} />
+            <span className="response-check-title">Approval</span>
+            <small className="response-check-status">{approvalLabel}</small>
+          </span>
         </div>
         <div className="response-summary">
           <span>Preview for {scenario.id}</span>

@@ -548,7 +548,10 @@ summary:focus-visible,
 /* UI-2 final response */
 .response-content { display: grid; min-height: 0; align-content: start; gap: 10px; flex: 1; padding: 12px; overflow: auto; }
 .response-checks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; }
-.response-checks span { display: flex; min-height: 36px; align-items: center; justify-content: center; gap: 5px; padding: 5px; border: 1px solid var(--border); border-radius: 7px; font-size: 9px; font-weight: 800; text-align: center; }
+.response-checks > span { display: flex; min-height: 36px; align-items: center; justify-content: center; gap: 5px; padding: 5px; border: 1px solid var(--border); border-radius: 7px; font-size: 9px; font-weight: 800; text-align: center; }
+.response-checks .approval-check { justify-content: flex-start; gap: 4px; padding-inline: 6px; }
+.response-check-title { white-space: nowrap; }
+.response-check-status { margin-left: auto; padding: 2px 4px; border-radius: 999px; background: rgb(255 255 255 / 65%); font-size: 7px; font-weight: 850; line-height: 1.1; white-space: nowrap; }
 .response-checks .is-complete { color: #047857; background: #f0fdf9; }
 .response-checks .is-waiting { color: #b45309; background: #fffbeb; }
 .response-checks .is-failed { color: #b91c1c; background: #fef2f2; }
