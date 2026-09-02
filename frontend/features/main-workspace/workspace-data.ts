@@ -50,6 +50,10 @@ export type ScenarioPreview = {
   cohort: string;
   studyYear: string;
   request: string;
+  earnedAus: string;
+  completedCourses: string[];
+  registeredCourses: string[];
+  supportingDocuments: string[];
 };
 
 export const PROGRAMMES = [
@@ -151,6 +155,10 @@ function makeScenario(record: (typeof demoRecords)[number] | (typeof evaluationR
     cohort: 'AY2025-26',
     studyYear,
     request: `Terminal-stage registration or graduation exception concerning ${course} after normal registration.`,
+    earnedAus: '128.0',
+    completedCourses: [],
+    registeredCourses: [],
+    supportingDocuments: [],
   };
 }
 

@@ -21,6 +21,7 @@ from graduation_exception_agent.api.models import (
     EvaluationCampaignsResponse,
     EvaluationRunsResponse,
     EvaluationScenariosResponse,
+    ManualRunRequest,
     RunSnapshot,
     ScenarioSummary,
     StartRunRequest,
@@ -115,6 +116,20 @@ def create_app(
     ) -> list[ScenarioSummary]:
         items = run_service.scenarios()
         return [item for item in items if split is None or item.split == split]
+
+    @app.post("/api/v1/runs/manual", response_model=StartRunResponse)
+    def start_manual_run(request: ManualRunRequest) -> StartRunResponse:
+        try:
+            snapshot = run_service.start_manual(request)
+        except KeyError as exc:
+            raise HTTPException(status_code=404, detail=str(exc)) from exc
+        except ValueError as exc:
+            raise HTTPException(status_code=422, detail=str(exc)) from exc
+        return StartRunResponse(
+            run_id=snapshot.run_id,
+            events_url=f"/api/v1/runs/{snapshot.run_id}/events",
+            snapshot=snapshot,
+        )
 
     @app.get("/api/v1/data/catalog", response_model=DataCatalogResponse)
     def data_catalog() -> DataCatalogResponse:

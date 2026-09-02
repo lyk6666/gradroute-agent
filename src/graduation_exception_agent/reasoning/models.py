@@ -18,6 +18,7 @@ from graduation_exception_agent.models.runtime import (
 class ReasoningTask(StrEnum):
     SELECT_SPECIALISTS = "select_specialists"
     ASSESS_PRE_ACTION = "assess_pre_action"
+    NARRATE_RUNTIME = "narrate_runtime"
 
 
 class ReasoningCallStatus(StrEnum):

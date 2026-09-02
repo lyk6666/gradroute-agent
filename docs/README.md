@@ -2,7 +2,7 @@
 
 This package contains the current implementation specification for the NTU CCDS-grounded administrative exception-resolution prototype.
 
-Current status: Stage 8 is complete for the local research-prototype boundary.
+Current status: Stage 10 is complete for the local hackathon-prototype boundary.
 Its UI is backed by the Stage 7 frozen 315-run held-out evaluation over the
 Stage 5/6 system. Both the deterministic fixture baseline and the
 qualifying Amazon Bedrock campaign pass 315/315 with 105/105 scenarios at 3/3
@@ -16,6 +16,17 @@ that workspace to the live runtime, and UI-4 adds the comprehensive, read-only
 grounded data explorer. UI-5 now provides the accepted fixture/Bedrock
 evaluation dashboard. UI-6 completes accessibility, recovery, readiness,
 performance and local delivery hardening for the Stage 8 research prototype.
+Stage 9 replaces the remaining template-only Main-workspace details with
+processed runtime input, output and state records; expands working, thread and
+long-term memory; produces a detailed case-specific final response; and connects
+validated Manual Input to the same graph used by scenario execution.
+Stage 10 adds evidence-grounded Bedrock narration for every executed node and
+for working, thread-memory, long-term-memory and final-response content. The
+natural-language layer is generated from the current run rather than from UI
+templates. Working State now reads as a concise case briefing, Thread Memory as
+a chronological case history, and Long-Term Memory as clearly advisory past
+experience; exact recorded facts remain inspectable and continue to control
+every decision.
 
 Foundation specifications:
 
@@ -48,6 +59,12 @@ Stage records:
 - [`stage_8_ui_development.md`](stage_8_ui_development.md) — living UI plan,
   page and frontend boundaries, implementation checkpoints, progress log, and
   acceptance record
+- [`stage_9_runtime_transparency_and_manual_intake.md`](stage_9_runtime_transparency_and_manual_intake.md)
+  — adaptive node and action evidence, expanded runtime memory, detailed final
+  responses, connected manual cases, validation and modification history
+- [`stage_10_natural_language_runtime_narration.md`](stage_10_natural_language_runtime_narration.md)
+  — case-specific Bedrock explanations for node input, output, state, action,
+  working state, memory and final response, plus grounding and outage controls
 
 Stage-specific documents use `stage_<number>_<topic>.md`. They do not receive
 an additional sequence prefix such as `06_`, `07_`, or `08_`; the same rule
@@ -68,7 +85,11 @@ Stage 6 — Grounded LLM Reasoning + Ranked Advisory Memory (complete)
     ↓
 Stage 7 — Scenario Trace Evaluation + Robustness Hardening (complete)
     ↓
-Stage 8 — Demo/UI Delivery + Operational Hardening (complete for local research prototype)
+Stage 8 — Demo/UI Delivery + Operational Hardening (complete)
+    ↓
+Stage 9 — Runtime Transparency + Manual Intake (complete)
+    ↓
+Stage 10 — Grounded Natural-Language Runtime Narration (complete for local hackathon prototype)
 ```
 
 Key principle:

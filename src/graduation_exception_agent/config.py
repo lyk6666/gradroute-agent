@@ -70,6 +70,10 @@ class AppSettings(BaseSettings):
         ge=1,
         validation_alias="BEDROCK_MAX_TOKENS",
     )
+    ui_narration_enabled: bool = Field(
+        default=True,
+        validation_alias="UI_NARRATION_ENABLED",
+    )
 
     api_host: str = Field(default="127.0.0.1", validation_alias="API_HOST")
     api_port: int = Field(default=8000, ge=1, le=65535, validation_alias="API_PORT")

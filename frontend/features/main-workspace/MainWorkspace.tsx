@@ -8,6 +8,7 @@ import {
   loadScenarios,
   recheckApproval,
   resumeClarification,
+  startManualRun,
   startRun,
   subscribeToRun,
   type ApiStatus,
@@ -19,6 +20,7 @@ import { FinalResponsePanel } from './FinalResponsePanel';
 import {
   InputPanel,
   type IntakeMode,
+  type ManualCaseDraft,
   type RunMode,
   type ScenarioSplit,
 } from './InputPanel';
@@ -31,6 +33,11 @@ export function MainWorkspace() {
   const [runMode, setRunMode] = useState<RunMode>('normal');
   const [scenarioSplit, setScenarioSplit] = useState<ScenarioSplit>('demo');
   const [scenario, setScenario] = useState<ScenarioPreview>(DEMO_SCENARIOS[6]);
+  const [manualCase, setManualCase] = useState<ManualCaseDraft>({
+    profile: DEMO_SCENARIOS[0],
+    requestText: DEMO_SCENARIOS[0].request,
+    notes: '',
+  });
   const [demoScenarios, setDemoScenarios] = useState<ScenarioPreview[]>(DEMO_SCENARIOS);
   const [evaluationScenarios, setEvaluationScenarios] = useState<ScenarioPreview[]>(EVALUATION_SCENARIOS);
   const [selectedNodeId, setSelectedNodeId] = useState('human_approval');
@@ -49,6 +56,8 @@ export function MainWorkspace() {
         setDemoScenarios(demos);
         setEvaluationScenarios(evaluations);
         setScenario(demos.find((item) => item.id === 'S7-M01') ?? demos[0]);
+        const firstManual = demos.find((item) => item.id === 'S1-M01') ?? demos[0];
+        if (firstManual) setManualCase({ profile: firstManual, requestText: firstManual.request, notes: '' });
         setRuntimeStatus('operational');
       })
       .catch((error: unknown) => {
@@ -90,11 +99,21 @@ export function MainWorkspace() {
   }
 
   async function handleStart() {
-    if (intakeMode !== 'scenario') return;
     setRunError(null);
     setSelectedNodeId('intake_context');
     try {
-      const snapshot = await startRun(scenario.id, runMode);
+      const snapshot = intakeMode === 'scenario'
+        ? await startRun(scenario.id, runMode)
+        : await startManualRun({
+          profile_scenario_id: manualCase.profile.id,
+          student_id: manualCase.profile.studentId,
+          programme: manualCase.profile.programme,
+          cohort: manualCase.profile.cohort,
+          study_year: Number(manualCase.profile.studyYear),
+          problem_type: manualCase.profile.caseType,
+          request_text: manualCase.requestText,
+          notes: manualCase.notes.trim() || null,
+        }, runMode);
       applySnapshot(snapshot);
       connectToRun(snapshot);
     } catch (error) {
@@ -150,8 +169,10 @@ export function MainWorkspace() {
           demoScenarios={demoScenarios}
           evaluationScenarios={evaluationScenarios}
           intakeMode={intakeMode}
+          manualCase={manualCase}
           onAdvance={handleAdvance}
           onIntakeModeChange={setIntakeMode}
+          onManualCaseChange={setManualCase}
           onRunModeChange={setRunMode}
           onScenarioChange={setScenario}
           onScenarioSplitChange={changeScenarioSplit}
@@ -172,7 +193,7 @@ export function MainWorkspace() {
         />
         <MetaInspector runSnapshot={runSnapshot} selectedNodeId={selectedNodeId} />
         <ExecutionTimeline onSelectNode={setSelectedNodeId} runSnapshot={runSnapshot} selectedNodeId={selectedNodeId} />
-        <FinalResponsePanel runSnapshot={runSnapshot} scenario={scenario} />
+        <FinalResponsePanel runSnapshot={runSnapshot} scenario={intakeMode === 'manual' ? manualCase.profile : scenario} />
       </div>
     </AppShell>
   );

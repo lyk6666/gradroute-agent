@@ -20,6 +20,42 @@ export type ToolSummary = {
   provenance_count: number;
 };
 
+export type DetailItem = { label: string; value: string };
+
+export type ReasoningSummary = {
+  task: string;
+  status: string;
+  model_id: string | null;
+  applied: boolean;
+  safety_rule: string;
+  input_tokens: number;
+  output_tokens: number;
+};
+
+export type NodeNarrativeSummary = {
+  input: string;
+  output: string;
+  state: string;
+  action: string;
+  model_id: string;
+  generated_at: string;
+};
+
+export type NodeExecutionDetail = {
+  node_id: string;
+  attempt: number;
+  status: NodeStatus;
+  input_items: DetailItem[];
+  output_items: DetailItem[];
+  state_changes: DetailItem[];
+  tool_names: string[];
+  evidence_ids: string[];
+  reasoning: ReasoningSummary | null;
+  narrative: NodeNarrativeSummary | null;
+  started_at: string | null;
+  completed_at: string | null;
+};
+
 export type PauseSummary = {
   kind: 'clarification' | 'approval';
   title: string;
@@ -30,12 +66,24 @@ export type PauseSummary = {
 
 export type FinalResponseSummary = {
   status: string;
+  headline: string;
   message: string;
+  request_summary: string;
+  resolution_summary: string;
+  action: string | null;
+  action_parameters: DetailItem[];
+  academic_basis: string[];
+  policy_basis: string[];
+  approval_summary: string;
+  transaction_summary: string;
+  next_steps: string[];
+  limitations: string[];
   evidence_ids: string[];
   academic_verified: boolean;
   policy_verified: boolean;
   approval_state: string;
   completed_at: string | null;
+  narrative: string | null;
 };
 
 export type RunSnapshot = {
@@ -48,6 +96,7 @@ export type RunSnapshot = {
   can_advance: boolean;
   current_node: string | null;
   node_statuses: Record<string, NodeStatus>;
+  node_details: Record<string, NodeExecutionDetail>;
   traversed_edges: string[];
   timeline: TimelineItem[];
   working_state: {
@@ -62,13 +111,33 @@ export type RunSnapshot = {
     max_total_steps: number;
     status: string;
     candidate_resolution: string;
+    plan_version: number | null;
+    plan_rationale: string | null;
+    plan_steps: Array<{ ordinal: number; purpose: string; specialist: string | null; status: string }>;
+    evidence: Array<{ specialist: string; summary: string; completeness_known: boolean; source_ids: string[]; rule_ids: string[] }>;
+    action: string | null;
+    action_parameters: DetailItem[];
+    outstanding_items: string[];
+    errors: string[];
+    reasoning: ReasoningSummary[];
+    narrative: string | null;
+    narrative_known: string[];
+    narrative_next: string | null;
+    narrative_attention: string | null;
   };
   tools: ToolSummary[];
   long_term_memory: Array<{
+    memory_id: string;
     label: string;
     summary: string;
     relevance: number | null;
     advisory_only: boolean;
+    applicability: string;
+    recovery_steps: string[];
+    failed_patterns: string[];
+    tags: string[];
+    verified_at: string | null;
+    narrative: string | null;
   }>;
   thread_memory: {
     trace_events: number;
@@ -76,6 +145,11 @@ export type RunSnapshot = {
     checkpoints: number;
     pause_state: string;
     latest_checkpoint: string;
+    events: Array<{ sequence: number; label: string; status: string; occurred_at: string }>;
+    clarification_details: DetailItem[];
+    approval_details: DetailItem[];
+    narrative: string | null;
+    narrative_highlights: string[];
   };
   pause: PauseSummary | null;
   final_response: FinalResponseSummary | null;
@@ -95,6 +169,21 @@ type ApiScenario = {
   cohort: string;
   study_year: number;
   request_text: string;
+  earned_aus: string;
+  completed_courses: string[];
+  registered_courses: string[];
+  supporting_documents: string[];
+};
+
+export type ManualCaseInput = {
+  profile_scenario_id: string;
+  student_id: string;
+  programme: string;
+  cohort: string;
+  study_year: number;
+  problem_type: string;
+  request_text: string;
+  notes: string | null;
 };
 
 type RunEvent = {
@@ -138,6 +227,10 @@ export async function loadScenarios(): Promise<ScenarioPreview[]> {
     cohort: item.cohort,
     studyYear: String(item.study_year),
     request: item.request_text,
+    earnedAus: item.earned_aus,
+    completedCourses: item.completed_courses,
+    registeredCourses: item.registered_courses,
+    supportingDocuments: item.supporting_documents,
   }));
 }
 
@@ -145,6 +238,14 @@ export async function startRun(scenarioId: string, mode: 'normal' | 'step'): Pro
   const response = await request<{ snapshot: RunSnapshot }>('/api/v1/runs', {
     method: 'POST',
     body: JSON.stringify({ scenario_id: scenarioId, mode }),
+  });
+  return response.snapshot;
+}
+
+export async function startManualRun(input: ManualCaseInput, mode: 'normal' | 'step'): Promise<RunSnapshot> {
+  const response = await request<{ snapshot: RunSnapshot }>('/api/v1/runs/manual', {
+    method: 'POST',
+    body: JSON.stringify({ ...input, mode }),
   });
   return response.snapshot;
 }
@@ -188,8 +289,16 @@ export function exportResolution(snapshot: RunSnapshot): void {
     `Scenario: ${snapshot.scenario_id}`,
     `Run: ${snapshot.run_id}`,
     `Status: ${snapshot.final_response.status}`,
+    `Outcome: ${snapshot.final_response.headline}`,
+    `Request: ${snapshot.final_response.request_summary}`,
     '',
-    snapshot.final_response.message,
+    snapshot.final_response.narrative ?? snapshot.final_response.message,
+    '',
+    `Approval: ${snapshot.final_response.approval_summary}`,
+    `Transaction: ${snapshot.final_response.transaction_summary}`,
+    '',
+    'Next steps:',
+    ...snapshot.final_response.next_steps.map((item) => `- ${item}`),
     '',
     `Evidence: ${snapshot.final_response.evidence_ids.join(', ') || 'None recorded'}`,
     `Completed: ${snapshot.final_response.completed_at ?? 'Not recorded'}`,

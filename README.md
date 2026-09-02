@@ -25,6 +25,7 @@ demonstration and evaluation.
 - pre-action and post-action verification;
 - working, thread and advisory long-term memory with provenance labels;
 - a visual execution graph, human-readable timeline and verified final response;
+- case-specific Bedrock explanations of node activity, working state and memory;
 - read-only grounded-data and evaluation dashboards.
 
 ## System architecture
@@ -100,7 +101,12 @@ EXECUTION_MODE=bedrock
 AWS_PROFILE=ccds-sandbox
 AWS_REGION=us-east-1
 BEDROCK_MODEL_ID=amazon.nova-micro-v1:0
+UI_NARRATION_ENABLED=1
 ```
+
+Natural-language UI narration runs whenever it is enabled and a Bedrock model
+is configured. This can be used with either fixture or Bedrock control-plane
+execution; narration explains recorded results but cannot change them.
 
 Sign in when the overall SSO session has expired:
 

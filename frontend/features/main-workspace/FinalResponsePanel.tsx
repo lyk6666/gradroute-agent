@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { CheckCircle2, Clock3, Copy, Download, FileCheck2, ShieldCheck } from 'lucide-react';
+import { Copy, Download, FileCheck2 } from 'lucide-react';
 import { ProvenanceBadge } from '@/components/common/ProvenanceBadge';
 import { exportResolution, type RunSnapshot } from '@/lib/runtime-api';
 import type { ScenarioPreview } from './workspace-data';
@@ -13,10 +13,22 @@ export function FinalResponsePanel({ runSnapshot, scenario }: { runSnapshot: Run
       ? 'is-complete'
       : 'is-waiting';
   const approvalLabel = response?.approval_state.replaceAll('_', ' ') ?? 'Not checked';
+  const academicLabel = response?.academic_verified ? 'Verified' : response ? 'Pending' : 'Not checked';
+  const policyLabel = response?.policy_verified ? 'Verified' : response ? 'Pending' : 'Not checked';
 
   async function copyResponse() {
     if (!response) return;
-    await navigator.clipboard.writeText(response.message);
+    const text = [
+      response.headline,
+      response.narrative ?? response.message,
+      `Request: ${response.request_summary}`,
+      `Approval: ${response.approval_summary}`,
+      `Transaction: ${response.transaction_summary}`,
+      'Next steps:',
+      ...response.next_steps.map((item) => `- ${item}`),
+      `Evidence: ${response.evidence_ids.join(', ') || 'None recorded'}`,
+    ].join('\n\n');
+    await navigator.clipboard.writeText(text);
     setCopied(true);
     window.setTimeout(() => setCopied(false), 1600);
   }
@@ -24,21 +36,30 @@ export function FinalResponsePanel({ runSnapshot, scenario }: { runSnapshot: Run
   return (
     <section aria-label="Final response" className="workspace-panel response-panel">
       <div className="response-content">
-        <div className="response-checks" aria-label="Resolution checks">
-          <span className={response?.academic_verified ? 'is-complete' : 'is-waiting'}>{response?.academic_verified ? <CheckCircle2 size={13} /> : <Clock3 size={13} />}Academic path</span>
-          <span className={response?.policy_verified ? 'is-complete' : 'is-waiting'}>{response?.policy_verified ? <ShieldCheck size={13} /> : <Clock3 size={13} />}Policy path</span>
-          <span aria-label={`Approval ${approvalLabel}`} className={`approval-check ${approvalClass}`}>
-            <Clock3 aria-hidden="true" size={13} />
-            <span className="response-check-title">Approval</span>
-            <small className="response-check-status">{approvalLabel}</small>
-          </span>
-        </div>
         <div className="response-summary">
-          <span>Preview for {scenario.id}</span>
-          <strong>{response ? response.status.replaceAll('_', ' ') : runSnapshot?.status === 'failed' ? 'Run failed safely' : 'A bounded exception path is awaiting verification.'}</strong>
-          <p>{response?.message ?? runSnapshot?.error ?? 'The final student-facing resolution appears only after the applicable verification, approval, transaction and observation gates.'}</p>
+          <span>{runSnapshot ? `Run ${runSnapshot.scenario_id}` : `Preview for ${scenario.id}`}</span>
+          <strong>{response?.headline ?? (runSnapshot?.status === 'failed' ? 'Run failed safely' : 'A bounded exception path is awaiting verification.')}</strong>
+          <p>{response?.narrative ?? response?.message ?? runSnapshot?.error ?? 'The final case explanation will appear after the required checks and actions are complete.'}</p>
         </div>
+        {response ? (
+          <div className="response-detail-sections">
+            <section><strong>Request</strong><p>{response.request_summary}</p></section>
+            <section><strong>Verified resolution</strong><p>{response.resolution_summary}</p></section>
+            {response.action ? <section><strong>Action · {response.action.replaceAll('_', ' ')}</strong>{response.action_parameters.map((item) => <p key={item.label}><b>{item.label}:</b> {item.value}</p>)}</section> : null}
+            <section><strong>Approval</strong><p>{response.approval_summary}</p></section>
+            <section><strong>Transaction</strong><p>{response.transaction_summary}</p></section>
+            {response.academic_basis.length ? <section><strong>Academic and course basis</strong>{response.academic_basis.map((item) => <p key={item}>{item}</p>)}</section> : null}
+            {response.policy_basis.length ? <section><strong>Policy basis</strong>{response.policy_basis.map((item) => <p key={item}>{item}</p>)}</section> : null}
+            <section><strong>Next steps</strong><ol>{response.next_steps.map((item) => <li key={item}>{item}</li>)}</ol></section>
+            <details><summary>Evidence and limitations</summary><p>{response.evidence_ids.join(' · ') || 'No evidence identifiers recorded.'}</p>{response.limitations.map((item) => <p key={item}>{item}</p>)}</details>
+          </div>
+        ) : null}
         <div className="response-provenance"><FileCheck2 aria-hidden="true" size={13} /><span>Ground truth remains hidden from this surface.</span><ProvenanceBadge kind="derived" /></div>
+        <div className="response-checks" aria-label="Resolution checks">
+          <span aria-label={`Academic status: ${academicLabel}`} className={response?.academic_verified ? 'is-complete' : 'is-waiting'}>Academic</span>
+          <span aria-label={`Policy status: ${policyLabel}`} className={response?.policy_verified ? 'is-complete' : 'is-waiting'}>Policy</span>
+          <span aria-label={`Approval status: ${approvalLabel}`} className={approvalClass}>Approval</span>
+        </div>
       </div>
 
       <footer className="response-actions">

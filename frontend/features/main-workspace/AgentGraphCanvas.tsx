@@ -26,7 +26,7 @@ import {
   UserCog,
 } from 'lucide-react';
 import { ProvenanceBadge } from '@/components/common/ProvenanceBadge';
-import type { RunSnapshot } from '@/lib/runtime-api';
+import type { DetailItem, NodeExecutionDetail, RunSnapshot } from '@/lib/runtime-api';
 import {
   GRAPH_EDGES,
   INITIAL_GRAPH_NODES,
@@ -49,6 +49,7 @@ type AgentGraphCanvasProps = {
 type CanvasInspectorNodeData = {
   selectedNode: NodeSummary;
   selectedNodeId: string;
+  detail: NodeExecutionDetail | null;
   pause: RunSnapshot['pause'];
   onApprovalRecheck: () => void | Promise<void>;
   onClarificationSubmit: (answers: Record<string, string | boolean>) => void | Promise<void>;
@@ -173,7 +174,17 @@ function RoutedFlowEdge({
   );
 }
 
-function NodeDetail({ node }: { node: NodeSummary }) {
+function DetailRows({ items }: { items: DetailItem[] }) {
+  return (
+    <dl className="runtime-detail-list">
+      {items.map((item, index) => (
+        <div key={`${item.label}-${index}`}><dt>{item.label}</dt><dd>{item.value}</dd></div>
+      ))}
+    </dl>
+  );
+}
+
+function NodeDetail({ detail, node }: { detail: NodeExecutionDetail | null; node: NodeSummary }) {
   const Icon = node.icon;
   return (
     <section className="canvas-detail-card node-detail-card" aria-label={`${node.label} details`}>
@@ -183,15 +194,28 @@ function NodeDetail({ node }: { node: NodeSummary }) {
         <span className={`detail-status status-${node.status}`}><StatusIcon status={node.status} />{statusLabels[node.status]}</span>
       </header>
       <p className="node-purpose">{node.purpose}</p>
-      <dl className="node-summary-list">
-        <div><dt>Input</dt><dd>{node.input}</dd></div>
-        <div><dt>Output</dt><dd>{node.output}</dd></div>
-        <div><dt>State</dt><dd>{node.stateChange}</dd></div>
-      </dl>
+      {!detail ? <p className="node-narrative-pending">This step has not run yet. Its case-specific explanation will appear when the case reaches it.</p> : null}
+      {detail?.narrative ? (
+        <div className="runtime-narrative-list">
+          <section className="runtime-narrative-block"><h4>Input</h4><p>{detail.narrative.input}</p></section>
+          <section className="runtime-narrative-block"><h4>Output</h4><p>{detail.narrative.output}</p></section>
+          <section className="runtime-narrative-block"><h4>State</h4><p>{detail.narrative.state}</p></section>
+        </div>
+      ) : detail ? <p className="node-narrative-pending">The plain-language explanation is temporarily unavailable. The recorded facts remain available below.</p> : null}
+      {detail ? (
+        <details className="recorded-facts">
+          <summary>View recorded facts</summary>
+          <section className="runtime-detail-group"><h4>Input record</h4><DetailRows items={detail.input_items} /></section>
+          <section className="runtime-detail-group"><h4>Output record</h4><DetailRows items={detail.output_items} /></section>
+          <section className="runtime-detail-group"><h4>State record</h4><DetailRows items={detail.state_changes} /></section>
+          {detail.reasoning ? <p>{detail.reasoning.safety_rule}</p> : null}
+        </details>
+      ) : null}
       <div className="node-tool-summary">
         <span>Tools</span>
-        <strong>{node.tools.length ? node.tools.join(' · ') : 'No external tool used'}</strong>
+        <strong>{detail?.tool_names.length ? detail.tool_names.join(' · ') : detail ? 'No external tool used' : 'Available after this step runs'}</strong>
       </div>
+      {detail ? <p className="node-execution-meta">Attempt {detail.attempt} · {detail.evidence_ids.length} evidence reference(s)</p> : null}
     </section>
   );
 }
@@ -200,14 +224,17 @@ function HumanInteraction({
   onApprovalRecheck,
   onClarificationSubmit,
   pause,
+  detail,
   selectedNodeId,
 }: {
   onApprovalRecheck: () => void | Promise<void>;
   onClarificationSubmit: (answers: Record<string, string | boolean>) => void | Promise<void>;
   pause: RunSnapshot['pause'];
+  detail: NodeExecutionDetail | null;
   selectedNodeId: string;
 }) {
   const [answers, setAnswers] = useState<Record<string, string | boolean>>({});
+  const actionNarrative = detail?.narrative?.action;
 
   if (selectedNodeId === 'clarification') {
     const active = pause?.kind === 'clarification';
@@ -218,7 +245,7 @@ function HumanInteraction({
     return (
       <section className="canvas-detail-card human-interaction-card">
         <header><MessageCircleQuestion size={15} /><div><span className="panel-kicker">Human interaction</span><h3>Clarification required</h3></div></header>
-        <p>{active ? pause.message : 'Select a run that is waiting for clarification to respond here.'}</p>
+        <p>{actionNarrative ?? (active ? pause.message : detail ? 'The plain-language action explanation is temporarily unavailable.' : 'No clarification is active for this step yet.')}</p>
         {active ? pause.fields.map((field) => (
           field === 'submission_declaration' ? (
             <label className="clarification-checkbox" key={field}>
@@ -242,11 +269,8 @@ function HumanInteraction({
     return (
       <section className="canvas-detail-card human-interaction-card approval-preview-card">
         <header><UserCheck size={15} /><div><span className="panel-kicker">Simulated approver</span><h3>Approval decision</h3></div><span className="simulated-role">Demo only</span></header>
-        <dl>
-          <div><dt>Action</dt><dd>Submit prerequisite exception</dd></div>
-          <div><dt>Approver</dt><dd>CCDS Undergraduate Office</dd></div>
-          <div><dt>Version</dt><dd>Approval v1</dd></div>
-        </dl>
+        <p>{actionNarrative ?? (active ? pause.message : detail ? 'The plain-language approval explanation is temporarily unavailable.' : 'Approval details will appear if the action gate selects this route.')}</p>
+        {detail ? <details className="recorded-facts"><summary>View approval record</summary><DetailRows items={[...detail.input_items, ...detail.output_items].slice(0, 6)} /></details> : null}
         <p><ShieldCheck size={12} /> {active ? pause.message : 'Evidence and policy basis remain authoritative; the agent cannot approve its own action.'}</p>
         <div className="approval-buttons approval-recheck"><button disabled={!active} onClick={onApprovalRecheck} type="button">Re-check authoritative status</button></div>
       </section>
@@ -257,8 +281,23 @@ function HumanInteraction({
     return (
       <section className="canvas-detail-card human-interaction-card">
         <header><UserCog size={15} /><div><span className="panel-kicker">Human interaction</span><h3>Administrative handoff</h3></div></header>
-        <p>The agent prepares blockers, attempted plans, supporting evidence and the required administrative role. This is not an approval.</p>
+        <p>{actionNarrative ?? (detail ? 'The plain-language handoff explanation is temporarily unavailable.' : 'No administrative handoff has been prepared yet.')}</p>
+        {detail ? <DetailRows items={detail.state_changes.slice(0, 5)} /> : null}
         <ProvenanceBadge kind="derived" />
+      </section>
+    );
+  }
+
+  if (['resolution_builder', 'pre_action_verifier', 'action_gate', 'transaction', 'observation', 'post_action_verifier', 'final_response', 'memory_updater'].includes(selectedNodeId)) {
+    return (
+      <section className="canvas-detail-card human-interaction-card runtime-action-card">
+        <header><ShieldCheck size={15} /><div><span className="panel-kicker">Runtime action</span><h3>{detail ? 'Observed result' : 'Awaiting execution'}</h3></div></header>
+        {detail ? (
+          <>
+            <p className="runtime-action-narrative">{actionNarrative ?? 'The plain-language action explanation is temporarily unavailable.'}</p>
+            <details className="recorded-facts"><summary>View action record</summary><DetailRows items={detail.output_items.slice(0, 5)} /><div className="action-state-divider"><span>Persisted state</span></div><DetailRows items={detail.state_changes.slice(0, 5)} /></details>
+          </>
+        ) : <p>The exact decision, result and state update will appear here when this node executes.</p>}
       </section>
     );
   }
@@ -266,7 +305,7 @@ function HumanInteraction({
   return (
     <section className="canvas-detail-card human-interaction-card interaction-empty">
       <header><UserCheck size={15} /><div><span className="panel-kicker">Human interaction</span><h3>No action at this node</h3></div></header>
-      <p>Clarification, simulated approval and administrative handoff controls appear here only when their corresponding node is selected.</p>
+      <p>{actionNarrative ?? (detail ? 'The plain-language action explanation is temporarily unavailable.' : 'Any case-specific action or human decision will appear after this step runs.')}</p>
     </section>
   );
 }
@@ -274,12 +313,13 @@ function HumanInteraction({
 function CanvasInspectorNode({ data }: NodeProps<Node<CanvasInspectorNodeData>>) {
   return (
     <aside aria-label="Selected node and human interaction" className="canvas-embedded-inspector nodrag nowheel nopan">
-      <NodeDetail node={data.selectedNode} />
+      <NodeDetail detail={data.detail} node={data.selectedNode} />
       <HumanInteraction
         key={`${data.pause?.kind ?? 'none'}-${data.pause?.message ?? 'idle'}`}
         onApprovalRecheck={data.onApprovalRecheck}
         onClarificationSubmit={data.onClarificationSubmit}
         pause={data.pause}
+        detail={data.detail}
         selectedNodeId={data.selectedNodeId}
       />
     </aside>
@@ -312,6 +352,7 @@ export function AgentGraphCanvas({
     data: {
       selectedNode,
       selectedNodeId,
+      detail: runSnapshot?.node_details[selectedNodeId] ?? null,
       pause: runSnapshot?.pause ?? null,
       onApprovalRecheck,
       onClarificationSubmit,
@@ -372,9 +413,11 @@ export function AgentGraphCanvas({
           onNodeClick={(_event: ReactMouseEvent, node) => {
             if (node.type === 'agentNode') onSelectNode(node.id);
           }}
-          onSelectionChange={({ nodes: selectedNodes }) => {
-            const selected = selectedNodes.find((node) => node.type === 'agentNode');
-            if (selected) onSelectNode(selected.id);
+          onKeyDown={(event) => {
+            if (event.key !== 'Enter' && event.key !== ' ') return;
+            const nodeElement = (event.target as HTMLElement).closest<HTMLElement>('.react-flow__node[data-id]');
+            const nodeId = nodeElement?.dataset.id;
+            if (nodeId && nodeId !== 'canvas_inspector') onSelectNode(nodeId);
           }}
           panOnScroll
           proOptions={{ hideAttribution: true }}

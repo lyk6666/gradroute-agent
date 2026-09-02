@@ -18,14 +18,21 @@ import {
 export type IntakeMode = 'scenario' | 'manual';
 export type ScenarioSplit = 'demo' | 'evaluation';
 export type RunMode = 'normal' | 'step';
+export type ManualCaseDraft = {
+  profile: ScenarioPreview;
+  requestText: string;
+  notes: string;
+};
 
 type InputPanelProps = {
   canAdvance: boolean;
   demoScenarios: ScenarioPreview[];
   evaluationScenarios: ScenarioPreview[];
   intakeMode: IntakeMode;
+  manualCase: ManualCaseDraft;
   onAdvance: () => void;
   onIntakeModeChange: (mode: IntakeMode) => void;
+  onManualCaseChange: (draft: ManualCaseDraft) => void;
   onRunModeChange: (mode: RunMode) => void;
   onScenarioChange: (scenario: ScenarioPreview) => void;
   onStart: () => void;
@@ -47,22 +54,59 @@ function FieldLabel({ children, optional }: { children: ReactNode; optional?: bo
   );
 }
 
-function ManualInputForm() {
+function ManualInputForm({
+  draft,
+  profiles,
+  onChange,
+}: {
+  draft: ManualCaseDraft;
+  profiles: ScenarioPreview[];
+  onChange: (draft: ManualCaseDraft) => void;
+}) {
+  const caseTypes = Array.from(new Set(profiles.map((item) => item.caseType)));
+  const programmes = Array.from(new Set(profiles.map((item) => item.programme))).sort();
+  const selectProfile = (profile: ScenarioPreview) => onChange({
+    profile,
+    requestText: profile.request,
+    notes: draft.notes,
+  });
+
   return (
     <div className="intake-scroll-content">
       <div className="form-grid">
         <label className="form-field form-field-wide">
           <FieldLabel>Anonymous student ID</FieldLabel>
-          <input defaultValue="SIM-NEW-001" aria-label="Anonymous student ID" />
+          <span className="select-shell">
+            <select
+              aria-label="Anonymous student ID"
+              onChange={(event) => {
+                const profile = profiles.find((item) => item.id === event.target.value);
+                if (profile) selectProfile(profile);
+              }}
+              value={draft.profile.id}
+            >
+              {profiles.map((item) => <option key={item.id} value={item.id}>{item.studentId} · {item.caseType.replaceAll('_', ' ')}</option>)}
+            </select>
+            <ChevronDown aria-hidden="true" size={13} />
+          </span>
         </label>
 
         <label className="form-field form-field-wide">
           <FieldLabel>Programme</FieldLabel>
           <span className="select-shell">
-            <select defaultValue="CE:Computer Engineering" aria-label="Programme">
-              {PROGRAMMES.map(([code, name]) => (
-                <option key={`${code}-${name}`} value={`${code}:${name}`}>{code} · {name}</option>
-              ))}
+            <select
+              aria-label="Programme"
+              onChange={(event) => {
+                const profile = profiles.find((item) => item.programme === event.target.value && item.caseType === draft.profile.caseType)
+                  ?? profiles.find((item) => item.programme === event.target.value);
+                if (profile) selectProfile(profile);
+              }}
+              value={draft.profile.programme}
+            >
+              {programmes.map((code) => {
+                const name = PROGRAMMES.find(([item]) => item === code)?.[1] ?? code;
+                return <option key={code} value={code}>{code} · {name}</option>;
+              })}
             </select>
             <ChevronDown aria-hidden="true" size={13} />
           </span>
@@ -70,19 +114,30 @@ function ManualInputForm() {
 
         <label className="form-field">
           <FieldLabel>Cohort</FieldLabel>
-          <span className="select-shell"><select defaultValue="AY2025-26"><option>AY2025-26</option></select><ChevronDown aria-hidden="true" size={13} /></span>
+          <span className="select-shell"><select aria-label="Cohort" value={draft.profile.cohort} onChange={() => undefined}><option>{draft.profile.cohort}</option></select><ChevronDown aria-hidden="true" size={13} /></span>
         </label>
 
         <label className="form-field">
           <FieldLabel>Study year</FieldLabel>
-          <span className="select-shell"><select defaultValue="4"><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option></select><ChevronDown aria-hidden="true" size={13} /></span>
+          <span className="select-shell"><select aria-label="Study year" value={draft.profile.studyYear} onChange={() => undefined}><option>{draft.profile.studyYear}</option></select><ChevronDown aria-hidden="true" size={13} /></span>
         </label>
 
         <label className="form-field form-field-wide">
           <FieldLabel>Request type</FieldLabel>
           <span className="select-shell">
-            <select defaultValue="REGISTRATION_AFTER_DEADLINE">
-              {REQUEST_TYPES.map(([value, label]) => <option key={value} value={value}>{label}</option>)}
+            <select
+              aria-label="Request type"
+              onChange={(event) => {
+                const profile = profiles.find((item) => item.caseType === event.target.value && item.programme === draft.profile.programme)
+                  ?? profiles.find((item) => item.caseType === event.target.value);
+                if (profile) selectProfile(profile);
+              }}
+              value={draft.profile.caseType}
+            >
+              {caseTypes.map((value) => {
+                const label = REQUEST_TYPES.find(([item]) => item === value)?.[1] ?? value.replaceAll('_', ' ');
+                return <option key={value} value={value}>{label}</option>;
+              })}
             </select>
             <ChevronDown aria-hidden="true" size={13} />
           </span>
@@ -90,29 +145,29 @@ function ManualInputForm() {
 
         <label className="form-field form-field-wide">
           <FieldLabel>Request</FieldLabel>
-          <textarea defaultValue="I discovered a required course registration issue after normal registration closed." rows={3} />
+          <textarea onChange={(event) => onChange({ ...draft, requestText: event.target.value })} value={draft.requestText} rows={3} />
         </label>
 
         <label className="form-field form-field-wide">
           <FieldLabel optional>Notes</FieldLabel>
-          <textarea placeholder="Add context that may help the agent ask better questions." rows={2} />
+          <textarea onChange={(event) => onChange({ ...draft, notes: event.target.value })} placeholder="Add context that may help the agent ask better questions." value={draft.notes} rows={2} />
         </label>
       </div>
 
       <details className="academic-snapshot">
         <summary><BookOpenCheck size={14} /> Academic snapshot <span>Required to execute a new case</span></summary>
         <div className="snapshot-fields">
-          <label><FieldLabel>Earned AUs</FieldLabel><input defaultValue="128" inputMode="decimal" /></label>
-          <label><FieldLabel>Current semester</FieldLabel><select defaultValue="Semester 1"><option>Semester 1</option><option>Semester 2</option></select></label>
-          <label className="form-field-wide"><FieldLabel>Completed courses</FieldLabel><input placeholder="Search and add course codes" /></label>
-          <label className="form-field-wide"><FieldLabel>Current registration</FieldLabel><input placeholder="Search and add registered courses" /></label>
-          <label className="form-field-wide"><FieldLabel optional>Supporting documents</FieldLabel><input placeholder="Document types or references" /></label>
+          <label><FieldLabel>Earned AUs</FieldLabel><input readOnly value={draft.profile.earnedAus} /></label>
+          <label><FieldLabel>Profile source</FieldLabel><input readOnly value={draft.profile.id} /></label>
+          <label className="form-field-wide"><FieldLabel>Completed courses</FieldLabel><textarea readOnly rows={2} value={draft.profile.completedCourses.join(', ') || 'No explicit completion records'} /></label>
+          <label className="form-field-wide"><FieldLabel>Current registration</FieldLabel><textarea readOnly rows={2} value={draft.profile.registeredCourses.join(', ') || 'No current registered courses'} /></label>
+          <label className="form-field-wide"><FieldLabel optional>Supporting documents</FieldLabel><textarea readOnly rows={2} value={draft.profile.supportingDocuments.join(', ') || 'None declared'} /></label>
         </div>
       </details>
 
       <div className="intake-boundary-note">
         <UserRoundPlus aria-hidden="true" size={15} />
-        <span>New-case composition is retained as a guarded input surface. This UI-3 increment executes the frozen scenario package first; manual records will require an explicit validated simulation builder.</span>
+        <span>This creates a new request over the selected validated synthetic academic profile. Academic and operational facts remain simulated and are rechecked by the same agent graph.</span>
       </div>
     </div>
   );
@@ -190,14 +245,15 @@ function ScenarioForm({
 
 export function InputPanel(props: InputPanelProps) {
   const activeRun = ['queued', 'running', 'waiting'].includes(props.runStatus);
-  const startDisabled = props.runtimeStatus !== 'operational' || props.intakeMode !== 'scenario' || activeRun;
+  const manualInvalid = props.manualCase.requestText.trim().length < 12;
+  const startDisabled = props.runtimeStatus !== 'operational' || activeRun || (props.intakeMode === 'manual' && manualInvalid);
   const stepAction = props.runMode === 'step' && props.runStatus === 'running';
   const buttonLabel = stepAction
     ? (props.canAdvance ? 'Run next graph step' : 'Executing current step…')
     : props.runStatus === 'waiting'
       ? 'Respond in the canvas'
-      : props.intakeMode === 'manual'
-        ? 'Manual builder not connected'
+      : props.intakeMode === 'manual' && manualInvalid
+        ? 'Enter a complete request'
         : props.runtimeStatus === 'offline'
           ? 'Runtime offline'
           : activeRun
@@ -217,7 +273,15 @@ export function InputPanel(props: InputPanelProps) {
         </button>
       </div>
 
-      {props.intakeMode === 'scenario' ? <ScenarioForm {...props} /> : <ManualInputForm />}
+      {props.intakeMode === 'scenario' ? (
+        <ScenarioForm {...props} />
+      ) : (
+        <ManualInputForm
+          draft={props.manualCase}
+          onChange={props.onManualCaseChange}
+          profiles={[...props.demoScenarios, ...props.evaluationScenarios]}
+        />
+      )}
 
       <footer className="run-setup-footer">
         <span className="form-label">Run mode</span>

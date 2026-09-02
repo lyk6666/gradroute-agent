@@ -52,6 +52,10 @@ class ScenarioSummary(ApiModel):
     cohort: str
     study_year: int
     request_text: str
+    earned_aus: str
+    completed_courses: list[str] = Field(default_factory=list)
+    registered_courses: list[str] = Field(default_factory=list)
+    supporting_documents: list[str] = Field(default_factory=list)
 
 
 class TimelineItem(ApiModel):
@@ -71,11 +75,79 @@ class ToolSummary(ApiModel):
     provenance_count: int = 0
 
 
+class DetailItem(ApiModel):
+    label: str
+    value: str
+
+
+class ReasoningSummary(ApiModel):
+    task: str
+    status: str
+    model_id: str | None = None
+    applied: bool
+    safety_rule: str
+    input_tokens: int = 0
+    output_tokens: int = 0
+
+
+class NodeNarrativeSummary(ApiModel):
+    input: str
+    output: str
+    state: str
+    action: str
+    model_id: str
+    generated_at: datetime
+
+
+class NodeExecutionDetail(ApiModel):
+    node_id: str
+    attempt: int = Field(ge=1)
+    status: NodeStatus
+    input_items: list[DetailItem] = Field(default_factory=list)
+    output_items: list[DetailItem] = Field(default_factory=list)
+    state_changes: list[DetailItem] = Field(default_factory=list)
+    tool_names: list[str] = Field(default_factory=list)
+    evidence_ids: list[str] = Field(default_factory=list)
+    reasoning: ReasoningSummary | None = None
+    narrative: NodeNarrativeSummary | None = None
+    started_at: datetime | None = None
+    completed_at: datetime | None = None
+
+
+class PlanStepSummary(ApiModel):
+    ordinal: int
+    purpose: str
+    specialist: str | None = None
+    status: str
+
+
+class EvidenceSummary(ApiModel):
+    specialist: str
+    summary: str
+    completeness_known: bool
+    source_ids: list[str] = Field(default_factory=list)
+    rule_ids: list[str] = Field(default_factory=list)
+
+
+class ThreadEventSummary(ApiModel):
+    sequence: int
+    label: str
+    status: str
+    occurred_at: datetime
+
+
 class MemorySummary(ApiModel):
+    memory_id: str
     label: str
     summary: str
     relevance: float | None = None
     advisory_only: bool = True
+    applicability: str
+    recovery_steps: list[str] = Field(default_factory=list)
+    failed_patterns: list[str] = Field(default_factory=list)
+    tags: list[str] = Field(default_factory=list)
+    verified_at: datetime | None = None
+    narrative: str | None = None
 
 
 class PauseSummary(ApiModel):
@@ -88,12 +160,24 @@ class PauseSummary(ApiModel):
 
 class FinalResponseSummary(ApiModel):
     status: str
+    headline: str
     message: str
+    request_summary: str
+    resolution_summary: str
+    action: str | None = None
+    action_parameters: list[DetailItem] = Field(default_factory=list)
+    academic_basis: list[str] = Field(default_factory=list)
+    policy_basis: list[str] = Field(default_factory=list)
+    approval_summary: str
+    transaction_summary: str
+    next_steps: list[str] = Field(default_factory=list)
+    limitations: list[str] = Field(default_factory=list)
     evidence_ids: list[str] = Field(default_factory=list)
     academic_verified: bool
     policy_verified: bool
     approval_state: str
     completed_at: datetime | None = None
+    narrative: str | None = None
 
 
 class WorkingStateSummary(ApiModel):
@@ -108,6 +192,19 @@ class WorkingStateSummary(ApiModel):
     max_total_steps: int
     status: str
     candidate_resolution: str
+    plan_version: int | None = None
+    plan_rationale: str | None = None
+    plan_steps: list[PlanStepSummary] = Field(default_factory=list)
+    evidence: list[EvidenceSummary] = Field(default_factory=list)
+    action: str | None = None
+    action_parameters: list[DetailItem] = Field(default_factory=list)
+    outstanding_items: list[str] = Field(default_factory=list)
+    errors: list[str] = Field(default_factory=list)
+    reasoning: list[ReasoningSummary] = Field(default_factory=list)
+    narrative: str | None = None
+    narrative_known: list[str] = Field(default_factory=list)
+    narrative_next: str | None = None
+    narrative_attention: str | None = None
 
 
 class ThreadMemorySummary(ApiModel):
@@ -116,6 +213,11 @@ class ThreadMemorySummary(ApiModel):
     checkpoints: int
     pause_state: str
     latest_checkpoint: str
+    events: list[ThreadEventSummary] = Field(default_factory=list)
+    clarification_details: list[DetailItem] = Field(default_factory=list)
+    approval_details: list[DetailItem] = Field(default_factory=list)
+    narrative: str | None = None
+    narrative_highlights: list[str] = Field(default_factory=list)
 
 
 class RunSnapshot(ApiModel):
@@ -128,6 +230,7 @@ class RunSnapshot(ApiModel):
     can_advance: bool = False
     current_node: str | None = None
     node_statuses: dict[str, NodeStatus]
+    node_details: dict[str, NodeExecutionDetail] = Field(default_factory=dict)
     traversed_edges: list[str] = Field(default_factory=list)
     timeline: list[TimelineItem] = Field(default_factory=list)
     working_state: WorkingStateSummary
@@ -142,6 +245,18 @@ class RunSnapshot(ApiModel):
 
 class StartRunRequest(ApiModel):
     scenario_id: str
+    mode: RunMode = RunMode.NORMAL
+
+
+class ManualRunRequest(ApiModel):
+    profile_scenario_id: str
+    student_id: str
+    programme: str
+    cohort: str
+    study_year: int = Field(ge=1, le=8)
+    problem_type: str
+    request_text: str = Field(min_length=12, max_length=2_000)
+    notes: str | None = Field(default=None, max_length=1_000)
     mode: RunMode = RunMode.NORMAL
 
 
@@ -330,6 +445,7 @@ __all__ = [
     "DataRecord",
     "DataRelationship",
     "DataSection",
+    "DetailItem",
     "EvaluationCampaignArtifact",
     "EvaluationCampaignsResponse",
     "EvaluationFilterOptions",
@@ -337,7 +453,10 @@ __all__ = [
     "EvaluationScenarioRecord",
     "EvaluationScenariosResponse",
     "FinalResponseSummary",
+    "ManualRunRequest",
     "MemorySummary",
+    "NodeExecutionDetail",
+    "NodeNarrativeSummary",
     "NodeStatus",
     "PauseSummary",
     "RunEvent",
