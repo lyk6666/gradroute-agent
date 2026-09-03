@@ -36,6 +36,7 @@ export function TopNavigation({ activeSection, preview = false, systemStatus }: 
           <Link
             aria-current={activeSection === link.section ? 'page' : undefined}
             className={activeSection === link.section ? 'is-active' : undefined}
+            data-demo-target={`nav-${link.section}`}
             href={link.href}
             key={link.section}
           >

@@ -269,8 +269,8 @@ export function InputPanel(props: InputPanelProps) {
               : 'Start grounded run';
 
   return (
-    <aside aria-label="Case input" className="workspace-panel intake-panel">
-      <div className="mode-tabs" aria-label="Input mode">
+    <aside aria-label="Case input" className="workspace-panel intake-panel" data-demo-target="case-input">
+      <div className="mode-tabs" aria-label="Input mode" data-demo-target="input-mode">
         <button aria-pressed={props.intakeMode === 'scenario'} className={props.intakeMode === 'scenario' ? 'is-active' : ''} onClick={() => props.onIntakeModeChange('scenario')} type="button">
           <FlaskConical size={13} /> Scenario
         </button>
@@ -289,7 +289,7 @@ export function InputPanel(props: InputPanelProps) {
         />
       )}
 
-      <footer className="run-setup-footer">
+      <footer className="run-setup-footer" data-demo-target="run-controls">
         <span className="form-label">Run mode</span>
         <div className="run-mode-selector" aria-label="Run mode">
           <button aria-pressed={props.runMode === 'normal'} className={props.runMode === 'normal' ? 'is-active' : ''} onClick={() => props.onRunModeChange('normal')} type="button">Normal run</button>

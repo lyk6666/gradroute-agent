@@ -91,11 +91,11 @@ function StatusIcon({ status }: { status: NodeStatus }) {
   return <CircleDot {...props} />;
 }
 
-function AgentFlowNode({ data }: NodeProps<Node<AgentNodeData>>) {
+function AgentFlowNode({ data, id }: NodeProps<Node<AgentNodeData>>) {
   const Icon = data.icon;
   const visitCount = Number(data.visitCount ?? 0);
   return (
-    <div className={`agent-flow-node status-${data.status}`} title={`${data.label}: ${statusLabels[data.status]}`}>
+    <div className={`agent-flow-node status-${data.status}`} data-demo-node={id} title={`${data.label}: ${statusLabels[data.status]}`}>
       <span className="agent-node-icon"><Icon aria-hidden="true" size={14} /></span>
       <span className="agent-node-copy"><strong>{data.label}</strong><small><StatusIcon status={data.status} /> {statusLabels[data.status]}</small></span>
       {visitCount > 1 ? <span className="node-visit-count" title={`${visitCount} recorded visits`}>{visitCount}×</span> : null}
@@ -510,7 +510,7 @@ function HumanInteraction({
 
 function CanvasInspectorNode({ data }: NodeProps<Node<CanvasInspectorNodeData>>) {
   return (
-    <aside aria-label="Selected node and human interaction" className="canvas-embedded-inspector nodrag nowheel nopan">
+    <aside aria-label="Selected node and human interaction" className="canvas-embedded-inspector nodrag nowheel nopan" data-demo-target="node-inspector">
       <NodeDetail
         detail={data.detail}
         node={data.selectedNode}
@@ -590,7 +590,7 @@ export function AgentGraphCanvas({
     inspectorNode,
   ];
   return (
-    <section aria-label="Agent execution graph" className="workspace-panel graph-panel">
+    <section aria-label="Agent execution graph" className="workspace-panel graph-panel" data-demo-target="agent-graph">
       <div className="graph-toolbar" aria-label="Graph status legend" role="group">
         <div className="graph-legend">
           <span><i className="legend-running" />Current</span>

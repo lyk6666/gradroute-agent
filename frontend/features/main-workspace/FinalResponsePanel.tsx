@@ -36,7 +36,7 @@ export function FinalResponsePanel({ runSnapshot, scenario }: { runSnapshot: Run
   }
 
   return (
-    <section aria-label="Final response" className="workspace-panel response-panel">
+    <section aria-label="Final response" className="workspace-panel response-panel" data-demo-target="final-response">
       <div className="response-content">
         <div className="response-summary">
           <span>{runSnapshot ? `Run ${runSnapshot.scenario_id}` : `Preview for ${scenario.id}`}</span>

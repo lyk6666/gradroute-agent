@@ -200,7 +200,7 @@ export function EvaluationDashboard() {
 
   return (
     <AppShell activeSection="evaluation" workspace systemStatus={error ? 'offline' : campaign ? 'operational' : 'checking'}>
-      <section className="evaluation-dashboard" aria-label="Evaluation evidence dashboard">
+      <section className="evaluation-dashboard" aria-label="Evaluation evidence dashboard" data-demo-target="evaluation-page">
         <header className="evaluation-command-bar">
           <div className="evaluation-title-lockup">
             <span><FlaskConical size={21} /></span>
@@ -318,7 +318,7 @@ function Overview({ campaign }: { campaign: CampaignArtifact | null }) {
         <code>{metrics.evaluation_mode === 'bedrock' ? metrics.model_id : 'Deterministic fixture'}</code>
       </section>
 
-      <section className="evaluation-metric-grid">
+      <section className="evaluation-metric-grid" data-demo-target="evaluation-metrics">
         {primaryMetrics.map(({ label, value, note, icon: Icon, tone }) => (
           <article className={`evaluation-metric-card tone-${tone}`} key={label}>
             <span><Icon size={18} /></span><div><small>{label}</small><strong>{value}</strong><p>{note}</p></div>

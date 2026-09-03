@@ -38,7 +38,7 @@ export function ExecutionTimeline({ onSelectNode, runSnapshot, selectedNodeAttem
   }
 
   return (
-    <section aria-label="Execution timeline" className="workspace-panel timeline-panel">
+    <section aria-label="Execution timeline" className="workspace-panel timeline-panel" data-demo-target="execution-timeline">
       <div className="timeline-scroll" aria-label="Execution events">
         {events.length ? events.map((event) => {
           const node = NODE_SUMMARIES[event.nodeId];

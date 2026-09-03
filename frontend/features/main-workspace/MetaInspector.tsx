@@ -42,7 +42,7 @@ export function MetaInspector({ runSnapshot, selectedNodeId }: MetaInspectorProp
   const thread = runSnapshot?.thread_memory;
 
   return (
-    <aside aria-label="Case state and memory" className="workspace-panel meta-panel">
+    <aside aria-label="Case state and memory" className="workspace-panel meta-panel" data-demo-target="case-overview">
       <div className="meta-scroll-content">
         <section className="selected-node-callout">
           <Info aria-hidden="true" size={14} />

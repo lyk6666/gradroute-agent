@@ -151,7 +151,7 @@ export function DataExplorer() {
 
   return (
     <AppShell activeSection="data" workspace systemStatus={error ? 'offline' : catalog ? 'operational' : 'checking'}>
-      <section className="data-explorer" aria-label="Grounded data explorer">
+      <section className="data-explorer" aria-label="Grounded data explorer" data-demo-target="data-page">
         <header className="data-overview-bar">
           <div className="data-overview-title">
             <span className="data-icon-box"><Database size={21} /></span>
@@ -180,7 +180,7 @@ export function DataExplorer() {
         ) : null}
 
         <div className="data-explorer-grid">
-          <aside className="data-catalog-panel" aria-label="Data sets">
+          <aside className="data-catalog-panel" aria-label="Data sets" data-demo-target="data-catalog">
             <div className="data-panel-heading">
               <BookOpenCheck size={18} />
               <strong>Catalogue</strong>
@@ -218,7 +218,7 @@ export function DataExplorer() {
             </div>
           </aside>
 
-          <main className="data-table-panel">
+          <main className="data-table-panel" data-demo-target="data-table">
             <div className="data-table-titlebar">
               <div>
                 <div className="data-title-line">
@@ -335,7 +335,7 @@ function RecordInspector({
   onFollow: (datasetId: string, recordId?: string) => void;
 }) {
   return (
-    <aside className="data-inspector-panel" aria-label="Record inspector">
+    <aside className="data-inspector-panel" aria-label="Record inspector" data-demo-target="data-inspector">
       <div className="data-panel-heading"><FileCheck2 size={18} /><strong>Record inspector</strong></div>
       {record ? (
         <div className="data-inspector-scroll">
