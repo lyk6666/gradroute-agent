@@ -40,7 +40,7 @@ export function MainWorkspace() {
   });
   const [demoScenarios, setDemoScenarios] = useState<ScenarioPreview[]>(DEMO_SCENARIOS);
   const [evaluationScenarios, setEvaluationScenarios] = useState<ScenarioPreview[]>(EVALUATION_SCENARIOS);
-  const [selectedNodeId, setSelectedNodeId] = useState('human_approval');
+  const [selectedNodeId, setSelectedNodeId] = useState('student_case');
   const [runSnapshot, setRunSnapshot] = useState<RunSnapshot | null>(null);
   const [runError, setRunError] = useState<string | null>(null);
   const streamRef = useRef<EventSource | null>(null);

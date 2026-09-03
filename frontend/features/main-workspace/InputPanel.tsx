@@ -224,6 +224,12 @@ function ScenarioForm({
           <span className="preview-label">Request</span>
           <p>{scenario.request}</p>
         </div>
+        {scenarioSplit === 'demo' && scenario.expectedResponse ? (
+          <div className="scenario-preview-section expected-response-preview">
+            <span className="preview-label">Expected response</span>
+            <p>{scenario.expectedResponse}</p>
+          </div>
+        ) : null}
       </section>
 
       <section className="student-preview-card" aria-label="Synthetic student information">

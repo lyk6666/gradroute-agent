@@ -54,6 +54,7 @@ export type ScenarioPreview = {
   completedCourses: string[];
   registeredCourses: string[];
   supportingDocuments: string[];
+  expectedResponse?: string | null;
 };
 
 export const PROGRAMMES = [
@@ -142,7 +143,20 @@ const evaluationRecords = [
   ['S7-E01', 'SIM-CE-011', 'CE', '4', 'REGISTRATION_AFTER_DEADLINE', 'CC0006'],
 ] as const;
 
-function makeScenario(record: (typeof demoRecords)[number] | (typeof evaluationRecords)[number]): ScenarioPreview {
+function offlineRequest(family: string, programme: string, studyYear: string, course: string): string {
+  const student = `I am a Year ${studyYear} ${programme} student and ${course} is still affecting my graduation plan.`;
+  return {
+    S1: `${student} My preferred class clashes with my timetable. Please find a conflict-free class for the same course during Add/Drop, without substituting another course.`,
+    S2: `${student} I passed the simulated exchange course FX2001, but the transfer is pending and the transcript and course mappings are attached. Please check whether the evidence supports the documented prerequisite-exception route.`,
+    S3: `${student} Please determine which dated curriculum rules apply to my cohort before recommending a graduation exception.`,
+    S4: `${student} The class I selected clashes with my current timetable. Please check a conflict-free class and proceed only through the required approval route.`,
+    S5: `${student} Please assess the exception within my declared integrated-programme path without combining requirements from another CCDS curriculum.`,
+    S6: `${student} I cannot identify a verified public exception route. Please tell me what is missing or prepare the correct CCDS handoff without guessing a policy.`,
+    S7: `${student} The selected class currently appears feasible. Please attempt registration, refresh live availability if it fails, and confirm the final registered state.`,
+  }[family] ?? student;
+}
+
+function makeScenario(record: (typeof demoRecords)[number] | (typeof evaluationRecords)[number], split: 'demo' | 'evaluation'): ScenarioPreview {
   const [id, studentId, programme, studyYear, caseType, course] = record;
   const family = id.slice(0, 2);
   return {
@@ -154,16 +168,19 @@ function makeScenario(record: (typeof demoRecords)[number] | (typeof evaluationR
     programme,
     cohort: 'AY2025-26',
     studyYear,
-    request: `Terminal-stage registration or graduation exception concerning ${course} after normal registration.`,
-    earnedAus: '128.0',
+    request: offlineRequest(family, programme, studyYear, course),
+    earnedAus: 'Available when runtime connects',
     completedCourses: [],
     registeredCourses: [],
     supportingDocuments: [],
+    expectedResponse: split === 'demo'
+      ? `The response should address the ${familyDetails[family].title.toLowerCase()} for ${course}, explain the verified evidence and any human decision, and state the observed final outcome.`
+      : null,
   };
 }
 
-export const DEMO_SCENARIOS = demoRecords.map(makeScenario);
-export const EVALUATION_SCENARIOS = evaluationRecords.map(makeScenario);
+export const DEMO_SCENARIOS = demoRecords.map((record) => makeScenario(record, 'demo'));
+export const EVALUATION_SCENARIOS = evaluationRecords.map((record) => makeScenario(record, 'evaluation'));
 
 const summaries: NodeSummary[] = [
   {

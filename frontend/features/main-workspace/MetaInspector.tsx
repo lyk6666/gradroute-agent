@@ -104,8 +104,8 @@ export function MetaInspector({ runSnapshot, selectedNodeId }: MetaInspectorProp
                 <div><dt>Tool retries</dt><dd>{working ? `${working.tool_retries} of ${working.max_tool_retries}` : '0 of 2'}</dd></div>
                 <div><dt>Status</dt><dd>{working?.status ?? 'Idle'}</dd></div>
               </dl>
-              <div className="processed-summary-box"><strong>Candidate resolution</strong><p>{working?.candidate_resolution ?? 'No candidate assembled yet.'}</p></div>
-              {working?.plan_rationale ? <div className="processed-summary-box"><strong>Plan rationale</strong><p>{working.plan_rationale}</p></div> : null}
+              <div className="processed-summary-box"><strong>Proposed resolution</strong><p>{working?.candidate_resolution ?? 'No resolution has been proposed yet.'}</p></div>
+              {working?.plan_rationale ? <div className="processed-summary-box"><strong>Why these checks</strong><p>{working.plan_rationale}</p></div> : null}
               {working?.plan_steps.length ? (
                 <ol className="inspector-plan-list">
                   {working.plan_steps.map((step) => (
@@ -164,7 +164,7 @@ export function MetaInspector({ runSnapshot, selectedNodeId }: MetaInspectorProp
         </InspectorSection>
 
         <InspectorSection icon={Database} open={['memory_retriever', 'memory_updater'].includes(selectedNodeId)} title="Long-term memory">
-          {runSnapshot?.long_term_memory.length ? runSnapshot.long_term_memory.map((memory) => (
+          {runSnapshot?.long_term_memory.length ? runSnapshot.long_term_memory.slice(0, 3).map((memory) => (
             <div className="memory-pattern-card" key={memory.memory_id}>
               <header><BrainCircuit size={13} /><strong>{memory.label.replaceAll('_', ' ')}</strong><span>{relevanceLabel(memory.relevance)}</span></header>
               <p>{memory.narrative ?? memory.summary}</p>

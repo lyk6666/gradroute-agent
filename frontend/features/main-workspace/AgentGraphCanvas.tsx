@@ -197,9 +197,9 @@ function NodeDetail({ detail, node }: { detail: NodeExecutionDetail | null; node
       {!detail ? <p className="node-narrative-pending">This step has not run yet. Its case-specific explanation will appear when the case reaches it.</p> : null}
       {detail?.narrative ? (
         <div className="runtime-narrative-list">
-          <section className="runtime-narrative-block"><h4>Input</h4><p>{detail.narrative.input}</p></section>
-          <section className="runtime-narrative-block"><h4>Output</h4><p>{detail.narrative.output}</p></section>
-          <section className="runtime-narrative-block"><h4>State</h4><p>{detail.narrative.state}</p></section>
+          <section className="runtime-narrative-block"><h4>What came in</h4><p>{detail.narrative.input}</p></section>
+          <section className="runtime-narrative-block"><h4>What this step found</h4><p>{detail.narrative.output}</p></section>
+          <section className="runtime-narrative-block"><h4>What changed</h4><p>{detail.narrative.state}</p></section>
         </div>
       ) : detail ? <p className="node-narrative-pending">The plain-language explanation is temporarily unavailable. The recorded facts remain available below.</p> : null}
       {detail ? (
@@ -271,7 +271,7 @@ function HumanInteraction({
         <header><UserCheck size={15} /><div><span className="panel-kicker">Simulated approver</span><h3>Approval decision</h3></div><span className="simulated-role">Demo only</span></header>
         <p>{actionNarrative ?? (active ? pause.message : detail ? 'The plain-language approval explanation is temporarily unavailable.' : 'Approval details will appear if the action gate selects this route.')}</p>
         {detail ? <details className="recorded-facts"><summary>View approval record</summary><DetailRows items={[...detail.input_items, ...detail.output_items].slice(0, 6)} /></details> : null}
-        <p><ShieldCheck size={12} /> {active ? pause.message : 'Evidence and policy basis remain authoritative; the agent cannot approve its own action.'}</p>
+        <p><ShieldCheck size={12} /> The decision comes from the named approving role; the agent cannot approve its own request.</p>
         <div className="approval-buttons approval-recheck"><button disabled={!active} onClick={onApprovalRecheck} type="button">Re-check authoritative status</button></div>
       </section>
     );
@@ -303,9 +303,9 @@ function HumanInteraction({
   }
 
   return (
-    <section className="canvas-detail-card human-interaction-card interaction-empty">
-      <header><UserCheck size={15} /><div><span className="panel-kicker">Human interaction</span><h3>No action at this node</h3></div></header>
-      <p>{actionNarrative ?? (detail ? 'The plain-language action explanation is temporarily unavailable.' : 'Any case-specific action or human decision will appear after this step runs.')}</p>
+    <section className="canvas-detail-card human-interaction-card interaction-empty is-compact">
+      <header><UserCheck size={15} /><div><span className="panel-kicker">Human interaction</span><h3>No input needed</h3></div></header>
+      <p>{actionNarrative ?? (detail ? 'This step can continue without a separate human decision.' : 'If this step later needs a person, the exact request will appear here.')}</p>
     </section>
   );
 }

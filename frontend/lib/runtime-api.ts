@@ -173,6 +173,7 @@ type ApiScenario = {
   completed_courses: string[];
   registered_courses: string[];
   supporting_documents: string[];
+  expected_response: string | null;
 };
 
 export type ManualCaseInput = {
@@ -231,6 +232,7 @@ export async function loadScenarios(): Promise<ScenarioPreview[]> {
     completedCourses: item.completed_courses,
     registeredCourses: item.registered_courses,
     supportingDocuments: item.supporting_documents,
+    expectedResponse: item.expected_response,
   }));
 }
 
