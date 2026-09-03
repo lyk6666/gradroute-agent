@@ -2,7 +2,8 @@
 
 This package contains the current implementation specification for the NTU CCDS-grounded administrative exception-resolution prototype.
 
-Current status: Stage 15 is complete for the local hackathon-prototype boundary.
+Current status: Stage 16 is complete. It delivers a simplified UI-only
+simulation film for the local hackathon-prototype boundary.
 Its UI is backed by the Stage 7 frozen 315-run held-out evaluation over the
 Stage 5/6 system. Both the deterministic fixture baseline and the
 qualifying Amazon Bedrock campaign pass 315/315 with 105/105 scenarios at 3/3
@@ -53,6 +54,10 @@ Stage 15 adds a one-command, 4K simulation-film pipeline. It starts the real
 frontend and backend, records the three product surfaces, executes S7 and S2
 step by step, preserves raw capture evidence, generates replaceable narration,
 and uses Remotion for deterministic camera movement, captions and rendering.
+Stage 16 replaces that decorated montage with continuous UI footage of S7 and
+S2, larger close-ups, speech-linked outlines and shorter narration. Review is
+720p-first. It also fixes an observed terminal-event delivery race so the next
+case can start without refreshing the application.
 
 Foundation specifications:
 
@@ -63,6 +68,8 @@ Foundation specifications:
 - [`05_evaluation_plan.md`](05_evaluation_plan.md) — planned 315-run final-state, control-flow, memory, and robustness evaluation
 
 Stage records:
+
+- [`stage_16_ui_only_simulation_film.md`](stage_16_ui_only_simulation_film.md) — simplified simulation edit, capture verification and review results
 
 - [`stage_1_contract_decisions.md`](stage_1_contract_decisions.md) — explicit resolutions for schema ambiguities
 - [`stage_2_grounding_conventions.md`](stage_2_grounding_conventions.md) — grounding conventions plus the detailed

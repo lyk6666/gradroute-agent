@@ -67,7 +67,7 @@ frontend/    React/Vinext user interface
 scripts/     data, evaluation and delivery utilities
 src/         Python backend and agent runtime
 tests/       automated backend and contract tests
-video/       automated 4K system capture and Remotion simulation film
+video/       automated browser capture and UI-only Remotion simulation film
 ```
 
 ## Prerequisites
@@ -186,12 +186,13 @@ npm run build
 npm run start
 ```
 
-## Render the 4K simulation video
+## Render the UI-only simulation video
 
 The simulation film is generated from a real automated run of the local
-application. It records the Main, Data and Evaluation pages, executes S7 and
-S2 step by step, performs the explicitly labelled simulated approval,
-generates narration and renders the directed result at 3840×2160.
+application. It goes directly through S7 recovery and S2 prerequisite review,
+including an explicit simulated approval. Continuous browser footage is edited
+with close-ups, subtle outlines and short narration; there are no captions,
+title cards, dark masks or repeated screenshot fades.
 
 From the repository root:
 
@@ -199,10 +200,13 @@ From the repository root:
 & .\scripts\render_simulation_demo.ps1
 ```
 
-The command starts any missing application services and stops only the
+The default is a 1:55, 1280×720 review copy. The command starts the
+application services when both requested ports are free and stops only the
 processes it created; a healthy frontend/backend pair already using the
 requested ports is reused and left running. The final file is created at
-`video/output/simulation-demo-4k.mp4`.
+`video/output/simulation-ui-only-720p.mp4`. It refuses a partially occupied
+service pair so it cannot accidentally combine unrelated frontend/backend
+processes. The earlier 4K film is preserved separately.
 
 When Bedrock mode is configured, sign in first if the SSO session has expired:
 
@@ -210,11 +214,25 @@ When Bedrock mode is configured, sign in first if the SSO session has expired:
 aws sso login --profile ccds-sandbox
 ```
 
-For a reproducible offline capture that does not call Bedrock:
+For a reproducible fixture capture that does not call Bedrock:
 
 ```powershell
 & .\scripts\render_simulation_demo.ps1 -Fixture
 ```
 
 Use `-HeadedCapture` to watch the automated browser. Use `-SkipCapture` to
-re-render an existing take after changing only the Remotion edit or narration.
+re-render the existing take without starting the application. Narration
+generation requires network access; add `-SkipNarration` to reuse existing audio.
+
+```powershell
+# Quickly render the current edit again without restarting or calling the runtime.
+& .\scripts\render_simulation_demo.ps1 -SkipCapture -SkipNarration
+
+# Optional 4K composition export after the preview has been reviewed.
+& .\scripts\render_simulation_demo.ps1 -SkipCapture -SkipNarration -Final4K
+```
+
+The review take uses 1920×1080 source footage. A 4K export from that same take
+does not add source detail. The script, framing and narration are maintained in
+`video/script/simulation-edit.json`; generated media and runtime manifests are
+local artifacts, not Git-tracked source files.
