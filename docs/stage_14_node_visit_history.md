@@ -83,10 +83,17 @@ for visit-by-visit inspection.
   explanation and evidence record.
 - Historical clarification and approval visits are explicitly read-only. Human
   controls remain available only on the latest active visit.
-- Replaced the late `ResizeObserver` error-event filter with stable React Flow
-  node dimensions and frame-scheduled, coalesced resize measurements. This keeps
-  graph geometry current without allowing Chromium's benign delivery notice to
-  open the development error overlay.
+- Fixed React Flow's development-only `ResizeObserver` delivery loop at its
+  measurement boundary. Fixed-size nodes now declare initialized empty handle
+  geometry, and remaining observer entries are merged by target and delivered
+  once per animation frame without dropping measurements.
+- Moved the 32 workflow routes into a persistent SVG layer that shares React
+  Flow's exact pan-and-zoom transform. Node measurement and status updates can no
+  longer unmount the routes while a case is running.
+- Rebuilt every route from horizontal and vertical line segments only. Stroke
+  width remains independent of canvas zoom, the 22 route labels stay anchored to
+  their intended paths, and short quadratic corner transitions soften direction
+  changes without adding diagonal straight segments.
 - Removed the development-only React Flow attribution warning by retaining the
   library's standard attribution, and standardized Main-workspace event times to
   a compact English 24-hour display.
@@ -107,6 +114,24 @@ for visit-by-visit inspection.
 - Frontend TypeScript check: **passed**.
 - Frontend lint: **passed**.
 - Frontend production build: **passed** for `/`, `/data`, and `/evaluation`.
+- Full browser rendering matrix: all **7 demo scenarios** completed, including
+  four human checkpoints, with **123 live frames** sampled.
+- Full held-out browser rendering matrix: all **105 evaluation scenarios** were
+  exercised to a stable boundary; 45 completed and 60 correctly paused for a
+  human decision, with **1,742 live frames** sampled.
+- Across all **112 scenarios** and **1,865 sampled frames**, all 32 routes and 22
+  labels remained present: **0 missing/empty/hidden routes, 0 diagonal segments,
+  0 runtime failures, and 0 timeouts**.
+- Zoom-in, zoom-out, and fit-view checks confirmed that the route and node layers
+  retain identical transforms after every viewport change.
+- Rounded-corner and observer follow-up matrix: all **7 demos** completed across
+  106 live frames, including four human checkpoints; all **105 evaluations**
+  reached a stable boundary across 1,599 live frames (47 completed and 58 paused
+  for a human decision).
+- The follow-up matrix recorded **0 ResizeObserver overlays, 0 missing/hidden
+  routes, 0 invalid straight segments, and 0 route/node transform mismatches**.
+  Three repeated Main/Data remount cycles and zoom-in, zoom-out, and fit-view
+  checks also passed with an empty browser error/warning log.
 - Fresh-load browser regression: **0 errors or warnings**; repeated approval
   visits correctly keep historical decisions read-only and the latest visit actionable.
 - Source-diff whitespace check: **passed**; only the repository's existing CRLF

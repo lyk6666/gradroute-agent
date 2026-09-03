@@ -87,14 +87,25 @@ def test_frontend_selects_exact_visits_and_locks_historical_actions() -> None:
     resize_scheduler = Path(
         "frontend/lib/resize-observer-frame-scheduler.ts"
     ).read_text(encoding="utf-8")
-
     assert "recorded visits" in canvas
     assert "selectedNodeAttempt" in canvas
     assert "Only the latest visit can accept a decision" in canvas
     assert "onSelectNode(event.nodeId, event.attempt)" in timeline
     assert "Visit {event.attempt}" in timeline
     assert "width: 188" in graph_data and "height: 58" in graph_data
-    assert "requestAnimationFrame" in resize_scheduler
     assert "ResizeObserver loop" not in canvas
+    assert "GraphRouteLayer" in canvas
+    assert "edges={emptyFlowEdges}" in canvas
+    assert "GraphRouteLayer edges={GRAPH_EDGES}" in canvas
+    assert "orthogonalRoutePoints" in canvas
+    assert "roundedOrthogonalPath" in canvas
+    assert "cornerRadius = 8" in canvas
+    assert " Q " in canvas
+    assert 'data-edge-id={edge.id}' in canvas
+    assert 'data-edge-label={edge.id}' in canvas
+    assert "handles: []" in graph_data
+    assert "pendingEntriesByObserver" in resize_scheduler
+    assert "pendingEntries.set(entry.target, entry)" in resize_scheduler
+    assert "requestAnimationFrame" in resize_scheduler
     assert "hideAttribution" not in canvas
     assert "toLocaleTimeString('en-SG'" in canvas

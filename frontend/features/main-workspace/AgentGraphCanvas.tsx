@@ -1,15 +1,11 @@
-import { useState, type MouseEvent as ReactMouseEvent } from 'react';
+import { memo, useState, type MouseEvent as ReactMouseEvent } from 'react';
 import {
-  BaseEdge,
   Background,
   BackgroundVariant,
   Controls,
-  EdgeLabelRenderer,
-  Handle,
-  MarkerType,
   Position,
   ReactFlow,
-  type EdgeProps,
+  type Edge,
   type Node,
   type NodeProps,
 } from '@xyflow/react';
@@ -70,6 +66,21 @@ const statusLabels: Record<NodeStatus, string> = {
   skipped: 'Skipped',
 };
 
+const handleLayout: Record<string, { position: Position; style?: { left?: string; top?: string } }> = {
+  top: { position: Position.Top },
+  'top-left': { position: Position.Top, style: { left: '28%' } },
+  'top-right': { position: Position.Top, style: { left: '72%' } },
+  left: { position: Position.Left },
+  'left-top': { position: Position.Left, style: { top: '28%' } },
+  'left-bottom': { position: Position.Left, style: { top: '72%' } },
+  right: { position: Position.Right },
+  'right-top': { position: Position.Right, style: { top: '28%' } },
+  'right-bottom': { position: Position.Right, style: { top: '72%' } },
+  bottom: { position: Position.Bottom },
+  'bottom-left': { position: Position.Bottom, style: { left: '28%' } },
+  'bottom-right': { position: Position.Bottom, style: { left: '72%' } },
+};
+
 function StatusIcon({ status }: { status: NodeStatus }) {
   const props = { 'aria-hidden': true, size: 10 } as const;
   if (status === 'completed') return <Check {...props} />;
@@ -85,102 +96,219 @@ function AgentFlowNode({ data }: NodeProps<Node<AgentNodeData>>) {
   const visitCount = Number(data.visitCount ?? 0);
   return (
     <div className={`agent-flow-node status-${data.status}`} title={`${data.label}: ${statusLabels[data.status]}`}>
-      <Handle id="top" position={Position.Top} type="target" />
-      <Handle id="top-left" position={Position.Top} style={{ left: '28%' }} type="target" />
-      <Handle id="top-right" position={Position.Top} style={{ left: '72%' }} type="target" />
-      <Handle id="left" position={Position.Left} type="target" />
-      <Handle id="left-top" position={Position.Left} style={{ top: '28%' }} type="target" />
-      <Handle id="left-bottom" position={Position.Left} style={{ top: '72%' }} type="target" />
-      <Handle id="top" position={Position.Top} type="source" />
-      <Handle id="top-left" position={Position.Top} style={{ left: '28%' }} type="source" />
-      <Handle id="top-right" position={Position.Top} style={{ left: '72%' }} type="source" />
-      <Handle id="left" position={Position.Left} type="source" />
-      <Handle id="left-top" position={Position.Left} style={{ top: '28%' }} type="source" />
-      <Handle id="left-bottom" position={Position.Left} style={{ top: '72%' }} type="source" />
       <span className="agent-node-icon"><Icon aria-hidden="true" size={14} /></span>
       <span className="agent-node-copy"><strong>{data.label}</strong><small><StatusIcon status={data.status} /> {statusLabels[data.status]}</small></span>
       {visitCount > 1 ? <span className="node-visit-count" title={`${visitCount} recorded visits`}>{visitCount}×</span> : null}
-      <Handle id="right" position={Position.Right} type="source" />
-      <Handle id="right-top" position={Position.Right} style={{ top: '28%' }} type="source" />
-      <Handle id="right-bottom" position={Position.Right} style={{ top: '72%' }} type="source" />
-      <Handle id="bottom" position={Position.Bottom} type="source" />
-      <Handle id="bottom-left" position={Position.Bottom} style={{ left: '28%' }} type="source" />
-      <Handle id="bottom-right" position={Position.Bottom} style={{ left: '72%' }} type="source" />
-      <Handle id="right" position={Position.Right} type="target" />
-      <Handle id="right-top" position={Position.Right} style={{ top: '28%' }} type="target" />
-      <Handle id="right-bottom" position={Position.Right} style={{ top: '72%' }} type="target" />
-      <Handle id="bottom" position={Position.Bottom} type="target" />
-      <Handle id="bottom-left" position={Position.Bottom} style={{ left: '28%' }} type="target" />
-      <Handle id="bottom-right" position={Position.Bottom} style={{ left: '72%' }} type="target" />
     </div>
   );
 }
 
-function roundedOrthogonalPath(points: Array<{ x: number; y: number }>): string {
+type CanvasPoint = { x: number; y: number };
+type RouteAxis = 'horizontal' | 'vertical';
+
+const AXIS_EPSILON = 0.01;
+
+function routeAxis(position: Position): RouteAxis {
+  return position === Position.Left || position === Position.Right ? 'horizontal' : 'vertical';
+}
+
+function samePoint(first: CanvasPoint, second: CanvasPoint) {
+  return Math.abs(first.x - second.x) <= AXIS_EPSILON && Math.abs(first.y - second.y) <= AXIS_EPSILON;
+}
+
+function aligned(first: CanvasPoint, second: CanvasPoint) {
+  return Math.abs(first.x - second.x) <= AXIS_EPSILON || Math.abs(first.y - second.y) <= AXIS_EPSILON;
+}
+
+function appendPoint(points: CanvasPoint[], point: CanvasPoint) {
+  const previous = points.at(-1);
+  if (!previous || !samePoint(previous, point)) points.push(point);
+}
+
+function appendOrthogonalSegment(points: CanvasPoint[], target: CanvasPoint, firstAxis: RouteAxis) {
+  const source = points.at(-1)!;
+  if (!aligned(source, target)) {
+    appendPoint(points, firstAxis === 'horizontal'
+      ? { x: target.x, y: source.y }
+      : { x: source.x, y: target.y });
+  }
+  appendPoint(points, target);
+}
+
+function orthogonalRoutePoints(
+  source: CanvasPoint,
+  waypoints: CanvasPoint[],
+  target: CanvasPoint,
+  sourcePosition: Position,
+  targetPosition: Position,
+): CanvasPoint[] {
+  const points = [source];
+  const sourceAxis = routeAxis(sourcePosition);
+  const targetAxis = routeAxis(targetPosition);
+
+  if (waypoints.length === 0 && !aligned(source, target)) {
+    if (sourceAxis === targetAxis) {
+      if (sourceAxis === 'horizontal') {
+        const middleX = (source.x + target.x) / 2;
+        appendPoint(points, { x: middleX, y: source.y });
+        appendPoint(points, { x: middleX, y: target.y });
+      } else {
+        const middleY = (source.y + target.y) / 2;
+        appendPoint(points, { x: source.x, y: middleY });
+        appendPoint(points, { x: target.x, y: middleY });
+      }
+    } else {
+      appendPoint(points, sourceAxis === 'horizontal'
+        ? { x: target.x, y: source.y }
+        : { x: source.x, y: target.y });
+    }
+    appendPoint(points, target);
+    return points;
+  }
+
+  waypoints.forEach((waypoint, index) => {
+    const previous = points.at(-1)!;
+    const beforePrevious = points.at(-2);
+    let firstAxis = sourceAxis;
+    if (index > 0 && beforePrevious) {
+      const previousAxis: RouteAxis = Math.abs(beforePrevious.y - previous.y) <= AXIS_EPSILON
+        ? 'horizontal'
+        : 'vertical';
+      firstAxis = previousAxis === 'horizontal' ? 'vertical' : 'horizontal';
+    }
+    appendOrthogonalSegment(points, waypoint, firstAxis);
+  });
+
+  const beforeTarget = points.at(-1)!;
+  if (!aligned(beforeTarget, target)) {
+    appendPoint(points, targetAxis === 'horizontal'
+      ? { x: beforeTarget.x, y: target.y }
+      : { x: target.x, y: beforeTarget.y });
+  }
+  appendPoint(points, target);
+  return points;
+}
+
+function roundedOrthogonalPath(points: CanvasPoint[], cornerRadius = 8): string {
+  if (points.length < 2) return '';
   const compact = points.filter((point, index) => {
     const previous = points[index - 1];
-    return !previous || previous.x !== point.x || previous.y !== point.y;
+    return !previous || !samePoint(previous, point);
+  }).filter((point, index, allPoints) => {
+    if (index === 0 || index === allPoints.length - 1) return true;
+    const previous = allPoints[index - 1];
+    const next = allPoints[index + 1];
+    return !(
+      (Math.abs(previous.x - point.x) <= AXIS_EPSILON && Math.abs(point.x - next.x) <= AXIS_EPSILON)
+      || (Math.abs(previous.y - point.y) <= AXIS_EPSILON && Math.abs(point.y - next.y) <= AXIS_EPSILON)
+    );
   });
   if (compact.length < 2) return '';
+
   let path = `M ${compact[0].x} ${compact[0].y}`;
   for (let index = 1; index < compact.length - 1; index += 1) {
     const previous = compact[index - 1];
-    const current = compact[index];
+    const corner = compact[index];
     const next = compact[index + 1];
-    const incoming = Math.hypot(current.x - previous.x, current.y - previous.y);
-    const outgoing = Math.hypot(next.x - current.x, next.y - current.y);
-    const radius = Math.min(9, incoming / 2, outgoing / 2);
+    const incomingLength = Math.abs(corner.x - previous.x) + Math.abs(corner.y - previous.y);
+    const outgoingLength = Math.abs(next.x - corner.x) + Math.abs(next.y - corner.y);
+    const radius = Math.min(cornerRadius, incomingLength / 2, outgoingLength / 2);
     const before = {
-      x: current.x - ((current.x - previous.x) / incoming) * radius,
-      y: current.y - ((current.y - previous.y) / incoming) * radius,
+      x: corner.x + Math.sign(previous.x - corner.x) * radius,
+      y: corner.y + Math.sign(previous.y - corner.y) * radius,
     };
     const after = {
-      x: current.x + ((next.x - current.x) / outgoing) * radius,
-      y: current.y + ((next.y - current.y) / outgoing) * radius,
+      x: corner.x + Math.sign(next.x - corner.x) * radius,
+      y: corner.y + Math.sign(next.y - corner.y) * radius,
     };
-    path += ` L ${before.x} ${before.y} Q ${current.x} ${current.y} ${after.x} ${after.y}`;
+    path += ` L ${before.x} ${before.y} Q ${corner.x} ${corner.y} ${after.x} ${after.y}`;
   }
   const last = compact.at(-1)!;
-  path += ` L ${last.x} ${last.y}`;
-  return path;
+  return `${path} L ${last.x} ${last.y}`;
 }
 
-function RoutedFlowEdge({
-  data,
-  id,
-  label,
-  markerEnd,
-  sourceX,
-  sourceY,
-  style,
-  targetX,
-  targetY,
-}: EdgeProps) {
-  const route = (data ?? { kind: 'conditional', waypoints: [] }) as GraphEdgeData;
-  const points = [{ x: sourceX, y: sourceY }, ...route.waypoints, { x: targetX, y: targetY }];
-  const path = roundedOrthogonalPath(points);
-  const labelPosition = route.labelPosition ?? {
-    x: (sourceX + targetX) / 2,
-    y: (sourceY + targetY) / 2,
-  };
+const graphNodeById = new Map(INITIAL_GRAPH_NODES.map((node) => [node.id, node]));
+const emptyFlowEdges: Edge[] = [];
+const graphRouteKinds = ['conditional', 'completed', 'active', 'replan', 'danger', 'success', 'waiting'] as const;
+const graphRouteColors: Record<(typeof graphRouteKinds)[number], string> = {
+  conditional: '#94a3b8',
+  completed: '#059669',
+  active: '#2563eb',
+  replan: '#7c3aed',
+  danger: '#dc2626',
+  success: '#059669',
+  waiting: '#d97706',
+};
 
+function fixedHandlePoint(nodeId: string, handleId: string): CanvasPoint {
+  const node = graphNodeById.get(nodeId);
+  if (!node) return { x: 0, y: 0 };
+  const width = Number(node.width ?? 188);
+  const height = Number(node.height ?? 58);
+  const position = handleLayout[handleId]?.position ?? Position.Bottom;
+  const horizontalRatio = handleId.endsWith('-left') ? 0.28 : handleId.endsWith('-right') ? 0.72 : 0.5;
+  const verticalRatio = handleId.endsWith('-top') ? 0.28 : handleId.endsWith('-bottom') ? 0.72 : 0.5;
+  if (position === Position.Top) return { x: node.position.x + width * horizontalRatio, y: node.position.y };
+  if (position === Position.Bottom) return { x: node.position.x + width * horizontalRatio, y: node.position.y + height };
+  if (position === Position.Left) return { x: node.position.x, y: node.position.y + height * verticalRatio };
+  return { x: node.position.x + width, y: node.position.y + height * verticalRatio };
+}
+
+function renderedEdgeKind(edge: (typeof GRAPH_EDGES)[number]) {
+  const match = edge.className?.match(/edge-(conditional|completed|active|replan|danger|success|waiting)/);
+  return (match?.[1] ?? edge.data?.kind ?? 'conditional') as (typeof graphRouteKinds)[number];
+}
+
+const GraphRouteLayer = memo(function GraphRouteLayer({ edges }: { edges: typeof GRAPH_EDGES }) {
   return (
-    <>
-      <BaseEdge id={id} markerEnd={markerEnd} path={path} style={style} />
-      {label ? (
-        <EdgeLabelRenderer>
-          <div
-            aria-hidden="true"
-            className={`flow-edge-label label-${route.kind}`}
-            style={{ transform: `translate(-50%, -50%) translate(${labelPosition.x}px, ${labelPosition.y}px)` }}
-          >
-            {String(label)}
-          </div>
-        </EdgeLabelRenderer>
-      ) : null}
-    </>
+    <div aria-hidden="true" className="graph-route-overlay">
+      <svg className="graph-route-svg" height="1040" width="1400">
+        <defs>
+          {graphRouteKinds.map((kind) => (
+            <marker id={`graph-arrow-${kind}`} key={kind} markerHeight="8" markerUnits="userSpaceOnUse" markerWidth="8" orient="auto" refX="7" refY="4" viewBox="0 0 8 8">
+              <path d="M 0 0 L 8 4 L 0 8 z" fill={graphRouteColors[kind]} />
+            </marker>
+          ))}
+        </defs>
+        {edges.map((edge) => {
+          const route = edge.data as GraphEdgeData;
+          const sourceHandle = edge.sourceHandle ?? 'bottom';
+          const targetHandle = edge.targetHandle ?? 'top';
+          const source = fixedHandlePoint(edge.source, sourceHandle);
+          const target = fixedHandlePoint(edge.target, targetHandle);
+          const points = orthogonalRoutePoints(
+            source,
+            route.waypoints,
+            target,
+            handleLayout[sourceHandle]?.position ?? Position.Bottom,
+            handleLayout[targetHandle]?.position ?? Position.Top,
+          );
+          const kind = renderedEdgeKind(edge);
+          return (
+            <g className={edge.className} data-edge-id={edge.id} key={edge.id}>
+              <path className="graph-route-hit-area" d={roundedOrthogonalPath(points)} />
+              <path className="graph-route-path" d={roundedOrthogonalPath(points)} markerEnd={`url(#graph-arrow-${kind})`} />
+            </g>
+          );
+        })}
+      </svg>
+      <div className="graph-route-label-layer">
+        {edges.map((edge) => {
+          if (!edge.label) return null;
+          const route = edge.data as GraphEdgeData;
+          const source = fixedHandlePoint(edge.source, edge.sourceHandle ?? 'bottom');
+          const target = fixedHandlePoint(edge.target, edge.targetHandle ?? 'top');
+          const labelPosition = route.labelPosition ?? { x: (source.x + target.x) / 2, y: (source.y + target.y) / 2 };
+          return (
+            <div className={`flow-edge-label label-${route.kind}`} data-edge-label={edge.id} key={edge.id} style={{ left: labelPosition.x, top: labelPosition.y }}>
+              {String(edge.label)}
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
-}
+});
 
 function DetailRows({ items }: { items: DetailItem[] }) {
   return (
@@ -407,10 +535,6 @@ const nodeTypes = {
   inspectorNode: CanvasInspectorNode,
 };
 
-const edgeTypes = {
-  routedEdge: RoutedFlowEdge,
-};
-
 export function AgentGraphCanvas({
   onApprovalDecision,
   onClarificationSubmit,
@@ -419,6 +543,7 @@ export function AgentGraphCanvas({
   selectedNodeAttempt,
   selectedNodeId,
 }: AgentGraphCanvasProps) {
+  const [graphViewport, setGraphViewport] = useState({ x: 0, y: 0, zoom: 1 });
   const statuses = runSnapshot?.node_statuses ?? {};
   const selectedBase = NODE_SUMMARIES[selectedNodeId] ?? NODE_SUMMARIES.pre_action_verifier;
   const selectedNode = { ...selectedBase, status: statuses[selectedNodeId] ?? 'idle' };
@@ -447,6 +572,7 @@ export function AgentGraphCanvas({
       onClarificationSubmit,
     },
     draggable: false,
+    handles: [],
     selectable: false,
     zIndex: 3,
   };
@@ -463,18 +589,6 @@ export function AgentGraphCanvas({
     })),
     inspectorNode,
   ];
-  const traversedEdges = new Set(runSnapshot?.traversed_edges ?? []);
-  const edges = GRAPH_EDGES.map((edge) => {
-    const targetStatus = statuses[edge.target];
-    if (traversedEdges.has(edge.id) && (targetStatus === 'running' || targetStatus === 'waiting')) {
-      return { ...edge, animated: targetStatus === 'running', className: 'flow-edge edge-active' };
-    }
-    if (traversedEdges.has(edge.id)) {
-      return { ...edge, animated: false, className: 'flow-edge edge-completed' };
-    }
-    return { ...edge, animated: false };
-  });
-
   return (
     <section aria-label="Agent execution graph" className="workspace-panel graph-panel">
       <div className="graph-toolbar" aria-label="Graph status legend" role="group">
@@ -488,11 +602,15 @@ export function AgentGraphCanvas({
       </div>
 
       <div className="agent-canvas-shell">
+        <div
+          className="graph-route-screen"
+          style={{ transform: `translate(${graphViewport.x}px, ${graphViewport.y}px) scale(${graphViewport.zoom})` }}
+        >
+          <GraphRouteLayer edges={GRAPH_EDGES} />
+        </div>
         <ReactFlow
-          defaultEdgeOptions={{ markerEnd: { type: MarkerType.ArrowClosed, width: 12, height: 12 } }}
-          edges={edges}
-          edgeTypes={edgeTypes}
-          edgesFocusable
+          edges={emptyFlowEdges}
+          edgesFocusable={false}
           elementsSelectable
           fitView
           fitViewOptions={{ padding: 0.075, maxZoom: 0.9 }}
@@ -503,6 +621,8 @@ export function AgentGraphCanvas({
           nodesConnectable={false}
           nodesDraggable={false}
           nodesFocusable
+          onInit={(instance) => setGraphViewport(instance.getViewport())}
+          onMove={(_event, viewport) => setGraphViewport(viewport)}
           onNodeClick={(_event: ReactMouseEvent, node) => {
             if (node.type === 'agentNode') onSelectNode(node.id);
           }}

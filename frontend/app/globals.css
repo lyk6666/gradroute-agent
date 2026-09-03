@@ -393,7 +393,8 @@ summary:focus-visible,
 .legend-idle { border: 1px solid #94a3b8; background: white; }
 .graph-legend b { padding: 4px 7px; color: #92400e; border-radius: 999px; background: #fef3c7; font-size: 9px; }
 .agent-canvas-shell { position: relative; min-width: 0; min-height: 0; flex: 1; overflow: hidden; contain: layout paint; background: #fbfdff; }
-.agent-canvas-shell > .react-flow { position: absolute; inset: 0; width: auto; min-width: 0; height: auto; min-height: 0; }
+.agent-canvas-shell > .react-flow { position: absolute; z-index: 2; inset: 0; width: auto; min-width: 0; height: auto; min-height: 0; }
+.graph-route-screen { position: absolute; z-index: 1; top: 0; left: 0; width: 1400px; height: 1040px; transform-origin: 0 0; pointer-events: none; }
 .canvas-embedded-inspector { display: grid; width: 100%; height: 100%; grid-template-rows: minmax(0, 1.12fr) minmax(0, .88fr); overflow: hidden; border: 1px solid #cbd5e1; border-radius: 12px; background: rgb(248 250 252 / 97%); box-shadow: 0 9px 26px rgb(15 23 42 / 11%); }
 .canvas-embedded-inspector .canvas-detail-card { border: 0; border-radius: 0; box-shadow: none; }
 .canvas-embedded-inspector .canvas-detail-card:first-child { border-bottom: 1px solid var(--border); }
@@ -507,21 +508,33 @@ summary:focus-visible,
 .agent-flow-node .react-flow__handle[data-handleid*="-"] { opacity: 0; }
 .react-flow__controls { overflow: hidden; border: 1px solid var(--border); border-radius: 8px; box-shadow: var(--shadow-sm); }
 .react-flow__controls-button { width: 24px; height: 24px; border-bottom-color: var(--border); }
+.react-flow__background { z-index: 0; }
+.react-flow__edges { z-index: 1; }
+.react-flow__nodes { z-index: 2; }
+.react-flow__edgelabel-renderer { z-index: 1; pointer-events: none; }
+.graph-route-overlay { position: absolute; inset: 0; width: 1400px; height: 1040px; pointer-events: none; }
+.graph-route-svg,
+.graph-route-label-layer { position: absolute; inset: 0; width: 1400px; height: 1040px; overflow: visible; pointer-events: none; }
+.graph-route-hit-area { fill: none; stroke: transparent; stroke-width: 12; }
+.graph-route-path { fill: none; }
+.graph-route-label-layer { z-index: 2; }
 .flow-edge { stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.flow-edge path { vector-effect: non-scaling-stroke; }
+.flow-edge.edge-active .graph-route-path { animation: dashdraw .65s linear infinite; stroke-dasharray: 5 4; }
 .flow-edge.edge-completed,
-.flow-edge.edge-completed path { stroke: var(--success); }
+.flow-edge.edge-completed .graph-route-path { stroke: var(--success); }
 .flow-edge.edge-active,
-.flow-edge.edge-active path { stroke: var(--primary); stroke-width: 2.25; }
+.flow-edge.edge-active .graph-route-path { stroke: var(--primary); stroke-width: 2.25; }
 .flow-edge.edge-replan,
-.flow-edge.edge-replan path { stroke: var(--replan); stroke-dasharray: 5 3; }
+.flow-edge.edge-replan .graph-route-path { stroke: var(--replan); stroke-dasharray: 5 3; }
 .flow-edge.edge-danger,
-.flow-edge.edge-danger path { stroke: var(--danger); }
+.flow-edge.edge-danger .graph-route-path { stroke: var(--danger); }
 .flow-edge.edge-success,
-.flow-edge.edge-success path { stroke: var(--success); }
+.flow-edge.edge-success .graph-route-path { stroke: var(--success); }
 .flow-edge.edge-waiting,
-.flow-edge.edge-waiting path { stroke: var(--warning); stroke-dasharray: 4 3; }
+.flow-edge.edge-waiting .graph-route-path { stroke: var(--warning); stroke-dasharray: 4 3; }
 .flow-edge.edge-conditional,
-.flow-edge.edge-conditional path { stroke: #94a3b8; }
+.flow-edge.edge-conditional .graph-route-path { stroke: #94a3b8; }
 .flow-edge-label {
   position: absolute;
   z-index: 4;
@@ -537,6 +550,7 @@ summary:focus-visible,
   line-height: 1.15;
   text-align: center;
   white-space: nowrap;
+  transform: translate(-50%, -50%);
   pointer-events: none;
 }
 .flow-edge-label.label-replan { color: #6d28d9; border-color: #ddd6fe; background: #faf8ff; }

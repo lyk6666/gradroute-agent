@@ -345,6 +345,7 @@ export const INITIAL_GRAPH_NODES: Node<AgentNodeData>[] = summaries.map((summary
   data: summary,
   selected: summary.id === 'human_approval',
   draggable: false,
+  handles: [],
 }));
 
 type EdgeKind = 'completed' | 'active' | 'conditional' | 'replan' | 'success' | 'danger' | 'waiting';
