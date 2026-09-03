@@ -373,6 +373,10 @@ def valid_payloads() -> dict[str, dict[str, Any]]:
                 "invalid_paths": [],
                 "requires_human": False,
                 "expected_outcome": "RESOLVED",
+                "expected_response": (
+                    "Register the verified class and confirm that the requested "
+                    "course appears in the final registration."
+                ),
             },
             **GENERATION,
         },

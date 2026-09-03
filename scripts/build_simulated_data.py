@@ -74,7 +74,7 @@ from graduation_exception_agent.models import (
 )
 
 
-GENERATOR_VERSION = "stage3.4.0"
+GENERATOR_VERSION = "stage3.5.0"
 GLOBAL_SEED = 42017
 SIMULATION_PERIOD_ID = "period.terminal.s1"
 GENERATED_AT = "2026-08-31T12:30:00+08:00"
@@ -180,6 +180,127 @@ def _observable_intake_readiness(
     if position % 2 == 0:
         return False, ["submission_declaration"]
     return True, []
+
+
+def _case_copy(
+    family: str,
+    student: Student,
+    audit: DegreeAudit,
+    registration: Registration,
+    target_code: str,
+) -> tuple[str, str, str]:
+    """Write an observable student request, goal, and requested action.
+
+    These sentences are deliberately assembled from the student's generated
+    record.  They describe the issue the student can know at intake and never
+    reveal a later approval decision or injected transaction event.
+    """
+
+    registered = [str(item.course_code) for item in registration.registered_courses]
+    current_load = ", ".join(registered[:3]) or "no current courses"
+    profile = (
+        f"a Year {student.study_year} {student.programme} student from "
+        f"{student.admission_cohort} with {student.earned_aus} earned AUs"
+    )
+    path = str(student.study_plan_path_label or student.graduation_path_id or "the declared programme path")
+
+    copy = {
+        "S1": (
+            f"I am {profile}. {target_code} is still outstanding, and my preferred class conflicts with my current timetable ({current_load}). During Add/Drop, please help me find a conflict-free class for the same course rather than substitute another course.",
+            f"Register {target_code} in a currently feasible class and confirm that it satisfies the outstanding requirement.",
+            f"Check the available classes for {target_code} and register a conflict-free option if all current checks pass.",
+        ),
+        "S2": (
+            f"I am {profile}, and {target_code} is required for my remaining study plan. I passed the simulated exchange course FX2001, but the transfer is still pending; my transcript and both course mappings are attached. Please check whether this evidence supports the documented prerequisite-exception route.",
+            f"Have the pending-transfer evidence for {target_code} reviewed and use only a supported waiver route; otherwise explain the safe escalation.",
+            f"Review the exchange evidence for {target_code} and submit the prerequisite-waiver request only if the required approval is confirmed.",
+        ),
+        "S3": (
+            f"I am {profile}, and my degree audit is {audit.audit_outcome.value.lower().replace('_', ' ')} with {target_code} still affecting graduation clearance. Please determine which dated curriculum rules apply to my cohort before recommending an exception.",
+            f"Apply the correct cohort-specific curriculum to {target_code} and either resolve the graduation issue or identify the exact missing fact.",
+            f"Assess {target_code} against the applicable curriculum version and preserve any source limitation or conflict in the answer.",
+        ),
+        "S4": (
+            f"I am {profile}. {target_code} is outstanding, but the class I first selected clashes with my current timetable ({current_load}). Please check whether a conflict-free class can be used through the required timetable-exception process.",
+            f"Find an academically valid, conflict-free class for {target_code} and proceed only after any required approval is observed.",
+            f"Review the timetable exception for {target_code}, then register a verified conflict-free class if approval is granted.",
+        ),
+        "S5": (
+            f"I am {profile} in the programme configuration linked to {path}. {target_code} remains outstanding. Please assess the exception against this selected path without combining requirements from a different CCDS curriculum.",
+            f"Resolve the {target_code} issue within the student's declared integrated-programme path and retain the applicable curriculum boundary.",
+            f"Review and submit the {target_code} exception for {path} only after the required approval is confirmed.",
+        ),
+        "S6": (
+            f"I am {profile}, and {target_code} remains unresolved after normal registration. I cannot identify a verified public exception route. Please tell me what information is missing or prepare the correct CCDS administrative handoff without guessing a policy.",
+            f"Either obtain the specific missing information for {target_code} or produce a bounded, evidence-backed escalation.",
+            f"Do not submit an unsupported exception; clarify the missing fact or escalate the {target_code} case to the appropriate CCDS role.",
+        ),
+        "S7": (
+            f"I am {profile}. {target_code} is outstanding and the selected class currently appears feasible during Add/Drop. Please attempt the registration, re-check live availability if the attempt fails, and confirm the final registered state.",
+            f"Register {target_code} using current course state, recover safely from a changed or temporary result, and verify the final outcome.",
+            f"Register a currently feasible class for {target_code}; after any failure, refresh the live state before considering one verified alternative.",
+        ),
+    }
+    return copy[family]
+
+
+def _path_rationale(family: str, target_code: str) -> str:
+    return {
+        "S1": f"The route keeps the required course {target_code} and uses a class that passes current timetable and availability checks.",
+        "S2": f"A waiver for {target_code} is valid only when the pending-transfer evidence and required human approval are both confirmed.",
+        "S3": f"The decision for {target_code} must use the curriculum version attached to this admission cohort and retain any source limitation.",
+        "S4": f"The chosen {target_code} class must satisfy timetable, workload, availability, and approval checks together.",
+        "S5": f"The exception for {target_code} stays within one declared integrated-programme path and does not merge curricula.",
+        "S6": f"No write is safe for {target_code} until the missing intake fact or a verified administrative route is available.",
+        "S7": f"A failed registration for {target_code} must trigger a fresh availability check before a verified alternative is attempted.",
+    }[family]
+
+
+def _expected_response(
+    family: str,
+    target_code: str,
+    expected: ExpectedOutcome,
+    *,
+    preferred_index: str,
+    alternative_index: str,
+    approval: Approval | None,
+    event_type: EventType | None,
+    unresolved_questions: list[str],
+    path_label: str,
+) -> str:
+    """Evaluator-only description of the complete acceptable answer."""
+
+    if family == "S1":
+        return f"Explain that the preferred class {preferred_index} conflicts with the timetable, register conflict-free class {alternative_index} for {target_code} without approval, and verify that the course appears in the final registration."
+    if family == "S2":
+        if approval and approval.status is ApprovalStatus.APPROVED:
+            return f"Confirm the pending-transfer evidence for {target_code}, record CCDS Undergraduate Office approval, submit the prerequisite waiver, and verify the successful waiver result."
+        if approval and approval.status is ApprovalStatus.REJECTED:
+            return f"State that the prerequisite waiver for {target_code} was rejected, do not submit it again as approved, and prepare a grounded administrative handoff if no other verified route remains."
+        return f"State that the prerequisite waiver for {target_code} is waiting for CCDS Undergraduate Office approval and pause without submitting the waiver."
+    if family == "S3":
+        if expected is ExpectedOutcome.RESOLVED:
+            return f"Use the cohort-specific curriculum source for {target_code}, retain the stated source limitation, submit the supported graduation exception, and verify the result."
+        return f"Ask for the missing curriculum or pathway fact needed to assess {target_code}; do not submit an exception while the applicable requirement remains indeterminate."
+    if family == "S4":
+        if approval and approval.status is ApprovalStatus.APPROVED:
+            return f"Reject timetable-conflicting class {preferred_index}, record the required approval, register conflict-free class {alternative_index} for {target_code}, and verify the final timetable."
+        if approval and approval.status is ApprovalStatus.REJECTED:
+            return f"Record that the timetable exception for {target_code} was rejected, do not register the approval-bound class, and provide the evidence-backed CCDS handoff."
+        return f"Pause the {target_code} registration while the timetable exception is pending; no approval-bound registration may be submitted yet."
+    if family == "S5":
+        if approval and approval.status is ApprovalStatus.APPROVED:
+            return f"Apply only the {path_label} curriculum path, record approval, submit the {target_code} integrated-programme exception, and verify the result."
+        if approval and approval.status is ApprovalStatus.REJECTED:
+            return f"State that the {target_code} exception for {path_label} was rejected, avoid mixing another curriculum into the answer, and prepare the correct CCDS handoff."
+        return f"Keep the {target_code} exception bound to {path_label} and pause until the required CCDS approval becomes observable."
+    if family == "S6":
+        if expected is ExpectedOutcome.CLARIFICATION_REQUIRED:
+            missing = ", ".join(item.replace("_", " ") for item in unresolved_questions)
+            return f"Ask the student for {missing} before taking action on {target_code}; make no registration or exception write."
+        return f"Explain that no verified in-scope route remains for {target_code}, preserve that limitation, and hand the evidence package to the CCDS Undergraduate Office rather than claiming that no NTU route exists."
+    event = (event_type.value.lower().replace("_", " ") if event_type else "live state change")
+    return f"Report that class {preferred_index} for {target_code} failed because of {event}, refresh the offering state, register verified alternative class {alternative_index}, and confirm the post-action goal is complete."
 
 
 def _scope_time(academic_year: str, clock: str) -> str:
@@ -1039,12 +1160,15 @@ def _build(real_dir: Path) -> tuple[dict[str, Any], Stage3DataBundle]:
                 *case_policy_ids,
                 POLICY_IDS[0],
             ]
+            case_reason, case_goal, case_requested_action = _case_copy(
+                family, student, audit, registration, target_code
+            )
             case = _generated(
                 ExceptionCase, case_id, case_rules,
                 case_id=case_id, student_id=student.student_id, simulation_scope_id=student.simulation_scope_id,
                 audit_id=audit.audit_id, registration_id=registration.registration_id, scenario_time=scenario_time,
-                problem_type=problem, reason=f"Terminal-stage registration or graduation exception concerning {target_code} after normal registration.",
-                goal="Identify the supported exception route or the correct escalation.", requested_action="Assess and submit the appropriate exception action.",
+                problem_type=problem, reason=case_reason,
+                goal=case_goal, requested_action=case_requested_action,
                 submission_ready=submission_ready,
                 unresolved_questions=unresolved_questions,
                 policy_section_ids=case_policy_ids, assumption_ids=[assumption_id], supporting_documents=documents,
@@ -1070,10 +1194,20 @@ def _build(real_dir: Path) -> tuple[dict[str, Any], Stage3DataBundle]:
                 approval = _generated(
                     Approval, f"approval.{case_key}", [*approval_basis_rules, f"course.{target_code}"],
                     approval_id=f"approval.{case_key}", case_id=case_id, simulation_scope_id=student.simulation_scope_id,
-                    approver_role="CCDS Undergraduate Office", requested_action="Review a scenario-bounded exception request.", status=status,
+                    approver_role="CCDS Undergraduate Office", requested_action=case_requested_action, status=status,
                     observable=False, basis=approval_basis, basis_rule_ids=approval_basis_rules, version=1,
                     required_document_ids=[item["document_id"] for item in documents],
-                    decision_reason="The simulated evidence does not support this exception." if status is ApprovalStatus.REJECTED else None,
+                    decision_reason=(
+                        f"The submitted evidence does not support the requested {target_code} "
+                        f"{problem.value.lower().replace('_', ' ')} action."
+                        if status is ApprovalStatus.REJECTED
+                        else (
+                            f"The submitted evidence supports the bounded {target_code} "
+                            f"{problem.value.lower().replace('_', ' ')} action."
+                            if status is ApprovalStatus.APPROVED
+                            else None
+                        )
+                    ),
                     requested_at=scenario_time, decided_at=None if status is ApprovalStatus.PENDING else event_time,
                 )
                 approvals.append(approval)
@@ -1092,7 +1226,7 @@ def _build(real_dir: Path) -> tuple[dict[str, Any], Stage3DataBundle]:
                 event_type = {ApprovalStatus.APPROVED: EventType.APPROVAL_GRANTED, ApprovalStatus.REJECTED: EventType.APPROVAL_REJECTED, ApprovalStatus.PENDING: EventType.APPROVAL_PENDING}[approval.status]
                 event = InjectedEvent(event_id=f"event.{scenario_id.lower()}", event_type=event_type, target_type=StateTargetType.APPROVAL, target_id=approval.approval_id, expected_version=1, occurs_at=event_time)
                 result = {ApprovalStatus.APPROVED: TransactionCode.SUCCESS, ApprovalStatus.REJECTED: TransactionCode.APPROVAL_REJECTED, ApprovalStatus.PENDING: TransactionCode.APPROVAL_PENDING}[approval.status]
-                steps.append(_generated(TransactionResult, f"transaction.{scenario_id.lower()}.1", [POLICY_IDS[2]], transaction_id=f"transaction.{scenario_id.lower()}.1", case_id=case_id, action=TransactionAction.REQUEST_APPROVAL, action_parameters={"approval_id": approval.approval_id}, attempt_number=1, result_code=result, observation={TransactionCode.SUCCESS: "TRANSACTION_SUCCESS", TransactionCode.APPROVAL_REJECTED: "APPROVAL_REJECTED", TransactionCode.APPROVAL_PENDING: "APPROVAL_PENDING"}[result], retryable=False, message="Simulated approval state recorded.", error_code=None if result is TransactionCode.SUCCESS else "SIMULATED_APPROVAL_RESULT", event=event, precondition_state_versions={approval.approval_id: 1}, mutations=[{"mutation_id": f"mutation.{scenario_id.lower()}.approval", "target_type": "APPROVAL", "target_id": approval.approval_id, "expected_version": 1, "resulting_version": 2, "changes": {"status": approval.status.value, "observable": True}}], occurred_at=event_time))
+                steps.append(_generated(TransactionResult, f"transaction.{scenario_id.lower()}.1", [POLICY_IDS[2]], transaction_id=f"transaction.{scenario_id.lower()}.1", case_id=case_id, action=TransactionAction.REQUEST_APPROVAL, action_parameters={"approval_id": approval.approval_id}, attempt_number=1, result_code=result, observation={TransactionCode.SUCCESS: "TRANSACTION_SUCCESS", TransactionCode.APPROVAL_REJECTED: "APPROVAL_REJECTED", TransactionCode.APPROVAL_PENDING: "APPROVAL_PENDING"}[result], retryable=False, message=f"The CCDS Undergraduate Office decision for the {target_code} request is {approval.status.value.lower()}.", error_code=None if result is TransactionCode.SUCCESS else "SIMULATED_APPROVAL_RESULT", event=event, precondition_state_versions={approval.approval_id: 1}, mutations=[{"mutation_id": f"mutation.{scenario_id.lower()}.approval", "target_type": "APPROVAL", "target_id": approval.approval_id, "expected_version": 1, "resulting_version": 2, "changes": {"status": approval.status.value, "observable": True}}], occurred_at=event_time))
                 if approval.status is ApprovalStatus.APPROVED:
                     followup_action = {
                         "S2": TransactionAction.SUBMIT_WAIVER,
@@ -1130,7 +1264,10 @@ def _build(real_dir: Path) -> tuple[dict[str, Any], Stage3DataBundle]:
                             result_code=TransactionCode.SUCCESS,
                             observation="TRANSACTION_SUCCESS",
                             retryable=False,
-                            message="The observable approval enables the bounded follow-up action.",
+                            message=(
+                                f"After approval, the {followup_action.value.lower().replace('_', ' ')} "
+                                f"for {target_code} completed successfully."
+                            ),
                             error_code=None,
                             precondition_state_versions=followup_versions,
                             occurred_at=retry_time,
@@ -1156,12 +1293,12 @@ def _build(real_dir: Path) -> tuple[dict[str, Any], Stage3DataBundle]:
                             "waitlist_count": state.waitlist_count + 1,
                         },
                     }]
-                steps.append(_generated(TransactionResult, f"transaction.{scenario_id.lower()}.1", [POLICY_IDS[2]], transaction_id=f"transaction.{scenario_id.lower()}.1", case_id=case_id, action=TransactionAction.SUBMIT_REGISTRATION, action_parameters={"offering_state_id": state.state_id}, attempt_number=1, result_code=result, observation={TransactionCode.MODULE_FULL: "MODULE_FULL", TransactionCode.CLASS_UNAVAILABLE: "CLASS_UNAVAILABLE", TransactionCode.TEMPORARY_SYSTEM_FAILURE: "TEMPORARY_FAILURE", TransactionCode.STALE_STATE: "STALE_STATE"}[result], retryable=True, message="Controlled dynamic event occurred; the case may retry only after refreshing or replanning.", error_code="SIMULATED_DYNAMIC_EVENT", event=event, precondition_state_versions={state.state_id: 1}, mutations=mutation, occurred_at=event_time))
-                steps.append(_generated(TransactionResult, f"transaction.{scenario_id.lower()}.2", [POLICY_IDS[2]], transaction_id=f"transaction.{scenario_id.lower()}.2", case_id=case_id, action=TransactionAction.SUBMIT_REGISTRATION, action_parameters={"retry": True, "offering_state_id": alternative_state.state_id}, attempt_number=2, result_code=TransactionCode.SUCCESS, observation="TRANSACTION_SUCCESS", retryable=False, message="Alternative index or refreshed state resolves the simulated retry.", error_code=None, precondition_state_versions={alternative_state.state_id: 1}, occurred_at=retry_time))
+                steps.append(_generated(TransactionResult, f"transaction.{scenario_id.lower()}.1", [POLICY_IDS[2]], transaction_id=f"transaction.{scenario_id.lower()}.1", case_id=case_id, action=TransactionAction.SUBMIT_REGISTRATION, action_parameters={"offering_state_id": state.state_id}, attempt_number=1, result_code=result, observation={TransactionCode.MODULE_FULL: "MODULE_FULL", TransactionCode.CLASS_UNAVAILABLE: "CLASS_UNAVAILABLE", TransactionCode.TEMPORARY_SYSTEM_FAILURE: "TEMPORARY_FAILURE", TransactionCode.STALE_STATE: "STALE_STATE"}[result], retryable=True, message=f"Registration in class {target_index['index_id']} for {target_code} did not complete because the live state reported {result.value.lower().replace('_', ' ')}; availability must be refreshed before retrying.", error_code="SIMULATED_DYNAMIC_EVENT", event=event, precondition_state_versions={state.state_id: 1}, mutations=mutation, occurred_at=event_time))
+                steps.append(_generated(TransactionResult, f"transaction.{scenario_id.lower()}.2", [POLICY_IDS[2]], transaction_id=f"transaction.{scenario_id.lower()}.2", case_id=case_id, action=TransactionAction.SUBMIT_REGISTRATION, action_parameters={"retry": True, "offering_state_id": alternative_state.state_id}, attempt_number=2, result_code=TransactionCode.SUCCESS, observation="TRANSACTION_SUCCESS", retryable=False, message=f"After refreshing availability, class {alternative_index['index_id']} registered successfully for {target_code}.", error_code=None, precondition_state_versions={alternative_state.state_id: 1}, occurred_at=retry_time))
             elif family == "S6":
                 if position % 2 == 0:
                     event = InjectedEvent(event_id=f"event.{scenario_id.lower()}", event_type=EventType.REQUIRED_INFORMATION_MISSING, target_type=StateTargetType.CASE, target_id=case_id, occurs_at=event_time)
-                    steps.append(_generated(TransactionResult, f"transaction.{scenario_id.lower()}.1", [POLICY_IDS[2]], transaction_id=f"transaction.{scenario_id.lower()}.1", case_id=case_id, action=TransactionAction.SUBMIT_EXCEPTION, action_parameters={}, attempt_number=1, result_code=TransactionCode.REQUIRED_INFORMATION_MISSING, observation="REQUIRED_INFORMATION_MISSING", retryable=False, message="The submission is missing a required simulated declaration.", error_code="MISSING_DECLARATION", event=event, precondition_state_versions={}, mutations=[], occurred_at=event_time))
+                    steps.append(_generated(TransactionResult, f"transaction.{scenario_id.lower()}.1", [POLICY_IDS[2]], transaction_id=f"transaction.{scenario_id.lower()}.1", case_id=case_id, action=TransactionAction.SUBMIT_EXCEPTION, action_parameters={}, attempt_number=1, result_code=TransactionCode.REQUIRED_INFORMATION_MISSING, observation="REQUIRED_INFORMATION_MISSING", retryable=False, message=f"The {target_code} request cannot be assessed until the student supplies the required submission declaration.", error_code="MISSING_DECLARATION", event=event, precondition_state_versions={}, mutations=[], occurred_at=event_time))
                 else:
                     event = InjectedEvent(
                         event_id=f"event.{scenario_id.lower()}",
@@ -1182,7 +1319,7 @@ def _build(real_dir: Path) -> tuple[dict[str, Any], Stage3DataBundle]:
                 )
                 action = TransactionAction.SUBMIT_REGISTRATION if family == "S1" else TransactionAction.SUBMIT_EXCEPTION
                 parameters = {"offering_state_id": alternative_state.state_id} if family == "S1" else {}
-                steps.append(_generated(TransactionResult, f"transaction.{scenario_id.lower()}.1", [POLICY_IDS[0]], transaction_id=f"transaction.{scenario_id.lower()}.1", case_id=case_id, action=action, action_parameters=parameters, attempt_number=1, result_code=code, observation="REQUIRED_INFORMATION_MISSING" if code is TransactionCode.REQUIRED_INFORMATION_MISSING else "TRANSACTION_SUCCESS", retryable=False, message="The deterministic scenario route was assessed.", error_code="INSUFFICIENT_VERIFIED_INFORMATION" if code is TransactionCode.REQUIRED_INFORMATION_MISSING else None, precondition_state_versions={alternative_state.state_id: 1} if family == "S1" else {}, occurred_at=event_time))
+                steps.append(_generated(TransactionResult, f"transaction.{scenario_id.lower()}.1", [POLICY_IDS[0]], transaction_id=f"transaction.{scenario_id.lower()}.1", case_id=case_id, action=action, action_parameters=parameters, attempt_number=1, result_code=code, observation="REQUIRED_INFORMATION_MISSING" if code is TransactionCode.REQUIRED_INFORMATION_MISSING else "TRANSACTION_SUCCESS", retryable=False, message=(f"Class {alternative_index['index_id']} registered successfully for {target_code}." if family == "S1" else f"The cohort-specific graduation review for {target_code} {'completed successfully' if code is TransactionCode.SUCCESS else 'still lacks enough verified information to proceed'}."), error_code="INSUFFICIENT_VERIFIED_INFORMATION" if code is TransactionCode.REQUIRED_INFORMATION_MISSING else None, precondition_state_versions={alternative_state.state_id: 1} if family == "S1" else {}, occurred_at=event_time))
             script = _generated(TransactionScript, script_id, [str(student.curriculum_id), f"course.{target_code}", POLICY_IDS[2]], script_id=script_id, case_id=case_id, simulation_scope_id=student.simulation_scope_id, steps=steps)
             scripts.append(script)
             resolved = family in {"S1", "S7"} or (family == "S3" and student.terminal_profile == TerminalProfile.REQUIREMENT_OUTSTANDING) or (approval is not None and approval.status is ApprovalStatus.APPROVED)
@@ -1226,10 +1363,7 @@ def _build(real_dir: Path) -> tuple[dict[str, Any], Stage3DataBundle]:
                             "requires_approval": requires_approval,
                         }
                     ],
-                    "rationale": (
-                        "The path is constrained by the selected curriculum, "
-                        "observable workflow state, and grounded index templates."
-                    ),
+                    "rationale": _path_rationale(family, target_code),
                     "source_rule_ids": sorted(set(path_rules)),
                 }
 
@@ -1379,6 +1513,21 @@ def _build(real_dir: Path) -> tuple[dict[str, Any], Stage3DataBundle]:
                 invalid_paths=invalid_paths,
                 requires_human=approval is not None,
                 expected_outcome=expected,
+                expected_response=_expected_response(
+                    family,
+                    target_code,
+                    expected,
+                    preferred_index=str(target_index["index_id"]),
+                    alternative_index=str(alternative_index["index_id"]),
+                    approval=approval,
+                    event_type=event_type if family == "S7" else None,
+                    unresolved_questions=unresolved_questions,
+                    path_label=str(
+                        student.study_plan_path_label
+                        or student.graduation_path_id
+                        or "declared programme"
+                    ),
+                ),
             )
             multi_state_family = family in {"S1", "S4", "S7"}
             scenario_state_ids = (

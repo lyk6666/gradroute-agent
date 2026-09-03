@@ -329,6 +329,11 @@ class RunService:
                     for item in case.supporting_documents
                     if item.provided
                 ],
+                expected_response=(
+                    scenario.ground_truth.expected_response
+                    if split == "demo"
+                    else None
+                ),
             )
         return summaries, cases
 
@@ -738,13 +743,16 @@ class RunService:
         """Narrate the latest UI-safe record without changing execution decisions."""
 
         narrator = self._narrator
-        if narrator is None:
-            return
         with record.lock:
             detail = record.node_details.get(node_id)
             if detail is None:
                 return
+            fallback = _fallback_node_narrative(record, node_id, detail)
+            detail = detail.model_copy(update={"narrative": fallback})
+            record.node_details[node_id] = detail
             payload = self._narration_payload(record, node_id, detail)
+        if narrator is None:
+            return
         try:
             result = narrator.narrate(payload)
         except Exception:
@@ -799,6 +807,8 @@ class RunService:
                 "status": detail.status.value,
             },
             "case_profile": _narration_case_profile(record, snapshot),
+            "communication_goal": _node_communication_goal(node_id),
+            "case_events": _case_event_summaries(record.values),
             "observed_input": _narration_items(
                 detail.input_items, exclude_context=True
             ),
@@ -806,12 +816,8 @@ class RunService:
             "persisted_changes": _narration_items(detail.state_changes),
             "tools_used": list(detail.tool_names),
             "evidence_references": list(detail.evidence_ids),
-            "working_state": snapshot.working_state.model_dump(
-                mode="json", exclude={"narrative", "reasoning"}
-            ),
-            "thread_memory": snapshot.thread_memory.model_dump(
-                mode="json", exclude={"narrative"}
-            ),
+            "working_state": _presentation_working_state(snapshot),
+            "thread_memory": _presentation_thread_memory(snapshot),
             "long_term_memory": [
                 item.model_dump(
                     mode="json", exclude={"narrative", "verified_at"}
@@ -894,6 +900,37 @@ class RunService:
             for item in values.get("errors", [])
             if isinstance(item, Mapping)
         ]
+        evidence_summaries = _evidence_summaries(values)
+        event_summaries = _case_event_summaries(values)
+        default_working_narrative = (
+            response.resolution_summary
+            if response
+            else f"The case is waiting for human input: {record.pause.message} No action will be taken until it is supplied."
+            if record.pause
+            else str(candidate.get("rationale"))
+            if candidate.get("rationale")
+            else (
+                f"The case is currently at {current_label.lower()}, using current academic, policy, and course facts."
+                if record.current_node
+                else "The case is ready to begin from the student's request."
+            )
+        )
+        default_known = [item.summary for item in evidence_summaries[-3:]]
+        default_next = (
+            record.pause.message
+            if record.pause
+            else f"Continue to {str(values.get('route', 'the next grounded check')).replace('_', ' ')}."
+        )
+        default_attention = (
+            record.pause.message
+            if record.pause
+            else (errors[-1] if errors else None)
+        )
+        default_thread_narrative = (
+            "The case history retains the latest verified findings and decisions so a resumed run does not lose context."
+            if event_summaries
+            else "The case has started, but no material finding has been recorded yet."
+        )
         return RunSnapshot(
             run_id=record.run_id,
             scenario_id=record.scenario_id,
@@ -928,16 +965,16 @@ class RunService:
                 plan_version=(int(plan["version"]) if plan.get("version") is not None else None),
                 plan_rationale=(str(plan["rationale"]) if plan.get("rationale") else None),
                 plan_steps=_plan_step_summaries(plan, values),
-                evidence=_evidence_summaries(values),
+                evidence=evidence_summaries,
                 action=(str(candidate["action"]) if candidate.get("action") else None),
                 action_parameters=action_parameters,
                 outstanding_items=list(dict.fromkeys(outstanding)),
                 errors=list(dict.fromkeys(errors)),
                 reasoning=reasoning,
-                narrative=record.working_narrative,
-                narrative_known=list(record.working_known),
-                narrative_next=record.working_next,
-                narrative_attention=record.working_attention,
+                narrative=record.working_narrative or default_working_narrative,
+                narrative_known=list(record.working_known) or default_known,
+                narrative_next=record.working_next or str(default_next),
+                narrative_attention=record.working_attention or default_attention,
             ),
             tools=_tool_summaries(values),
             long_term_memory=_memory_summaries(values, record.memory_narratives),
@@ -960,8 +997,8 @@ class RunService:
                 ],
                 clarification_details=_clarification_details(values),
                 approval_details=_approval_details(values),
-                narrative=record.thread_narrative,
-                narrative_highlights=list(record.thread_highlights),
+                narrative=record.thread_narrative or default_thread_narrative,
+                narrative_highlights=list(record.thread_highlights) or event_summaries[-4:],
             ),
             pause=record.pause,
             final_response=response,
@@ -1013,6 +1050,221 @@ def _narration_case_profile(
         "target_course": initial.get("target_course"),
         "current_step": snapshot.working_state.current_step,
     }
+
+
+def _node_communication_goal(node_id: str) -> str:
+    return {
+        "intake_context": "Introduce the student's concrete request and confirm what was accepted into the case.",
+        "memory_retriever": "Explain whether a relevant past pattern was found and that current evidence remains authoritative.",
+        "planner": "Explain why these particular checks are needed for this course request.",
+        "supervisor_router": "Name the next specialist check and why it comes next.",
+        "degree_audit_agent": "Summarize the student's graduation position and whether the target course remains outstanding.",
+        "policy_agent": "Summarize eligibility, documents, and whether human approval is required.",
+        "course_agent": "Summarize prerequisite, exclusion, workload, timetable, and live class feasibility.",
+        "resolution_builder": "Describe the concrete candidate action in student-facing language.",
+        "pre_action_verifier": "Explain whether the proposed action is safe to attempt and what blocks it if not.",
+        "clarification": "Ask only for the specific missing fact and explain why it matters.",
+        "action_gate": "Explain whether the action can proceed automatically or must wait for a person.",
+        "human_approval": "Explain the exact decision requested from the named approving role.",
+        "pause_checkpoint": "Explain what the case is waiting for and what will happen after the decision arrives.",
+        "human_admin_review": "Explain why automation stopped and what evidence is being handed to staff.",
+        "transaction": "Describe the action attempted and its observed result.",
+        "observation": "Explain what the system learned from the transaction result.",
+        "post_action_verifier": "State whether the student's requested outcome is now actually true.",
+        "final_response": "Give the verified outcome and the student's immediate next step.",
+        "memory_updater": "Describe the deidentified lesson retained for comparable future cases.",
+    }.get(node_id, "Explain the material case fact produced by this step.")
+
+
+def _case_event_summaries(values: dict[str, Any]) -> list[str]:
+    events: list[str] = []
+    plan = _mapping(values.get("plan"))
+    if plan.get("rationale"):
+        events.append(str(plan["rationale"]))
+    events.extend(item.summary for item in _evidence_summaries(values))
+    approval = _mapping(values.get("approval_response"))
+    if approval.get("status"):
+        events.append(
+            f"The approving role returned {str(approval['status']).lower().replace('_', ' ')}."
+        )
+    observation = _mapping(values.get("observation"))
+    if observation.get("message"):
+        events.append(str(observation["message"]))
+    decision = _mapping(values.get("verifier_decision"))
+    if decision.get("reason"):
+        events.append(str(decision["reason"]))
+    return list(dict.fromkeys(events))[-6:]
+
+
+def _presentation_working_state(snapshot: RunSnapshot) -> dict[str, Any]:
+    working = snapshot.working_state
+    return {
+        "current_step": working.current_step,
+        "status": working.status,
+        "plan_reason": working.plan_rationale,
+        "checks": [
+            {"purpose": item.purpose, "status": item.status}
+            for item in working.plan_steps
+        ],
+        "findings": [item.summary for item in working.evidence],
+        "proposed_resolution": working.candidate_resolution,
+        "action": _humanize_action(working.action),
+        "needs_attention": [*working.outstanding_items, *working.errors],
+    }
+
+
+def _presentation_thread_memory(snapshot: RunSnapshot) -> dict[str, Any]:
+    thread = snapshot.thread_memory
+    return {
+        "case_history": list(thread.narrative_highlights),
+        "checkpoints": thread.checkpoints,
+        "waiting_for": thread.pause_state if thread.pause_state != "None" else None,
+        "clarification": [item.model_dump() for item in thread.clarification_details],
+        "approval": [item.model_dump() for item in thread.approval_details],
+    }
+
+
+def _fallback_node_narrative(
+    record: RunRecord,
+    node_id: str,
+    detail: NodeExecutionDetail,
+) -> NodeNarrativeSummary:
+    """Always provide concise case-specific prose, even when the LLM is offline."""
+
+    values = record.values
+    profile = record.profile_summary
+    scenario = _mapping(values.get("scenario_context"))
+    target = str(_mapping(scenario.get("initial_state")).get("target_course") or "the requested course")
+    plan = _mapping(values.get("plan"))
+    candidate = _mapping(values.get("action_candidate"))
+    evidence = {item.specialist: item.summary for item in _evidence_summaries(values)}
+    route = _human_label(str(values.get("route", "the next check")))
+    decision = _mapping(values.get("verifier_decision"))
+    observation = _mapping(values.get("observation"))
+    approval = _mapping(values.get("approval_response"))
+    final = _mapping(values.get("final_outcome"))
+    intake = _mapping(values.get("intake_context"))
+    missing_facts = ", ".join(
+        str(item).replace("_", " ")
+        for item in intake.get("unresolved_questions", [])
+    ) or "the requested supporting fact"
+    handoff = _mapping(values.get("admin_handoff"))
+    memories = _memory_summaries(values)
+
+    student_context = (
+        f"A Year {profile.study_year} {profile.programme} student from {profile.cohort} "
+        f"is asking for help with {target}."
+    )
+    input_text = {
+        "intake_context": student_context,
+        "memory_retriever": f"The case supplied the student's {target} request so comparable past resolution patterns could be considered.",
+        "planner": f"The planner received the {target} request and the current student, registration, and case facts.",
+        "supervisor_router": f"The router received the case plan for {target} and the checks that remain unfinished.",
+        "degree_audit_agent": f"The academic check used this student's cohort, programme, completed work, and the outstanding {target} requirement.",
+        "policy_agent": f"The policy check used the {target} case type, attached documents, and declared exception route.",
+        "course_agent": f"The course check used the student's current timetable and the latest represented classes for {target}.",
+        "resolution_builder": f"The builder received the completed academic, policy, and course findings for {target}.",
+        "pre_action_verifier": f"The verifier received the proposed {target} action and its supporting findings.",
+        "clarification": f"The verifier identified that {missing_facts} is still needed before the {target} case can continue.",
+        "action_gate": f"The gate received the verified {target} proposal and its approval requirement.",
+        "human_approval": f"The approving role received the evidence-backed request concerning {target}.",
+        "pause_checkpoint": f"The {target} case reached an approval checkpoint and retained its evidence while waiting.",
+        "human_admin_review": f"The system received the unresolved {target} case and its collected evidence for a staff handoff.",
+        "transaction": f"The transaction step received the verified action selected for {target}.",
+        "observation": f"The observer received the actual result of the {target} action.",
+        "post_action_verifier": f"The verifier compared the observed {target} result with the student's requested outcome.",
+        "final_response": f"The response step received the verified outcome for the student's {target} request.",
+        "memory_updater": f"The memory step received a completed, verified {target} outcome for deidentification.",
+    }.get(node_id, student_context)
+
+    finding = {
+        "intake_context": f"The request was accepted as a {profile.case_type.lower().replace('_', ' ')} case and is ready for grounded checks.",
+        "memory_retriever": (
+            f"{len(memories)} relevant past pattern{' was' if len(memories) == 1 else 's were'} found as advice only."
+            if memories
+            else "No comparable past pattern was needed; the case will rely on current evidence."
+        ),
+        "planner": str(plan.get("rationale") or f"A case-specific plan was prepared for {target}."),
+        "supervisor_router": f"The next required check is {route.lower()}.",
+        "degree_audit_agent": evidence.get("DEGREE_AUDIT", f"The academic record for {target} was checked."),
+        "policy_agent": evidence.get("POLICY", f"The exception route for {target} was checked."),
+        "course_agent": evidence.get("COURSE", f"The current class options for {target} were checked."),
+        "resolution_builder": str(candidate.get("rationale") or f"No safe candidate action for {target} has been assembled yet."),
+        "pre_action_verifier": str(decision.get("reason") or "The proposed action was checked against its evidence and safety conditions."),
+        "clarification": str(record.pause.message if record.pause else f"The case needs {missing_facts} before another decision can be made."),
+        "action_gate": f"The verified route continues to {route.lower()}.",
+        "human_approval": (
+            f"The recorded approval status is {str(approval['status']).lower()}."
+            if approval.get("status")
+            else "The required approval has not yet become observable."
+        ),
+        "pause_checkpoint": str(record.pause.message if record.pause else "The case is waiting for the required approval to become observable."),
+        "human_admin_review": str(handoff.get("reason") or f"No safe autonomous action remains for {target}; the evidence package is ready for staff review."),
+        "transaction": str(observation.get("message") or "The selected action was submitted and its result was recorded."),
+        "observation": str(observation.get("message") or "The transaction result is now available for verification."),
+        "post_action_verifier": str(decision.get("reason") or "The observed result was checked against the student's goal."),
+        "final_response": (
+            f"The {_humanize_action(str(candidate.get('action') or 'resolution'))} is verified for {target}, and the student-facing next steps are ready."
+            if str(final.get("status")) == "DONE"
+            else str(final.get("message") or f"The final state of the {target} request was recorded.")
+        ),
+        "memory_updater": "A deidentified resolution pattern was retained only after the outcome was verified.",
+    }.get(node_id, _summarize_value([*detail.output_items, *detail.state_changes]))
+
+    waiting = record.pause is not None
+    state_text = (
+        f"The case is paused for {record.pause.title.lower()}."
+        if waiting
+        else {
+            "intake_context": "The student's request is now a validated case that can be checked without exposing evaluator information.",
+            "memory_retriever": "Any matching past experience is attached as advice only; it cannot replace a current check.",
+            "planner": f"A {len(plan.get('steps', []))}-check plan is ready for {target}.",
+            "supervisor_router": f"The case is routed to {route.lower()} next.",
+            "degree_audit_agent": "The academic finding is retained for the resolution decision.",
+            "policy_agent": "The policy, document, and approval finding is retained for the resolution decision.",
+            "course_agent": "The latest course and class-feasibility finding is retained for the resolution decision.",
+            "resolution_builder": "A concrete candidate is ready for the pre-action safety check.",
+            "pre_action_verifier": f"The recorded verifier decision now controls whether the case may continue to {route.lower()}.",
+            "clarification": f"The case cannot continue until {missing_facts} is supplied and validated.",
+            "action_gate": f"The case may continue only through {route.lower()}.",
+            "human_approval": "The approval response is now part of the observable case state.",
+            "pause_checkpoint": "The plan and evidence are retained so the case can resume safely after the approval check.",
+            "human_admin_review": "The automated route has stopped and a bounded evidence package is ready for staff review.",
+            "transaction": "The attempted action and its receipt are recorded, but completion still requires an outcome check.",
+            "observation": "The actual transaction result is now available to the final verifier.",
+            "post_action_verifier": "The student's goal has been checked against the observed result.",
+            "final_response": "The verified outcome is ready to present to the student.",
+            "memory_updater": "Only a deidentified, verified lesson was added to advisory memory.",
+        }.get(node_id, f"This step is complete and the case is ready for {route.lower()}.")
+    )
+    action_text = str(record.pause.message) if waiting else {
+        "intake_context": "No additional input is needed; the academic and policy checks can begin.",
+        "memory_retriever": "No decision is requested from the student; retrieved experience remains advisory.",
+        "planner": "No human decision is requested while the planned evidence checks are still running.",
+        "supervisor_router": f"The system can send the case to {route.lower()} without human input.",
+        "degree_audit_agent": "No human input is needed unless this academic check identifies an unresolved curriculum fact.",
+        "policy_agent": "No decision is needed here; any actual approval request is handled separately by the approving role.",
+        "course_agent": "No human input is needed while the system compares the represented class options.",
+        "resolution_builder": f"The proposed {_humanize_action(str(candidate.get('action') or ''))} must pass verification before it can proceed.",
+        "pre_action_verifier": f"The case may continue with the verified {_humanize_action(str(candidate.get('action') or ''))} only along the recorded route.",
+        "clarification": f"Provide {missing_facts}; no registration or exception will be submitted before it is validated.",
+        "action_gate": f"Follow the recorded {route.lower()} route; the agent cannot bypass approval or review.",
+        "pause_checkpoint": "Re-check the named approving role's decision; the agent cannot supply that decision itself.",
+        "human_admin_review": "A CCDS staff member should review the prepared evidence and decide the next authorised step.",
+        "transaction": "No manual input is requested during the transaction; its observed result determines the next step.",
+        "observation": "No manual input is needed; the observed result now returns to verification.",
+        "post_action_verifier": "No further action is needed if every goal condition passed; otherwise the case must replan or escalate.",
+        "final_response": "The student can now follow the case-specific next steps in the final response.",
+        "memory_updater": "No user action is needed; the stored pattern contains no student identity or current rule claim.",
+    }.get(node_id, "No separate human action is needed at this step.")
+    return NodeNarrativeSummary(
+        input=_bounded(input_text, 500),
+        output=_bounded(finding, 700),
+        state=_bounded(state_text, 400),
+        action=_bounded(action_text, 500),
+        model_id="deterministic-presentation",
+        generated_at=datetime.now(UTC),
+    )
 
 
 NODE_INPUT_KEYS: dict[str, tuple[str, ...]] = {
@@ -1304,6 +1556,37 @@ def _parameter_items(value: Any) -> list[DetailItem]:
     ]
 
 
+def _public_parameter_items(
+    value: Any, *, target_course: str | None = None
+) -> list[DetailItem]:
+    """Keep useful course/class facts while hiding runtime coordination IDs."""
+
+    parameters = _mapping(value)
+    items: list[DetailItem] = []
+    course = parameters.get("course_code") or target_course
+    if course:
+        items.append(DetailItem(label="Course", value=str(course)))
+    if parameters.get("offering_state_id"):
+        items.append(
+            DetailItem(
+                label="Class index",
+                value=str(parameters["offering_state_id"]).rsplit(".", 1)[-1],
+            )
+        )
+    if parameters.get("graduation_path_id"):
+        items.append(
+            DetailItem(
+                label="Programme path",
+                value=str(parameters["graduation_path_id"])
+                .replace("path.", "")
+                .replace(".", " "),
+            )
+        )
+    if parameters.get("retry"):
+        items.append(DetailItem(label="Recovery attempt", value="Yes; live state was refreshed"))
+    return items
+
+
 def _plan_step_summaries(
     plan: dict[str, Any], values: dict[str, Any]
 ) -> list[PlanStepSummary]:
@@ -1482,8 +1765,16 @@ def _final_response_summary(
     evaluation = goal or _mapping(values.get("goal_evaluation"))
     action = str(candidate["action"]) if candidate.get("action") else None
     action_label = _humanize_action(action)
-    parameters = _parameter_items(candidate.get("parameters"))
-    parameter_phrase = ", ".join(f"{item.label.lower()} {item.value}" for item in parameters)
+    scenario = _mapping(values.get("scenario_context"))
+    target_course = _mapping(scenario.get("initial_state")).get("target_course")
+    parameters = _public_parameter_items(
+        candidate.get("parameters"), target_course=str(target_course or "") or None
+    )
+    parameter_phrase = ", ".join(
+        f"{item.label.lower()} {item.value}"
+        for item in parameters
+        if item.label != "Recovery attempt"
+    )
     evidence = _evidence_summaries(values)
     academic_basis = [item.summary for item in evidence if item.specialist == "DEGREE_AUDIT"]
     course_basis = [item.summary for item in evidence if item.specialist == "COURSE"]
@@ -1493,8 +1784,10 @@ def _final_response_summary(
     approval = _approval_state(values)
     requirement = _mapping(values.get("approval_requirement"))
     approver = str(requirement.get("approver_role", "the designated approving role"))
+    decision_reason = str(requirement.get("decision_reason") or "").strip()
     approval_summary = (
-        f"{approver} returned {approval.replace('_', ' ').lower()}."
+        f"{approver} returned {approval.replace('_', ' ').lower()}"
+        f"{f': {decision_reason.rstrip('.')}' if decision_reason else ''}."
         if requirement.get("required")
         else "No separate approval was required for the verified action."
     )
@@ -1509,10 +1802,12 @@ def _final_response_summary(
     )
     observation = _mapping(values.get("observation"))
     if final_receipt:
+        result_text = str(
+            final_receipt.get("result_code", final_receipt.get("status", "UNKNOWN"))
+        ).replace("_", " ").lower()
         transaction_summary = (
             f"{_humanize_action(str(final_receipt.get('action', action or ''))).capitalize()} "
-            f"returned {str(final_receipt.get('result_code', final_receipt.get('status', 'UNKNOWN'))).replace('_', ' ').lower()}"
-            f" with receipt {final_receipt.get('receipt_id', 'not recorded')}."
+            f"returned {result_text}. The system retained a transaction receipt for the case record."
         )
     elif observation:
         transaction_summary = str(observation.get("message", "The runtime outcome was observed."))
@@ -1528,15 +1823,32 @@ def _final_response_summary(
     handoff = _mapping(values.get("admin_handoff"))
     if status == "DONE":
         headline = f"{action_label.capitalize()} verified"
+        recovered = int(_mapping(values.get("loop_counters")).get("tool_retries", 0)) > 0
         resolution_summary = (
-            f"The runtime completed the {action_label}"
+            f"The {action_label} completed"
             f"{f' for {parameter_phrase}' if parameter_phrase else ''} and the post-action verifier confirmed "
             f"{satisfied} of {total} required condition(s)."
         )
-        next_steps = [
-            "Keep the transaction receipt and supporting evidence for reference.",
-            "Confirm the resulting registration or case status in the relevant student system.",
-        ]
+        resolution_summary = resolution_summary.replace(
+            "the post-action verifier confirmed", "the final check confirmed"
+        )
+        if action == "SUBMIT_REGISTRATION":
+            next_steps = [
+                "Confirm that the course and class index appear in the student registration record.",
+                "Keep the transaction receipt; if the class changes again, request a fresh availability check before another attempt.",
+            ]
+            if recovered:
+                resolution_summary += " The first attempt did not complete, so availability was refreshed before the verified alternative was used."
+        elif action == "SUBMIT_WAIVER":
+            next_steps = [
+                "Monitor the prerequisite-waiver record until the curriculum or registration view reflects the approved exception.",
+                "Keep the submitted exchange transcript, course mappings, approval, and receipt together.",
+            ]
+        else:
+            next_steps = [
+                "Monitor the exception case until the programme record reflects the approved outcome.",
+                "Keep the approval, supporting documents, and transaction receipt together.",
+            ]
     elif status == "ADMIN_HANDOFF":
         headline = "Administrative review required"
         resolution_summary = str(

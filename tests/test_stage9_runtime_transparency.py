@@ -54,11 +54,13 @@ def test_runtime_snapshot_exposes_processed_node_state_and_resolution() -> None:
     response = final.final_response
     assert response is not None
     assert response.headline == "Prerequisite waiver request verified"
-    assert response.request_summary.endswith("after normal registration.")
+    assert "SC4002" in response.request_summary
+    assert "exchange course FX2001" in response.request_summary
     assert response.action_parameters
     assert response.academic_basis
     assert response.policy_basis
-    assert "receipt.runtime" in response.transaction_summary
+    assert "transaction receipt" in response.transaction_summary
+    assert "receipt.runtime" not in response.transaction_summary
     assert response.next_steps
     assert response.limitations
 

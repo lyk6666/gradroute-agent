@@ -7,7 +7,7 @@
     "audit_id": "audit.sim-aisc-001",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.aisc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -150,7 +150,7 @@
     "audit_id": "audit.sim-aisc-002",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.aisc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -293,7 +293,7 @@
     "audit_id": "audit.sim-aisc-003",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.aisc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -436,7 +436,7 @@
     "audit_id": "audit.sim-aisc-004",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.aisc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -579,7 +579,7 @@
     "audit_id": "audit.sim-aisc-005",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.aisc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -722,7 +722,7 @@
     "audit_id": "audit.sim-aisc-006",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.aisc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -865,7 +865,7 @@
     "audit_id": "audit.sim-aisc-007",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.aisc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -1008,7 +1008,7 @@
     "audit_id": "audit.sim-aisc-008",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.aisc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -1151,7 +1151,7 @@
     "audit_id": "audit.sim-aisc-009",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.aisc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -1294,7 +1294,7 @@
     "audit_id": "audit.sim-aisc-010",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.aisc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -1437,7 +1437,7 @@
     "audit_id": "audit.sim-aisc-011",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.aisc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -1580,7 +1580,7 @@
     "audit_id": "audit.sim-aisc-012",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.aisc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -1723,7 +1723,7 @@
     "audit_id": "audit.sim-aisc-013",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.aisc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -1866,7 +1866,7 @@
     "audit_id": "audit.sim-aisc-014",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.aisc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -2009,7 +2009,7 @@
     "audit_id": "audit.sim-aisc-015",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.aisc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -2152,7 +2152,7 @@
     "audit_id": "audit.sim-aisc-016",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.aisc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -2295,7 +2295,7 @@
     "audit_id": "audit.sim-aisc-017",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.aisc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -2442,7 +2442,7 @@
     "audit_id": "audit.sim-aisc-018",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.aisc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -2589,7 +2589,7 @@
     "audit_id": "audit.sim-aisc-019",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.aisc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -2736,7 +2736,7 @@
     "audit_id": "audit.sim-aisc-020",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.aisc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -2883,7 +2883,7 @@
     "audit_id": "audit.sim-aisc-021",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.aisc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -3030,7 +3030,7 @@
     "audit_id": "audit.sim-bce-001",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.bce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -3191,7 +3191,7 @@
     "audit_id": "audit.sim-bce-002",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.bce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -3352,7 +3352,7 @@
     "audit_id": "audit.sim-bce-003",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.bce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -3513,7 +3513,7 @@
     "audit_id": "audit.sim-bce-004",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.bce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -3674,7 +3674,7 @@
     "audit_id": "audit.sim-bce-005",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.bce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -3835,7 +3835,7 @@
     "audit_id": "audit.sim-bce-006",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.bce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -3996,7 +3996,7 @@
     "audit_id": "audit.sim-bce-007",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.bce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -4157,7 +4157,7 @@
     "audit_id": "audit.sim-bce-008",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.bce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -4318,7 +4318,7 @@
     "audit_id": "audit.sim-bce-009",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.bce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -4479,7 +4479,7 @@
     "audit_id": "audit.sim-bce-010",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.bce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -4644,7 +4644,7 @@
     "audit_id": "audit.sim-bce-011",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.bce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -4809,7 +4809,7 @@
     "audit_id": "audit.sim-bce-012",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.bce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -4974,7 +4974,7 @@
     "audit_id": "audit.sim-bcg-001",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.bcg.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.bcg.fyp",
     "limitations": [],
     "requirement_results": [
@@ -5135,7 +5135,7 @@
     "audit_id": "audit.sim-bcg-002",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.bcg.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.bcg.coursework",
     "limitations": [],
     "requirement_results": [
@@ -5296,7 +5296,7 @@
     "audit_id": "audit.sim-bcg-003",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.bcg.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.bcg.fyp",
     "limitations": [],
     "requirement_results": [
@@ -5457,7 +5457,7 @@
     "audit_id": "audit.sim-bcg-004",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.bcg.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.bcg.coursework",
     "limitations": [],
     "requirement_results": [
@@ -5618,7 +5618,7 @@
     "audit_id": "audit.sim-bcg-005",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.bcg.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.bcg.fyp",
     "limitations": [],
     "requirement_results": [
@@ -5779,7 +5779,7 @@
     "audit_id": "audit.sim-bcg-006",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.bcg.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.bcg.coursework",
     "limitations": [],
     "requirement_results": [
@@ -5940,7 +5940,7 @@
     "audit_id": "audit.sim-bcg-007",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.bcg.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.bcg.fyp",
     "limitations": [],
     "requirement_results": [
@@ -6101,7 +6101,7 @@
     "audit_id": "audit.sim-bcg-008",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.bcg.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.bcg.coursework",
     "limitations": [],
     "requirement_results": [
@@ -6262,7 +6262,7 @@
     "audit_id": "audit.sim-bcg-009",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.bcg.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.bcg.fyp",
     "limitations": [],
     "requirement_results": [
@@ -6423,7 +6423,7 @@
     "audit_id": "audit.sim-bcg-010",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.bcg.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.bcg.coursework",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -6588,7 +6588,7 @@
     "audit_id": "audit.sim-bcg-011",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.bcg.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.bcg.fyp",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -6753,7 +6753,7 @@
     "audit_id": "audit.sim-bcg-012",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.bcg.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.bcg.coursework",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -6918,7 +6918,7 @@
     "audit_id": "audit.sim-ce-001",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -7061,7 +7061,7 @@
     "audit_id": "audit.sim-ce-002",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -7204,7 +7204,7 @@
     "audit_id": "audit.sim-ce-003",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -7347,7 +7347,7 @@
     "audit_id": "audit.sim-ce-004",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -7490,7 +7490,7 @@
     "audit_id": "audit.sim-ce-005",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -7633,7 +7633,7 @@
     "audit_id": "audit.sim-ce-006",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -7776,7 +7776,7 @@
     "audit_id": "audit.sim-ce-007",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -7919,7 +7919,7 @@
     "audit_id": "audit.sim-ce-008",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -8062,7 +8062,7 @@
     "audit_id": "audit.sim-ce-009",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -8205,7 +8205,7 @@
     "audit_id": "audit.sim-ce-010",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -8348,7 +8348,7 @@
     "audit_id": "audit.sim-ce-011",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -8491,7 +8491,7 @@
     "audit_id": "audit.sim-ce-012",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -8634,7 +8634,7 @@
     "audit_id": "audit.sim-ce-013",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -8777,7 +8777,7 @@
     "audit_id": "audit.sim-ce-014",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -8920,7 +8920,7 @@
     "audit_id": "audit.sim-ce-015",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -9063,7 +9063,7 @@
     "audit_id": "audit.sim-ce-016",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -9206,7 +9206,7 @@
     "audit_id": "audit.sim-ce-017",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.ce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -9353,7 +9353,7 @@
     "audit_id": "audit.sim-ce-018",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.ce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -9500,7 +9500,7 @@
     "audit_id": "audit.sim-ce-019",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.ce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -9647,7 +9647,7 @@
     "audit_id": "audit.sim-ce-020",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.ce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -9794,7 +9794,7 @@
     "audit_id": "audit.sim-ce-021",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.ce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -9941,7 +9941,7 @@
     "audit_id": "audit.sim-cedana-001",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -10084,7 +10084,7 @@
     "audit_id": "audit.sim-cedana-002",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -10227,7 +10227,7 @@
     "audit_id": "audit.sim-cedana-003",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -10370,7 +10370,7 @@
     "audit_id": "audit.sim-cedana-004",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -10513,7 +10513,7 @@
     "audit_id": "audit.sim-cedana-005",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -10656,7 +10656,7 @@
     "audit_id": "audit.sim-cedana-006",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -10799,7 +10799,7 @@
     "audit_id": "audit.sim-cedana-007",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -10942,7 +10942,7 @@
     "audit_id": "audit.sim-cedana-008",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -11085,7 +11085,7 @@
     "audit_id": "audit.sim-cedana-009",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -11228,7 +11228,7 @@
     "audit_id": "audit.sim-cedana-010",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -11375,7 +11375,7 @@
     "audit_id": "audit.sim-cedana-011",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -11522,7 +11522,7 @@
     "audit_id": "audit.sim-cedana-012",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -11669,7 +11669,7 @@
     "audit_id": "audit.sim-ceec-001",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ceec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.ceec.pi",
     "limitations": [],
     "requirement_results": [
@@ -11848,7 +11848,7 @@
     "audit_id": "audit.sim-ceec-002",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ceec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.ceec.pa",
     "limitations": [],
     "requirement_results": [
@@ -12027,7 +12027,7 @@
     "audit_id": "audit.sim-ceec-003",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ceec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.ceec.pi",
     "limitations": [],
     "requirement_results": [
@@ -12206,7 +12206,7 @@
     "audit_id": "audit.sim-ceec-004",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ceec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.ceec.pa",
     "limitations": [],
     "requirement_results": [
@@ -12385,7 +12385,7 @@
     "audit_id": "audit.sim-ceec-005",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ceec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.ceec.pi",
     "limitations": [],
     "requirement_results": [
@@ -12564,7 +12564,7 @@
     "audit_id": "audit.sim-ceec-006",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ceec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.ceec.pa",
     "limitations": [],
     "requirement_results": [
@@ -12743,7 +12743,7 @@
     "audit_id": "audit.sim-ceec-007",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ceec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.ceec.pi",
     "limitations": [],
     "requirement_results": [
@@ -12922,7 +12922,7 @@
     "audit_id": "audit.sim-ceec-008",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ceec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.ceec.pa",
     "limitations": [],
     "requirement_results": [
@@ -13101,7 +13101,7 @@
     "audit_id": "audit.sim-ceec-009",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ceec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.ceec.pi",
     "limitations": [],
     "requirement_results": [
@@ -13280,7 +13280,7 @@
     "audit_id": "audit.sim-ceec-010",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.ceec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.ceec.pa",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -13463,7 +13463,7 @@
     "audit_id": "audit.sim-ceec-011",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.ceec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.ceec.pi",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -13646,7 +13646,7 @@
     "audit_id": "audit.sim-ceec-012",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.ceec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.ceec.pa",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -13829,7 +13829,7 @@
     "audit_id": "audit.sim-ceent-001",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -13972,7 +13972,7 @@
     "audit_id": "audit.sim-ceent-002",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -14115,7 +14115,7 @@
     "audit_id": "audit.sim-ceent-003",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -14258,7 +14258,7 @@
     "audit_id": "audit.sim-ceent-004",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -14401,7 +14401,7 @@
     "audit_id": "audit.sim-ceent-005",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -14544,7 +14544,7 @@
     "audit_id": "audit.sim-ceent-006",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -14687,7 +14687,7 @@
     "audit_id": "audit.sim-ceent-007",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -14830,7 +14830,7 @@
     "audit_id": "audit.sim-ceent-008",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -14973,7 +14973,7 @@
     "audit_id": "audit.sim-ceent-009",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -15116,7 +15116,7 @@
     "audit_id": "audit.sim-ceent-010",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -15263,7 +15263,7 @@
     "audit_id": "audit.sim-ceent-011",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -15410,7 +15410,7 @@
     "audit_id": "audit.sim-ceent-012",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -15557,7 +15557,7 @@
     "audit_id": "audit.sim-cesust-001",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -15700,7 +15700,7 @@
     "audit_id": "audit.sim-cesust-002",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -15843,7 +15843,7 @@
     "audit_id": "audit.sim-cesust-003",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -15986,7 +15986,7 @@
     "audit_id": "audit.sim-cesust-004",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -16129,7 +16129,7 @@
     "audit_id": "audit.sim-cesust-005",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -16272,7 +16272,7 @@
     "audit_id": "audit.sim-cesust-006",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -16415,7 +16415,7 @@
     "audit_id": "audit.sim-cesust-007",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -16558,7 +16558,7 @@
     "audit_id": "audit.sim-cesust-008",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -16701,7 +16701,7 @@
     "audit_id": "audit.sim-cesust-009",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -16844,7 +16844,7 @@
     "audit_id": "audit.sim-cesust-010",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -16991,7 +16991,7 @@
     "audit_id": "audit.sim-cesust-011",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -17138,7 +17138,7 @@
     "audit_id": "audit.sim-cesust-012",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -17285,7 +17285,7 @@
     "audit_id": "audit.sim-csc-001",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc.fyp",
     "limitations": [],
     "requirement_results": [
@@ -17428,7 +17428,7 @@
     "audit_id": "audit.sim-csc-002",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc.coursework",
     "limitations": [],
     "requirement_results": [
@@ -17571,7 +17571,7 @@
     "audit_id": "audit.sim-csc-003",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc.fyp",
     "limitations": [],
     "requirement_results": [
@@ -17714,7 +17714,7 @@
     "audit_id": "audit.sim-csc-004",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc.coursework",
     "limitations": [],
     "requirement_results": [
@@ -17857,7 +17857,7 @@
     "audit_id": "audit.sim-csc-005",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc.fyp",
     "limitations": [],
     "requirement_results": [
@@ -18000,7 +18000,7 @@
     "audit_id": "audit.sim-csc-006",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc.coursework",
     "limitations": [],
     "requirement_results": [
@@ -18143,7 +18143,7 @@
     "audit_id": "audit.sim-csc-007",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc.fyp",
     "limitations": [],
     "requirement_results": [
@@ -18286,7 +18286,7 @@
     "audit_id": "audit.sim-csc-008",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc.coursework",
     "limitations": [],
     "requirement_results": [
@@ -18429,7 +18429,7 @@
     "audit_id": "audit.sim-csc-009",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc.fyp",
     "limitations": [],
     "requirement_results": [
@@ -18572,7 +18572,7 @@
     "audit_id": "audit.sim-csc-010",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc.coursework",
     "limitations": [],
     "requirement_results": [
@@ -18715,7 +18715,7 @@
     "audit_id": "audit.sim-csc-011",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc.fyp",
     "limitations": [],
     "requirement_results": [
@@ -18858,7 +18858,7 @@
     "audit_id": "audit.sim-csc-012",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc.coursework",
     "limitations": [],
     "requirement_results": [
@@ -19001,7 +19001,7 @@
     "audit_id": "audit.sim-csc-013",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc.fyp",
     "limitations": [],
     "requirement_results": [
@@ -19144,7 +19144,7 @@
     "audit_id": "audit.sim-csc-014",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc.coursework",
     "limitations": [],
     "requirement_results": [
@@ -19287,7 +19287,7 @@
     "audit_id": "audit.sim-csc-015",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc.fyp",
     "limitations": [],
     "requirement_results": [
@@ -19430,7 +19430,7 @@
     "audit_id": "audit.sim-csc-016",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc.coursework",
     "limitations": [],
     "requirement_results": [
@@ -19573,7 +19573,7 @@
     "audit_id": "audit.sim-csc-017",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.csc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc.fyp",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -19720,7 +19720,7 @@
     "audit_id": "audit.sim-csc-018",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.csc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc.coursework",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -19867,7 +19867,7 @@
     "audit_id": "audit.sim-csc-019",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.csc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc.fyp",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -20014,7 +20014,7 @@
     "audit_id": "audit.sim-csc-020",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.csc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc.coursework",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -20161,7 +20161,7 @@
     "audit_id": "audit.sim-csc-021",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.csc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc.fyp",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -20308,7 +20308,7 @@
     "audit_id": "audit.sim-cscbusiness-001",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-business.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-business.pi-fyp",
     "limitations": [],
     "requirement_results": [
@@ -20451,7 +20451,7 @@
     "audit_id": "audit.sim-cscbusiness-002",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-business.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-business.pi-coursework",
     "limitations": [],
     "requirement_results": [
@@ -20594,7 +20594,7 @@
     "audit_id": "audit.sim-cscbusiness-003",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-business.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-business.pa-fyp",
     "limitations": [],
     "requirement_results": [
@@ -20737,7 +20737,7 @@
     "audit_id": "audit.sim-cscbusiness-004",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-business.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-business.pa-coursework",
     "limitations": [],
     "requirement_results": [
@@ -20880,7 +20880,7 @@
     "audit_id": "audit.sim-cscbusiness-005",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-business.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-business.pi-fyp",
     "limitations": [],
     "requirement_results": [
@@ -21023,7 +21023,7 @@
     "audit_id": "audit.sim-cscbusiness-006",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-business.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-business.pi-coursework",
     "limitations": [],
     "requirement_results": [
@@ -21166,7 +21166,7 @@
     "audit_id": "audit.sim-cscbusiness-007",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-business.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-business.pa-fyp",
     "limitations": [],
     "requirement_results": [
@@ -21309,7 +21309,7 @@
     "audit_id": "audit.sim-cscbusiness-008",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-business.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-business.pa-coursework",
     "limitations": [],
     "requirement_results": [
@@ -21452,7 +21452,7 @@
     "audit_id": "audit.sim-cscbusiness-009",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-business.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-business.pi-fyp",
     "limitations": [],
     "requirement_results": [
@@ -21595,7 +21595,7 @@
     "audit_id": "audit.sim-cscbusiness-010",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.csc-business.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-business.pi-coursework",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -21742,7 +21742,7 @@
     "audit_id": "audit.sim-cscbusiness-011",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.csc-business.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-business.pa-fyp",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -21889,7 +21889,7 @@
     "audit_id": "audit.sim-cscbusiness-012",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.csc-business.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-business.pa-coursework",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -22036,7 +22036,7 @@
     "audit_id": "audit.sim-cscent-001",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-ent.fyp",
     "limitations": [],
     "requirement_results": [
@@ -22179,7 +22179,7 @@
     "audit_id": "audit.sim-cscent-002",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-ent.coursework",
     "limitations": [],
     "requirement_results": [
@@ -22322,7 +22322,7 @@
     "audit_id": "audit.sim-cscent-003",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-ent.fyp",
     "limitations": [],
     "requirement_results": [
@@ -22465,7 +22465,7 @@
     "audit_id": "audit.sim-cscent-004",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-ent.coursework",
     "limitations": [],
     "requirement_results": [
@@ -22608,7 +22608,7 @@
     "audit_id": "audit.sim-cscent-005",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-ent.fyp",
     "limitations": [],
     "requirement_results": [
@@ -22751,7 +22751,7 @@
     "audit_id": "audit.sim-cscent-006",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-ent.coursework",
     "limitations": [],
     "requirement_results": [
@@ -22894,7 +22894,7 @@
     "audit_id": "audit.sim-cscent-007",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-ent.fyp",
     "limitations": [],
     "requirement_results": [
@@ -23037,7 +23037,7 @@
     "audit_id": "audit.sim-cscent-008",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-ent.coursework",
     "limitations": [],
     "requirement_results": [
@@ -23180,7 +23180,7 @@
     "audit_id": "audit.sim-cscent-009",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-ent.fyp",
     "limitations": [],
     "requirement_results": [
@@ -23323,7 +23323,7 @@
     "audit_id": "audit.sim-cscent-010",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.csc-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-ent.coursework",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -23470,7 +23470,7 @@
     "audit_id": "audit.sim-cscent-011",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.csc-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-ent.fyp",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -23617,7 +23617,7 @@
     "audit_id": "audit.sim-cscent-012",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.csc-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-ent.coursework",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -23764,7 +23764,7 @@
     "audit_id": "audit.sim-cscitp-001",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-itp.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-itp.pi-fyp",
     "limitations": [],
     "requirement_results": [
@@ -23907,7 +23907,7 @@
     "audit_id": "audit.sim-cscitp-002",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-itp.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-itp.pi-coursework",
     "limitations": [],
     "requirement_results": [
@@ -24050,7 +24050,7 @@
     "audit_id": "audit.sim-cscitp-003",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-itp.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-itp.pa-fyp",
     "limitations": [],
     "requirement_results": [
@@ -24193,7 +24193,7 @@
     "audit_id": "audit.sim-cscitp-004",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-itp.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-itp.pa-coursework",
     "limitations": [],
     "requirement_results": [
@@ -24336,7 +24336,7 @@
     "audit_id": "audit.sim-cscitp-005",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-itp.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-itp.pi-fyp",
     "limitations": [],
     "requirement_results": [
@@ -24479,7 +24479,7 @@
     "audit_id": "audit.sim-cscitp-006",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-itp.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-itp.pi-coursework",
     "limitations": [],
     "requirement_results": [
@@ -24622,7 +24622,7 @@
     "audit_id": "audit.sim-cscitp-007",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-itp.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-itp.pa-fyp",
     "limitations": [],
     "requirement_results": [
@@ -24765,7 +24765,7 @@
     "audit_id": "audit.sim-cscitp-008",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-itp.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-itp.pa-coursework",
     "limitations": [],
     "requirement_results": [
@@ -24908,7 +24908,7 @@
     "audit_id": "audit.sim-cscitp-009",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-itp.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-itp.pi-fyp",
     "limitations": [],
     "requirement_results": [
@@ -25051,7 +25051,7 @@
     "audit_id": "audit.sim-cscitp-010",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.csc-itp.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-itp.pi-coursework",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -25198,7 +25198,7 @@
     "audit_id": "audit.sim-cscitp-011",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.csc-itp.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-itp.pa-fyp",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -25345,7 +25345,7 @@
     "audit_id": "audit.sim-cscitp-012",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.csc-itp.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-itp.pa-coursework",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -25492,7 +25492,7 @@
     "audit_id": "audit.sim-cscsust-001",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-sust.pi-fyp",
     "limitations": [],
     "requirement_results": [
@@ -25635,7 +25635,7 @@
     "audit_id": "audit.sim-cscsust-002",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-sust.pi-coursework",
     "limitations": [],
     "requirement_results": [
@@ -25778,7 +25778,7 @@
     "audit_id": "audit.sim-cscsust-003",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-sust.pa-fyp",
     "limitations": [],
     "requirement_results": [
@@ -25921,7 +25921,7 @@
     "audit_id": "audit.sim-cscsust-004",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-sust.pa-coursework",
     "limitations": [],
     "requirement_results": [
@@ -26064,7 +26064,7 @@
     "audit_id": "audit.sim-cscsust-005",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-sust.pi-fyp",
     "limitations": [],
     "requirement_results": [
@@ -26207,7 +26207,7 @@
     "audit_id": "audit.sim-cscsust-006",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-sust.pi-coursework",
     "limitations": [],
     "requirement_results": [
@@ -26350,7 +26350,7 @@
     "audit_id": "audit.sim-cscsust-007",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-sust.pa-fyp",
     "limitations": [],
     "requirement_results": [
@@ -26493,7 +26493,7 @@
     "audit_id": "audit.sim-cscsust-008",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-sust.pa-coursework",
     "limitations": [],
     "requirement_results": [
@@ -26636,7 +26636,7 @@
     "audit_id": "audit.sim-cscsust-009",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csc-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-sust.pi-fyp",
     "limitations": [],
     "requirement_results": [
@@ -26779,7 +26779,7 @@
     "audit_id": "audit.sim-cscsust-010",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.csc-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-sust.pi-coursework",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -26926,7 +26926,7 @@
     "audit_id": "audit.sim-cscsust-011",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.csc-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-sust.pa-fyp",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -27073,7 +27073,7 @@
     "audit_id": "audit.sim-cscsust-012",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.csc-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csc-sust.pa-coursework",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -27220,7 +27220,7 @@
     "audit_id": "audit.sim-csec-001",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csec.pi-fyp",
     "limitations": [],
     "requirement_results": [
@@ -27399,7 +27399,7 @@
     "audit_id": "audit.sim-csec-002",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csec.pi-coursework",
     "limitations": [],
     "requirement_results": [
@@ -27578,7 +27578,7 @@
     "audit_id": "audit.sim-csec-003",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csec.pa-fyp",
     "limitations": [],
     "requirement_results": [
@@ -27757,7 +27757,7 @@
     "audit_id": "audit.sim-csec-004",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csec.pa-coursework",
     "limitations": [],
     "requirement_results": [
@@ -27936,7 +27936,7 @@
     "audit_id": "audit.sim-csec-005",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csec.pi-fyp",
     "limitations": [],
     "requirement_results": [
@@ -28115,7 +28115,7 @@
     "audit_id": "audit.sim-csec-006",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csec.pi-coursework",
     "limitations": [],
     "requirement_results": [
@@ -28294,7 +28294,7 @@
     "audit_id": "audit.sim-csec-007",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csec.pa-fyp",
     "limitations": [],
     "requirement_results": [
@@ -28473,7 +28473,7 @@
     "audit_id": "audit.sim-csec-008",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csec.pa-coursework",
     "limitations": [],
     "requirement_results": [
@@ -28652,7 +28652,7 @@
     "audit_id": "audit.sim-csec-009",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.csec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csec.pi-fyp",
     "limitations": [],
     "requirement_results": [
@@ -28831,7 +28831,7 @@
     "audit_id": "audit.sim-csec-010",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.csec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csec.pi-coursework",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -29014,7 +29014,7 @@
     "audit_id": "audit.sim-csec-011",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.csec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csec.pa-fyp",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -29197,7 +29197,7 @@
     "audit_id": "audit.sim-csec-012",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.csec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": "graduation_path.csec.pa-coursework",
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -29380,7 +29380,7 @@
     "audit_id": "audit.sim-dsai-001",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -29523,7 +29523,7 @@
     "audit_id": "audit.sim-dsai-002",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -29666,7 +29666,7 @@
     "audit_id": "audit.sim-dsai-003",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -29809,7 +29809,7 @@
     "audit_id": "audit.sim-dsai-004",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -29952,7 +29952,7 @@
     "audit_id": "audit.sim-dsai-005",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -30095,7 +30095,7 @@
     "audit_id": "audit.sim-dsai-006",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -30238,7 +30238,7 @@
     "audit_id": "audit.sim-dsai-007",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -30381,7 +30381,7 @@
     "audit_id": "audit.sim-dsai-008",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -30524,7 +30524,7 @@
     "audit_id": "audit.sim-dsai-009",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -30667,7 +30667,7 @@
     "audit_id": "audit.sim-dsai-010",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -30810,7 +30810,7 @@
     "audit_id": "audit.sim-dsai-011",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -30953,7 +30953,7 @@
     "audit_id": "audit.sim-dsai-012",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -31096,7 +31096,7 @@
     "audit_id": "audit.sim-dsai-013",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -31239,7 +31239,7 @@
     "audit_id": "audit.sim-dsai-014",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -31382,7 +31382,7 @@
     "audit_id": "audit.sim-dsai-015",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -31525,7 +31525,7 @@
     "audit_id": "audit.sim-dsai-016",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.dsai.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -31672,7 +31672,7 @@
     "audit_id": "audit.sim-dsai-017",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.dsai.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -31819,7 +31819,7 @@
     "audit_id": "audit.sim-dsai-018",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.dsai.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -31966,7 +31966,7 @@
     "audit_id": "audit.sim-dsai-019",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.dsai.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -32113,7 +32113,7 @@
     "audit_id": "audit.sim-dsai-020",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.dsai.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -32260,7 +32260,7 @@
     "audit_id": "audit.sim-dsai-021",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.dsai.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -32407,7 +32407,7 @@
     "audit_id": "audit.sim-dsaisust-001",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -32550,7 +32550,7 @@
     "audit_id": "audit.sim-dsaisust-002",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -32693,7 +32693,7 @@
     "audit_id": "audit.sim-dsaisust-003",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -32836,7 +32836,7 @@
     "audit_id": "audit.sim-dsaisust-004",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -32979,7 +32979,7 @@
     "audit_id": "audit.sim-dsaisust-005",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -33122,7 +33122,7 @@
     "audit_id": "audit.sim-dsaisust-006",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -33265,7 +33265,7 @@
     "audit_id": "audit.sim-dsaisust-007",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -33408,7 +33408,7 @@
     "audit_id": "audit.sim-dsaisust-008",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -33551,7 +33551,7 @@
     "audit_id": "audit.sim-dsaisust-009",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.dsai-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -33694,7 +33694,7 @@
     "audit_id": "audit.sim-dsaisust-010",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.dsai-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -33841,7 +33841,7 @@
     "audit_id": "audit.sim-dsaisust-011",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.dsai-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -33988,7 +33988,7 @@
     "audit_id": "audit.sim-dsaisust-012",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.dsai-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -34135,7 +34135,7 @@
     "audit_id": "audit.sim-macs-001",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.macs.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -34332,7 +34332,7 @@
     "audit_id": "audit.sim-macs-002",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.macs.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -34529,7 +34529,7 @@
     "audit_id": "audit.sim-macs-003",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.macs.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -34726,7 +34726,7 @@
     "audit_id": "audit.sim-macs-004",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.macs.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -34923,7 +34923,7 @@
     "audit_id": "audit.sim-macs-005",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.macs.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -35120,7 +35120,7 @@
     "audit_id": "audit.sim-macs-006",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.macs.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -35317,7 +35317,7 @@
     "audit_id": "audit.sim-macs-007",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.macs.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -35514,7 +35514,7 @@
     "audit_id": "audit.sim-macs-008",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.macs.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -35711,7 +35711,7 @@
     "audit_id": "audit.sim-macs-009",
     "audit_outcome": "NOT_READY",
     "curriculum_id": "curriculum.macs.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [],
     "requirement_results": [
@@ -35908,7 +35908,7 @@
     "audit_id": "audit.sim-macs-010",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.macs.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -36109,7 +36109,7 @@
     "audit_id": "audit.sim-macs-011",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.macs.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."
@@ -36310,7 +36310,7 @@
     "audit_id": "audit.sim-macs-012",
     "audit_outcome": "INDETERMINATE",
     "curriculum_id": "curriculum.macs.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "graduation_path_id": null,
     "limitations": [
       "Public sources do not establish an official graduation clearance."

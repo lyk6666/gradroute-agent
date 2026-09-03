@@ -56,6 +56,9 @@ class ScenarioSummary(ApiModel):
     completed_courses: list[str] = Field(default_factory=list)
     registered_courses: list[str] = Field(default_factory=list)
     supporting_documents: list[str] = Field(default_factory=list)
+    # Demo cases may reveal the expected explanation for teaching and judging.
+    # Evaluation cases deliberately keep this evaluator-only field hidden.
+    expected_response: str | None = None
 
 
 class TimelineItem(ApiModel):

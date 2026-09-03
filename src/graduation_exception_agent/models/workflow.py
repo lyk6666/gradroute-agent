@@ -566,6 +566,7 @@ class ScenarioGroundTruth(DomainModel):
     invalid_paths: list[ResolutionPath] = Field(default_factory=list)
     requires_human: bool
     expected_outcome: ExpectedOutcome
+    expected_response: NonEmptyText
 
     @model_validator(mode="after")
     def disjoint_path_sets(self) -> ScenarioGroundTruth:

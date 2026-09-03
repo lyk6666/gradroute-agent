@@ -346,13 +346,17 @@ def stage3_bundle(
             "observed_state_versions": {str(target_state.state_id): 1},
         },
         injected_event=event,
-        ground_truth=ScenarioGroundTruth(
-            valid_initial_paths=[],
-            valid_final_paths=[],
-            invalid_paths=[],
-            requires_human=False,
-            expected_outcome=ExpectedOutcome.CLARIFICATION_REQUIRED,
-        ),
+            ground_truth=ScenarioGroundTruth(
+                valid_initial_paths=[],
+                valid_final_paths=[],
+                invalid_paths=[],
+                requires_human=False,
+                expected_outcome=ExpectedOutcome.CLARIFICATION_REQUIRED,
+                expected_response=(
+                    "Ask for the missing submission declaration before taking "
+                    "any exception action."
+                ),
+            ),
         **_generation("Scenario", SCENARIO_ID, [curriculum.curriculum_id]),
     )
     counts = {

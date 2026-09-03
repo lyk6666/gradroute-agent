@@ -4,13 +4,14 @@
     "case_id": "case.sim-aisc-001",
     "curriculum_id": "curriculum.aisc.ay2025-26",
     "family": "S1",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Explain that the preferred class 10133 conflicts with the timetable, register conflict-free class 10134 for SC2000 without approval, and verify that the course appears in the final registration.",
       "invalid_paths": [
         {
           "path_id": "path.s1-d01.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course SC2000 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.SC2000",
             "curriculum.aisc.ay2025-26",
@@ -34,7 +35,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s1-d01.conflict-free-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course SC2000 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.SC2000",
             "curriculum.aisc.ay2025-26",
@@ -95,13 +96,14 @@
     "case_id": "case.sim-aisc-002",
     "curriculum_id": "curriculum.aisc.ay2025-26",
     "family": "S1",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Explain that the preferred class 26501 conflicts with the timetable, register conflict-free class 82001 for CC0001 without approval, and verify that the course appears in the final registration.",
       "invalid_paths": [
         {
           "path_id": "path.s1-d02.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course CC0001 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.aisc.ay2025-26",
@@ -125,7 +127,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s1-d02.conflict-free-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course CC0001 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.aisc.ay2025-26",
@@ -186,13 +188,14 @@
     "case_id": "case.sim-aisc-003",
     "curriculum_id": "curriculum.aisc.ay2025-26",
     "family": "S1",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Explain that the preferred class 10364 conflicts with the timetable, register conflict-free class 10365 for MH1812 without approval, and verify that the course appears in the final registration.",
       "invalid_paths": [
         {
           "path_id": "path.s1-d03.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course MH1812 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.MH1812",
             "curriculum.aisc.ay2025-26",
@@ -216,7 +219,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s1-d03.conflict-free-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course MH1812 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.MH1812",
             "curriculum.aisc.ay2025-26",
@@ -277,13 +280,14 @@
     "case_id": "case.sim-aisc-004",
     "curriculum_id": "curriculum.aisc.ay2025-26",
     "family": "S1",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Explain that the preferred class 26504 conflicts with the timetable, register conflict-free class 26503 for CC0003 without approval, and verify that the course appears in the final registration.",
       "invalid_paths": [
         {
           "path_id": "path.s1-d04.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course CC0003 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.CC0003",
             "curriculum.aisc.ay2025-26",
@@ -307,7 +311,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s1-d04.conflict-free-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course CC0003 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.CC0003",
             "curriculum.aisc.ay2025-26",
@@ -368,13 +372,14 @@
     "case_id": "case.sim-aisc-006",
     "curriculum_id": "curriculum.aisc.ay2025-26",
     "family": "S1",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Explain that the preferred class 10328 conflicts with the timetable, register conflict-free class 10329 for SC2304 without approval, and verify that the course appears in the final registration.",
       "invalid_paths": [
         {
           "path_id": "path.s1-e01.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course SC2304 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.SC2304",
             "curriculum.aisc.ay2025-26",
@@ -398,7 +403,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s1-e01.conflict-free-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course SC2304 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.SC2304",
             "curriculum.aisc.ay2025-26",
@@ -459,13 +464,14 @@
     "case_id": "case.sim-bce-001",
     "curriculum_id": "curriculum.bce.ay2025-26",
     "family": "S1",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Explain that the preferred class 10122 conflicts with the timetable, register conflict-free class 10123 for SC1013 without approval, and verify that the course appears in the final registration.",
       "invalid_paths": [
         {
           "path_id": "path.s1-e02.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course SC1013 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.SC1013",
             "curriculum.bce.ay2025-26",
@@ -489,7 +495,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s1-e02.conflict-free-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course SC1013 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.SC1013",
             "curriculum.bce.ay2025-26",
@@ -550,13 +556,14 @@
     "case_id": "case.sim-bce-002",
     "curriculum_id": "curriculum.bce.ay2025-26",
     "family": "S1",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Explain that the preferred class 10353 conflicts with the timetable, register conflict-free class 10354 for EG1001 without approval, and verify that the course appears in the final registration.",
       "invalid_paths": [
         {
           "path_id": "path.s1-e03.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course EG1001 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.EG1001",
             "curriculum.bce.ay2025-26",
@@ -580,7 +587,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s1-e03.conflict-free-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course EG1001 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.EG1001",
             "curriculum.bce.ay2025-26",
@@ -641,13 +648,14 @@
     "case_id": "case.sim-bce-003",
     "curriculum_id": "curriculum.bce.ay2025-26",
     "family": "S1",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Explain that the preferred class 00392 conflicts with the timetable, register conflict-free class 00394 for AB1301 without approval, and verify that the course appears in the final registration.",
       "invalid_paths": [
         {
           "path_id": "path.s1-e04.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course AB1301 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.AB1301",
             "curriculum.bce.ay2025-26",
@@ -671,7 +679,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s1-e04.conflict-free-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course AB1301 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.AB1301",
             "curriculum.bce.ay2025-26",
@@ -732,13 +740,14 @@
     "case_id": "case.sim-bcg-001",
     "curriculum_id": "curriculum.bcg.ay2025-26",
     "family": "S1",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Explain that the preferred class 00392 conflicts with the timetable, register conflict-free class 00394 for AB1301 without approval, and verify that the course appears in the final registration.",
       "invalid_paths": [
         {
           "path_id": "path.s1-e05.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course AB1301 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.AB1301",
             "curriculum.bcg.ay2025-26",
@@ -762,7 +771,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s1-e05.conflict-free-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course AB1301 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.AB1301",
             "curriculum.bcg.ay2025-26",
@@ -823,13 +832,14 @@
     "case_id": "case.sim-bcg-002",
     "curriculum_id": "curriculum.bcg.ay2025-26",
     "family": "S1",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Explain that the preferred class 26504 conflicts with the timetable, register conflict-free class 26503 for CC0003 without approval, and verify that the course appears in the final registration.",
       "invalid_paths": [
         {
           "path_id": "path.s1-e06.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course CC0003 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.CC0003",
             "curriculum.bcg.ay2025-26",
@@ -853,7 +863,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s1-e06.conflict-free-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course CC0003 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.CC0003",
             "curriculum.bcg.ay2025-26",
@@ -914,13 +924,14 @@
     "case_id": "case.sim-bcg-003",
     "curriculum_id": "curriculum.bcg.ay2025-26",
     "family": "S1",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Explain that the preferred class 83501 conflicts with the timetable, register conflict-free class 83506 for CC0015 without approval, and verify that the course appears in the final registration.",
       "invalid_paths": [
         {
           "path_id": "path.s1-e07.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course CC0015 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.CC0015",
             "curriculum.bcg.ay2025-26",
@@ -944,7 +955,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s1-e07.conflict-free-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course CC0015 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.CC0015",
             "curriculum.bcg.ay2025-26",
@@ -1005,13 +1016,14 @@
     "case_id": "case.sim-cedana-001",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
     "family": "S1",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Explain that the preferred class 10122 conflicts with the timetable, register conflict-free class 10123 for SC1013 without approval, and verify that the course appears in the final registration.",
       "invalid_paths": [
         {
           "path_id": "path.s1-e08.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course SC1013 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.SC1013",
             "curriculum.ce-dana.ay2025-26",
@@ -1035,7 +1047,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s1-e08.conflict-free-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course SC1013 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.SC1013",
             "curriculum.ce-dana.ay2025-26",
@@ -1096,13 +1108,14 @@
     "case_id": "case.sim-cedana-002",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
     "family": "S1",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Explain that the preferred class 10353 conflicts with the timetable, register conflict-free class 10354 for EG1001 without approval, and verify that the course appears in the final registration.",
       "invalid_paths": [
         {
           "path_id": "path.s1-e09.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course EG1001 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.EG1001",
             "curriculum.ce-dana.ay2025-26",
@@ -1126,7 +1139,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s1-e09.conflict-free-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course EG1001 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.EG1001",
             "curriculum.ce-dana.ay2025-26",
@@ -1187,13 +1200,14 @@
     "case_id": "case.sim-cedana-003",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
     "family": "S1",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Explain that the preferred class 26504 conflicts with the timetable, register conflict-free class 26503 for CC0003 without approval, and verify that the course appears in the final registration.",
       "invalid_paths": [
         {
           "path_id": "path.s1-e10.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course CC0003 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.CC0003",
             "curriculum.ce-dana.ay2025-26",
@@ -1217,7 +1231,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s1-e10.conflict-free-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course CC0003 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.CC0003",
             "curriculum.ce-dana.ay2025-26",
@@ -1278,13 +1292,14 @@
     "case_id": "case.sim-ceent-001",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
     "family": "S1",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Explain that the preferred class 10122 conflicts with the timetable, register conflict-free class 10123 for SC1013 without approval, and verify that the course appears in the final registration.",
       "invalid_paths": [
         {
           "path_id": "path.s1-e11.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course SC1013 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.SC1013",
             "curriculum.ce-ent.ay2025-26",
@@ -1308,7 +1323,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s1-e11.conflict-free-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course SC1013 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.SC1013",
             "curriculum.ce-ent.ay2025-26",
@@ -1369,13 +1384,14 @@
     "case_id": "case.sim-ceent-002",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
     "family": "S1",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Explain that the preferred class 10353 conflicts with the timetable, register conflict-free class 10354 for EG1001 without approval, and verify that the course appears in the final registration.",
       "invalid_paths": [
         {
           "path_id": "path.s1-e12.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course EG1001 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.EG1001",
             "curriculum.ce-ent.ay2025-26",
@@ -1399,7 +1415,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s1-e12.conflict-free-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course EG1001 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.EG1001",
             "curriculum.ce-ent.ay2025-26",
@@ -1460,13 +1476,14 @@
     "case_id": "case.sim-ceent-003",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
     "family": "S1",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Explain that the preferred class 26504 conflicts with the timetable, register conflict-free class 26503 for CC0003 without approval, and verify that the course appears in the final registration.",
       "invalid_paths": [
         {
           "path_id": "path.s1-e13.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course CC0003 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.CC0003",
             "curriculum.ce-ent.ay2025-26",
@@ -1490,7 +1507,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s1-e13.conflict-free-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course CC0003 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.CC0003",
             "curriculum.ce-ent.ay2025-26",
@@ -1551,13 +1568,14 @@
     "case_id": "case.sim-cesust-001",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
     "family": "S1",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Explain that the preferred class 10122 conflicts with the timetable, register conflict-free class 10123 for SC1013 without approval, and verify that the course appears in the final registration.",
       "invalid_paths": [
         {
           "path_id": "path.s1-e14.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course SC1013 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.SC1013",
             "curriculum.ce-sust.ay2025-26",
@@ -1581,7 +1599,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s1-e14.conflict-free-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course SC1013 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.SC1013",
             "curriculum.ce-sust.ay2025-26",
@@ -1642,13 +1660,14 @@
     "case_id": "case.sim-cesust-002",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
     "family": "S1",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Explain that the preferred class 10353 conflicts with the timetable, register conflict-free class 10354 for EG1001 without approval, and verify that the course appears in the final registration.",
       "invalid_paths": [
         {
           "path_id": "path.s1-e15.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course EG1001 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.EG1001",
             "curriculum.ce-sust.ay2025-26",
@@ -1672,7 +1691,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s1-e15.conflict-free-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course EG1001 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.EG1001",
             "curriculum.ce-sust.ay2025-26",
@@ -1733,13 +1752,14 @@
     "case_id": "case.sim-aisc-005",
     "curriculum_id": "curriculum.aisc.ay2025-26",
     "family": "S1",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Explain that the preferred class 83501 conflicts with the timetable, register conflict-free class 83506 for CC0015 without approval, and verify that the course appears in the final registration.",
       "invalid_paths": [
         {
           "path_id": "path.s1-m01.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course CC0015 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.CC0015",
             "curriculum.aisc.ay2025-26",
@@ -1763,7 +1783,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s1-m01.conflict-free-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The route keeps the required course CC0015 and uses a class that passes current timetable and availability checks.",
           "source_rule_ids": [
             "course.CC0015",
             "curriculum.aisc.ay2025-26",
@@ -1824,15 +1844,16 @@
     "case_id": "case.sim-aisc-012",
     "curriculum_id": "curriculum.aisc.ay2025-26",
     "family": "S2",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Confirm the pending-transfer evidence for SC4002, record CCDS Undergraduate Office approval, submit the prerequisite waiver, and verify the successful waiver result.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [
         {
           "path_id": "path.s2-d01.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC4002 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC4002",
             "curriculum.aisc.ay2025-26",
@@ -1855,7 +1876,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s2-d01.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC4002 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC4002",
             "curriculum.aisc.ay2025-26",
@@ -1918,15 +1939,16 @@
     "case_id": "case.sim-aisc-013",
     "curriculum_id": "curriculum.aisc.ay2025-26",
     "family": "S2",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Confirm the pending-transfer evidence for SC1007, record CCDS Undergraduate Office approval, submit the prerequisite waiver, and verify the successful waiver result.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [
         {
           "path_id": "path.s2-d02.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC1007 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC1007",
             "curriculum.aisc.ay2025-26",
@@ -1949,7 +1971,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s2-d02.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC1007 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC1007",
             "curriculum.aisc.ay2025-26",
@@ -2012,15 +2034,16 @@
     "case_id": "case.sim-aisc-014",
     "curriculum_id": "curriculum.aisc.ay2025-26",
     "family": "S2",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Confirm the pending-transfer evidence for SC2002, record CCDS Undergraduate Office approval, submit the prerequisite waiver, and verify the successful waiver result.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [
         {
           "path_id": "path.s2-d03.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC2002 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC2002",
             "curriculum.aisc.ay2025-26",
@@ -2043,7 +2066,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s2-d03.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC2002 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC2002",
             "curriculum.aisc.ay2025-26",
@@ -2106,15 +2129,16 @@
     "case_id": "case.sim-aisc-015",
     "curriculum_id": "curriculum.aisc.ay2025-26",
     "family": "S2",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Confirm the pending-transfer evidence for SC2001, record CCDS Undergraduate Office approval, submit the prerequisite waiver, and verify the successful waiver result.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [
         {
           "path_id": "path.s2-d04.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC2001 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC2001",
             "curriculum.aisc.ay2025-26",
@@ -2137,7 +2161,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s2-d04.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC2001 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC2001",
             "curriculum.aisc.ay2025-26",
@@ -2200,15 +2224,16 @@
     "case_id": "case.sim-bce-007",
     "curriculum_id": "curriculum.bce.ay2025-26",
     "family": "S2",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Confirm the pending-transfer evidence for SC2001, record CCDS Undergraduate Office approval, submit the prerequisite waiver, and verify the successful waiver result.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [
         {
           "path_id": "path.s2-e01.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC2001 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC2001",
             "curriculum.bce.ay2025-26",
@@ -2231,7 +2256,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s2-e01.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC2001 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC2001",
             "curriculum.bce.ay2025-26",
@@ -2294,15 +2319,16 @@
     "case_id": "case.sim-bce-008",
     "curriculum_id": "curriculum.bce.ay2025-26",
     "family": "S2",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Confirm the pending-transfer evidence for SC2103, record CCDS Undergraduate Office approval, submit the prerequisite waiver, and verify the successful waiver result.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [
         {
           "path_id": "path.s2-e02.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC2103 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC2103",
             "curriculum.bce.ay2025-26",
@@ -2325,7 +2351,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s2-e02.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC2103 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC2103",
             "curriculum.bce.ay2025-26",
@@ -2388,15 +2414,16 @@
     "case_id": "case.sim-bce-009",
     "curriculum_id": "curriculum.bce.ay2025-26",
     "family": "S2",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Confirm the pending-transfer evidence for SC2002, record CCDS Undergraduate Office approval, submit the prerequisite waiver, and verify the successful waiver result.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [
         {
           "path_id": "path.s2-e03.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC2002 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC2002",
             "curriculum.bce.ay2025-26",
@@ -2419,7 +2446,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s2-e03.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC2002 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC2002",
             "curriculum.bce.ay2025-26",
@@ -2482,16 +2509,17 @@
     "case_id": "case.sim-cedana-007",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
     "family": "S2",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "State that the prerequisite waiver for SC2103 was rejected, do not submit it again as approved, and prepare a grounded administrative handoff if no other verified route remains.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s2-e04.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC2103 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC2103",
             "curriculum.ce-dana.ay2025-26",
@@ -2554,16 +2582,17 @@
     "case_id": "case.sim-cedana-008",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
     "family": "S2",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "State that the prerequisite waiver for SC2207 was rejected, do not submit it again as approved, and prepare a grounded administrative handoff if no other verified route remains.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s2-e05.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC2207 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC2207",
             "curriculum.ce-dana.ay2025-26",
@@ -2626,16 +2655,17 @@
     "case_id": "case.sim-cedana-009",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
     "family": "S2",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "State that the prerequisite waiver for SC2005 was rejected, do not submit it again as approved, and prepare a grounded administrative handoff if no other verified route remains.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s2-e06.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC2005 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC2005",
             "curriculum.ce-dana.ay2025-26",
@@ -2698,16 +2728,17 @@
     "case_id": "case.sim-ceent-007",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
     "family": "S2",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "State that the prerequisite waiver for SC2103 was rejected, do not submit it again as approved, and prepare a grounded administrative handoff if no other verified route remains.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s2-e07.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC2103 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC2103",
             "curriculum.ce-ent.ay2025-26",
@@ -2770,16 +2801,17 @@
     "case_id": "case.sim-ceent-008",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
     "family": "S2",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "State that the prerequisite waiver for SC2005 was rejected, do not submit it again as approved, and prepare a grounded administrative handoff if no other verified route remains.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s2-e08.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC2005 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC2005",
             "curriculum.ce-ent.ay2025-26",
@@ -2842,16 +2874,17 @@
     "case_id": "case.sim-ceent-009",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
     "family": "S2",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "State that the prerequisite waiver for SC2006 was rejected, do not submit it again as approved, and prepare a grounded administrative handoff if no other verified route remains.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s2-e09.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC2006 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC2006",
             "curriculum.ce-ent.ay2025-26",
@@ -2914,16 +2947,17 @@
     "case_id": "case.sim-cesust-007",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
     "family": "S2",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "State that the prerequisite waiver for SC2103 was rejected, do not submit it again as approved, and prepare a grounded administrative handoff if no other verified route remains.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s2-e10.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC2103 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC2103",
             "curriculum.ce-sust.ay2025-26",
@@ -2986,16 +3020,17 @@
     "case_id": "case.sim-cesust-008",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
     "family": "S2",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "State that the prerequisite waiver for SC2005 was rejected, do not submit it again as approved, and prepare a grounded administrative handoff if no other verified route remains.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s2-e11.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC2005 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC2005",
             "curriculum.ce-sust.ay2025-26",
@@ -3058,16 +3093,17 @@
     "case_id": "case.sim-cesust-009",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
     "family": "S2",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "PENDING_APPROVAL",
+      "expected_response": "State that the prerequisite waiver for SC2006 is waiting for CCDS Undergraduate Office approval and pause without submitting the waiver.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s2-e12.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC2006 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC2006",
             "curriculum.ce-sust.ay2025-26",
@@ -3130,16 +3166,17 @@
     "case_id": "case.sim-ce-012",
     "curriculum_id": "curriculum.ce.ay2025-26",
     "family": "S2",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "PENDING_APPROVAL",
+      "expected_response": "State that the prerequisite waiver for SC3102 is waiting for CCDS Undergraduate Office approval and pause without submitting the waiver.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s2-e13.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC3102 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC3102",
             "curriculum.ce.ay2025-26",
@@ -3202,16 +3239,17 @@
     "case_id": "case.sim-ce-013",
     "curriculum_id": "curriculum.ce.ay2025-26",
     "family": "S2",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "PENDING_APPROVAL",
+      "expected_response": "State that the prerequisite waiver for HW0288 is waiting for CCDS Undergraduate Office approval and pause without submitting the waiver.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s2-e14.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for HW0288 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.HW0288",
             "curriculum.ce.ay2025-26",
@@ -3274,16 +3312,17 @@
     "case_id": "case.sim-ce-014",
     "curriculum_id": "curriculum.ce.ay2025-26",
     "family": "S2",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "PENDING_APPROVAL",
+      "expected_response": "State that the prerequisite waiver for SC1004 is waiting for CCDS Undergraduate Office approval and pause without submitting the waiver.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s2-e15.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC1004 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC1004",
             "curriculum.ce.ay2025-26",
@@ -3346,15 +3385,16 @@
     "case_id": "case.sim-aisc-016",
     "curriculum_id": "curriculum.aisc.ay2025-26",
     "family": "S2",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Confirm the pending-transfer evidence for SC4002, record CCDS Undergraduate Office approval, submit the prerequisite waiver, and verify the successful waiver result.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [
         {
           "path_id": "path.s2-m01.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC4002 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC4002",
             "curriculum.aisc.ay2025-26",
@@ -3377,7 +3417,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s2-m01.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A waiver for SC4002 is valid only when the pending-transfer evidence and required human approval are both confirmed.",
           "source_rule_ids": [
             "course.SC4002",
             "curriculum.aisc.ay2025-26",
@@ -3440,9 +3480,10 @@
     "case_id": "case.sim-aisc-017",
     "curriculum_id": "curriculum.aisc.ay2025-26",
     "family": "S3",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "CLARIFICATION_REQUIRED",
+      "expected_response": "Ask for the missing curriculum or pathway fact needed to assess SC2000; do not submit an exception while the applicable requirement remains indeterminate.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -3484,9 +3525,10 @@
     "case_id": "case.sim-aisc-018",
     "curriculum_id": "curriculum.aisc.ay2025-26",
     "family": "S3",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "CLARIFICATION_REQUIRED",
+      "expected_response": "Ask for the missing curriculum or pathway fact needed to assess MH2802; do not submit an exception while the applicable requirement remains indeterminate.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -3528,9 +3570,10 @@
     "case_id": "case.sim-aisc-019",
     "curriculum_id": "curriculum.aisc.ay2025-26",
     "family": "S3",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "CLARIFICATION_REQUIRED",
+      "expected_response": "Ask for the missing curriculum or pathway fact needed to assess CC0001; do not submit an exception while the applicable requirement remains indeterminate.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -3572,9 +3615,10 @@
     "case_id": "case.sim-aisc-020",
     "curriculum_id": "curriculum.aisc.ay2025-26",
     "family": "S3",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "CLARIFICATION_REQUIRED",
+      "expected_response": "Ask for the missing curriculum or pathway fact needed to assess SC1007; do not submit an exception while the applicable requirement remains indeterminate.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -3616,9 +3660,10 @@
     "case_id": "case.sim-bce-010",
     "curriculum_id": "curriculum.bce.ay2025-26",
     "family": "S3",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "CLARIFICATION_REQUIRED",
+      "expected_response": "Ask for the missing curriculum or pathway fact needed to assess MH1812; do not submit an exception while the applicable requirement remains indeterminate.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -3660,9 +3705,10 @@
     "case_id": "case.sim-bce-011",
     "curriculum_id": "curriculum.bce.ay2025-26",
     "family": "S3",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "CLARIFICATION_REQUIRED",
+      "expected_response": "Ask for the missing curriculum or pathway fact needed to assess AD1102; do not submit an exception while the applicable requirement remains indeterminate.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -3704,9 +3750,10 @@
     "case_id": "case.sim-bce-012",
     "curriculum_id": "curriculum.bce.ay2025-26",
     "family": "S3",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "CLARIFICATION_REQUIRED",
+      "expected_response": "Ask for the missing curriculum or pathway fact needed to assess AB1601; do not submit an exception while the applicable requirement remains indeterminate.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -3748,9 +3795,10 @@
     "case_id": "case.sim-bcg-010",
     "curriculum_id": "curriculum.bcg.ay2025-26",
     "family": "S3",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "CLARIFICATION_REQUIRED",
+      "expected_response": "Ask for the missing curriculum or pathway fact needed to assess AB1601; do not submit an exception while the applicable requirement remains indeterminate.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -3792,9 +3840,10 @@
     "case_id": "case.sim-bcg-011",
     "curriculum_id": "curriculum.bcg.ay2025-26",
     "family": "S3",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "CLARIFICATION_REQUIRED",
+      "expected_response": "Ask for the missing curriculum or pathway fact needed to assess CC0001; do not submit an exception while the applicable requirement remains indeterminate.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -3836,9 +3885,10 @@
     "case_id": "case.sim-aisc-021",
     "curriculum_id": "curriculum.aisc.ay2025-26",
     "family": "S3",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "CLARIFICATION_REQUIRED",
+      "expected_response": "Ask for the missing curriculum or pathway fact needed to assess SC2002; do not submit an exception while the applicable requirement remains indeterminate.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -3880,16 +3930,17 @@
     "case_id": "case.sim-ce-001",
     "curriculum_id": "curriculum.ce.ay2025-26",
     "family": "S3",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Use the cohort-specific curriculum source for SC1004, retain the stated source limitation, submit the supported graduation exception, and verify the result.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s3-e07.grounded-resolution",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The decision for SC1004 must use the curriculum version attached to this admission cohort and retain any source limitation.",
           "source_rule_ids": [
             "course.SC1004",
             "curriculum.ce.ay2025-26",
@@ -3946,16 +3997,17 @@
     "case_id": "case.sim-ce-002",
     "curriculum_id": "curriculum.ce.ay2025-26",
     "family": "S3",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Use the cohort-specific curriculum source for SC1005, retain the stated source limitation, submit the supported graduation exception, and verify the result.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s3-e08.grounded-resolution",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The decision for SC1005 must use the curriculum version attached to this admission cohort and retain any source limitation.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.ce.ay2025-26",
@@ -4012,16 +4064,17 @@
     "case_id": "case.sim-ce-003",
     "curriculum_id": "curriculum.ce.ay2025-26",
     "family": "S3",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Use the cohort-specific curriculum source for SC1013, retain the stated source limitation, submit the supported graduation exception, and verify the result.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s3-e09.grounded-resolution",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The decision for SC1013 must use the curriculum version attached to this admission cohort and retain any source limitation.",
           "source_rule_ids": [
             "course.SC1013",
             "curriculum.ce.ay2025-26",
@@ -4078,16 +4131,17 @@
     "case_id": "case.sim-ce-004",
     "curriculum_id": "curriculum.ce.ay2025-26",
     "family": "S3",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Use the cohort-specific curriculum source for EG1001, retain the stated source limitation, submit the supported graduation exception, and verify the result.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s3-e10.grounded-resolution",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The decision for EG1001 must use the curriculum version attached to this admission cohort and retain any source limitation.",
           "source_rule_ids": [
             "course.EG1001",
             "curriculum.ce.ay2025-26",
@@ -4144,16 +4198,17 @@
     "case_id": "case.sim-ce-005",
     "curriculum_id": "curriculum.ce.ay2025-26",
     "family": "S3",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Use the cohort-specific curriculum source for CC0003, retain the stated source limitation, submit the supported graduation exception, and verify the result.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s3-e11.grounded-resolution",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The decision for CC0003 must use the curriculum version attached to this admission cohort and retain any source limitation.",
           "source_rule_ids": [
             "course.CC0003",
             "curriculum.ce.ay2025-26",
@@ -4210,16 +4265,17 @@
     "case_id": "case.sim-ceec-001",
     "curriculum_id": "curriculum.ceec.ay2025-26",
     "family": "S3",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Use the cohort-specific curriculum source for SC1013, retain the stated source limitation, submit the supported graduation exception, and verify the result.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s3-e12.grounded-resolution",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The decision for SC1013 must use the curriculum version attached to this admission cohort and retain any source limitation.",
           "source_rule_ids": [
             "course.SC1013",
             "curriculum.ceec.ay2025-26",
@@ -4276,16 +4332,17 @@
     "case_id": "case.sim-ceec-002",
     "curriculum_id": "curriculum.ceec.ay2025-26",
     "family": "S3",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Use the cohort-specific curriculum source for SC1005, retain the stated source limitation, submit the supported graduation exception, and verify the result.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s3-e13.grounded-resolution",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The decision for SC1005 must use the curriculum version attached to this admission cohort and retain any source limitation.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.ceec.ay2025-26",
@@ -4342,16 +4399,17 @@
     "case_id": "case.sim-ceec-003",
     "curriculum_id": "curriculum.ceec.ay2025-26",
     "family": "S3",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Use the cohort-specific curriculum source for EG1001, retain the stated source limitation, submit the supported graduation exception, and verify the result.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s3-e14.grounded-resolution",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The decision for EG1001 must use the curriculum version attached to this admission cohort and retain any source limitation.",
           "source_rule_ids": [
             "course.EG1001",
             "curriculum.ceec.ay2025-26",
@@ -4408,16 +4466,17 @@
     "case_id": "case.sim-cscbusiness-001",
     "curriculum_id": "curriculum.csc-business.ay2025-26",
     "family": "S3",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Use the cohort-specific curriculum source for SC1004, retain the stated source limitation, submit the supported graduation exception, and verify the result.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s3-e15.grounded-resolution",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The decision for SC1004 must use the curriculum version attached to this admission cohort and retain any source limitation.",
           "source_rule_ids": [
             "course.SC1004",
             "curriculum.csc-business.ay2025-26",
@@ -4474,16 +4533,17 @@
     "case_id": "case.sim-dsai-001",
     "curriculum_id": "curriculum.dsai.ay2025-26",
     "family": "S3",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Use the cohort-specific curriculum source for MH1805, retain the stated source limitation, submit the supported graduation exception, and verify the result.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s3-m01.grounded-resolution",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The decision for MH1805 must use the curriculum version attached to this admission cohort and retain any source limitation.",
           "source_rule_ids": [
             "course.MH1805",
             "curriculum.dsai.ay2025-26",
@@ -4540,13 +4600,14 @@
     "case_id": "case.sim-aisc-007",
     "curriculum_id": "curriculum.aisc.ay2025-26",
     "family": "S4",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Reject timetable-conflicting class 84001, record the required approval, register conflict-free class 84005 for CC0006, and verify the final timetable.",
       "invalid_paths": [
         {
           "path_id": "path.s4-d01.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen CC0006 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.CC0006",
             "curriculum.aisc.ay2025-26",
@@ -4569,7 +4630,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s4-d01.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen CC0006 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.CC0006",
             "curriculum.aisc.ay2025-26",
@@ -4593,7 +4654,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s4-d01.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen CC0006 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.CC0006",
             "curriculum.aisc.ay2025-26",
@@ -4661,13 +4722,14 @@
     "case_id": "case.sim-aisc-008",
     "curriculum_id": "curriculum.aisc.ay2025-26",
     "family": "S4",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Reject timetable-conflicting class 83001, record the required approval, register conflict-free class 83004 for ML0004, and verify the final timetable.",
       "invalid_paths": [
         {
           "path_id": "path.s4-d02.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen ML0004 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.ML0004",
             "curriculum.aisc.ay2025-26",
@@ -4690,7 +4752,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s4-d02.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen ML0004 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.ML0004",
             "curriculum.aisc.ay2025-26",
@@ -4714,7 +4776,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s4-d02.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen ML0004 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.ML0004",
             "curriculum.aisc.ay2025-26",
@@ -4782,13 +4844,14 @@
     "case_id": "case.sim-aisc-009",
     "curriculum_id": "curriculum.aisc.ay2025-26",
     "family": "S4",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Reject timetable-conflicting class 84501, record the required approval, register conflict-free class 37501 for CC0007, and verify the final timetable.",
       "invalid_paths": [
         {
           "path_id": "path.s4-d03.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen CC0007 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.CC0007",
             "curriculum.aisc.ay2025-26",
@@ -4811,7 +4874,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s4-d03.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen CC0007 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.CC0007",
             "curriculum.aisc.ay2025-26",
@@ -4835,7 +4898,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s4-d03.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen CC0007 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.CC0007",
             "curriculum.aisc.ay2025-26",
@@ -4903,13 +4966,14 @@
     "case_id": "case.sim-aisc-010",
     "curriculum_id": "curriculum.aisc.ay2025-26",
     "family": "S4",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Reject timetable-conflicting class 10133, record the required approval, register conflict-free class 10134 for SC2000, and verify the final timetable.",
       "invalid_paths": [
         {
           "path_id": "path.s4-d04.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen SC2000 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.SC2000",
             "curriculum.aisc.ay2025-26",
@@ -4932,7 +4996,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s4-d04.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen SC2000 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.SC2000",
             "curriculum.aisc.ay2025-26",
@@ -4956,7 +5020,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s4-d04.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen SC2000 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.SC2000",
             "curriculum.aisc.ay2025-26",
@@ -5024,13 +5088,14 @@
     "case_id": "case.sim-bce-004",
     "curriculum_id": "curriculum.bce.ay2025-26",
     "family": "S4",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Reject timetable-conflicting class 26504, record the required approval, register conflict-free class 26503 for CC0003, and verify the final timetable.",
       "invalid_paths": [
         {
           "path_id": "path.s4-e01.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen CC0003 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.CC0003",
             "curriculum.bce.ay2025-26",
@@ -5053,7 +5118,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s4-e01.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen CC0003 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.CC0003",
             "curriculum.bce.ay2025-26",
@@ -5077,7 +5142,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s4-e01.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen CC0003 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.CC0003",
             "curriculum.bce.ay2025-26",
@@ -5145,13 +5210,14 @@
     "case_id": "case.sim-bce-005",
     "curriculum_id": "curriculum.bce.ay2025-26",
     "family": "S4",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Reject timetable-conflicting class 83501, record the required approval, register conflict-free class 83506 for CC0015, and verify the final timetable.",
       "invalid_paths": [
         {
           "path_id": "path.s4-e02.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen CC0015 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.CC0015",
             "curriculum.bce.ay2025-26",
@@ -5174,7 +5240,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s4-e02.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen CC0015 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.CC0015",
             "curriculum.bce.ay2025-26",
@@ -5198,7 +5264,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s4-e02.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen CC0015 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.CC0015",
             "curriculum.bce.ay2025-26",
@@ -5266,13 +5332,14 @@
     "case_id": "case.sim-bce-006",
     "curriculum_id": "curriculum.bce.ay2025-26",
     "family": "S4",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Reject timetable-conflicting class 10081, record the required approval, register conflict-free class 10082 for SC1005, and verify the final timetable.",
       "invalid_paths": [
         {
           "path_id": "path.s4-e03.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen SC1005 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.bce.ay2025-26",
@@ -5295,7 +5362,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s4-e03.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen SC1005 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.bce.ay2025-26",
@@ -5319,7 +5386,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s4-e03.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen SC1005 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.bce.ay2025-26",
@@ -5387,13 +5454,14 @@
     "case_id": "case.sim-bcg-004",
     "curriculum_id": "curriculum.bcg.ay2025-26",
     "family": "S4",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "Record that the timetable exception for SC1005 was rejected, do not register the approval-bound class, and provide the evidence-backed CCDS handoff.",
       "invalid_paths": [
         {
           "path_id": "path.s4-e04.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen SC1005 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.bcg.ay2025-26",
@@ -5417,7 +5485,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s4-e04.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen SC1005 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.bcg.ay2025-26",
@@ -5485,13 +5553,14 @@
     "case_id": "case.sim-bcg-005",
     "curriculum_id": "curriculum.bcg.ay2025-26",
     "family": "S4",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "Record that the timetable exception for MH1812 was rejected, do not register the approval-bound class, and provide the evidence-backed CCDS handoff.",
       "invalid_paths": [
         {
           "path_id": "path.s4-e05.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen MH1812 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.MH1812",
             "curriculum.bcg.ay2025-26",
@@ -5515,7 +5584,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s4-e05.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen MH1812 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.MH1812",
             "curriculum.bcg.ay2025-26",
@@ -5583,13 +5652,14 @@
     "case_id": "case.sim-bcg-006",
     "curriculum_id": "curriculum.bcg.ay2025-26",
     "family": "S4",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "Record that the timetable exception for AD1102 was rejected, do not register the approval-bound class, and provide the evidence-backed CCDS handoff.",
       "invalid_paths": [
         {
           "path_id": "path.s4-e06.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen AD1102 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.AD1102",
             "curriculum.bcg.ay2025-26",
@@ -5613,7 +5683,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s4-e06.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen AD1102 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.AD1102",
             "curriculum.bcg.ay2025-26",
@@ -5681,13 +5751,14 @@
     "case_id": "case.sim-cedana-004",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
     "family": "S4",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "Record that the timetable exception for CC0015 was rejected, do not register the approval-bound class, and provide the evidence-backed CCDS handoff.",
       "invalid_paths": [
         {
           "path_id": "path.s4-e07.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen CC0015 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.CC0015",
             "curriculum.ce-dana.ay2025-26",
@@ -5711,7 +5782,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s4-e07.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen CC0015 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.CC0015",
             "curriculum.ce-dana.ay2025-26",
@@ -5779,13 +5850,14 @@
     "case_id": "case.sim-cedana-005",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
     "family": "S4",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "Record that the timetable exception for SC1005 was rejected, do not register the approval-bound class, and provide the evidence-backed CCDS handoff.",
       "invalid_paths": [
         {
           "path_id": "path.s4-e08.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen SC1005 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.ce-dana.ay2025-26",
@@ -5809,7 +5881,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s4-e08.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen SC1005 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.ce-dana.ay2025-26",
@@ -5877,13 +5949,14 @@
     "case_id": "case.sim-cedana-006",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
     "family": "S4",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "Record that the timetable exception for MH1812 was rejected, do not register the approval-bound class, and provide the evidence-backed CCDS handoff.",
       "invalid_paths": [
         {
           "path_id": "path.s4-e09.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen MH1812 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.MH1812",
             "curriculum.ce-dana.ay2025-26",
@@ -5907,7 +5980,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s4-e09.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen MH1812 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.MH1812",
             "curriculum.ce-dana.ay2025-26",
@@ -5975,13 +6048,14 @@
     "case_id": "case.sim-ceent-004",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
     "family": "S4",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "Record that the timetable exception for CC0015 was rejected, do not register the approval-bound class, and provide the evidence-backed CCDS handoff.",
       "invalid_paths": [
         {
           "path_id": "path.s4-e10.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen CC0015 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.CC0015",
             "curriculum.ce-ent.ay2025-26",
@@ -6005,7 +6079,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s4-e10.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen CC0015 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.CC0015",
             "curriculum.ce-ent.ay2025-26",
@@ -6073,13 +6147,14 @@
     "case_id": "case.sim-ceent-005",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
     "family": "S4",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "Record that the timetable exception for SC1005 was rejected, do not register the approval-bound class, and provide the evidence-backed CCDS handoff.",
       "invalid_paths": [
         {
           "path_id": "path.s4-e11.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen SC1005 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.ce-ent.ay2025-26",
@@ -6103,7 +6178,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s4-e11.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen SC1005 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.ce-ent.ay2025-26",
@@ -6171,13 +6246,14 @@
     "case_id": "case.sim-ceent-006",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
     "family": "S4",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "PENDING_APPROVAL",
+      "expected_response": "Pause the MH1812 registration while the timetable exception is pending; no approval-bound registration may be submitted yet.",
       "invalid_paths": [
         {
           "path_id": "path.s4-e12.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen MH1812 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.MH1812",
             "curriculum.ce-ent.ay2025-26",
@@ -6201,7 +6277,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s4-e12.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen MH1812 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.MH1812",
             "curriculum.ce-ent.ay2025-26",
@@ -6269,13 +6345,14 @@
     "case_id": "case.sim-cesust-004",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
     "family": "S4",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "PENDING_APPROVAL",
+      "expected_response": "Pause the CC0015 registration while the timetable exception is pending; no approval-bound registration may be submitted yet.",
       "invalid_paths": [
         {
           "path_id": "path.s4-e13.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen CC0015 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.CC0015",
             "curriculum.ce-sust.ay2025-26",
@@ -6299,7 +6376,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s4-e13.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen CC0015 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.CC0015",
             "curriculum.ce-sust.ay2025-26",
@@ -6367,13 +6444,14 @@
     "case_id": "case.sim-cesust-005",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
     "family": "S4",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "PENDING_APPROVAL",
+      "expected_response": "Pause the SC1005 registration while the timetable exception is pending; no approval-bound registration may be submitted yet.",
       "invalid_paths": [
         {
           "path_id": "path.s4-e14.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen SC1005 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.ce-sust.ay2025-26",
@@ -6397,7 +6475,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s4-e14.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen SC1005 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.ce-sust.ay2025-26",
@@ -6465,13 +6543,14 @@
     "case_id": "case.sim-cesust-006",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
     "family": "S4",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "PENDING_APPROVAL",
+      "expected_response": "Pause the MH1812 registration while the timetable exception is pending; no approval-bound registration may be submitted yet.",
       "invalid_paths": [
         {
           "path_id": "path.s4-e15.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen MH1812 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.MH1812",
             "curriculum.ce-sust.ay2025-26",
@@ -6495,7 +6574,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s4-e15.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen MH1812 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.MH1812",
             "curriculum.ce-sust.ay2025-26",
@@ -6563,13 +6642,14 @@
     "case_id": "case.sim-aisc-011",
     "curriculum_id": "curriculum.aisc.ay2025-26",
     "family": "S4",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Reject timetable-conflicting class 26501, record the required approval, register conflict-free class 82001 for CC0001, and verify the final timetable.",
       "invalid_paths": [
         {
           "path_id": "path.s4-m01.invalid-conflicting-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen CC0001 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.aisc.ay2025-26",
@@ -6592,7 +6672,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s4-m01.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen CC0001 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.aisc.ay2025-26",
@@ -6616,7 +6696,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s4-m01.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The chosen CC0001 class must satisfy timetable, workload, availability, and approval checks together.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.aisc.ay2025-26",
@@ -6684,15 +6764,16 @@
     "case_id": "case.sim-bcg-007",
     "curriculum_id": "curriculum.bcg.ay2025-26",
     "family": "S5",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Apply only the graduation_path.bcg.fyp curriculum path, record approval, submit the SC1008 integrated-programme exception, and verify the result.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [
         {
           "path_id": "path.s5-d01.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for SC1008 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.SC1008",
             "curriculum.bcg.ay2025-26",
@@ -6717,7 +6798,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s5-d01.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for SC1008 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.SC1008",
             "curriculum.bcg.ay2025-26",
@@ -6780,15 +6861,16 @@
     "case_id": "case.sim-bcg-008",
     "curriculum_id": "curriculum.bcg.ay2025-26",
     "family": "S5",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Apply only the graduation_path.bcg.coursework curriculum path, record approval, submit the MH1812 integrated-programme exception, and verify the result.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [
         {
           "path_id": "path.s5-d02.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for MH1812 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.MH1812",
             "curriculum.bcg.ay2025-26",
@@ -6813,7 +6895,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s5-d02.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for MH1812 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.MH1812",
             "curriculum.bcg.ay2025-26",
@@ -6876,15 +6958,16 @@
     "case_id": "case.sim-bcg-009",
     "curriculum_id": "curriculum.bcg.ay2025-26",
     "family": "S5",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Apply only the graduation_path.bcg.fyp curriculum path, record approval, submit the AD1102 integrated-programme exception, and verify the result.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [
         {
           "path_id": "path.s5-d03.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for AD1102 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.AD1102",
             "curriculum.bcg.ay2025-26",
@@ -6909,7 +6992,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s5-d03.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for AD1102 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.AD1102",
             "curriculum.bcg.ay2025-26",
@@ -6972,15 +7055,16 @@
     "case_id": "case.sim-ceec-007",
     "curriculum_id": "curriculum.ceec.ay2025-26",
     "family": "S5",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Apply only the PI option : 20-WEEK Professional Internship curriculum path, record approval, submit the CC0015 integrated-programme exception, and verify the result.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [
         {
           "path_id": "path.s5-d04.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for CC0015 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.CC0015",
             "curriculum.ceec.ay2025-26",
@@ -7005,7 +7089,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s5-d04.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for CC0015 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.CC0015",
             "curriculum.ceec.ay2025-26",
@@ -7068,15 +7152,16 @@
     "case_id": "case.sim-ceec-009",
     "curriculum_id": "curriculum.ceec.ay2025-26",
     "family": "S5",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Apply only the PI option : 20-WEEK Professional Internship curriculum path, record approval, submit the SC1007 integrated-programme exception, and verify the result.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [
         {
           "path_id": "path.s5-e01.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for SC1007 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.SC1007",
             "curriculum.ceec.ay2025-26",
@@ -7101,7 +7186,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s5-e01.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for SC1007 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.SC1007",
             "curriculum.ceec.ay2025-26",
@@ -7164,15 +7249,16 @@
     "case_id": "case.sim-cscbusiness-007",
     "curriculum_id": "curriculum.csc-business.ay2025-26",
     "family": "S5",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Apply only the PA option : 10-WEEK Professional Attachment (Graded) curriculum path, record approval, submit the SC1006 integrated-programme exception, and verify the result.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [
         {
           "path_id": "path.s5-e02.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for SC1006 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.SC1006",
             "curriculum.csc-business.ay2025-26",
@@ -7197,7 +7283,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s5-e02.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for SC1006 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.SC1006",
             "curriculum.csc-business.ay2025-26",
@@ -7260,15 +7346,16 @@
     "case_id": "case.sim-cscbusiness-008",
     "curriculum_id": "curriculum.csc-business.ay2025-26",
     "family": "S5",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Apply only the PA option : 10-WEEK Professional Attachment (Graded) curriculum path, record approval, submit the SC1007 integrated-programme exception, and verify the result.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [
         {
           "path_id": "path.s5-e03.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for SC1007 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.SC1007",
             "curriculum.csc-business.ay2025-26",
@@ -7293,7 +7380,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s5-e03.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for SC1007 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.SC1007",
             "curriculum.csc-business.ay2025-26",
@@ -7356,16 +7443,17 @@
     "case_id": "case.sim-cscbusiness-009",
     "curriculum_id": "curriculum.csc-business.ay2025-26",
     "family": "S5",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "State that the SC1008 exception for PI option : 20-WEEK Professional Internship was rejected, avoid mixing another curriculum into the answer, and prepare the correct CCDS handoff.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s5-e04.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for SC1008 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.SC1008",
             "curriculum.csc-business.ay2025-26",
@@ -7428,16 +7516,17 @@
     "case_id": "case.sim-cscent-007",
     "curriculum_id": "curriculum.csc-ent.ay2025-26",
     "family": "S5",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "State that the SC1007 exception for graduation_path.csc-ent.fyp was rejected, avoid mixing another curriculum into the answer, and prepare the correct CCDS handoff.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s5-e05.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for SC1007 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.SC1007",
             "curriculum.csc-ent.ay2025-26",
@@ -7500,16 +7589,17 @@
     "case_id": "case.sim-cscent-008",
     "curriculum_id": "curriculum.csc-ent.ay2025-26",
     "family": "S5",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "State that the SC1008 exception for graduation_path.csc-ent.coursework was rejected, avoid mixing another curriculum into the answer, and prepare the correct CCDS handoff.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s5-e06.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for SC1008 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.SC1008",
             "curriculum.csc-ent.ay2025-26",
@@ -7572,16 +7662,17 @@
     "case_id": "case.sim-cscent-009",
     "curriculum_id": "curriculum.csc-ent.ay2025-26",
     "family": "S5",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "State that the CC0001 exception for graduation_path.csc-ent.fyp was rejected, avoid mixing another curriculum into the answer, and prepare the correct CCDS handoff.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s5-e07.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for CC0001 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.csc-ent.ay2025-26",
@@ -7644,16 +7735,17 @@
     "case_id": "case.sim-cscitp-007",
     "curriculum_id": "curriculum.csc-itp.ay2025-26",
     "family": "S5",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "State that the SC1006 exception for PA option : 10-WEEK Professional Attachment (Graded) was rejected, avoid mixing another curriculum into the answer, and prepare the correct CCDS handoff.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s5-e08.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for SC1006 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.SC1006",
             "curriculum.csc-itp.ay2025-26",
@@ -7716,16 +7808,17 @@
     "case_id": "case.sim-cscitp-008",
     "curriculum_id": "curriculum.csc-itp.ay2025-26",
     "family": "S5",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "State that the SC1007 exception for PA option : 10-WEEK Professional Attachment (Graded) was rejected, avoid mixing another curriculum into the answer, and prepare the correct CCDS handoff.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s5-e09.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for SC1007 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.SC1007",
             "curriculum.csc-itp.ay2025-26",
@@ -7788,16 +7881,17 @@
     "case_id": "case.sim-cscitp-009",
     "curriculum_id": "curriculum.csc-itp.ay2025-26",
     "family": "S5",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "State that the SC1008 exception for PI option : 20-WEEK Professional Internship was rejected, avoid mixing another curriculum into the answer, and prepare the correct CCDS handoff.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s5-e10.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for SC1008 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.SC1008",
             "curriculum.csc-itp.ay2025-26",
@@ -7860,16 +7954,17 @@
     "case_id": "case.sim-cscsust-007",
     "curriculum_id": "curriculum.csc-sust.ay2025-26",
     "family": "S5",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "State that the SC1007 exception for PA option : 10-WEEK Professional Attachment (Graded) was rejected, avoid mixing another curriculum into the answer, and prepare the correct CCDS handoff.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s5-e11.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for SC1007 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.SC1007",
             "curriculum.csc-sust.ay2025-26",
@@ -7932,16 +8027,17 @@
     "case_id": "case.sim-cscsust-008",
     "curriculum_id": "curriculum.csc-sust.ay2025-26",
     "family": "S5",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "PENDING_APPROVAL",
+      "expected_response": "Keep the SC1008 exception bound to PA option : 10-WEEK Professional Attachment (Graded) and pause until the required CCDS approval becomes observable.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s5-e12.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for SC1008 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.SC1008",
             "curriculum.csc-sust.ay2025-26",
@@ -8004,16 +8100,17 @@
     "case_id": "case.sim-cscsust-009",
     "curriculum_id": "curriculum.csc-sust.ay2025-26",
     "family": "S5",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "PENDING_APPROVAL",
+      "expected_response": "Keep the CC0001 exception bound to PI option : 20-WEEK Professional Internship and pause until the required CCDS approval becomes observable.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s5-e13.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for CC0001 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.csc-sust.ay2025-26",
@@ -8076,16 +8173,17 @@
     "case_id": "case.sim-csec-007",
     "curriculum_id": "curriculum.csec.ay2025-26",
     "family": "S5",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "PENDING_APPROVAL",
+      "expected_response": "Keep the SC1007 exception bound to PA option : 10-WEEK Professional Attachment and pause until the required CCDS approval becomes observable.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s5-e14.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for SC1007 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.SC1007",
             "curriculum.csec.ay2025-26",
@@ -8148,16 +8246,17 @@
     "case_id": "case.sim-csec-008",
     "curriculum_id": "curriculum.csec.ay2025-26",
     "family": "S5",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "PENDING_APPROVAL",
+      "expected_response": "Keep the SC1008 exception bound to PA option : 10-WEEK Professional Attachment and pause until the required CCDS approval becomes observable.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [],
       "valid_initial_paths": [
         {
           "path_id": "path.s5-e15.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for SC1008 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.SC1008",
             "curriculum.csec.ay2025-26",
@@ -8220,15 +8319,16 @@
     "case_id": "case.sim-ceec-008",
     "curriculum_id": "curriculum.ceec.ay2025-26",
     "family": "S5",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Apply only the PA option : 10-WEEK Professional Attachment curriculum path, record approval, submit the SC1004 integrated-programme exception, and verify the result.",
       "invalid_paths": [],
       "requires_human": true,
       "valid_final_paths": [
         {
           "path_id": "path.s5-m01.approved-followup",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for SC1004 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.SC1004",
             "curriculum.ceec.ay2025-26",
@@ -8253,7 +8353,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s5-m01.request-approval",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "The exception for SC1004 stays within one declared integrated-programme path and does not merge curricula.",
           "source_rule_ids": [
             "course.SC1004",
             "curriculum.ceec.ay2025-26",
@@ -8316,9 +8416,10 @@
     "case_id": "case.sim-bcg-012",
     "curriculum_id": "curriculum.bcg.ay2025-26",
     "family": "S6",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "CLARIFICATION_REQUIRED",
+      "expected_response": "Ask the student for submission declaration before taking action on SC1006; make no registration or exception write.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -8367,9 +8468,10 @@
     "case_id": "case.sim-cedana-010",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
     "family": "S6",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "Explain that no verified in-scope route remains for CC0001, preserve that limitation, and hand the evidence package to the CCDS Undergraduate Office rather than claiming that no NTU route exists.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -8418,9 +8520,10 @@
     "case_id": "case.sim-cedana-011",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
     "family": "S6",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "CLARIFICATION_REQUIRED",
+      "expected_response": "Ask the student for submission declaration before taking action on SC1006; make no registration or exception write.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -8469,9 +8572,10 @@
     "case_id": "case.sim-cedana-012",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
     "family": "S6",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "Explain that no verified in-scope route remains for SC2000, preserve that limitation, and hand the evidence package to the CCDS Undergraduate Office rather than claiming that no NTU route exists.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -8520,9 +8624,10 @@
     "case_id": "case.sim-ceent-011",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
     "family": "S6",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "Explain that no verified in-scope route remains for SC1006, preserve that limitation, and hand the evidence package to the CCDS Undergraduate Office rather than claiming that no NTU route exists.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -8571,9 +8676,10 @@
     "case_id": "case.sim-ceent-012",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
     "family": "S6",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "CLARIFICATION_REQUIRED",
+      "expected_response": "Ask the student for submission declaration before taking action on SC2000; make no registration or exception write.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -8622,9 +8728,10 @@
     "case_id": "case.sim-cesust-010",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
     "family": "S6",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "Explain that no verified in-scope route remains for CC0001, preserve that limitation, and hand the evidence package to the CCDS Undergraduate Office rather than claiming that no NTU route exists.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -8673,9 +8780,10 @@
     "case_id": "case.sim-cesust-011",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
     "family": "S6",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "CLARIFICATION_REQUIRED",
+      "expected_response": "Ask the student for submission declaration before taking action on SC1006; make no registration or exception write.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -8724,9 +8832,10 @@
     "case_id": "case.sim-cesust-012",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
     "family": "S6",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "Explain that no verified in-scope route remains for SC2000, preserve that limitation, and hand the evidence package to the CCDS Undergraduate Office rather than claiming that no NTU route exists.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -8775,9 +8884,10 @@
     "case_id": "case.sim-ce-017",
     "curriculum_id": "curriculum.ce.ay2025-26",
     "family": "S6",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "CLARIFICATION_REQUIRED",
+      "expected_response": "Ask the student for submission declaration before taking action on SC2107; make no registration or exception write.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -8826,9 +8936,10 @@
     "case_id": "case.sim-ce-018",
     "curriculum_id": "curriculum.ce.ay2025-26",
     "family": "S6",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "Explain that no verified in-scope route remains for CC0007, preserve that limitation, and hand the evidence package to the CCDS Undergraduate Office rather than claiming that no NTU route exists.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -8877,9 +8988,10 @@
     "case_id": "case.sim-ce-019",
     "curriculum_id": "curriculum.ce.ay2025-26",
     "family": "S6",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "CLARIFICATION_REQUIRED",
+      "expected_response": "Ask the student for submission declaration before taking action on ML0004; make no registration or exception write.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -8928,9 +9040,10 @@
     "case_id": "case.sim-ce-020",
     "curriculum_id": "curriculum.ce.ay2025-26",
     "family": "S6",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "Explain that no verified in-scope route remains for SC2103, preserve that limitation, and hand the evidence package to the CCDS Undergraduate Office rather than claiming that no NTU route exists.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -8979,9 +9092,10 @@
     "case_id": "case.sim-ce-021",
     "curriculum_id": "curriculum.ce.ay2025-26",
     "family": "S6",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "CLARIFICATION_REQUIRED",
+      "expected_response": "Ask the student for submission declaration before taking action on SC2005; make no registration or exception write.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -9030,9 +9144,10 @@
     "case_id": "case.sim-ceec-010",
     "curriculum_id": "curriculum.ceec.ay2025-26",
     "family": "S6",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "Explain that no verified in-scope route remains for SC1008, preserve that limitation, and hand the evidence package to the CCDS Undergraduate Office rather than claiming that no NTU route exists.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -9081,9 +9196,10 @@
     "case_id": "case.sim-ceec-011",
     "curriculum_id": "curriculum.ceec.ay2025-26",
     "family": "S6",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "CLARIFICATION_REQUIRED",
+      "expected_response": "Ask the student for submission declaration before taking action on SC1008; make no registration or exception write.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -9132,9 +9248,10 @@
     "case_id": "case.sim-ceec-012",
     "curriculum_id": "curriculum.ceec.ay2025-26",
     "family": "S6",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "Explain that no verified in-scope route remains for CC0001, preserve that limitation, and hand the evidence package to the CCDS Undergraduate Office rather than claiming that no NTU route exists.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -9183,9 +9300,10 @@
     "case_id": "case.sim-cscbusiness-010",
     "curriculum_id": "curriculum.csc-business.ay2025-26",
     "family": "S6",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "CLARIFICATION_REQUIRED",
+      "expected_response": "Ask the student for submission declaration before taking action on CC0001; make no registration or exception write.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -9234,9 +9352,10 @@
     "case_id": "case.sim-cscbusiness-011",
     "curriculum_id": "curriculum.csc-business.ay2025-26",
     "family": "S6",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "ESCALATED",
+      "expected_response": "Explain that no verified in-scope route remains for ML0004, preserve that limitation, and hand the evidence package to the CCDS Undergraduate Office rather than claiming that no NTU route exists.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -9285,9 +9404,10 @@
     "case_id": "case.sim-ceent-010",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
     "family": "S6",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "CLARIFICATION_REQUIRED",
+      "expected_response": "Ask the student for submission declaration before taking action on CC0001; make no registration or exception write.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [],
@@ -9336,13 +9456,14 @@
     "case_id": "case.sim-ce-006",
     "curriculum_id": "curriculum.ce.ay2025-26",
     "family": "S7",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Report that class 10133 for SC2000 failed because of vacancy becomes zero, refresh the offering state, register verified alternative class 10134, and confirm the post-action goal is complete.",
       "invalid_paths": [
         {
           "path_id": "path.s7-d01.invalidated-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for SC2000 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.SC2000",
             "curriculum.ce.ay2025-26",
@@ -9365,7 +9486,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s7-d01.post-event-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for SC2000 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.SC2000",
             "curriculum.ce.ay2025-26",
@@ -9387,7 +9508,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s7-d01.pre-event-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for SC2000 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.SC2000",
             "curriculum.ce.ay2025-26",
@@ -9456,13 +9577,14 @@
     "case_id": "case.sim-ce-007",
     "curriculum_id": "curriculum.ce.ay2025-26",
     "family": "S7",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Report that class 10364 for MH1812 failed because of class becomes unavailable, refresh the offering state, register verified alternative class 10365, and confirm the post-action goal is complete.",
       "invalid_paths": [
         {
           "path_id": "path.s7-d02.invalidated-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for MH1812 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.MH1812",
             "curriculum.ce.ay2025-26",
@@ -9485,7 +9607,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s7-d02.post-event-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for MH1812 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.MH1812",
             "curriculum.ce.ay2025-26",
@@ -9507,7 +9629,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s7-d02.pre-event-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for MH1812 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.MH1812",
             "curriculum.ce.ay2025-26",
@@ -9576,15 +9698,16 @@
     "case_id": "case.sim-ce-008",
     "curriculum_id": "curriculum.ce.ay2025-26",
     "family": "S7",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Report that class 26501 for CC0001 failed because of temporary transaction failure, refresh the offering state, register verified alternative class 26502, and confirm the post-action goal is complete.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [
         {
           "path_id": "path.s7-d03.post-event-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0001 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.ce.ay2025-26",
@@ -9604,7 +9727,7 @@
         },
         {
           "path_id": "path.s7-d03.refreshed-original-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0001 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.ce.ay2025-26",
@@ -9627,7 +9750,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s7-d03.pre-event-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0001 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.ce.ay2025-26",
@@ -9696,13 +9819,14 @@
     "case_id": "case.sim-ce-009",
     "curriculum_id": "curriculum.ce.ay2025-26",
     "family": "S7",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Report that class 37501 for CC0007 failed because of state changed before commit, refresh the offering state, register verified alternative class 37502, and confirm the post-action goal is complete.",
       "invalid_paths": [
         {
           "path_id": "path.s7-d04.invalidated-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0007 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0007",
             "curriculum.ce.ay2025-26",
@@ -9726,7 +9850,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s7-d04.post-event-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0007 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0007",
             "curriculum.ce.ay2025-26",
@@ -9746,7 +9870,7 @@
         },
         {
           "path_id": "path.s7-d04.refreshed-original-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0007 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0007",
             "curriculum.ce.ay2025-26",
@@ -9769,7 +9893,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s7-d04.pre-event-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0007 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0007",
             "curriculum.ce.ay2025-26",
@@ -9838,13 +9962,14 @@
     "case_id": "case.sim-ce-011",
     "curriculum_id": "curriculum.ce.ay2025-26",
     "family": "S7",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Report that class 84001 for CC0006 failed because of class becomes unavailable, refresh the offering state, register verified alternative class 84002, and confirm the post-action goal is complete.",
       "invalid_paths": [
         {
           "path_id": "path.s7-e01.invalidated-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0006 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0006",
             "curriculum.ce.ay2025-26",
@@ -9867,7 +9992,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s7-e01.post-event-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0006 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0006",
             "curriculum.ce.ay2025-26",
@@ -9889,7 +10014,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s7-e01.pre-event-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0006 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0006",
             "curriculum.ce.ay2025-26",
@@ -9958,15 +10083,16 @@
     "case_id": "case.sim-ceec-004",
     "curriculum_id": "curriculum.ceec.ay2025-26",
     "family": "S7",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Report that class 19501 for HE1001 failed because of temporary transaction failure, refresh the offering state, register verified alternative class 19502, and confirm the post-action goal is complete.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [
         {
           "path_id": "path.s7-e02.post-event-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for HE1001 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.HE1001",
             "curriculum.ceec.ay2025-26",
@@ -9986,7 +10112,7 @@
         },
         {
           "path_id": "path.s7-e02.refreshed-original-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for HE1001 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.HE1001",
             "curriculum.ceec.ay2025-26",
@@ -10009,7 +10135,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s7-e02.pre-event-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for HE1001 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.HE1001",
             "curriculum.ceec.ay2025-26",
@@ -10078,13 +10204,14 @@
     "case_id": "case.sim-ceec-005",
     "curriculum_id": "curriculum.ceec.ay2025-26",
     "family": "S7",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Report that class 19511 for HE1002 failed because of state changed before commit, refresh the offering state, register verified alternative class 19512, and confirm the post-action goal is complete.",
       "invalid_paths": [
         {
           "path_id": "path.s7-e03.invalidated-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for HE1002 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.HE1002",
             "curriculum.ceec.ay2025-26",
@@ -10108,7 +10235,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s7-e03.post-event-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for HE1002 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.HE1002",
             "curriculum.ceec.ay2025-26",
@@ -10128,7 +10255,7 @@
         },
         {
           "path_id": "path.s7-e03.refreshed-original-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for HE1002 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.HE1002",
             "curriculum.ceec.ay2025-26",
@@ -10151,7 +10278,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s7-e03.pre-event-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for HE1002 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.HE1002",
             "curriculum.ceec.ay2025-26",
@@ -10220,13 +10347,14 @@
     "case_id": "case.sim-ceec-006",
     "curriculum_id": "curriculum.ceec.ay2025-26",
     "family": "S7",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Report that class 26503 for CC0003 failed because of vacancy becomes zero, refresh the offering state, register verified alternative class 26504, and confirm the post-action goal is complete.",
       "invalid_paths": [
         {
           "path_id": "path.s7-e04.invalidated-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0003 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0003",
             "curriculum.ceec.ay2025-26",
@@ -10249,7 +10377,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s7-e04.post-event-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0003 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0003",
             "curriculum.ceec.ay2025-26",
@@ -10271,7 +10399,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s7-e04.pre-event-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0003 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0003",
             "curriculum.ceec.ay2025-26",
@@ -10340,13 +10468,14 @@
     "case_id": "case.sim-cscbusiness-004",
     "curriculum_id": "curriculum.csc-business.ay2025-26",
     "family": "S7",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Report that class 00095 for AB1201 failed because of class becomes unavailable, refresh the offering state, register verified alternative class 00096, and confirm the post-action goal is complete.",
       "invalid_paths": [
         {
           "path_id": "path.s7-e05.invalidated-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for AB1201 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.AB1201",
             "curriculum.csc-business.ay2025-26",
@@ -10369,7 +10498,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s7-e05.post-event-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for AB1201 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.AB1201",
             "curriculum.csc-business.ay2025-26",
@@ -10391,7 +10520,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s7-e05.pre-event-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for AB1201 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.AB1201",
             "curriculum.csc-business.ay2025-26",
@@ -10460,15 +10589,16 @@
     "case_id": "case.sim-cscbusiness-005",
     "curriculum_id": "curriculum.csc-business.ay2025-26",
     "family": "S7",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Report that class 10081 for SC1005 failed because of temporary transaction failure, refresh the offering state, register verified alternative class 10082, and confirm the post-action goal is complete.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [
         {
           "path_id": "path.s7-e06.post-event-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for SC1005 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.csc-business.ay2025-26",
@@ -10488,7 +10618,7 @@
         },
         {
           "path_id": "path.s7-e06.refreshed-original-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for SC1005 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.csc-business.ay2025-26",
@@ -10511,7 +10641,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s7-e06.pre-event-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for SC1005 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.csc-business.ay2025-26",
@@ -10580,13 +10710,14 @@
     "case_id": "case.sim-cscbusiness-006",
     "curriculum_id": "curriculum.csc-business.ay2025-26",
     "family": "S7",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Report that class 26501 for CC0001 failed because of state changed before commit, refresh the offering state, register verified alternative class 26502, and confirm the post-action goal is complete.",
       "invalid_paths": [
         {
           "path_id": "path.s7-e07.invalidated-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0001 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.csc-business.ay2025-26",
@@ -10610,7 +10741,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s7-e07.post-event-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0001 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.csc-business.ay2025-26",
@@ -10630,7 +10761,7 @@
         },
         {
           "path_id": "path.s7-e07.refreshed-original-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0001 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.csc-business.ay2025-26",
@@ -10653,7 +10784,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s7-e07.pre-event-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0001 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.csc-business.ay2025-26",
@@ -10722,13 +10853,14 @@
     "case_id": "case.sim-cscent-004",
     "curriculum_id": "curriculum.csc-ent.ay2025-26",
     "family": "S7",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Report that class 10081 for SC1005 failed because of vacancy becomes zero, refresh the offering state, register verified alternative class 10082, and confirm the post-action goal is complete.",
       "invalid_paths": [
         {
           "path_id": "path.s7-e08.invalidated-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for SC1005 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.csc-ent.ay2025-26",
@@ -10751,7 +10883,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s7-e08.post-event-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for SC1005 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.csc-ent.ay2025-26",
@@ -10773,7 +10905,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s7-e08.pre-event-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for SC1005 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.csc-ent.ay2025-26",
@@ -10842,13 +10974,14 @@
     "case_id": "case.sim-cscent-005",
     "curriculum_id": "curriculum.csc-ent.ay2025-26",
     "family": "S7",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Report that class 26501 for CC0001 failed because of class becomes unavailable, refresh the offering state, register verified alternative class 26502, and confirm the post-action goal is complete.",
       "invalid_paths": [
         {
           "path_id": "path.s7-e09.invalidated-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0001 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.csc-ent.ay2025-26",
@@ -10871,7 +11004,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s7-e09.post-event-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0001 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.csc-ent.ay2025-26",
@@ -10893,7 +11026,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s7-e09.pre-event-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0001 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.csc-ent.ay2025-26",
@@ -10962,15 +11095,16 @@
     "case_id": "case.sim-cscent-006",
     "curriculum_id": "curriculum.csc-ent.ay2025-26",
     "family": "S7",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Report that class 83001 for ML0004 failed because of temporary transaction failure, refresh the offering state, register verified alternative class 83002, and confirm the post-action goal is complete.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [
         {
           "path_id": "path.s7-e10.post-event-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for ML0004 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.ML0004",
             "curriculum.csc-ent.ay2025-26",
@@ -10990,7 +11124,7 @@
         },
         {
           "path_id": "path.s7-e10.refreshed-original-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for ML0004 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.ML0004",
             "curriculum.csc-ent.ay2025-26",
@@ -11013,7 +11147,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s7-e10.pre-event-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for ML0004 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.ML0004",
             "curriculum.csc-ent.ay2025-26",
@@ -11082,13 +11216,14 @@
     "case_id": "case.sim-cscitp-004",
     "curriculum_id": "curriculum.csc-itp.ay2025-26",
     "family": "S7",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Report that class 00095 for AB1201 failed because of state changed before commit, refresh the offering state, register verified alternative class 00096, and confirm the post-action goal is complete.",
       "invalid_paths": [
         {
           "path_id": "path.s7-e11.invalidated-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for AB1201 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.AB1201",
             "curriculum.csc-itp.ay2025-26",
@@ -11112,7 +11247,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s7-e11.post-event-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for AB1201 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.AB1201",
             "curriculum.csc-itp.ay2025-26",
@@ -11132,7 +11267,7 @@
         },
         {
           "path_id": "path.s7-e11.refreshed-original-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for AB1201 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.AB1201",
             "curriculum.csc-itp.ay2025-26",
@@ -11155,7 +11290,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s7-e11.pre-event-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for AB1201 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.AB1201",
             "curriculum.csc-itp.ay2025-26",
@@ -11224,13 +11359,14 @@
     "case_id": "case.sim-cscitp-005",
     "curriculum_id": "curriculum.csc-itp.ay2025-26",
     "family": "S7",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Report that class 10081 for SC1005 failed because of vacancy becomes zero, refresh the offering state, register verified alternative class 10082, and confirm the post-action goal is complete.",
       "invalid_paths": [
         {
           "path_id": "path.s7-e12.invalidated-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for SC1005 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.csc-itp.ay2025-26",
@@ -11253,7 +11389,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s7-e12.post-event-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for SC1005 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.csc-itp.ay2025-26",
@@ -11275,7 +11411,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s7-e12.pre-event-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for SC1005 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.csc-itp.ay2025-26",
@@ -11344,13 +11480,14 @@
     "case_id": "case.sim-cscitp-006",
     "curriculum_id": "curriculum.csc-itp.ay2025-26",
     "family": "S7",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Report that class 26501 for CC0001 failed because of class becomes unavailable, refresh the offering state, register verified alternative class 26502, and confirm the post-action goal is complete.",
       "invalid_paths": [
         {
           "path_id": "path.s7-e13.invalidated-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0001 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.csc-itp.ay2025-26",
@@ -11373,7 +11510,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s7-e13.post-event-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0001 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.csc-itp.ay2025-26",
@@ -11395,7 +11532,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s7-e13.pre-event-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0001 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.csc-itp.ay2025-26",
@@ -11464,15 +11601,16 @@
     "case_id": "case.sim-cscsust-004",
     "curriculum_id": "curriculum.csc-sust.ay2025-26",
     "family": "S7",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Report that class 10081 for SC1005 failed because of temporary transaction failure, refresh the offering state, register verified alternative class 10082, and confirm the post-action goal is complete.",
       "invalid_paths": [],
       "requires_human": false,
       "valid_final_paths": [
         {
           "path_id": "path.s7-e14.post-event-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for SC1005 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.csc-sust.ay2025-26",
@@ -11492,7 +11630,7 @@
         },
         {
           "path_id": "path.s7-e14.refreshed-original-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for SC1005 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.csc-sust.ay2025-26",
@@ -11515,7 +11653,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s7-e14.pre-event-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for SC1005 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.SC1005",
             "curriculum.csc-sust.ay2025-26",
@@ -11584,13 +11722,14 @@
     "case_id": "case.sim-cscsust-005",
     "curriculum_id": "curriculum.csc-sust.ay2025-26",
     "family": "S7",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Report that class 26501 for CC0001 failed because of state changed before commit, refresh the offering state, register verified alternative class 26502, and confirm the post-action goal is complete.",
       "invalid_paths": [
         {
           "path_id": "path.s7-e15.invalidated-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0001 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.csc-sust.ay2025-26",
@@ -11614,7 +11753,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s7-e15.post-event-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0001 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.csc-sust.ay2025-26",
@@ -11634,7 +11773,7 @@
         },
         {
           "path_id": "path.s7-e15.refreshed-original-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0001 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.csc-sust.ay2025-26",
@@ -11657,7 +11796,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s7-e15.pre-event-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for CC0001 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.CC0001",
             "curriculum.csc-sust.ay2025-26",
@@ -11726,13 +11865,14 @@
     "case_id": "case.sim-ce-010",
     "curriculum_id": "curriculum.ce.ay2025-26",
     "family": "S7",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "ground_truth": {
       "expected_outcome": "RESOLVED",
+      "expected_response": "Report that class 83008 for ML0004 failed because of vacancy becomes zero, refresh the offering state, register verified alternative class 83001, and confirm the post-action goal is complete.",
       "invalid_paths": [
         {
           "path_id": "path.s7-m01.invalidated-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for ML0004 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.ML0004",
             "curriculum.ce.ay2025-26",
@@ -11755,7 +11895,7 @@
       "valid_final_paths": [
         {
           "path_id": "path.s7-m01.post-event-alternative",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for ML0004 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.ML0004",
             "curriculum.ce.ay2025-26",
@@ -11777,7 +11917,7 @@
       "valid_initial_paths": [
         {
           "path_id": "path.s7-m01.pre-event-index",
-          "rationale": "The path is constrained by the selected curriculum, observable workflow state, and grounded index templates.",
+          "rationale": "A failed registration for ML0004 must trigger a fresh availability check before a verified alternative is attempted.",
           "source_rule_ids": [
             "course.ML0004",
             "curriculum.ce.ay2025-26",

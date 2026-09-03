@@ -14,15 +14,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register SC2000 in a currently feasible class and confirm that it satisfies the outstanding requirement.",
     "policy_section_ids": [
       "policy.registration.stars_guide.functions"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2000 after normal registration.",
+    "reason": "I am a Year 4 AISC student from AY2025-26 with 128.0 earned AUs. SC2000 is still outstanding, and my preferred class conflicts with my current timetable (CC0001, HW0001). During Add/Drop, please help me find a conflict-free class for the same course rather than substitute another course.",
     "registration_id": "registration.sim-aisc-001",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Check the available classes for SC2000 and register a conflict-free option if all current checks pass.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1386734700,
     "simulation_scope_id": "scope.aisc.terminal",
@@ -60,15 +60,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register CC0001 in a currently feasible class and confirm that it satisfies the outstanding requirement.",
     "policy_section_ids": [
       "policy.registration.stars_guide.functions"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0001 after normal registration.",
+    "reason": "I am a Year 4 AISC student from AY2025-26 with 129.0 earned AUs. CC0001 is still outstanding, and my preferred class conflicts with my current timetable (CC0007). During Add/Drop, please help me find a conflict-free class for the same course rather than substitute another course.",
     "registration_id": "registration.sim-aisc-002",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Check the available classes for CC0001 and register a conflict-free option if all current checks pass.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1293012931,
     "simulation_scope_id": "scope.aisc.terminal",
@@ -106,15 +106,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register MH1812 in a currently feasible class and confirm that it satisfies the outstanding requirement.",
     "policy_section_ids": [
       "policy.registration.stars_guide.functions"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning MH1812 after normal registration.",
+    "reason": "I am a Year 4 AISC student from AY2025-26 with 128.0 earned AUs. MH1812 is still outstanding, and my preferred class conflicts with my current timetable (CC0001). During Add/Drop, please help me find a conflict-free class for the same course rather than substitute another course.",
     "registration_id": "registration.sim-aisc-003",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Check the available classes for MH1812 and register a conflict-free option if all current checks pass.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1791505511,
     "simulation_scope_id": "scope.aisc.terminal",
@@ -152,15 +152,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register CC0003 in a currently feasible class and confirm that it satisfies the outstanding requirement.",
     "policy_section_ids": [
       "policy.registration.stars_guide.functions"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0003 after normal registration.",
+    "reason": "I am a Year 4 AISC student from AY2025-26 with 129.0 earned AUs. CC0003 is still outstanding, and my preferred class conflicts with my current timetable (CC0006). During Add/Drop, please help me find a conflict-free class for the same course rather than substitute another course.",
     "registration_id": "registration.sim-aisc-004",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Check the available classes for CC0003 and register a conflict-free option if all current checks pass.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 651656249,
     "simulation_scope_id": "scope.aisc.terminal",
@@ -198,15 +198,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register CC0015 in a currently feasible class and confirm that it satisfies the outstanding requirement.",
     "policy_section_ids": [
       "policy.registration.stars_guide.functions"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0015 after normal registration.",
+    "reason": "I am a Year 4 AISC student from AY2025-26 with 129.0 earned AUs. CC0015 is still outstanding, and my preferred class conflicts with my current timetable (CC0001). During Add/Drop, please help me find a conflict-free class for the same course rather than substitute another course.",
     "registration_id": "registration.sim-aisc-005",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Check the available classes for CC0015 and register a conflict-free option if all current checks pass.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1512609444,
     "simulation_scope_id": "scope.aisc.terminal",
@@ -244,15 +244,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register SC2304 in a currently feasible class and confirm that it satisfies the outstanding requirement.",
     "policy_section_ids": [
       "policy.registration.stars_guide.functions"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2304 after normal registration.",
+    "reason": "I am a Year 4 AISC student from AY2025-26 with 128.0 earned AUs. SC2304 is still outstanding, and my preferred class conflicts with my current timetable (CC0001). During Add/Drop, please help me find a conflict-free class for the same course rather than substitute another course.",
     "registration_id": "registration.sim-aisc-006",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Check the available classes for SC2304 and register a conflict-free option if all current checks pass.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 121825717,
     "simulation_scope_id": "scope.aisc.terminal",
@@ -290,15 +290,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Find an academically valid, conflict-free class for CC0006 and proceed only after any required approval is observed.",
     "policy_section_ids": [
       "unknown.exception.general_clash_waiver"
     ],
     "problem_type": "TIMETABLE_CONFLICT",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0006 after normal registration.",
+    "reason": "I am a Year 4 AISC student from AY2025-26 with 128.0 earned AUs. CC0006 is outstanding, but the class I first selected clashes with my current timetable (CC0007). Please check whether a conflict-free class can be used through the required timetable-exception process.",
     "registration_id": "registration.sim-aisc-007",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the timetable exception for CC0006, then register a verified conflict-free class if approval is granted.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1561659811,
     "simulation_scope_id": "scope.aisc.terminal",
@@ -336,15 +336,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Find an academically valid, conflict-free class for ML0004 and proceed only after any required approval is observed.",
     "policy_section_ids": [
       "unknown.exception.general_clash_waiver"
     ],
     "problem_type": "TIMETABLE_CONFLICT",
-    "reason": "Terminal-stage registration or graduation exception concerning ML0004 after normal registration.",
+    "reason": "I am a Year 4 AISC student from AY2025-26 with 129.0 earned AUs. ML0004 is outstanding, but the class I first selected clashes with my current timetable (CC0001). Please check whether a conflict-free class can be used through the required timetable-exception process.",
     "registration_id": "registration.sim-aisc-008",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the timetable exception for ML0004, then register a verified conflict-free class if approval is granted.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1045793382,
     "simulation_scope_id": "scope.aisc.terminal",
@@ -382,15 +382,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Find an academically valid, conflict-free class for CC0007 and proceed only after any required approval is observed.",
     "policy_section_ids": [
       "unknown.exception.general_clash_waiver"
     ],
     "problem_type": "TIMETABLE_CONFLICT",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0007 after normal registration.",
+    "reason": "I am a Year 4 AISC student from AY2025-26 with 128.0 earned AUs. CC0007 is outstanding, but the class I first selected clashes with my current timetable (CC0006). Please check whether a conflict-free class can be used through the required timetable-exception process.",
     "registration_id": "registration.sim-aisc-009",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the timetable exception for CC0007, then register a verified conflict-free class if approval is granted.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1682297733,
     "simulation_scope_id": "scope.aisc.terminal",
@@ -428,15 +428,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Find an academically valid, conflict-free class for SC2000 and proceed only after any required approval is observed.",
     "policy_section_ids": [
       "unknown.exception.general_clash_waiver"
     ],
     "problem_type": "TIMETABLE_CONFLICT",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2000 after normal registration.",
+    "reason": "I am a Year 4 AISC student from AY2025-26 with 128.0 earned AUs. SC2000 is outstanding, but the class I first selected clashes with my current timetable (CC0001). Please check whether a conflict-free class can be used through the required timetable-exception process.",
     "registration_id": "registration.sim-aisc-010",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the timetable exception for SC2000, then register a verified conflict-free class if approval is granted.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 576818027,
     "simulation_scope_id": "scope.aisc.terminal",
@@ -474,15 +474,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Find an academically valid, conflict-free class for CC0001 and proceed only after any required approval is observed.",
     "policy_section_ids": [
       "unknown.exception.general_clash_waiver"
     ],
     "problem_type": "TIMETABLE_CONFLICT",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0001 after normal registration.",
+    "reason": "I am a Year 4 AISC student from AY2025-26 with 129.0 earned AUs. CC0001 is outstanding, but the class I first selected clashes with my current timetable (CC0007). Please check whether a conflict-free class can be used through the required timetable-exception process.",
     "registration_id": "registration.sim-aisc-011",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the timetable exception for CC0001, then register a verified conflict-free class if approval is granted.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 898876393,
     "simulation_scope_id": "scope.aisc.terminal",
@@ -538,15 +538,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Have the pending-transfer evidence for SC4002 reviewed and use only a supported waiver route; otherwise explain the safe escalation.",
     "policy_section_ids": [
       "policy.exception.exchange.pending_transfer"
     ],
     "problem_type": "PREREQUISITE_WAIVER",
-    "reason": "Terminal-stage registration or graduation exception concerning SC4002 after normal registration.",
+    "reason": "I am a Year 4 AISC student from AY2025-26 with 128.0 earned AUs, and SC4002 is required for my remaining study plan. I passed the simulated exchange course FX2001, but the transfer is still pending; my transcript and both course mappings are attached. Please check whether this evidence supports the documented prerequisite-exception route.",
     "registration_id": "registration.sim-aisc-012",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the exchange evidence for SC4002 and submit the prerequisite-waiver request only if the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1641275463,
     "simulation_scope_id": "scope.aisc.terminal",
@@ -620,15 +620,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Have the pending-transfer evidence for SC1007 reviewed and use only a supported waiver route; otherwise explain the safe escalation.",
     "policy_section_ids": [
       "policy.exception.exchange.pending_transfer"
     ],
     "problem_type": "PREREQUISITE_WAIVER",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1007 after normal registration.",
+    "reason": "I am a Year 4 AISC student from AY2025-26 with 128.0 earned AUs, and SC1007 is required for my remaining study plan. I passed the simulated exchange course FX2001, but the transfer is still pending; my transcript and both course mappings are attached. Please check whether this evidence supports the documented prerequisite-exception route.",
     "registration_id": "registration.sim-aisc-013",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the exchange evidence for SC1007 and submit the prerequisite-waiver request only if the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 552881005,
     "simulation_scope_id": "scope.aisc.terminal",
@@ -702,15 +702,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Have the pending-transfer evidence for SC2002 reviewed and use only a supported waiver route; otherwise explain the safe escalation.",
     "policy_section_ids": [
       "policy.exception.exchange.pending_transfer"
     ],
     "problem_type": "PREREQUISITE_WAIVER",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2002 after normal registration.",
+    "reason": "I am a Year 4 AISC student from AY2025-26 with 128.0 earned AUs, and SC2002 is required for my remaining study plan. I passed the simulated exchange course FX2001, but the transfer is still pending; my transcript and both course mappings are attached. Please check whether this evidence supports the documented prerequisite-exception route.",
     "registration_id": "registration.sim-aisc-014",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the exchange evidence for SC2002 and submit the prerequisite-waiver request only if the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 828659335,
     "simulation_scope_id": "scope.aisc.terminal",
@@ -784,15 +784,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Have the pending-transfer evidence for SC2001 reviewed and use only a supported waiver route; otherwise explain the safe escalation.",
     "policy_section_ids": [
       "policy.exception.exchange.pending_transfer"
     ],
     "problem_type": "PREREQUISITE_WAIVER",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2001 after normal registration.",
+    "reason": "I am a Year 4 AISC student from AY2025-26 with 128.0 earned AUs, and SC2001 is required for my remaining study plan. I passed the simulated exchange course FX2001, but the transfer is still pending; my transcript and both course mappings are attached. Please check whether this evidence supports the documented prerequisite-exception route.",
     "registration_id": "registration.sim-aisc-015",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the exchange evidence for SC2001 and submit the prerequisite-waiver request only if the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 254203366,
     "simulation_scope_id": "scope.aisc.terminal",
@@ -866,15 +866,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Have the pending-transfer evidence for SC4002 reviewed and use only a supported waiver route; otherwise explain the safe escalation.",
     "policy_section_ids": [
       "policy.exception.exchange.pending_transfer"
     ],
     "problem_type": "PREREQUISITE_WAIVER",
-    "reason": "Terminal-stage registration or graduation exception concerning SC4002 after normal registration.",
+    "reason": "I am a Year 4 AISC student from AY2025-26 with 128.0 earned AUs, and SC4002 is required for my remaining study plan. I passed the simulated exchange course FX2001, but the transfer is still pending; my transcript and both course mappings are attached. Please check whether this evidence supports the documented prerequisite-exception route.",
     "registration_id": "registration.sim-aisc-016",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the exchange evidence for SC4002 and submit the prerequisite-waiver request only if the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 874644994,
     "simulation_scope_id": "scope.aisc.terminal",
@@ -930,15 +930,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Apply the correct cohort-specific curriculum to SC2000 and either resolve the graduation issue or identify the exact missing fact.",
     "policy_section_ids": [
       "policy.registration.graduation_baseline"
     ],
     "problem_type": "GRADUATION_REQUIREMENT",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2000 after normal registration.",
+    "reason": "I am a Year 4 AISC student from AY2025-26 with 128.0 earned AUs, and my degree audit is indeterminate with SC2000 still affecting graduation clearance. Please determine which dated curriculum rules apply to my cohort before recommending an exception.",
     "registration_id": "registration.sim-aisc-017",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Assess SC2000 against the applicable curriculum version and preserve any source limitation or conflict in the answer.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 481758165,
     "simulation_scope_id": "scope.aisc.terminal",
@@ -976,15 +976,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Apply the correct cohort-specific curriculum to MH2802 and either resolve the graduation issue or identify the exact missing fact.",
     "policy_section_ids": [
       "policy.registration.graduation_baseline"
     ],
     "problem_type": "GRADUATION_REQUIREMENT",
-    "reason": "Terminal-stage registration or graduation exception concerning MH2802 after normal registration.",
+    "reason": "I am a Year 4 AISC student from AY2025-26 with 128.0 earned AUs, and my degree audit is indeterminate with MH2802 still affecting graduation clearance. Please determine which dated curriculum rules apply to my cohort before recommending an exception.",
     "registration_id": "registration.sim-aisc-018",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Assess MH2802 against the applicable curriculum version and preserve any source limitation or conflict in the answer.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1873815803,
     "simulation_scope_id": "scope.aisc.terminal",
@@ -1022,15 +1022,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Apply the correct cohort-specific curriculum to CC0001 and either resolve the graduation issue or identify the exact missing fact.",
     "policy_section_ids": [
       "policy.registration.graduation_baseline"
     ],
     "problem_type": "GRADUATION_REQUIREMENT",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0001 after normal registration.",
+    "reason": "I am a Year 4 AISC student from AY2025-26 with 129.0 earned AUs, and my degree audit is indeterminate with CC0001 still affecting graduation clearance. Please determine which dated curriculum rules apply to my cohort before recommending an exception.",
     "registration_id": "registration.sim-aisc-019",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Assess CC0001 against the applicable curriculum version and preserve any source limitation or conflict in the answer.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1676477592,
     "simulation_scope_id": "scope.aisc.terminal",
@@ -1068,15 +1068,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Apply the correct cohort-specific curriculum to SC1007 and either resolve the graduation issue or identify the exact missing fact.",
     "policy_section_ids": [
       "policy.registration.graduation_baseline"
     ],
     "problem_type": "GRADUATION_REQUIREMENT",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1007 after normal registration.",
+    "reason": "I am a Year 4 AISC student from AY2025-26 with 128.0 earned AUs, and my degree audit is indeterminate with SC1007 still affecting graduation clearance. Please determine which dated curriculum rules apply to my cohort before recommending an exception.",
     "registration_id": "registration.sim-aisc-020",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Assess SC1007 against the applicable curriculum version and preserve any source limitation or conflict in the answer.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1494593113,
     "simulation_scope_id": "scope.aisc.terminal",
@@ -1114,15 +1114,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Apply the correct cohort-specific curriculum to SC2002 and either resolve the graduation issue or identify the exact missing fact.",
     "policy_section_ids": [
       "policy.registration.graduation_baseline"
     ],
     "problem_type": "GRADUATION_REQUIREMENT",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2002 after normal registration.",
+    "reason": "I am a Year 4 AISC student from AY2025-26 with 128.0 earned AUs, and my degree audit is indeterminate with SC2002 still affecting graduation clearance. Please determine which dated curriculum rules apply to my cohort before recommending an exception.",
     "registration_id": "registration.sim-aisc-021",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Assess SC2002 against the applicable curriculum version and preserve any source limitation or conflict in the answer.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 363303922,
     "simulation_scope_id": "scope.aisc.terminal",
@@ -1160,15 +1160,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register SC1013 in a currently feasible class and confirm that it satisfies the outstanding requirement.",
     "policy_section_ids": [
       "policy.registration.stars_guide.functions"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1013 after normal registration.",
+    "reason": "I am a Year 4 BCE student from AY2025-26 with 154.0 earned AUs. SC1013 is still outstanding, and my preferred class conflicts with my current timetable (CC0003). During Add/Drop, please help me find a conflict-free class for the same course rather than substitute another course.",
     "registration_id": "registration.sim-bce-001",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Check the available classes for SC1013 and register a conflict-free option if all current checks pass.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1616008366,
     "simulation_scope_id": "scope.bce.terminal",
@@ -1206,15 +1206,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register EG1001 in a currently feasible class and confirm that it satisfies the outstanding requirement.",
     "policy_section_ids": [
       "policy.registration.stars_guide.functions"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning EG1001 after normal registration.",
+    "reason": "I am a Year 4 BCE student from AY2025-26 with 154.0 earned AUs. EG1001 is still outstanding, and my preferred class conflicts with my current timetable (AB1201). During Add/Drop, please help me find a conflict-free class for the same course rather than substitute another course.",
     "registration_id": "registration.sim-bce-002",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Check the available classes for EG1001 and register a conflict-free option if all current checks pass.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 42135621,
     "simulation_scope_id": "scope.bce.terminal",
@@ -1252,15 +1252,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register AB1301 in a currently feasible class and confirm that it satisfies the outstanding requirement.",
     "policy_section_ids": [
       "policy.registration.stars_guide.functions"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning AB1301 after normal registration.",
+    "reason": "I am a Year 4 BCE student from AY2025-26 with 153.0 earned AUs. AB1301 is still outstanding, and my preferred class conflicts with my current timetable (AB1201). During Add/Drop, please help me find a conflict-free class for the same course rather than substitute another course.",
     "registration_id": "registration.sim-bce-003",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Check the available classes for AB1301 and register a conflict-free option if all current checks pass.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 223773895,
     "simulation_scope_id": "scope.bce.terminal",
@@ -1298,15 +1298,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Find an academically valid, conflict-free class for CC0003 and proceed only after any required approval is observed.",
     "policy_section_ids": [
       "unknown.exception.general_clash_waiver"
     ],
     "problem_type": "TIMETABLE_CONFLICT",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0003 after normal registration.",
+    "reason": "I am a Year 4 BCE student from AY2025-26 with 154.0 earned AUs. CC0003 is outstanding, but the class I first selected clashes with my current timetable (CC0006). Please check whether a conflict-free class can be used through the required timetable-exception process.",
     "registration_id": "registration.sim-bce-004",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the timetable exception for CC0003, then register a verified conflict-free class if approval is granted.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 990684510,
     "simulation_scope_id": "scope.bce.terminal",
@@ -1344,15 +1344,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Find an academically valid, conflict-free class for CC0015 and proceed only after any required approval is observed.",
     "policy_section_ids": [
       "unknown.exception.general_clash_waiver"
     ],
     "problem_type": "TIMETABLE_CONFLICT",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0015 after normal registration.",
+    "reason": "I am a Year 4 BCE student from AY2025-26 with 154.0 earned AUs. CC0015 is outstanding, but the class I first selected clashes with my current timetable (AB1201). Please check whether a conflict-free class can be used through the required timetable-exception process.",
     "registration_id": "registration.sim-bce-005",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the timetable exception for CC0015, then register a verified conflict-free class if approval is granted.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 653164773,
     "simulation_scope_id": "scope.bce.terminal",
@@ -1390,15 +1390,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Find an academically valid, conflict-free class for SC1005 and proceed only after any required approval is observed.",
     "policy_section_ids": [
       "unknown.exception.general_clash_waiver"
     ],
     "problem_type": "TIMETABLE_CONFLICT",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1005 after normal registration.",
+    "reason": "I am a Year 4 BCE student from AY2025-26 with 153.0 earned AUs. SC1005 is outstanding, but the class I first selected clashes with my current timetable (AB2008). Please check whether a conflict-free class can be used through the required timetable-exception process.",
     "registration_id": "registration.sim-bce-006",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the timetable exception for SC1005, then register a verified conflict-free class if approval is granted.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 160621777,
     "simulation_scope_id": "scope.bce.terminal",
@@ -1454,15 +1454,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Have the pending-transfer evidence for SC2001 reviewed and use only a supported waiver route; otherwise explain the safe escalation.",
     "policy_section_ids": [
       "policy.exception.exchange.pending_transfer"
     ],
     "problem_type": "PREREQUISITE_WAIVER",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2001 after normal registration.",
+    "reason": "I am a Year 4 BCE student from AY2025-26 with 153.0 earned AUs, and SC2001 is required for my remaining study plan. I passed the simulated exchange course FX2001, but the transfer is still pending; my transcript and both course mappings are attached. Please check whether this evidence supports the documented prerequisite-exception route.",
     "registration_id": "registration.sim-bce-007",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the exchange evidence for SC2001 and submit the prerequisite-waiver request only if the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1295200201,
     "simulation_scope_id": "scope.bce.terminal",
@@ -1536,15 +1536,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Have the pending-transfer evidence for SC2103 reviewed and use only a supported waiver route; otherwise explain the safe escalation.",
     "policy_section_ids": [
       "policy.exception.exchange.pending_transfer"
     ],
     "problem_type": "PREREQUISITE_WAIVER",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2103 after normal registration.",
+    "reason": "I am a Year 4 BCE student from AY2025-26 with 153.0 earned AUs, and SC2103 is required for my remaining study plan. I passed the simulated exchange course FX2001, but the transfer is still pending; my transcript and both course mappings are attached. Please check whether this evidence supports the documented prerequisite-exception route.",
     "registration_id": "registration.sim-bce-008",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the exchange evidence for SC2103 and submit the prerequisite-waiver request only if the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 62104091,
     "simulation_scope_id": "scope.bce.terminal",
@@ -1618,15 +1618,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Have the pending-transfer evidence for SC2002 reviewed and use only a supported waiver route; otherwise explain the safe escalation.",
     "policy_section_ids": [
       "policy.exception.exchange.pending_transfer"
     ],
     "problem_type": "PREREQUISITE_WAIVER",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2002 after normal registration.",
+    "reason": "I am a Year 4 BCE student from AY2025-26 with 153.0 earned AUs, and SC2002 is required for my remaining study plan. I passed the simulated exchange course FX2001, but the transfer is still pending; my transcript and both course mappings are attached. Please check whether this evidence supports the documented prerequisite-exception route.",
     "registration_id": "registration.sim-bce-009",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the exchange evidence for SC2002 and submit the prerequisite-waiver request only if the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1446578728,
     "simulation_scope_id": "scope.bce.terminal",
@@ -1682,15 +1682,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Apply the correct cohort-specific curriculum to MH1812 and either resolve the graduation issue or identify the exact missing fact.",
     "policy_section_ids": [
       "policy.registration.graduation_baseline"
     ],
     "problem_type": "GRADUATION_REQUIREMENT",
-    "reason": "Terminal-stage registration or graduation exception concerning MH1812 after normal registration.",
+    "reason": "I am a Year 4 BCE student from AY2025-26 with 153.0 earned AUs, and my degree audit is indeterminate with MH1812 still affecting graduation clearance. Please determine which dated curriculum rules apply to my cohort before recommending an exception.",
     "registration_id": "registration.sim-bce-010",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Assess MH1812 against the applicable curriculum version and preserve any source limitation or conflict in the answer.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1591015956,
     "simulation_scope_id": "scope.bce.terminal",
@@ -1728,15 +1728,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Apply the correct cohort-specific curriculum to AD1102 and either resolve the graduation issue or identify the exact missing fact.",
     "policy_section_ids": [
       "policy.registration.graduation_baseline"
     ],
     "problem_type": "GRADUATION_REQUIREMENT",
-    "reason": "Terminal-stage registration or graduation exception concerning AD1102 after normal registration.",
+    "reason": "I am a Year 4 BCE student from AY2025-26 with 153.0 earned AUs, and my degree audit is indeterminate with AD1102 still affecting graduation clearance. Please determine which dated curriculum rules apply to my cohort before recommending an exception.",
     "registration_id": "registration.sim-bce-011",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Assess AD1102 against the applicable curriculum version and preserve any source limitation or conflict in the answer.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 358805064,
     "simulation_scope_id": "scope.bce.terminal",
@@ -1774,15 +1774,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Apply the correct cohort-specific curriculum to AB1601 and either resolve the graduation issue or identify the exact missing fact.",
     "policy_section_ids": [
       "policy.registration.graduation_baseline"
     ],
     "problem_type": "GRADUATION_REQUIREMENT",
-    "reason": "Terminal-stage registration or graduation exception concerning AB1601 after normal registration.",
+    "reason": "I am a Year 4 BCE student from AY2025-26 with 153.0 earned AUs, and my degree audit is indeterminate with AB1601 still affecting graduation clearance. Please determine which dated curriculum rules apply to my cohort before recommending an exception.",
     "registration_id": "registration.sim-bce-012",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Assess AB1601 against the applicable curriculum version and preserve any source limitation or conflict in the answer.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 635605881,
     "simulation_scope_id": "scope.bce.terminal",
@@ -1820,15 +1820,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register AB1301 in a currently feasible class and confirm that it satisfies the outstanding requirement.",
     "policy_section_ids": [
       "policy.registration.stars_guide.functions"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning AB1301 after normal registration.",
+    "reason": "I am a Year 4 BCG student from AY2025-26 with 152.0 earned AUs. AB1301 is still outstanding, and my preferred class conflicts with my current timetable (AB1201). During Add/Drop, please help me find a conflict-free class for the same course rather than substitute another course.",
     "registration_id": "registration.sim-bcg-001",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Check the available classes for AB1301 and register a conflict-free option if all current checks pass.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 757518110,
     "simulation_scope_id": "scope.bcg.terminal",
@@ -1866,15 +1866,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register CC0003 in a currently feasible class and confirm that it satisfies the outstanding requirement.",
     "policy_section_ids": [
       "policy.registration.stars_guide.functions"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0003 after normal registration.",
+    "reason": "I am a Year 4 BCG student from AY2025-26 with 154.0 earned AUs. CC0003 is still outstanding, and my preferred class conflicts with my current timetable (CC0006). During Add/Drop, please help me find a conflict-free class for the same course rather than substitute another course.",
     "registration_id": "registration.sim-bcg-002",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Check the available classes for CC0003 and register a conflict-free option if all current checks pass.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 659270210,
     "simulation_scope_id": "scope.bcg.terminal",
@@ -1912,15 +1912,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register CC0015 in a currently feasible class and confirm that it satisfies the outstanding requirement.",
     "policy_section_ids": [
       "policy.registration.stars_guide.functions"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0015 after normal registration.",
+    "reason": "I am a Year 4 BCG student from AY2025-26 with 153.0 earned AUs. CC0015 is still outstanding, and my preferred class conflicts with my current timetable (AB1201). During Add/Drop, please help me find a conflict-free class for the same course rather than substitute another course.",
     "registration_id": "registration.sim-bcg-003",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Check the available classes for CC0015 and register a conflict-free option if all current checks pass.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 405536582,
     "simulation_scope_id": "scope.bcg.terminal",
@@ -1958,15 +1958,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Find an academically valid, conflict-free class for SC1005 and proceed only after any required approval is observed.",
     "policy_section_ids": [
       "unknown.exception.general_clash_waiver"
     ],
     "problem_type": "TIMETABLE_CONFLICT",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1005 after normal registration.",
+    "reason": "I am a Year 4 BCG student from AY2025-26 with 153.0 earned AUs. SC1005 is outstanding, but the class I first selected clashes with my current timetable (AB2008). Please check whether a conflict-free class can be used through the required timetable-exception process.",
     "registration_id": "registration.sim-bcg-004",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the timetable exception for SC1005, then register a verified conflict-free class if approval is granted.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1502297502,
     "simulation_scope_id": "scope.bcg.terminal",
@@ -2004,15 +2004,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Find an academically valid, conflict-free class for MH1812 and proceed only after any required approval is observed.",
     "policy_section_ids": [
       "unknown.exception.general_clash_waiver"
     ],
     "problem_type": "TIMETABLE_CONFLICT",
-    "reason": "Terminal-stage registration or graduation exception concerning MH1812 after normal registration.",
+    "reason": "I am a Year 4 BCG student from AY2025-26 with 152.0 earned AUs. MH1812 is outstanding, but the class I first selected clashes with my current timetable (AB1301). Please check whether a conflict-free class can be used through the required timetable-exception process.",
     "registration_id": "registration.sim-bcg-005",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the timetable exception for MH1812, then register a verified conflict-free class if approval is granted.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 275553032,
     "simulation_scope_id": "scope.bcg.terminal",
@@ -2050,15 +2050,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Find an academically valid, conflict-free class for AD1102 and proceed only after any required approval is observed.",
     "policy_section_ids": [
       "unknown.exception.general_clash_waiver"
     ],
     "problem_type": "TIMETABLE_CONFLICT",
-    "reason": "Terminal-stage registration or graduation exception concerning AD1102 after normal registration.",
+    "reason": "I am a Year 4 BCG student from AY2025-26 with 153.0 earned AUs. AD1102 is outstanding, but the class I first selected clashes with my current timetable (AB1201). Please check whether a conflict-free class can be used through the required timetable-exception process.",
     "registration_id": "registration.sim-bcg-006",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the timetable exception for AD1102, then register a verified conflict-free class if approval is granted.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 717289001,
     "simulation_scope_id": "scope.bcg.terminal",
@@ -2096,15 +2096,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Resolve the SC1008 issue within the student's declared integrated-programme path and retain the applicable curriculum boundary.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "CROSS_PROGRAMME",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1008 after normal registration.",
+    "reason": "I am a Year 4 BCG student from AY2025-26 with 152.0 earned AUs in the programme configuration linked to graduation_path.bcg.fyp. SC1008 remains outstanding. Please assess the exception against this selected path without combining requirements from a different CCDS curriculum.",
     "registration_id": "registration.sim-bcg-007",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review and submit the SC1008 exception for graduation_path.bcg.fyp only after the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 210191306,
     "simulation_scope_id": "scope.bcg.terminal",
@@ -2142,15 +2142,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Resolve the MH1812 issue within the student's declared integrated-programme path and retain the applicable curriculum boundary.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "CROSS_PROGRAMME",
-    "reason": "Terminal-stage registration or graduation exception concerning MH1812 after normal registration.",
+    "reason": "I am a Year 4 BCG student from AY2025-26 with 153.0 earned AUs in the programme configuration linked to graduation_path.bcg.coursework. MH1812 remains outstanding. Please assess the exception against this selected path without combining requirements from a different CCDS curriculum.",
     "registration_id": "registration.sim-bcg-008",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review and submit the MH1812 exception for graduation_path.bcg.coursework only after the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1168381448,
     "simulation_scope_id": "scope.bcg.terminal",
@@ -2188,15 +2188,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Resolve the AD1102 issue within the student's declared integrated-programme path and retain the applicable curriculum boundary.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "CROSS_PROGRAMME",
-    "reason": "Terminal-stage registration or graduation exception concerning AD1102 after normal registration.",
+    "reason": "I am a Year 4 BCG student from AY2025-26 with 152.0 earned AUs in the programme configuration linked to graduation_path.bcg.fyp. AD1102 remains outstanding. Please assess the exception against this selected path without combining requirements from a different CCDS curriculum.",
     "registration_id": "registration.sim-bcg-009",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review and submit the AD1102 exception for graduation_path.bcg.fyp only after the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 623879119,
     "simulation_scope_id": "scope.bcg.terminal",
@@ -2234,15 +2234,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Apply the correct cohort-specific curriculum to AB1601 and either resolve the graduation issue or identify the exact missing fact.",
     "policy_section_ids": [
       "policy.registration.graduation_baseline"
     ],
     "problem_type": "GRADUATION_REQUIREMENT",
-    "reason": "Terminal-stage registration or graduation exception concerning AB1601 after normal registration.",
+    "reason": "I am a Year 4 BCG student from AY2025-26 with 153.0 earned AUs, and my degree audit is indeterminate with AB1601 still affecting graduation clearance. Please determine which dated curriculum rules apply to my cohort before recommending an exception.",
     "registration_id": "registration.sim-bcg-010",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Assess AB1601 against the applicable curriculum version and preserve any source limitation or conflict in the answer.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1843267115,
     "simulation_scope_id": "scope.bcg.terminal",
@@ -2280,15 +2280,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Apply the correct cohort-specific curriculum to CC0001 and either resolve the graduation issue or identify the exact missing fact.",
     "policy_section_ids": [
       "policy.registration.graduation_baseline"
     ],
     "problem_type": "GRADUATION_REQUIREMENT",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0001 after normal registration.",
+    "reason": "I am a Year 4 BCG student from AY2025-26 with 153.0 earned AUs, and my degree audit is indeterminate with CC0001 still affecting graduation clearance. Please determine which dated curriculum rules apply to my cohort before recommending an exception.",
     "registration_id": "registration.sim-bcg-011",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Assess CC0001 against the applicable curriculum version and preserve any source limitation or conflict in the answer.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 715782849,
     "simulation_scope_id": "scope.bcg.terminal",
@@ -2326,15 +2326,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Either obtain the specific missing information for SC1006 or produce a bounded, evidence-backed escalation.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "COURSE_UNAVAILABLE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1006 after normal registration.",
+    "reason": "I am a Year 4 BCG student from AY2025-26 with 153.0 earned AUs, and SC1006 remains unresolved after normal registration. I cannot identify a verified public exception route. Please tell me what information is missing or prepare the correct CCDS administrative handoff without guessing a policy.",
     "registration_id": "registration.sim-bcg-012",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Do not submit an unsupported exception; clarify the missing fact or escalate the SC1006 case to the appropriate CCDS role.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1196967917,
     "simulation_scope_id": "scope.bcg.terminal",
@@ -2374,15 +2374,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Apply the correct cohort-specific curriculum to SC1004 and either resolve the graduation issue or identify the exact missing fact.",
     "policy_section_ids": [
       "policy.registration.graduation_baseline"
     ],
     "problem_type": "GRADUATION_REQUIREMENT",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1004 after normal registration.",
+    "reason": "I am a Year 4 CE student from AY2025-26 with 132.0 earned AUs, and my degree audit is not ready with SC1004 still affecting graduation clearance. Please determine which dated curriculum rules apply to my cohort before recommending an exception.",
     "registration_id": "registration.sim-ce-001",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Assess SC1004 against the applicable curriculum version and preserve any source limitation or conflict in the answer.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 501393444,
     "simulation_scope_id": "scope.ce.terminal",
@@ -2420,15 +2420,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Apply the correct cohort-specific curriculum to SC1005 and either resolve the graduation issue or identify the exact missing fact.",
     "policy_section_ids": [
       "policy.registration.graduation_baseline"
     ],
     "problem_type": "GRADUATION_REQUIREMENT",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1005 after normal registration.",
+    "reason": "I am a Year 4 CE student from AY2025-26 with 133.0 earned AUs, and my degree audit is not ready with SC1005 still affecting graduation clearance. Please determine which dated curriculum rules apply to my cohort before recommending an exception.",
     "registration_id": "registration.sim-ce-002",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Assess SC1005 against the applicable curriculum version and preserve any source limitation or conflict in the answer.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1230113630,
     "simulation_scope_id": "scope.ce.terminal",
@@ -2466,15 +2466,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Apply the correct cohort-specific curriculum to SC1013 and either resolve the graduation issue or identify the exact missing fact.",
     "policy_section_ids": [
       "policy.registration.graduation_baseline"
     ],
     "problem_type": "GRADUATION_REQUIREMENT",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1013 after normal registration.",
+    "reason": "I am a Year 4 CE student from AY2025-26 with 134.0 earned AUs, and my degree audit is not ready with SC1013 still affecting graduation clearance. Please determine which dated curriculum rules apply to my cohort before recommending an exception.",
     "registration_id": "registration.sim-ce-003",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Assess SC1013 against the applicable curriculum version and preserve any source limitation or conflict in the answer.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 148224860,
     "simulation_scope_id": "scope.ce.terminal",
@@ -2512,15 +2512,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Apply the correct cohort-specific curriculum to EG1001 and either resolve the graduation issue or identify the exact missing fact.",
     "policy_section_ids": [
       "policy.registration.graduation_baseline"
     ],
     "problem_type": "GRADUATION_REQUIREMENT",
-    "reason": "Terminal-stage registration or graduation exception concerning EG1001 after normal registration.",
+    "reason": "I am a Year 4 CE student from AY2025-26 with 134.0 earned AUs, and my degree audit is not ready with EG1001 still affecting graduation clearance. Please determine which dated curriculum rules apply to my cohort before recommending an exception.",
     "registration_id": "registration.sim-ce-004",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Assess EG1001 against the applicable curriculum version and preserve any source limitation or conflict in the answer.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1277095804,
     "simulation_scope_id": "scope.ce.terminal",
@@ -2558,15 +2558,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Apply the correct cohort-specific curriculum to CC0003 and either resolve the graduation issue or identify the exact missing fact.",
     "policy_section_ids": [
       "policy.registration.graduation_baseline"
     ],
     "problem_type": "GRADUATION_REQUIREMENT",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0003 after normal registration.",
+    "reason": "I am a Year 4 CE student from AY2025-26 with 134.0 earned AUs, and my degree audit is not ready with CC0003 still affecting graduation clearance. Please determine which dated curriculum rules apply to my cohort before recommending an exception.",
     "registration_id": "registration.sim-ce-005",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Assess CC0003 against the applicable curriculum version and preserve any source limitation or conflict in the answer.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 534890358,
     "simulation_scope_id": "scope.ce.terminal",
@@ -2604,15 +2604,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register SC2000 using current course state, recover safely from a changed or temporary result, and verify the final outcome.",
     "policy_section_ids": [
       "unknown.registration.live_allocation"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2000 after normal registration.",
+    "reason": "I am a Year 4 CE student from AY2025-26 with 133.0 earned AUs. SC2000 is outstanding and the selected class currently appears feasible during Add/Drop. Please attempt the registration, re-check live availability if the attempt fails, and confirm the final registered state.",
     "registration_id": "registration.sim-ce-006",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Register a currently feasible class for SC2000; after any failure, refresh the live state before considering one verified alternative.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 297025706,
     "simulation_scope_id": "scope.ce.terminal",
@@ -2650,15 +2650,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register MH1812 using current course state, recover safely from a changed or temporary result, and verify the final outcome.",
     "policy_section_ids": [
       "unknown.registration.live_allocation"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning MH1812 after normal registration.",
+    "reason": "I am a Year 4 CE student from AY2025-26 with 133.0 earned AUs. MH1812 is outstanding and the selected class currently appears feasible during Add/Drop. Please attempt the registration, re-check live availability if the attempt fails, and confirm the final registered state.",
     "registration_id": "registration.sim-ce-007",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Register a currently feasible class for MH1812; after any failure, refresh the live state before considering one verified alternative.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 522815234,
     "simulation_scope_id": "scope.ce.terminal",
@@ -2696,15 +2696,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register CC0001 using current course state, recover safely from a changed or temporary result, and verify the final outcome.",
     "policy_section_ids": [
       "unknown.registration.live_allocation"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0001 after normal registration.",
+    "reason": "I am a Year 4 CE student from AY2025-26 with 134.0 earned AUs. CC0001 is outstanding and the selected class currently appears feasible during Add/Drop. Please attempt the registration, re-check live availability if the attempt fails, and confirm the final registered state.",
     "registration_id": "registration.sim-ce-008",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Register a currently feasible class for CC0001; after any failure, refresh the live state before considering one verified alternative.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1226944874,
     "simulation_scope_id": "scope.ce.terminal",
@@ -2742,15 +2742,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register CC0007 using current course state, recover safely from a changed or temporary result, and verify the final outcome.",
     "policy_section_ids": [
       "unknown.registration.live_allocation"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0007 after normal registration.",
+    "reason": "I am a Year 4 CE student from AY2025-26 with 133.0 earned AUs. CC0007 is outstanding and the selected class currently appears feasible during Add/Drop. Please attempt the registration, re-check live availability if the attempt fails, and confirm the final registered state.",
     "registration_id": "registration.sim-ce-009",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Register a currently feasible class for CC0007; after any failure, refresh the live state before considering one verified alternative.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 448237352,
     "simulation_scope_id": "scope.ce.terminal",
@@ -2788,15 +2788,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register ML0004 using current course state, recover safely from a changed or temporary result, and verify the final outcome.",
     "policy_section_ids": [
       "unknown.registration.live_allocation"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning ML0004 after normal registration.",
+    "reason": "I am a Year 4 CE student from AY2025-26 with 134.0 earned AUs. ML0004 is outstanding and the selected class currently appears feasible during Add/Drop. Please attempt the registration, re-check live availability if the attempt fails, and confirm the final registered state.",
     "registration_id": "registration.sim-ce-010",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Register a currently feasible class for ML0004; after any failure, refresh the live state before considering one verified alternative.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1811767971,
     "simulation_scope_id": "scope.ce.terminal",
@@ -2834,15 +2834,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register CC0006 using current course state, recover safely from a changed or temporary result, and verify the final outcome.",
     "policy_section_ids": [
       "unknown.registration.live_allocation"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0006 after normal registration.",
+    "reason": "I am a Year 4 CE student from AY2025-26 with 133.0 earned AUs. CC0006 is outstanding and the selected class currently appears feasible during Add/Drop. Please attempt the registration, re-check live availability if the attempt fails, and confirm the final registered state.",
     "registration_id": "registration.sim-ce-011",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Register a currently feasible class for CC0006; after any failure, refresh the live state before considering one verified alternative.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 548779089,
     "simulation_scope_id": "scope.ce.terminal",
@@ -2898,15 +2898,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Have the pending-transfer evidence for SC3102 reviewed and use only a supported waiver route; otherwise explain the safe escalation.",
     "policy_section_ids": [
       "unknown.exception.general_prerequisite_waiver"
     ],
     "problem_type": "PREREQUISITE_WAIVER",
-    "reason": "Terminal-stage registration or graduation exception concerning SC3102 after normal registration.",
+    "reason": "I am a Year 4 CE student from AY2025-26 with 133.0 earned AUs, and SC3102 is required for my remaining study plan. I passed the simulated exchange course FX2001, but the transfer is still pending; my transcript and both course mappings are attached. Please check whether this evidence supports the documented prerequisite-exception route.",
     "registration_id": "registration.sim-ce-012",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the exchange evidence for SC3102 and submit the prerequisite-waiver request only if the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 369175739,
     "simulation_scope_id": "scope.ce.terminal",
@@ -2980,15 +2980,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Have the pending-transfer evidence for HW0288 reviewed and use only a supported waiver route; otherwise explain the safe escalation.",
     "policy_section_ids": [
       "unknown.exception.general_prerequisite_waiver"
     ],
     "problem_type": "PREREQUISITE_WAIVER",
-    "reason": "Terminal-stage registration or graduation exception concerning HW0288 after normal registration.",
+    "reason": "I am a Year 4 CE student from AY2025-26 with 134.0 earned AUs, and HW0288 is required for my remaining study plan. I passed the simulated exchange course FX2001, but the transfer is still pending; my transcript and both course mappings are attached. Please check whether this evidence supports the documented prerequisite-exception route.",
     "registration_id": "registration.sim-ce-013",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the exchange evidence for HW0288 and submit the prerequisite-waiver request only if the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 850721761,
     "simulation_scope_id": "scope.ce.terminal",
@@ -3062,15 +3062,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Have the pending-transfer evidence for SC1004 reviewed and use only a supported waiver route; otherwise explain the safe escalation.",
     "policy_section_ids": [
       "unknown.exception.general_prerequisite_waiver"
     ],
     "problem_type": "PREREQUISITE_WAIVER",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1004 after normal registration.",
+    "reason": "I am a Year 4 CE student from AY2025-26 with 132.0 earned AUs, and SC1004 is required for my remaining study plan. I passed the simulated exchange course FX2001, but the transfer is still pending; my transcript and both course mappings are attached. Please check whether this evidence supports the documented prerequisite-exception route.",
     "registration_id": "registration.sim-ce-014",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the exchange evidence for SC1004 and submit the prerequisite-waiver request only if the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 963834205,
     "simulation_scope_id": "scope.ce.terminal",
@@ -3126,15 +3126,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Either obtain the specific missing information for SC2107 or produce a bounded, evidence-backed escalation.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "COURSE_UNAVAILABLE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2107 after normal registration.",
+    "reason": "I am a Year 4 CE student from AY2025-26 with 133.0 earned AUs, and SC2107 remains unresolved after normal registration. I cannot identify a verified public exception route. Please tell me what information is missing or prepare the correct CCDS administrative handoff without guessing a policy.",
     "registration_id": "registration.sim-ce-017",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Do not submit an unsupported exception; clarify the missing fact or escalate the SC2107 case to the appropriate CCDS role.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 599760214,
     "simulation_scope_id": "scope.ce.terminal",
@@ -3174,15 +3174,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Either obtain the specific missing information for CC0007 or produce a bounded, evidence-backed escalation.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "COURSE_UNAVAILABLE",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0007 after normal registration.",
+    "reason": "I am a Year 4 CE student from AY2025-26 with 133.0 earned AUs, and CC0007 remains unresolved after normal registration. I cannot identify a verified public exception route. Please tell me what information is missing or prepare the correct CCDS administrative handoff without guessing a policy.",
     "registration_id": "registration.sim-ce-018",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Do not submit an unsupported exception; clarify the missing fact or escalate the CC0007 case to the appropriate CCDS role.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1732709745,
     "simulation_scope_id": "scope.ce.terminal",
@@ -3220,15 +3220,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Either obtain the specific missing information for ML0004 or produce a bounded, evidence-backed escalation.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "COURSE_UNAVAILABLE",
-    "reason": "Terminal-stage registration or graduation exception concerning ML0004 after normal registration.",
+    "reason": "I am a Year 4 CE student from AY2025-26 with 134.0 earned AUs, and ML0004 remains unresolved after normal registration. I cannot identify a verified public exception route. Please tell me what information is missing or prepare the correct CCDS administrative handoff without guessing a policy.",
     "registration_id": "registration.sim-ce-019",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Do not submit an unsupported exception; clarify the missing fact or escalate the ML0004 case to the appropriate CCDS role.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 717304143,
     "simulation_scope_id": "scope.ce.terminal",
@@ -3268,15 +3268,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Either obtain the specific missing information for SC2103 or produce a bounded, evidence-backed escalation.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "COURSE_UNAVAILABLE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2103 after normal registration.",
+    "reason": "I am a Year 4 CE student from AY2025-26 with 133.0 earned AUs, and SC2103 remains unresolved after normal registration. I cannot identify a verified public exception route. Please tell me what information is missing or prepare the correct CCDS administrative handoff without guessing a policy.",
     "registration_id": "registration.sim-ce-020",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Do not submit an unsupported exception; clarify the missing fact or escalate the SC2103 case to the appropriate CCDS role.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1155546760,
     "simulation_scope_id": "scope.ce.terminal",
@@ -3314,15 +3314,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Either obtain the specific missing information for SC2005 or produce a bounded, evidence-backed escalation.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "COURSE_UNAVAILABLE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2005 after normal registration.",
+    "reason": "I am a Year 4 CE student from AY2025-26 with 133.0 earned AUs, and SC2005 remains unresolved after normal registration. I cannot identify a verified public exception route. Please tell me what information is missing or prepare the correct CCDS administrative handoff without guessing a policy.",
     "registration_id": "registration.sim-ce-021",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Do not submit an unsupported exception; clarify the missing fact or escalate the SC2005 case to the appropriate CCDS role.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 166055511,
     "simulation_scope_id": "scope.ce.terminal",
@@ -3362,15 +3362,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register SC1013 in a currently feasible class and confirm that it satisfies the outstanding requirement.",
     "policy_section_ids": [
       "policy.registration.stars_guide.functions"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1013 after normal registration.",
+    "reason": "I am a Year 4 CE-DANA student from AY2025-26 with 134.0 earned AUs. SC1013 is still outstanding, and my preferred class conflicts with my current timetable (CC0003). During Add/Drop, please help me find a conflict-free class for the same course rather than substitute another course.",
     "registration_id": "registration.sim-cedana-001",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Check the available classes for SC1013 and register a conflict-free option if all current checks pass.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1312961435,
     "simulation_scope_id": "scope.ce-dana.terminal",
@@ -3408,15 +3408,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register EG1001 in a currently feasible class and confirm that it satisfies the outstanding requirement.",
     "policy_section_ids": [
       "policy.registration.stars_guide.functions"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning EG1001 after normal registration.",
+    "reason": "I am a Year 4 CE-DANA student from AY2025-26 with 134.0 earned AUs. EG1001 is still outstanding, and my preferred class conflicts with my current timetable (CC0001). During Add/Drop, please help me find a conflict-free class for the same course rather than substitute another course.",
     "registration_id": "registration.sim-cedana-002",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Check the available classes for EG1001 and register a conflict-free option if all current checks pass.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1398675610,
     "simulation_scope_id": "scope.ce-dana.terminal",
@@ -3454,15 +3454,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register CC0003 in a currently feasible class and confirm that it satisfies the outstanding requirement.",
     "policy_section_ids": [
       "policy.registration.stars_guide.functions"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0003 after normal registration.",
+    "reason": "I am a Year 4 CE-DANA student from AY2025-26 with 134.0 earned AUs. CC0003 is still outstanding, and my preferred class conflicts with my current timetable (CC0006). During Add/Drop, please help me find a conflict-free class for the same course rather than substitute another course.",
     "registration_id": "registration.sim-cedana-003",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Check the available classes for CC0003 and register a conflict-free option if all current checks pass.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 855210694,
     "simulation_scope_id": "scope.ce-dana.terminal",
@@ -3500,15 +3500,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Find an academically valid, conflict-free class for CC0015 and proceed only after any required approval is observed.",
     "policy_section_ids": [
       "unknown.exception.general_clash_waiver"
     ],
     "problem_type": "TIMETABLE_CONFLICT",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0015 after normal registration.",
+    "reason": "I am a Year 4 CE-DANA student from AY2025-26 with 134.0 earned AUs. CC0015 is outstanding, but the class I first selected clashes with my current timetable (CC0001). Please check whether a conflict-free class can be used through the required timetable-exception process.",
     "registration_id": "registration.sim-cedana-004",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the timetable exception for CC0015, then register a verified conflict-free class if approval is granted.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 271989553,
     "simulation_scope_id": "scope.ce-dana.terminal",
@@ -3546,15 +3546,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Find an academically valid, conflict-free class for SC1005 and proceed only after any required approval is observed.",
     "policy_section_ids": [
       "unknown.exception.general_clash_waiver"
     ],
     "problem_type": "TIMETABLE_CONFLICT",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1005 after normal registration.",
+    "reason": "I am a Year 4 CE-DANA student from AY2025-26 with 133.0 earned AUs. SC1005 is outstanding, but the class I first selected clashes with my current timetable (CC0001). Please check whether a conflict-free class can be used through the required timetable-exception process.",
     "registration_id": "registration.sim-cedana-005",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the timetable exception for SC1005, then register a verified conflict-free class if approval is granted.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1063028869,
     "simulation_scope_id": "scope.ce-dana.terminal",
@@ -3592,15 +3592,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Find an academically valid, conflict-free class for MH1812 and proceed only after any required approval is observed.",
     "policy_section_ids": [
       "unknown.exception.general_clash_waiver"
     ],
     "problem_type": "TIMETABLE_CONFLICT",
-    "reason": "Terminal-stage registration or graduation exception concerning MH1812 after normal registration.",
+    "reason": "I am a Year 4 CE-DANA student from AY2025-26 with 133.0 earned AUs. MH1812 is outstanding, but the class I first selected clashes with my current timetable (CC0001). Please check whether a conflict-free class can be used through the required timetable-exception process.",
     "registration_id": "registration.sim-cedana-006",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the timetable exception for MH1812, then register a verified conflict-free class if approval is granted.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 995725306,
     "simulation_scope_id": "scope.ce-dana.terminal",
@@ -3656,15 +3656,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Have the pending-transfer evidence for SC2103 reviewed and use only a supported waiver route; otherwise explain the safe escalation.",
     "policy_section_ids": [
       "policy.exception.exchange.pending_transfer"
     ],
     "problem_type": "PREREQUISITE_WAIVER",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2103 after normal registration.",
+    "reason": "I am a Year 4 CE-DANA student from AY2025-26 with 133.0 earned AUs, and SC2103 is required for my remaining study plan. I passed the simulated exchange course FX2001, but the transfer is still pending; my transcript and both course mappings are attached. Please check whether this evidence supports the documented prerequisite-exception route.",
     "registration_id": "registration.sim-cedana-007",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the exchange evidence for SC2103 and submit the prerequisite-waiver request only if the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 340607576,
     "simulation_scope_id": "scope.ce-dana.terminal",
@@ -3738,15 +3738,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Have the pending-transfer evidence for SC2207 reviewed and use only a supported waiver route; otherwise explain the safe escalation.",
     "policy_section_ids": [
       "policy.exception.exchange.pending_transfer"
     ],
     "problem_type": "PREREQUISITE_WAIVER",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2207 after normal registration.",
+    "reason": "I am a Year 4 CE-DANA student from AY2025-26 with 133.0 earned AUs, and SC2207 is required for my remaining study plan. I passed the simulated exchange course FX2001, but the transfer is still pending; my transcript and both course mappings are attached. Please check whether this evidence supports the documented prerequisite-exception route.",
     "registration_id": "registration.sim-cedana-008",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the exchange evidence for SC2207 and submit the prerequisite-waiver request only if the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 402106016,
     "simulation_scope_id": "scope.ce-dana.terminal",
@@ -3820,15 +3820,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Have the pending-transfer evidence for SC2005 reviewed and use only a supported waiver route; otherwise explain the safe escalation.",
     "policy_section_ids": [
       "policy.exception.exchange.pending_transfer"
     ],
     "problem_type": "PREREQUISITE_WAIVER",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2005 after normal registration.",
+    "reason": "I am a Year 4 CE-DANA student from AY2025-26 with 133.0 earned AUs, and SC2005 is required for my remaining study plan. I passed the simulated exchange course FX2001, but the transfer is still pending; my transcript and both course mappings are attached. Please check whether this evidence supports the documented prerequisite-exception route.",
     "registration_id": "registration.sim-cedana-009",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the exchange evidence for SC2005 and submit the prerequisite-waiver request only if the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 49739319,
     "simulation_scope_id": "scope.ce-dana.terminal",
@@ -3884,15 +3884,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Either obtain the specific missing information for CC0001 or produce a bounded, evidence-backed escalation.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "COURSE_UNAVAILABLE",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0001 after normal registration.",
+    "reason": "I am a Year 4 CE-DANA student from AY2025-26 with 134.0 earned AUs, and CC0001 remains unresolved after normal registration. I cannot identify a verified public exception route. Please tell me what information is missing or prepare the correct CCDS administrative handoff without guessing a policy.",
     "registration_id": "registration.sim-cedana-010",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Do not submit an unsupported exception; clarify the missing fact or escalate the CC0001 case to the appropriate CCDS role.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1006536196,
     "simulation_scope_id": "scope.ce-dana.terminal",
@@ -3930,15 +3930,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Either obtain the specific missing information for SC1006 or produce a bounded, evidence-backed escalation.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "COURSE_UNAVAILABLE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1006 after normal registration.",
+    "reason": "I am a Year 4 CE-DANA student from AY2025-26 with 133.0 earned AUs, and SC1006 remains unresolved after normal registration. I cannot identify a verified public exception route. Please tell me what information is missing or prepare the correct CCDS administrative handoff without guessing a policy.",
     "registration_id": "registration.sim-cedana-011",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Do not submit an unsupported exception; clarify the missing fact or escalate the SC1006 case to the appropriate CCDS role.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 588780616,
     "simulation_scope_id": "scope.ce-dana.terminal",
@@ -3978,15 +3978,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Either obtain the specific missing information for SC2000 or produce a bounded, evidence-backed escalation.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "COURSE_UNAVAILABLE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2000 after normal registration.",
+    "reason": "I am a Year 4 CE-DANA student from AY2025-26 with 133.0 earned AUs, and SC2000 remains unresolved after normal registration. I cannot identify a verified public exception route. Please tell me what information is missing or prepare the correct CCDS administrative handoff without guessing a policy.",
     "registration_id": "registration.sim-cedana-012",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Do not submit an unsupported exception; clarify the missing fact or escalate the SC2000 case to the appropriate CCDS role.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1786845002,
     "simulation_scope_id": "scope.ce-dana.terminal",
@@ -4024,15 +4024,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Apply the correct cohort-specific curriculum to SC1013 and either resolve the graduation issue or identify the exact missing fact.",
     "policy_section_ids": [
       "policy.registration.graduation_baseline"
     ],
     "problem_type": "GRADUATION_REQUIREMENT",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1013 after normal registration.",
+    "reason": "I am a Year 5 CEEC student from AY2025-26 with 173.0 earned AUs, and my degree audit is not ready with SC1013 still affecting graduation clearance. Please determine which dated curriculum rules apply to my cohort before recommending an exception.",
     "registration_id": "registration.sim-ceec-001",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Assess SC1013 against the applicable curriculum version and preserve any source limitation or conflict in the answer.",
     "scenario_time": "2029-08-25T09:00:00+08:00",
     "seed": 1741857752,
     "simulation_scope_id": "scope.ceec.terminal",
@@ -4070,15 +4070,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Apply the correct cohort-specific curriculum to SC1005 and either resolve the graduation issue or identify the exact missing fact.",
     "policy_section_ids": [
       "policy.registration.graduation_baseline"
     ],
     "problem_type": "GRADUATION_REQUIREMENT",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1005 after normal registration.",
+    "reason": "I am a Year 5 CEEC student from AY2025-26 with 172.0 earned AUs, and my degree audit is not ready with SC1005 still affecting graduation clearance. Please determine which dated curriculum rules apply to my cohort before recommending an exception.",
     "registration_id": "registration.sim-ceec-002",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Assess SC1005 against the applicable curriculum version and preserve any source limitation or conflict in the answer.",
     "scenario_time": "2029-08-25T09:00:00+08:00",
     "seed": 650992410,
     "simulation_scope_id": "scope.ceec.terminal",
@@ -4116,15 +4116,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Apply the correct cohort-specific curriculum to EG1001 and either resolve the graduation issue or identify the exact missing fact.",
     "policy_section_ids": [
       "policy.registration.graduation_baseline"
     ],
     "problem_type": "GRADUATION_REQUIREMENT",
-    "reason": "Terminal-stage registration or graduation exception concerning EG1001 after normal registration.",
+    "reason": "I am a Year 5 CEEC student from AY2025-26 with 173.0 earned AUs, and my degree audit is not ready with EG1001 still affecting graduation clearance. Please determine which dated curriculum rules apply to my cohort before recommending an exception.",
     "registration_id": "registration.sim-ceec-003",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Assess EG1001 against the applicable curriculum version and preserve any source limitation or conflict in the answer.",
     "scenario_time": "2029-08-25T09:00:00+08:00",
     "seed": 1574993952,
     "simulation_scope_id": "scope.ceec.terminal",
@@ -4162,15 +4162,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register HE1001 using current course state, recover safely from a changed or temporary result, and verify the final outcome.",
     "policy_section_ids": [
       "unknown.registration.live_allocation"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning HE1001 after normal registration.",
+    "reason": "I am a Year 5 CEEC student from AY2025-26 with 172.0 earned AUs. HE1001 is outstanding and the selected class currently appears feasible during Add/Drop. Please attempt the registration, re-check live availability if the attempt fails, and confirm the final registered state.",
     "registration_id": "registration.sim-ceec-004",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Register a currently feasible class for HE1001; after any failure, refresh the live state before considering one verified alternative.",
     "scenario_time": "2029-08-25T09:00:00+08:00",
     "seed": 1619707650,
     "simulation_scope_id": "scope.ceec.terminal",
@@ -4208,15 +4208,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register HE1002 using current course state, recover safely from a changed or temporary result, and verify the final outcome.",
     "policy_section_ids": [
       "unknown.registration.live_allocation"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning HE1002 after normal registration.",
+    "reason": "I am a Year 5 CEEC student from AY2025-26 with 172.0 earned AUs. HE1002 is outstanding and the selected class currently appears feasible during Add/Drop. Please attempt the registration, re-check live availability if the attempt fails, and confirm the final registered state.",
     "registration_id": "registration.sim-ceec-005",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Register a currently feasible class for HE1002; after any failure, refresh the live state before considering one verified alternative.",
     "scenario_time": "2029-08-25T09:00:00+08:00",
     "seed": 727334944,
     "simulation_scope_id": "scope.ceec.terminal",
@@ -4254,15 +4254,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register CC0003 using current course state, recover safely from a changed or temporary result, and verify the final outcome.",
     "policy_section_ids": [
       "unknown.registration.live_allocation"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0003 after normal registration.",
+    "reason": "I am a Year 5 CEEC student from AY2025-26 with 173.0 earned AUs. CC0003 is outstanding and the selected class currently appears feasible during Add/Drop. Please attempt the registration, re-check live availability if the attempt fails, and confirm the final registered state.",
     "registration_id": "registration.sim-ceec-006",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Register a currently feasible class for CC0003; after any failure, refresh the live state before considering one verified alternative.",
     "scenario_time": "2029-08-25T09:00:00+08:00",
     "seed": 528362189,
     "simulation_scope_id": "scope.ceec.terminal",
@@ -4300,15 +4300,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Resolve the CC0015 issue within the student's declared integrated-programme path and retain the applicable curriculum boundary.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "CROSS_PROGRAMME",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0015 after normal registration.",
+    "reason": "I am a Year 5 CEEC student from AY2025-26 with 173.0 earned AUs in the programme configuration linked to PI option : 20-WEEK Professional Internship. CC0015 remains outstanding. Please assess the exception against this selected path without combining requirements from a different CCDS curriculum.",
     "registration_id": "registration.sim-ceec-007",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review and submit the CC0015 exception for PI option : 20-WEEK Professional Internship only after the required approval is confirmed.",
     "scenario_time": "2029-08-25T09:00:00+08:00",
     "seed": 1620497506,
     "simulation_scope_id": "scope.ceec.terminal",
@@ -4346,15 +4346,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Resolve the SC1004 issue within the student's declared integrated-programme path and retain the applicable curriculum boundary.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "CROSS_PROGRAMME",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1004 after normal registration.",
+    "reason": "I am a Year 5 CEEC student from AY2025-26 with 171.0 earned AUs in the programme configuration linked to PA option : 10-WEEK Professional Attachment. SC1004 remains outstanding. Please assess the exception against this selected path without combining requirements from a different CCDS curriculum.",
     "registration_id": "registration.sim-ceec-008",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review and submit the SC1004 exception for PA option : 10-WEEK Professional Attachment only after the required approval is confirmed.",
     "scenario_time": "2029-08-25T09:00:00+08:00",
     "seed": 991145498,
     "simulation_scope_id": "scope.ceec.terminal",
@@ -4392,15 +4392,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Resolve the SC1007 issue within the student's declared integrated-programme path and retain the applicable curriculum boundary.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "CROSS_PROGRAMME",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1007 after normal registration.",
+    "reason": "I am a Year 5 CEEC student from AY2025-26 with 172.0 earned AUs in the programme configuration linked to PI option : 20-WEEK Professional Internship. SC1007 remains outstanding. Please assess the exception against this selected path without combining requirements from a different CCDS curriculum.",
     "registration_id": "registration.sim-ceec-009",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review and submit the SC1007 exception for PI option : 20-WEEK Professional Internship only after the required approval is confirmed.",
     "scenario_time": "2029-08-25T09:00:00+08:00",
     "seed": 1846872768,
     "simulation_scope_id": "scope.ceec.terminal",
@@ -4438,15 +4438,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Either obtain the specific missing information for SC1008 or produce a bounded, evidence-backed escalation.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "COURSE_UNAVAILABLE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1008 after normal registration.",
+    "reason": "I am a Year 5 CEEC student from AY2025-26 with 172.0 earned AUs, and SC1008 remains unresolved after normal registration. I cannot identify a verified public exception route. Please tell me what information is missing or prepare the correct CCDS administrative handoff without guessing a policy.",
     "registration_id": "registration.sim-ceec-010",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Do not submit an unsupported exception; clarify the missing fact or escalate the SC1008 case to the appropriate CCDS role.",
     "scenario_time": "2029-08-25T09:00:00+08:00",
     "seed": 123568451,
     "simulation_scope_id": "scope.ceec.terminal",
@@ -4484,15 +4484,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Either obtain the specific missing information for SC1008 or produce a bounded, evidence-backed escalation.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "COURSE_UNAVAILABLE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1008 after normal registration.",
+    "reason": "I am a Year 5 CEEC student from AY2025-26 with 172.0 earned AUs, and SC1008 remains unresolved after normal registration. I cannot identify a verified public exception route. Please tell me what information is missing or prepare the correct CCDS administrative handoff without guessing a policy.",
     "registration_id": "registration.sim-ceec-011",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Do not submit an unsupported exception; clarify the missing fact or escalate the SC1008 case to the appropriate CCDS role.",
     "scenario_time": "2029-08-25T09:00:00+08:00",
     "seed": 533094964,
     "simulation_scope_id": "scope.ceec.terminal",
@@ -4532,15 +4532,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Either obtain the specific missing information for CC0001 or produce a bounded, evidence-backed escalation.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "COURSE_UNAVAILABLE",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0001 after normal registration.",
+    "reason": "I am a Year 5 CEEC student from AY2025-26 with 173.0 earned AUs, and CC0001 remains unresolved after normal registration. I cannot identify a verified public exception route. Please tell me what information is missing or prepare the correct CCDS administrative handoff without guessing a policy.",
     "registration_id": "registration.sim-ceec-012",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Do not submit an unsupported exception; clarify the missing fact or escalate the CC0001 case to the appropriate CCDS role.",
     "scenario_time": "2029-08-25T09:00:00+08:00",
     "seed": 1741946431,
     "simulation_scope_id": "scope.ceec.terminal",
@@ -4578,15 +4578,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register SC1013 in a currently feasible class and confirm that it satisfies the outstanding requirement.",
     "policy_section_ids": [
       "policy.registration.stars_guide.functions"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1013 after normal registration.",
+    "reason": "I am a Year 4 CE-ENT student from AY2025-26 with 139.0 earned AUs. SC1013 is still outstanding, and my preferred class conflicts with my current timetable (CC0003). During Add/Drop, please help me find a conflict-free class for the same course rather than substitute another course.",
     "registration_id": "registration.sim-ceent-001",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Check the available classes for SC1013 and register a conflict-free option if all current checks pass.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1768991857,
     "simulation_scope_id": "scope.ce-ent.terminal",
@@ -4624,15 +4624,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register EG1001 in a currently feasible class and confirm that it satisfies the outstanding requirement.",
     "policy_section_ids": [
       "policy.registration.stars_guide.functions"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning EG1001 after normal registration.",
+    "reason": "I am a Year 4 CE-ENT student from AY2025-26 with 139.0 earned AUs. EG1001 is still outstanding, and my preferred class conflicts with my current timetable (CC0001). During Add/Drop, please help me find a conflict-free class for the same course rather than substitute another course.",
     "registration_id": "registration.sim-ceent-002",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Check the available classes for EG1001 and register a conflict-free option if all current checks pass.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1459421664,
     "simulation_scope_id": "scope.ce-ent.terminal",
@@ -4670,15 +4670,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register CC0003 in a currently feasible class and confirm that it satisfies the outstanding requirement.",
     "policy_section_ids": [
       "policy.registration.stars_guide.functions"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0003 after normal registration.",
+    "reason": "I am a Year 4 CE-ENT student from AY2025-26 with 139.0 earned AUs. CC0003 is still outstanding, and my preferred class conflicts with my current timetable (CC0006). During Add/Drop, please help me find a conflict-free class for the same course rather than substitute another course.",
     "registration_id": "registration.sim-ceent-003",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Check the available classes for CC0003 and register a conflict-free option if all current checks pass.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 156701464,
     "simulation_scope_id": "scope.ce-ent.terminal",
@@ -4716,15 +4716,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Find an academically valid, conflict-free class for CC0015 and proceed only after any required approval is observed.",
     "policy_section_ids": [
       "unknown.exception.general_clash_waiver"
     ],
     "problem_type": "TIMETABLE_CONFLICT",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0015 after normal registration.",
+    "reason": "I am a Year 4 CE-ENT student from AY2025-26 with 139.0 earned AUs. CC0015 is outstanding, but the class I first selected clashes with my current timetable (CC0001). Please check whether a conflict-free class can be used through the required timetable-exception process.",
     "registration_id": "registration.sim-ceent-004",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the timetable exception for CC0015, then register a verified conflict-free class if approval is granted.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 800858216,
     "simulation_scope_id": "scope.ce-ent.terminal",
@@ -4762,15 +4762,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Find an academically valid, conflict-free class for SC1005 and proceed only after any required approval is observed.",
     "policy_section_ids": [
       "unknown.exception.general_clash_waiver"
     ],
     "problem_type": "TIMETABLE_CONFLICT",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1005 after normal registration.",
+    "reason": "I am a Year 4 CE-ENT student from AY2025-26 with 138.0 earned AUs. SC1005 is outstanding, but the class I first selected clashes with my current timetable (CC0001). Please check whether a conflict-free class can be used through the required timetable-exception process.",
     "registration_id": "registration.sim-ceent-005",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the timetable exception for SC1005, then register a verified conflict-free class if approval is granted.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 311269513,
     "simulation_scope_id": "scope.ce-ent.terminal",
@@ -4808,15 +4808,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Find an academically valid, conflict-free class for MH1812 and proceed only after any required approval is observed.",
     "policy_section_ids": [
       "unknown.exception.general_clash_waiver"
     ],
     "problem_type": "TIMETABLE_CONFLICT",
-    "reason": "Terminal-stage registration or graduation exception concerning MH1812 after normal registration.",
+    "reason": "I am a Year 4 CE-ENT student from AY2025-26 with 138.0 earned AUs. MH1812 is outstanding, but the class I first selected clashes with my current timetable (CC0001). Please check whether a conflict-free class can be used through the required timetable-exception process.",
     "registration_id": "registration.sim-ceent-006",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the timetable exception for MH1812, then register a verified conflict-free class if approval is granted.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1409185564,
     "simulation_scope_id": "scope.ce-ent.terminal",
@@ -4872,15 +4872,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Have the pending-transfer evidence for SC2103 reviewed and use only a supported waiver route; otherwise explain the safe escalation.",
     "policy_section_ids": [
       "policy.exception.exchange.pending_transfer"
     ],
     "problem_type": "PREREQUISITE_WAIVER",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2103 after normal registration.",
+    "reason": "I am a Year 4 CE-ENT student from AY2025-26 with 138.0 earned AUs, and SC2103 is required for my remaining study plan. I passed the simulated exchange course FX2001, but the transfer is still pending; my transcript and both course mappings are attached. Please check whether this evidence supports the documented prerequisite-exception route.",
     "registration_id": "registration.sim-ceent-007",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the exchange evidence for SC2103 and submit the prerequisite-waiver request only if the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1227065898,
     "simulation_scope_id": "scope.ce-ent.terminal",
@@ -4954,15 +4954,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Have the pending-transfer evidence for SC2005 reviewed and use only a supported waiver route; otherwise explain the safe escalation.",
     "policy_section_ids": [
       "unknown.exception.general_prerequisite_waiver"
     ],
     "problem_type": "PREREQUISITE_WAIVER",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2005 after normal registration.",
+    "reason": "I am a Year 4 CE-ENT student from AY2025-26 with 138.0 earned AUs, and SC2005 is required for my remaining study plan. I passed the simulated exchange course FX2001, but the transfer is still pending; my transcript and both course mappings are attached. Please check whether this evidence supports the documented prerequisite-exception route.",
     "registration_id": "registration.sim-ceent-008",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the exchange evidence for SC2005 and submit the prerequisite-waiver request only if the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1722171129,
     "simulation_scope_id": "scope.ce-ent.terminal",
@@ -5036,15 +5036,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Have the pending-transfer evidence for SC2006 reviewed and use only a supported waiver route; otherwise explain the safe escalation.",
     "policy_section_ids": [
       "unknown.exception.general_prerequisite_waiver"
     ],
     "problem_type": "PREREQUISITE_WAIVER",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2006 after normal registration.",
+    "reason": "I am a Year 4 CE-ENT student from AY2025-26 with 138.0 earned AUs, and SC2006 is required for my remaining study plan. I passed the simulated exchange course FX2001, but the transfer is still pending; my transcript and both course mappings are attached. Please check whether this evidence supports the documented prerequisite-exception route.",
     "registration_id": "registration.sim-ceent-009",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the exchange evidence for SC2006 and submit the prerequisite-waiver request only if the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1272490398,
     "simulation_scope_id": "scope.ce-ent.terminal",
@@ -5100,15 +5100,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Either obtain the specific missing information for CC0001 or produce a bounded, evidence-backed escalation.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "COURSE_UNAVAILABLE",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0001 after normal registration.",
+    "reason": "I am a Year 4 CE-ENT student from AY2025-26 with 139.0 earned AUs, and CC0001 remains unresolved after normal registration. I cannot identify a verified public exception route. Please tell me what information is missing or prepare the correct CCDS administrative handoff without guessing a policy.",
     "registration_id": "registration.sim-ceent-010",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Do not submit an unsupported exception; clarify the missing fact or escalate the CC0001 case to the appropriate CCDS role.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 178185217,
     "simulation_scope_id": "scope.ce-ent.terminal",
@@ -5148,15 +5148,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Either obtain the specific missing information for SC1006 or produce a bounded, evidence-backed escalation.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "COURSE_UNAVAILABLE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1006 after normal registration.",
+    "reason": "I am a Year 4 CE-ENT student from AY2025-26 with 138.0 earned AUs, and SC1006 remains unresolved after normal registration. I cannot identify a verified public exception route. Please tell me what information is missing or prepare the correct CCDS administrative handoff without guessing a policy.",
     "registration_id": "registration.sim-ceent-011",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Do not submit an unsupported exception; clarify the missing fact or escalate the SC1006 case to the appropriate CCDS role.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1347247281,
     "simulation_scope_id": "scope.ce-ent.terminal",
@@ -5194,15 +5194,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Either obtain the specific missing information for SC2000 or produce a bounded, evidence-backed escalation.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "COURSE_UNAVAILABLE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2000 after normal registration.",
+    "reason": "I am a Year 4 CE-ENT student from AY2025-26 with 138.0 earned AUs, and SC2000 remains unresolved after normal registration. I cannot identify a verified public exception route. Please tell me what information is missing or prepare the correct CCDS administrative handoff without guessing a policy.",
     "registration_id": "registration.sim-ceent-012",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Do not submit an unsupported exception; clarify the missing fact or escalate the SC2000 case to the appropriate CCDS role.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 380270061,
     "simulation_scope_id": "scope.ce-ent.terminal",
@@ -5242,15 +5242,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register SC1013 in a currently feasible class and confirm that it satisfies the outstanding requirement.",
     "policy_section_ids": [
       "policy.registration.stars_guide.functions"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1013 after normal registration.",
+    "reason": "I am a Year 4 CE-SUST student from AY2025-26 with 142.0 earned AUs. SC1013 is still outstanding, and my preferred class conflicts with my current timetable (CC0003). During Add/Drop, please help me find a conflict-free class for the same course rather than substitute another course.",
     "registration_id": "registration.sim-cesust-001",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Check the available classes for SC1013 and register a conflict-free option if all current checks pass.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 33572932,
     "simulation_scope_id": "scope.ce-sust.terminal",
@@ -5288,15 +5288,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register EG1001 in a currently feasible class and confirm that it satisfies the outstanding requirement.",
     "policy_section_ids": [
       "policy.registration.stars_guide.functions"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning EG1001 after normal registration.",
+    "reason": "I am a Year 4 CE-SUST student from AY2025-26 with 142.0 earned AUs. EG1001 is still outstanding, and my preferred class conflicts with my current timetable (CC0001). During Add/Drop, please help me find a conflict-free class for the same course rather than substitute another course.",
     "registration_id": "registration.sim-cesust-002",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Check the available classes for EG1001 and register a conflict-free option if all current checks pass.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1283407604,
     "simulation_scope_id": "scope.ce-sust.terminal",
@@ -5334,15 +5334,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Find an academically valid, conflict-free class for CC0015 and proceed only after any required approval is observed.",
     "policy_section_ids": [
       "unknown.exception.general_clash_waiver"
     ],
     "problem_type": "TIMETABLE_CONFLICT",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0015 after normal registration.",
+    "reason": "I am a Year 4 CE-SUST student from AY2025-26 with 142.0 earned AUs. CC0015 is outstanding, but the class I first selected clashes with my current timetable (CC0001). Please check whether a conflict-free class can be used through the required timetable-exception process.",
     "registration_id": "registration.sim-cesust-004",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the timetable exception for CC0015, then register a verified conflict-free class if approval is granted.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 467866221,
     "simulation_scope_id": "scope.ce-sust.terminal",
@@ -5380,15 +5380,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Find an academically valid, conflict-free class for SC1005 and proceed only after any required approval is observed.",
     "policy_section_ids": [
       "unknown.exception.general_clash_waiver"
     ],
     "problem_type": "TIMETABLE_CONFLICT",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1005 after normal registration.",
+    "reason": "I am a Year 4 CE-SUST student from AY2025-26 with 141.0 earned AUs. SC1005 is outstanding, but the class I first selected clashes with my current timetable (CC0001). Please check whether a conflict-free class can be used through the required timetable-exception process.",
     "registration_id": "registration.sim-cesust-005",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the timetable exception for SC1005, then register a verified conflict-free class if approval is granted.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1151365183,
     "simulation_scope_id": "scope.ce-sust.terminal",
@@ -5426,15 +5426,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Find an academically valid, conflict-free class for MH1812 and proceed only after any required approval is observed.",
     "policy_section_ids": [
       "unknown.exception.general_clash_waiver"
     ],
     "problem_type": "TIMETABLE_CONFLICT",
-    "reason": "Terminal-stage registration or graduation exception concerning MH1812 after normal registration.",
+    "reason": "I am a Year 4 CE-SUST student from AY2025-26 with 141.0 earned AUs. MH1812 is outstanding, but the class I first selected clashes with my current timetable (CC0001). Please check whether a conflict-free class can be used through the required timetable-exception process.",
     "registration_id": "registration.sim-cesust-006",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the timetable exception for MH1812, then register a verified conflict-free class if approval is granted.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1203623307,
     "simulation_scope_id": "scope.ce-sust.terminal",
@@ -5490,15 +5490,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Have the pending-transfer evidence for SC2103 reviewed and use only a supported waiver route; otherwise explain the safe escalation.",
     "policy_section_ids": [
       "unknown.exception.general_prerequisite_waiver"
     ],
     "problem_type": "PREREQUISITE_WAIVER",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2103 after normal registration.",
+    "reason": "I am a Year 4 CE-SUST student from AY2025-26 with 141.0 earned AUs, and SC2103 is required for my remaining study plan. I passed the simulated exchange course FX2001, but the transfer is still pending; my transcript and both course mappings are attached. Please check whether this evidence supports the documented prerequisite-exception route.",
     "registration_id": "registration.sim-cesust-007",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the exchange evidence for SC2103 and submit the prerequisite-waiver request only if the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 173754078,
     "simulation_scope_id": "scope.ce-sust.terminal",
@@ -5572,15 +5572,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Have the pending-transfer evidence for SC2005 reviewed and use only a supported waiver route; otherwise explain the safe escalation.",
     "policy_section_ids": [
       "unknown.exception.general_prerequisite_waiver"
     ],
     "problem_type": "PREREQUISITE_WAIVER",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2005 after normal registration.",
+    "reason": "I am a Year 4 CE-SUST student from AY2025-26 with 141.0 earned AUs, and SC2005 is required for my remaining study plan. I passed the simulated exchange course FX2001, but the transfer is still pending; my transcript and both course mappings are attached. Please check whether this evidence supports the documented prerequisite-exception route.",
     "registration_id": "registration.sim-cesust-008",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the exchange evidence for SC2005 and submit the prerequisite-waiver request only if the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1872571486,
     "simulation_scope_id": "scope.ce-sust.terminal",
@@ -5654,15 +5654,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Have the pending-transfer evidence for SC2006 reviewed and use only a supported waiver route; otherwise explain the safe escalation.",
     "policy_section_ids": [
       "unknown.exception.general_prerequisite_waiver"
     ],
     "problem_type": "PREREQUISITE_WAIVER",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2006 after normal registration.",
+    "reason": "I am a Year 4 CE-SUST student from AY2025-26 with 141.0 earned AUs, and SC2006 is required for my remaining study plan. I passed the simulated exchange course FX2001, but the transfer is still pending; my transcript and both course mappings are attached. Please check whether this evidence supports the documented prerequisite-exception route.",
     "registration_id": "registration.sim-cesust-009",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review the exchange evidence for SC2006 and submit the prerequisite-waiver request only if the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1394049100,
     "simulation_scope_id": "scope.ce-sust.terminal",
@@ -5718,15 +5718,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Either obtain the specific missing information for CC0001 or produce a bounded, evidence-backed escalation.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "COURSE_UNAVAILABLE",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0001 after normal registration.",
+    "reason": "I am a Year 4 CE-SUST student from AY2025-26 with 142.0 earned AUs, and CC0001 remains unresolved after normal registration. I cannot identify a verified public exception route. Please tell me what information is missing or prepare the correct CCDS administrative handoff without guessing a policy.",
     "registration_id": "registration.sim-cesust-010",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Do not submit an unsupported exception; clarify the missing fact or escalate the CC0001 case to the appropriate CCDS role.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1751664011,
     "simulation_scope_id": "scope.ce-sust.terminal",
@@ -5764,15 +5764,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Either obtain the specific missing information for SC1006 or produce a bounded, evidence-backed escalation.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "COURSE_UNAVAILABLE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1006 after normal registration.",
+    "reason": "I am a Year 4 CE-SUST student from AY2025-26 with 141.0 earned AUs, and SC1006 remains unresolved after normal registration. I cannot identify a verified public exception route. Please tell me what information is missing or prepare the correct CCDS administrative handoff without guessing a policy.",
     "registration_id": "registration.sim-cesust-011",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Do not submit an unsupported exception; clarify the missing fact or escalate the SC1006 case to the appropriate CCDS role.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1287999801,
     "simulation_scope_id": "scope.ce-sust.terminal",
@@ -5812,15 +5812,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Either obtain the specific missing information for SC2000 or produce a bounded, evidence-backed escalation.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "COURSE_UNAVAILABLE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC2000 after normal registration.",
+    "reason": "I am a Year 4 CE-SUST student from AY2025-26 with 141.0 earned AUs, and SC2000 remains unresolved after normal registration. I cannot identify a verified public exception route. Please tell me what information is missing or prepare the correct CCDS administrative handoff without guessing a policy.",
     "registration_id": "registration.sim-cesust-012",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Do not submit an unsupported exception; clarify the missing fact or escalate the SC2000 case to the appropriate CCDS role.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 371969883,
     "simulation_scope_id": "scope.ce-sust.terminal",
@@ -5858,15 +5858,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Apply the correct cohort-specific curriculum to SC1004 and either resolve the graduation issue or identify the exact missing fact.",
     "policy_section_ids": [
       "policy.registration.graduation_baseline"
     ],
     "problem_type": "GRADUATION_REQUIREMENT",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1004 after normal registration.",
+    "reason": "I am a Year 4 CSC student from AY2025-26 with 141.0 earned AUs, and my degree audit is not ready with SC1004 still affecting graduation clearance. Please determine which dated curriculum rules apply to my cohort before recommending an exception.",
     "registration_id": "registration.sim-cscbusiness-001",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Assess SC1004 against the applicable curriculum version and preserve any source limitation or conflict in the answer.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1547206153,
     "simulation_scope_id": "scope.csc-business.terminal",
@@ -5904,15 +5904,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register AB1201 using current course state, recover safely from a changed or temporary result, and verify the final outcome.",
     "policy_section_ids": [
       "unknown.registration.live_allocation"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning AB1201 after normal registration.",
+    "reason": "I am a Year 4 CSC student from AY2025-26 with 143.0 earned AUs. AB1201 is outstanding and the selected class currently appears feasible during Add/Drop. Please attempt the registration, re-check live availability if the attempt fails, and confirm the final registered state.",
     "registration_id": "registration.sim-cscbusiness-004",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Register a currently feasible class for AB1201; after any failure, refresh the live state before considering one verified alternative.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 469320114,
     "simulation_scope_id": "scope.csc-business.terminal",
@@ -5950,15 +5950,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register SC1005 using current course state, recover safely from a changed or temporary result, and verify the final outcome.",
     "policy_section_ids": [
       "unknown.registration.live_allocation"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1005 after normal registration.",
+    "reason": "I am a Year 4 CSC student from AY2025-26 with 142.0 earned AUs. SC1005 is outstanding and the selected class currently appears feasible during Add/Drop. Please attempt the registration, re-check live availability if the attempt fails, and confirm the final registered state.",
     "registration_id": "registration.sim-cscbusiness-005",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Register a currently feasible class for SC1005; after any failure, refresh the live state before considering one verified alternative.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1466300545,
     "simulation_scope_id": "scope.csc-business.terminal",
@@ -5996,15 +5996,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register CC0001 using current course state, recover safely from a changed or temporary result, and verify the final outcome.",
     "policy_section_ids": [
       "unknown.registration.live_allocation"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0001 after normal registration.",
+    "reason": "I am a Year 4 CSC student from AY2025-26 with 144.0 earned AUs. CC0001 is outstanding and the selected class currently appears feasible during Add/Drop. Please attempt the registration, re-check live availability if the attempt fails, and confirm the final registered state.",
     "registration_id": "registration.sim-cscbusiness-006",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Register a currently feasible class for CC0001; after any failure, refresh the live state before considering one verified alternative.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 754836607,
     "simulation_scope_id": "scope.csc-business.terminal",
@@ -6042,15 +6042,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Resolve the SC1006 issue within the student's declared integrated-programme path and retain the applicable curriculum boundary.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "CROSS_PROGRAMME",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1006 after normal registration.",
+    "reason": "I am a Year 4 CSC student from AY2025-26 with 142.0 earned AUs in the programme configuration linked to PA option : 10-WEEK Professional Attachment (Graded). SC1006 remains outstanding. Please assess the exception against this selected path without combining requirements from a different CCDS curriculum.",
     "registration_id": "registration.sim-cscbusiness-007",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review and submit the SC1006 exception for PA option : 10-WEEK Professional Attachment (Graded) only after the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1407866872,
     "simulation_scope_id": "scope.csc-business.terminal",
@@ -6088,15 +6088,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Resolve the SC1007 issue within the student's declared integrated-programme path and retain the applicable curriculum boundary.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "CROSS_PROGRAMME",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1007 after normal registration.",
+    "reason": "I am a Year 4 CSC student from AY2025-26 with 143.0 earned AUs in the programme configuration linked to PA option : 10-WEEK Professional Attachment (Graded). SC1007 remains outstanding. Please assess the exception against this selected path without combining requirements from a different CCDS curriculum.",
     "registration_id": "registration.sim-cscbusiness-008",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review and submit the SC1007 exception for PA option : 10-WEEK Professional Attachment (Graded) only after the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1319434363,
     "simulation_scope_id": "scope.csc-business.terminal",
@@ -6134,15 +6134,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Resolve the SC1008 issue within the student's declared integrated-programme path and retain the applicable curriculum boundary.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "CROSS_PROGRAMME",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1008 after normal registration.",
+    "reason": "I am a Year 4 CSC student from AY2025-26 with 142.0 earned AUs in the programme configuration linked to PI option : 20-WEEK Professional Internship. SC1008 remains outstanding. Please assess the exception against this selected path without combining requirements from a different CCDS curriculum.",
     "registration_id": "registration.sim-cscbusiness-009",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review and submit the SC1008 exception for PI option : 20-WEEK Professional Internship only after the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 173468173,
     "simulation_scope_id": "scope.csc-business.terminal",
@@ -6180,15 +6180,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Either obtain the specific missing information for CC0001 or produce a bounded, evidence-backed escalation.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "COURSE_UNAVAILABLE",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0001 after normal registration.",
+    "reason": "I am a Year 4 CSC student from AY2025-26 with 144.0 earned AUs, and CC0001 remains unresolved after normal registration. I cannot identify a verified public exception route. Please tell me what information is missing or prepare the correct CCDS administrative handoff without guessing a policy.",
     "registration_id": "registration.sim-cscbusiness-010",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Do not submit an unsupported exception; clarify the missing fact or escalate the CC0001 case to the appropriate CCDS role.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1973007381,
     "simulation_scope_id": "scope.csc-business.terminal",
@@ -6228,15 +6228,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Either obtain the specific missing information for ML0004 or produce a bounded, evidence-backed escalation.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "COURSE_UNAVAILABLE",
-    "reason": "Terminal-stage registration or graduation exception concerning ML0004 after normal registration.",
+    "reason": "I am a Year 4 CSC student from AY2025-26 with 143.0 earned AUs, and ML0004 remains unresolved after normal registration. I cannot identify a verified public exception route. Please tell me what information is missing or prepare the correct CCDS administrative handoff without guessing a policy.",
     "registration_id": "registration.sim-cscbusiness-011",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Do not submit an unsupported exception; clarify the missing fact or escalate the ML0004 case to the appropriate CCDS role.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1373721922,
     "simulation_scope_id": "scope.csc-business.terminal",
@@ -6274,15 +6274,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register SC1005 using current course state, recover safely from a changed or temporary result, and verify the final outcome.",
     "policy_section_ids": [
       "unknown.registration.live_allocation"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1005 after normal registration.",
+    "reason": "I am a Year 4 CSC-ENT student from AY2025-26 with 138.0 earned AUs. SC1005 is outstanding and the selected class currently appears feasible during Add/Drop. Please attempt the registration, re-check live availability if the attempt fails, and confirm the final registered state.",
     "registration_id": "registration.sim-cscent-004",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Register a currently feasible class for SC1005; after any failure, refresh the live state before considering one verified alternative.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1523065658,
     "simulation_scope_id": "scope.csc-ent.terminal",
@@ -6320,15 +6320,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register CC0001 using current course state, recover safely from a changed or temporary result, and verify the final outcome.",
     "policy_section_ids": [
       "unknown.registration.live_allocation"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0001 after normal registration.",
+    "reason": "I am a Year 4 CSC-ENT student from AY2025-26 with 138.0 earned AUs. CC0001 is outstanding and the selected class currently appears feasible during Add/Drop. Please attempt the registration, re-check live availability if the attempt fails, and confirm the final registered state.",
     "registration_id": "registration.sim-cscent-005",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Register a currently feasible class for CC0001; after any failure, refresh the live state before considering one verified alternative.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1440087679,
     "simulation_scope_id": "scope.csc-ent.terminal",
@@ -6366,15 +6366,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register ML0004 using current course state, recover safely from a changed or temporary result, and verify the final outcome.",
     "policy_section_ids": [
       "unknown.registration.live_allocation"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning ML0004 after normal registration.",
+    "reason": "I am a Year 4 CSC-ENT student from AY2025-26 with 139.0 earned AUs. ML0004 is outstanding and the selected class currently appears feasible during Add/Drop. Please attempt the registration, re-check live availability if the attempt fails, and confirm the final registered state.",
     "registration_id": "registration.sim-cscent-006",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Register a currently feasible class for ML0004; after any failure, refresh the live state before considering one verified alternative.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 914088112,
     "simulation_scope_id": "scope.csc-ent.terminal",
@@ -6412,15 +6412,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Resolve the SC1007 issue within the student's declared integrated-programme path and retain the applicable curriculum boundary.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "CROSS_PROGRAMME",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1007 after normal registration.",
+    "reason": "I am a Year 4 CSC-ENT student from AY2025-26 with 137.0 earned AUs in the programme configuration linked to graduation_path.csc-ent.fyp. SC1007 remains outstanding. Please assess the exception against this selected path without combining requirements from a different CCDS curriculum.",
     "registration_id": "registration.sim-cscent-007",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review and submit the SC1007 exception for graduation_path.csc-ent.fyp only after the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 932806815,
     "simulation_scope_id": "scope.csc-ent.terminal",
@@ -6458,15 +6458,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Resolve the SC1008 issue within the student's declared integrated-programme path and retain the applicable curriculum boundary.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "CROSS_PROGRAMME",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1008 after normal registration.",
+    "reason": "I am a Year 4 CSC-ENT student from AY2025-26 with 138.0 earned AUs in the programme configuration linked to graduation_path.csc-ent.coursework. SC1008 remains outstanding. Please assess the exception against this selected path without combining requirements from a different CCDS curriculum.",
     "registration_id": "registration.sim-cscent-008",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review and submit the SC1008 exception for graduation_path.csc-ent.coursework only after the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1195442548,
     "simulation_scope_id": "scope.csc-ent.terminal",
@@ -6504,15 +6504,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Resolve the CC0001 issue within the student's declared integrated-programme path and retain the applicable curriculum boundary.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "CROSS_PROGRAMME",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0001 after normal registration.",
+    "reason": "I am a Year 4 CSC-ENT student from AY2025-26 with 138.0 earned AUs in the programme configuration linked to graduation_path.csc-ent.fyp. CC0001 remains outstanding. Please assess the exception against this selected path without combining requirements from a different CCDS curriculum.",
     "registration_id": "registration.sim-cscent-009",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review and submit the CC0001 exception for graduation_path.csc-ent.fyp only after the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1017064765,
     "simulation_scope_id": "scope.csc-ent.terminal",
@@ -6550,15 +6550,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register AB1201 using current course state, recover safely from a changed or temporary result, and verify the final outcome.",
     "policy_section_ids": [
       "unknown.registration.live_allocation"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning AB1201 after normal registration.",
+    "reason": "I am a Year 4 CSC-ITP student from AY2025-26 with 144.0 earned AUs. AB1201 is outstanding and the selected class currently appears feasible during Add/Drop. Please attempt the registration, re-check live availability if the attempt fails, and confirm the final registered state.",
     "registration_id": "registration.sim-cscitp-004",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Register a currently feasible class for AB1201; after any failure, refresh the live state before considering one verified alternative.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1589567157,
     "simulation_scope_id": "scope.csc-itp.terminal",
@@ -6596,15 +6596,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register SC1005 using current course state, recover safely from a changed or temporary result, and verify the final outcome.",
     "policy_section_ids": [
       "unknown.registration.live_allocation"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1005 after normal registration.",
+    "reason": "I am a Year 4 CSC-ITP student from AY2025-26 with 143.0 earned AUs. SC1005 is outstanding and the selected class currently appears feasible during Add/Drop. Please attempt the registration, re-check live availability if the attempt fails, and confirm the final registered state.",
     "registration_id": "registration.sim-cscitp-005",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Register a currently feasible class for SC1005; after any failure, refresh the live state before considering one verified alternative.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 525690996,
     "simulation_scope_id": "scope.csc-itp.terminal",
@@ -6642,15 +6642,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register CC0001 using current course state, recover safely from a changed or temporary result, and verify the final outcome.",
     "policy_section_ids": [
       "unknown.registration.live_allocation"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0001 after normal registration.",
+    "reason": "I am a Year 4 CSC-ITP student from AY2025-26 with 145.0 earned AUs. CC0001 is outstanding and the selected class currently appears feasible during Add/Drop. Please attempt the registration, re-check live availability if the attempt fails, and confirm the final registered state.",
     "registration_id": "registration.sim-cscitp-006",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Register a currently feasible class for CC0001; after any failure, refresh the live state before considering one verified alternative.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1464823662,
     "simulation_scope_id": "scope.csc-itp.terminal",
@@ -6688,15 +6688,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Resolve the SC1006 issue within the student's declared integrated-programme path and retain the applicable curriculum boundary.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "CROSS_PROGRAMME",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1006 after normal registration.",
+    "reason": "I am a Year 4 CSC-ITP student from AY2025-26 with 143.0 earned AUs in the programme configuration linked to PA option : 10-WEEK Professional Attachment (Graded). SC1006 remains outstanding. Please assess the exception against this selected path without combining requirements from a different CCDS curriculum.",
     "registration_id": "registration.sim-cscitp-007",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review and submit the SC1006 exception for PA option : 10-WEEK Professional Attachment (Graded) only after the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 72355686,
     "simulation_scope_id": "scope.csc-itp.terminal",
@@ -6734,15 +6734,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Resolve the SC1007 issue within the student's declared integrated-programme path and retain the applicable curriculum boundary.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "CROSS_PROGRAMME",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1007 after normal registration.",
+    "reason": "I am a Year 4 CSC-ITP student from AY2025-26 with 144.0 earned AUs in the programme configuration linked to PA option : 10-WEEK Professional Attachment (Graded). SC1007 remains outstanding. Please assess the exception against this selected path without combining requirements from a different CCDS curriculum.",
     "registration_id": "registration.sim-cscitp-008",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review and submit the SC1007 exception for PA option : 10-WEEK Professional Attachment (Graded) only after the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1064312610,
     "simulation_scope_id": "scope.csc-itp.terminal",
@@ -6780,15 +6780,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Resolve the SC1008 issue within the student's declared integrated-programme path and retain the applicable curriculum boundary.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "CROSS_PROGRAMME",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1008 after normal registration.",
+    "reason": "I am a Year 4 CSC-ITP student from AY2025-26 with 143.0 earned AUs in the programme configuration linked to PI option : 20-WEEK Professional Internship. SC1008 remains outstanding. Please assess the exception against this selected path without combining requirements from a different CCDS curriculum.",
     "registration_id": "registration.sim-cscitp-009",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review and submit the SC1008 exception for PI option : 20-WEEK Professional Internship only after the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1840329976,
     "simulation_scope_id": "scope.csc-itp.terminal",
@@ -6826,15 +6826,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register SC1005 using current course state, recover safely from a changed or temporary result, and verify the final outcome.",
     "policy_section_ids": [
       "unknown.registration.live_allocation"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1005 after normal registration.",
+    "reason": "I am a Year 4 CSC-SUST student from AY2025-26 with 143.0 earned AUs. SC1005 is outstanding and the selected class currently appears feasible during Add/Drop. Please attempt the registration, re-check live availability if the attempt fails, and confirm the final registered state.",
     "registration_id": "registration.sim-cscsust-004",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Register a currently feasible class for SC1005; after any failure, refresh the live state before considering one verified alternative.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1892637956,
     "simulation_scope_id": "scope.csc-sust.terminal",
@@ -6872,15 +6872,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Register CC0001 using current course state, recover safely from a changed or temporary result, and verify the final outcome.",
     "policy_section_ids": [
       "unknown.registration.live_allocation"
     ],
     "problem_type": "REGISTRATION_AFTER_DEADLINE",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0001 after normal registration.",
+    "reason": "I am a Year 4 CSC-SUST student from AY2025-26 with 143.0 earned AUs. CC0001 is outstanding and the selected class currently appears feasible during Add/Drop. Please attempt the registration, re-check live availability if the attempt fails, and confirm the final registered state.",
     "registration_id": "registration.sim-cscsust-005",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Register a currently feasible class for CC0001; after any failure, refresh the live state before considering one verified alternative.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 14913497,
     "simulation_scope_id": "scope.csc-sust.terminal",
@@ -6918,15 +6918,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Resolve the SC1007 issue within the student's declared integrated-programme path and retain the applicable curriculum boundary.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "CROSS_PROGRAMME",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1007 after normal registration.",
+    "reason": "I am a Year 4 CSC-SUST student from AY2025-26 with 142.0 earned AUs in the programme configuration linked to PA option : 10-WEEK Professional Attachment (Graded). SC1007 remains outstanding. Please assess the exception against this selected path without combining requirements from a different CCDS curriculum.",
     "registration_id": "registration.sim-cscsust-007",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review and submit the SC1007 exception for PA option : 10-WEEK Professional Attachment (Graded) only after the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1866697398,
     "simulation_scope_id": "scope.csc-sust.terminal",
@@ -6964,15 +6964,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Resolve the SC1008 issue within the student's declared integrated-programme path and retain the applicable curriculum boundary.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "CROSS_PROGRAMME",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1008 after normal registration.",
+    "reason": "I am a Year 4 CSC-SUST student from AY2025-26 with 143.0 earned AUs in the programme configuration linked to PA option : 10-WEEK Professional Attachment (Graded). SC1008 remains outstanding. Please assess the exception against this selected path without combining requirements from a different CCDS curriculum.",
     "registration_id": "registration.sim-cscsust-008",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review and submit the SC1008 exception for PA option : 10-WEEK Professional Attachment (Graded) only after the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1395086235,
     "simulation_scope_id": "scope.csc-sust.terminal",
@@ -7010,15 +7010,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Resolve the CC0001 issue within the student's declared integrated-programme path and retain the applicable curriculum boundary.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "CROSS_PROGRAMME",
-    "reason": "Terminal-stage registration or graduation exception concerning CC0001 after normal registration.",
+    "reason": "I am a Year 4 CSC-SUST student from AY2025-26 with 143.0 earned AUs in the programme configuration linked to PI option : 20-WEEK Professional Internship. CC0001 remains outstanding. Please assess the exception against this selected path without combining requirements from a different CCDS curriculum.",
     "registration_id": "registration.sim-cscsust-009",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review and submit the CC0001 exception for PI option : 20-WEEK Professional Internship only after the required approval is confirmed.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 101427911,
     "simulation_scope_id": "scope.csc-sust.terminal",
@@ -7056,15 +7056,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Resolve the SC1007 issue within the student's declared integrated-programme path and retain the applicable curriculum boundary.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "CROSS_PROGRAMME",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1007 after normal registration.",
+    "reason": "I am a Year 5 CSEC student from AY2025-26 with 171.0 earned AUs in the programme configuration linked to PA option : 10-WEEK Professional Attachment. SC1007 remains outstanding. Please assess the exception against this selected path without combining requirements from a different CCDS curriculum.",
     "registration_id": "registration.sim-csec-007",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review and submit the SC1007 exception for PA option : 10-WEEK Professional Attachment only after the required approval is confirmed.",
     "scenario_time": "2029-08-25T09:00:00+08:00",
     "seed": 1410684771,
     "simulation_scope_id": "scope.csec.terminal",
@@ -7102,15 +7102,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Resolve the SC1008 issue within the student's declared integrated-programme path and retain the applicable curriculum boundary.",
     "policy_section_ids": [
       "unknown.exception.substitution"
     ],
     "problem_type": "CROSS_PROGRAMME",
-    "reason": "Terminal-stage registration or graduation exception concerning SC1008 after normal registration.",
+    "reason": "I am a Year 5 CSEC student from AY2025-26 with 172.0 earned AUs in the programme configuration linked to PA option : 10-WEEK Professional Attachment. SC1008 remains outstanding. Please assess the exception against this selected path without combining requirements from a different CCDS curriculum.",
     "registration_id": "registration.sim-csec-008",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Review and submit the SC1008 exception for PA option : 10-WEEK Professional Attachment only after the required approval is confirmed.",
     "scenario_time": "2029-08-25T09:00:00+08:00",
     "seed": 1273211151,
     "simulation_scope_id": "scope.csec.terminal",
@@ -7148,15 +7148,15 @@
         "source_id": null
       }
     ],
-    "generator_version": "stage3.4.0",
-    "goal": "Identify the supported exception route or the correct escalation.",
+    "generator_version": "stage3.5.0",
+    "goal": "Apply the correct cohort-specific curriculum to MH1805 and either resolve the graduation issue or identify the exact missing fact.",
     "policy_section_ids": [
       "policy.registration.graduation_baseline"
     ],
     "problem_type": "GRADUATION_REQUIREMENT",
-    "reason": "Terminal-stage registration or graduation exception concerning MH1805 after normal registration.",
+    "reason": "I am a Year 4 DSAI student from AY2025-26 with 127.0 earned AUs, and my degree audit is not ready with MH1805 still affecting graduation clearance. Please determine which dated curriculum rules apply to my cohort before recommending an exception.",
     "registration_id": "registration.sim-dsai-001",
-    "requested_action": "Assess and submit the appropriate exception action.",
+    "requested_action": "Assess MH1805 against the applicable curriculum version and preserve any source limitation or conflict in the answer.",
     "scenario_time": "2028-08-25T09:00:00+08:00",
     "seed": 1255866706,
     "simulation_scope_id": "scope.dsai.terminal",

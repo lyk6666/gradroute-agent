@@ -317,12 +317,16 @@ class Stage5Nodes:
         version = 1
         if previous:
             version = int(previous["version"]) + 1
+        intake = IntakeContext.model_validate(state["intake_context"])
+        target_course = str(self._tools.context.initial_state["target_course"])
         specialists = self._decisions.select_specialists(state)
         steps = [
             PlanStep(
                 step_id=f"step.{state['case_id']}.{version}.{index}",
                 ordinal=index,
-                purpose=f"Collect current {specialist.value.lower()} evidence.",
+                purpose=_plan_step_purpose(
+                    specialist, intake.problem_type, target_course
+                ),
                 specialist=specialist,
                 depends_on=(
                     []
@@ -342,9 +346,11 @@ class Stage5Nodes:
                 ).goal_predicates
             ],
             steps=steps,
-            rationale=(
-                "Re-read only the specialist domains required by the observable case "
-                "and build a version-bound candidate before any write."
+            rationale=_plan_rationale(
+                intake.problem_type,
+                target_course,
+                is_replan=is_replan,
+                observation=observation,
             ),
             created_at=self._time(state),
         )
@@ -352,7 +358,10 @@ class Stage5Nodes:
             selection_id=f"selection.{state['case_id']}.{version}",
             plan_id=plan.plan_id,
             required_specialists=list(specialists),
-            rationale="Specialists are selected from the typed problem and current route.",
+            rationale=(
+                f"These checks are the ones needed to answer the student's "
+                f"{target_course} request safely."
+            ),
         )
         plan_dump = plan.model_dump(mode="json")
         return {
@@ -566,9 +575,10 @@ class Stage5Nodes:
         return SpecialistEvidence(
             evidence_id=f"evidence.{plan.plan_id}.{specialist.value.lower()}",
             specialist=specialist,
-            summary=(
-                f"Collected {len(responses)} current, typed Stage 4 response(s) for "
-                f"the {specialist.value.lower()} domain."
+            summary=_evidence_summary(
+                specialist,
+                responses,
+                str(self._tools.context.initial_state["target_course"]),
             ),
             source_ids=sorted(source_ids),
             rule_ids=sorted(rule_ids),
@@ -731,9 +741,12 @@ class Stage5Nodes:
             requires_approval=approval_required,
             approval_id=approval_id,
             idempotency_key=f"idempotency.{state['case_id']}.action.{plan.version}",
-            rationale=(
-                "Candidate parameters and optimistic-lock versions come only from "
-                "the typed intake and latest Stage 4 read responses."
+            rationale=_candidate_rationale(
+                action,
+                course_code,
+                parameters,
+                approval_required=approval_required,
+                retrying=bool(state.get("observation", {}).get("retryable")),
             ),
         )
         return {
@@ -1487,9 +1500,12 @@ class Stage5Nodes:
                 # long-term matching uses the observable intake goal.  The
                 # chosen action remains a tag, never an authoritative fact.
                 goal_kind=intake.goal_predicates[0].goal_kind,
-                successful_strategy=(
-                    "Revalidate bounded evidence, pass the action gate, execute one "
-                    "idempotent action, and verify explicit goal postconditions."
+                successful_strategy=_memory_strategy(
+                    intake.problem_type,
+                    candidate.action,
+                    recovered=bool(
+                        LoopCounters.model_validate(state["loop_counters"]).tool_retries
+                    ),
                 ),
                 recovery_steps=(
                     ["Refresh volatile feasibility and use a verified alternative."]
@@ -1498,11 +1514,13 @@ class Stage5Nodes:
                     ).tool_retries
                     else []
                 ),
-                failed_strategy_patterns=[],
-                applicability=(
-                    "Advisory only; re-check every academic, policy, schedule, and "
-                    "approval fact before reuse."
+                failed_strategy_patterns=_failed_memory_patterns(
+                    intake.problem_type,
+                    recovered=bool(
+                        LoopCounters.model_validate(state["loop_counters"]).tool_retries
+                    ),
                 ),
+                applicability=_memory_applicability(intake.problem_type),
                 tags=[intake.problem_type.value, candidate.action.value],
                 verification_receipt_ids=receipt_ids,
                 verified_at=self._time(state),
@@ -1891,6 +1909,156 @@ def _data(response: ToolResponse) -> dict[str, Any]:
     if not isinstance(response.data, dict):
         raise ValueError("tool response data is not an object")
     return dict(response.data)
+
+
+def _plan_step_purpose(
+    specialist: SpecialistKind,
+    problem_type: ExceptionCaseType,
+    course_code: str,
+) -> str:
+    if specialist is SpecialistKind.DEGREE_AUDIT:
+        return f"Confirm how {course_code} affects this student's applicable graduation requirements."
+    if specialist is SpecialistKind.POLICY:
+        if problem_type is ExceptionCaseType.PREREQUISITE_WAIVER:
+            return f"Check the evidence and approval route for a {course_code} prerequisite waiver."
+        return f"Confirm the documented exception route, required documents, and approval for {course_code}."
+    if problem_type is ExceptionCaseType.TIMETABLE_CONFLICT:
+        return f"Find a {course_code} class that avoids the student's timetable conflict and still has capacity."
+    return f"Check the current prerequisite, timetable, workload, and availability facts for {course_code}."
+
+
+def _plan_rationale(
+    problem_type: ExceptionCaseType,
+    course_code: str,
+    *,
+    is_replan: bool,
+    observation: dict[str, Any],
+) -> str:
+    if is_replan:
+        result = str(observation.get("code") or observation.get("observation") or "the previous attempt").lower().replace("_", " ")
+        return f"The {course_code} route is being reconsidered because {result}; current evidence must be refreshed before another action."
+    return {
+        ExceptionCaseType.REGISTRATION_AFTER_DEADLINE: f"The student still needs {course_code}, so the plan checks the same course's academic fit and current class feasibility before registration.",
+        ExceptionCaseType.PREREQUISITE_WAIVER: f"The {course_code} request depends on both academic evidence and a documented approval path, so neither can be assumed.",
+        ExceptionCaseType.GRADUATION_REQUIREMENT: f"The applicable cohort curriculum must be established before deciding how {course_code} affects graduation clearance.",
+        ExceptionCaseType.TIMETABLE_CONFLICT: f"The plan must identify a conflict-free {course_code} class and confirm the required approval before registration.",
+        ExceptionCaseType.CROSS_PROGRAMME: f"The {course_code} decision must remain within the student's declared integrated-programme path and its approval boundary.",
+        ExceptionCaseType.COURSE_UNAVAILABLE: f"Because no verified public route is evident for {course_code}, the plan first checks what can be supported and escalates rather than guessing.",
+    }.get(problem_type, f"The plan checks only the current evidence needed to answer the student's {course_code} request safely.")
+
+
+def _display_state_reference(value: Any) -> str:
+    text = str(value)
+    return text.rsplit(".", 1)[-1]
+
+
+def _evidence_summary(
+    specialist: SpecialistKind,
+    responses: list[ToolResponse],
+    course_code: str,
+) -> str:
+    data = [_data(response) for response in responses if response.status is not ToolStatus.FAILURE and isinstance(response.data, dict)]
+    if specialist is SpecialistKind.DEGREE_AUDIT:
+        audit = next((item for item in data if "audit_outcome" in item), {})
+        outcome = str(audit.get("audit_outcome", "not yet determined")).lower().replace("_", " ")
+        earned = audit.get("total_earned_aus")
+        required = audit.get("total_required_aus")
+        total = f"{earned} of {required} AUs" if earned is not None and required is not None else "the recorded AU total"
+        outstanding = {
+            str(code)
+            for result in audit.get("requirement_results", [])
+            if isinstance(result, dict)
+            for code in result.get("outstanding_courses", [])
+        }
+        course_fact = f"; {course_code} is recorded as outstanding" if course_code in outstanding else ""
+        return f"The degree audit is {outcome} based on {total}{course_fact}."
+    if specialist is SpecialistKind.POLICY:
+        eligibility = next((item for item in data if "eligibility" in item), {})
+        requirement = next((item for item in data if "required" in item), {})
+        documents = next((item for item in data if "documents" in item), {})
+        eligibility_text = str(eligibility.get("eligibility", "not determined")).lower().replace("_", " ")
+        approval = "human approval is required" if requirement.get("required") else "no separate approval is required"
+        missing = len(documents.get("missing_document_ids", []))
+        document_fact = "all declared documents are present" if missing == 0 else f"{missing} required document(s) are missing"
+        return f"The {course_code} case is {eligibility_text}; {approval}, and {document_fact}."
+
+    prerequisite = next((item for item in data if "missing_all_of" in item), {})
+    exclusion = next((item for item in data if "conflicting_course_codes" in item), {})
+    workload = next((item for item in data if "resulting_workload_aus" in item), {})
+    timetables = [item for item in data if "conflicts" in item and "offering_state_id" in item]
+    availability = [item for item in data if "vacancies" in item and "offering_state_id" in item]
+    prerequisite_text = str(prerequisite.get("result", "unknown")).lower()
+    exclusion_text = str(exclusion.get("result", "unknown")).lower()
+    workload_text = str(workload.get("result", "unknown")).lower()
+    feasible = []
+    for item in availability:
+        state_id = item.get("offering_state_id")
+        timetable = next((row for row in timetables if row.get("offering_state_id") == state_id), {})
+        if item.get("available") and timetable.get("result") == "PASS":
+            feasible.append(_display_state_reference(state_id))
+    class_fact = f"feasible class(es): {', '.join(feasible)}" if feasible else "no conflict-free available class was confirmed"
+    return f"For {course_code}, prerequisite is {prerequisite_text}, exclusion is {exclusion_text}, workload is {workload_text}, and {class_fact}."
+
+
+def _candidate_rationale(
+    action: TransactionAction,
+    course_code: str,
+    parameters: dict[str, Any],
+    *,
+    approval_required: bool,
+    retrying: bool,
+) -> str:
+    approval = " after the required approval is observed" if approval_required else " without a separate approval"
+    if action is TransactionAction.SUBMIT_REGISTRATION:
+        class_index = _display_state_reference(parameters.get("offering_state_id", "selected class"))
+        refresh = " after refreshing the failed attempt" if retrying else ""
+        return f"Register {course_code} in verified class {class_index}{refresh}{approval}, then check the resulting registration."
+    if action is TransactionAction.SUBMIT_WAIVER:
+        return f"Submit the {course_code} prerequisite waiver only with the attached evidence and observed approval, then verify the waiver result."
+    if "graduation_path_id" in parameters:
+        return f"Submit the {course_code} exception within the student's declared integrated-programme path after approval, without mixing curricula."
+    if parameters:
+        return f"Submit the bounded {course_code} exception using the currently verified case facts{approval}, then verify the outcome."
+    return f"No autonomous registration is assumed for {course_code}; submit only the limited exception supported by the current evidence and verify the outcome."
+
+
+def _memory_strategy(
+    problem_type: ExceptionCaseType,
+    action: TransactionAction,
+    *,
+    recovered: bool,
+) -> str:
+    if recovered:
+        return "A registration recovered after the failed attempt was treated as new evidence, class feasibility was refreshed at action time, and a newly verified class was used."
+    return {
+        ExceptionCaseType.REGISTRATION_AFTER_DEADLINE: "A late registration succeeded after the same course's prerequisite, timetable, workload, and class feasibility were checked together at action time.",
+        ExceptionCaseType.PREREQUISITE_WAIVER: "A prerequisite waiver succeeded only after the pending-transfer evidence and required human approval were both confirmed.",
+        ExceptionCaseType.GRADUATION_REQUIREMENT: "A graduation exception was resolved by applying the student's cohort-specific curriculum and retaining the source limitations.",
+        ExceptionCaseType.TIMETABLE_CONFLICT: "A timetable-conflict case succeeded after a conflict-free class was identified and the required approval was confirmed.",
+        ExceptionCaseType.CROSS_PROGRAMME: "An integrated-programme exception succeeded after one applicable curriculum path was selected and approved without merging programmes.",
+    }.get(problem_type, f"A verified {action.value.lower().replace('_', ' ')} completed only after the current evidence and post-action result were checked.")
+
+
+def _failed_memory_patterns(
+    problem_type: ExceptionCaseType,
+    *,
+    recovered: bool,
+) -> list[str]:
+    if recovered:
+        return ["Do not reuse an availability result after a registration attempt fails."]
+    if problem_type in {ExceptionCaseType.PREREQUISITE_WAIVER, ExceptionCaseType.TIMETABLE_CONFLICT, ExceptionCaseType.CROSS_PROGRAMME}:
+        return ["Do not treat an approval request as if the exception action has already completed."]
+    return []
+
+
+def _memory_applicability(problem_type: ExceptionCaseType) -> str:
+    return {
+        ExceptionCaseType.REGISTRATION_AFTER_DEADLINE: "Use only for another late-registration case where the same academic and live scheduling checks can be repeated.",
+        ExceptionCaseType.PREREQUISITE_WAIVER: "Use only when comparable prerequisite evidence exists and the applicable waiver approval route is confirmed again.",
+        ExceptionCaseType.GRADUATION_REQUIREMENT: "Use only after matching the student's cohort and curriculum version and checking current source limitations.",
+        ExceptionCaseType.TIMETABLE_CONFLICT: "Use only when a current conflict-free class and the applicable approval route can both be verified.",
+        ExceptionCaseType.CROSS_PROGRAMME: "Use only for the same kind of programme configuration after confirming one applicable graduation path.",
+    }.get(problem_type, "Use only when the current case has comparable verified conditions; past experience is advisory.")
 
 
 def _result_data(state: WorkflowState, key: str) -> dict[str, Any]:

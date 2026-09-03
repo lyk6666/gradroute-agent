@@ -161,7 +161,8 @@ def test_narration_failure_keeps_recorded_runtime_details_available() -> None:
     final = _wait(service, accepted.run_id)
 
     assert final.status is RunStatus.COMPLETED
-    assert final.node_details["planner"].narrative is None
+    assert final.node_details["planner"].narrative is not None
+    assert final.node_details["planner"].narrative.model_id == "deterministic-presentation"
     assert final.node_details["planner"].input_items
     assert final.node_details["planner"].output_items
     assert final.final_response is not None

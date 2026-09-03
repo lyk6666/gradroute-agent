@@ -8,7 +8,7 @@
     "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
     "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
     "curriculum_id": "curriculum.aisc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "permitted_graduation_path_ids": [],
     "permitted_study_plan_path_labels": [],
     "programme": "AISC",
@@ -36,7 +36,7 @@
     "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
     "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
     "curriculum_id": "curriculum.bce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "permitted_graduation_path_ids": [],
     "permitted_study_plan_path_labels": [],
     "programme": "BCE",
@@ -64,7 +64,7 @@
     "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
     "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
     "curriculum_id": "curriculum.bcg.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "permitted_graduation_path_ids": [
       "graduation_path.bcg.fyp",
       "graduation_path.bcg.coursework"
@@ -95,7 +95,7 @@
     "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
     "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
     "curriculum_id": "curriculum.ce-dana.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "permitted_graduation_path_ids": [],
     "permitted_study_plan_path_labels": [],
     "programme": "CE-DANA",
@@ -123,7 +123,7 @@
     "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
     "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
     "curriculum_id": "curriculum.ce-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "permitted_graduation_path_ids": [],
     "permitted_study_plan_path_labels": [],
     "programme": "CE-ENT",
@@ -151,7 +151,7 @@
     "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
     "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
     "curriculum_id": "curriculum.ce-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "permitted_graduation_path_ids": [],
     "permitted_study_plan_path_labels": [
       "PA option : 10-WEEK Professional Attachment",
@@ -182,7 +182,7 @@
     "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
     "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
     "curriculum_id": "curriculum.ce.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "permitted_graduation_path_ids": [],
     "permitted_study_plan_path_labels": [],
     "programme": "CE",
@@ -210,7 +210,7 @@
     "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
     "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
     "curriculum_id": "curriculum.ceec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "permitted_graduation_path_ids": [
       "graduation_path.ceec.pi",
       "graduation_path.ceec.pa"
@@ -244,7 +244,7 @@
     "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
     "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
     "curriculum_id": "curriculum.csc-business.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "permitted_graduation_path_ids": [
       "graduation_path.csc-business.pi-fyp",
       "graduation_path.csc-business.pi-coursework",
@@ -280,7 +280,7 @@
     "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
     "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
     "curriculum_id": "curriculum.csc-ent.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "permitted_graduation_path_ids": [
       "graduation_path.csc-ent.fyp",
       "graduation_path.csc-ent.coursework"
@@ -311,7 +311,7 @@
     "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
     "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
     "curriculum_id": "curriculum.csc-itp.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "permitted_graduation_path_ids": [
       "graduation_path.csc-itp.pi-fyp",
       "graduation_path.csc-itp.pi-coursework",
@@ -347,7 +347,7 @@
     "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
     "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
     "curriculum_id": "curriculum.csc-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "permitted_graduation_path_ids": [
       "graduation_path.csc-sust.pi-fyp",
       "graduation_path.csc-sust.pi-coursework",
@@ -383,7 +383,7 @@
     "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
     "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
     "curriculum_id": "curriculum.csc.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "permitted_graduation_path_ids": [
       "graduation_path.csc.fyp",
       "graduation_path.csc.coursework"
@@ -414,7 +414,7 @@
     "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
     "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
     "curriculum_id": "curriculum.csec.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "permitted_graduation_path_ids": [
       "graduation_path.csec.pi-fyp",
       "graduation_path.csec.pi-coursework",
@@ -450,7 +450,7 @@
     "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
     "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
     "curriculum_id": "curriculum.dsai-sust.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "permitted_graduation_path_ids": [],
     "permitted_study_plan_path_labels": [],
     "programme": "DSAI-SUST",
@@ -478,7 +478,7 @@
     "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
     "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
     "curriculum_id": "curriculum.dsai.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "permitted_graduation_path_ids": [],
     "permitted_study_plan_path_labels": [],
     "programme": "DSAI",
@@ -506,7 +506,7 @@
     "audit_basis": "SCENARIO_BOUNDED_SIMULATION",
     "counterfactual_time_basis": "Counterfactual terminal Semester 1 using AY2026-27 Semester 1 timetable templates.",
     "curriculum_id": "curriculum.macs.ay2025-26",
-    "generator_version": "stage3.4.0",
+    "generator_version": "stage3.5.0",
     "permitted_graduation_path_ids": [],
     "permitted_study_plan_path_labels": [],
     "programme": "MACS",

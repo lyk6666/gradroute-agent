@@ -1,7 +1,7 @@
 {
   "coverage_contract_id": "coverage.stage2.ntu_ccds.2026-08-31",
   "generated_at": "2026-08-31T12:30:00+08:00",
-  "generator_version": "stage3.4.0",
+  "generator_version": "stage3.5.0",
   "global_seed": 42017,
   "manifest_id": "manifest.stage3.ntu_ccds",
   "prototype_policies": [
@@ -15,7 +15,7 @@
         "AY2025-26"
       ],
       "body_markdown": "SIMULATED POLICY FOR PROTOTYPE\n\nAudits are bounded to the declared curriculum configuration, path, and assumptions; they are not official graduation clearances.",
-      "generator_version": "stage3.4.0",
+      "generator_version": "stage3.5.0",
       "origin": "SIMULATED_POLICY",
       "policy_id": "policy.prototype.scenario_bounded_audit",
       "seed": 1368520231,
@@ -35,7 +35,7 @@
         "AY2025-26"
       ],
       "body_markdown": "SIMULATED POLICY FOR PROTOTYPE\n\nAY2026-27 Semester 1 course indexes are timetable templates only for the declared terminal simulation period.",
-      "generator_version": "stage3.4.0",
+      "generator_version": "stage3.5.0",
       "origin": "SIMULATED_POLICY",
       "policy_id": "policy.prototype.counterfactual_template_reuse",
       "seed": 761021711,
@@ -55,7 +55,7 @@
         "AY2025-26"
       ],
       "body_markdown": "SIMULATED POLICY FOR PROTOTYPE\n\nVacancy, availability, retry, and approval outcomes are controlled prototype state for evaluation only.",
-      "generator_version": "stage3.4.0",
+      "generator_version": "stage3.5.0",
       "origin": "SIMULATED_POLICY",
       "policy_id": "policy.prototype.registration_operations",
       "seed": 1139595985,
