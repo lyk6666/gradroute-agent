@@ -47,14 +47,14 @@ export function FinalResponsePanel({ runSnapshot, scenario }: { runSnapshot: Run
           <div className="response-detail-sections">
             <section><strong>Request</strong><p>{response.request_summary}</p></section>
             <section><strong>Verified resolution</strong><p>{response.resolution_summary}</p></section>
-            <section className="response-reasoning"><strong>{response.reasoning_heading}</strong><ul>{response.validity_reasons.map((item) => <li key={item}>{item}</li>)}</ul></section>
-            {response.action ? <section><strong>Action · {response.action.replaceAll('_', ' ')}</strong>{response.action_parameters.map((item) => <p key={item.label}><b>{item.label}:</b> {item.value}</p>)}</section> : null}
+            <section className="response-reasoning"><strong>{response.reasoning_heading}</strong><ul>{response.validity_reasons.map((item, index) => <li key={`${index}-${item}`}>{item}</li>)}</ul></section>
+            {response.action ? <section><strong>Action · {response.action.replaceAll('_', ' ')}</strong>{response.action_parameters.map((item, index) => <p key={`${index}-${item.label}`}><b>{item.label}:</b> {item.value}</p>)}</section> : null}
             <section><strong>Approval</strong><p>{response.approval_summary}</p></section>
             <section><strong>Transaction</strong><p>{response.transaction_summary}</p></section>
-            {response.academic_basis.length ? <section><strong>Academic and course basis</strong>{response.academic_basis.map((item) => <p key={item}>{item}</p>)}</section> : null}
-            {response.policy_basis.length ? <section><strong>Policy basis</strong>{response.policy_basis.map((item) => <p key={item}>{item}</p>)}</section> : null}
-            <section><strong>Next steps</strong><ol>{response.next_steps.map((item) => <li key={item}>{item}</li>)}</ol></section>
-            <details><summary>Evidence and limitations</summary><p>{response.evidence_ids.join(' · ') || 'No evidence identifiers recorded.'}</p>{response.limitations.map((item) => <p key={item}>{item}</p>)}</details>
+            {response.academic_basis.length ? <section><strong>Academic and course basis</strong>{response.academic_basis.map((item, index) => <p key={`${index}-${item}`}>{item}</p>)}</section> : null}
+            {response.policy_basis.length ? <section><strong>Policy basis</strong>{response.policy_basis.map((item, index) => <p key={`${index}-${item}`}>{item}</p>)}</section> : null}
+            <section><strong>Next steps</strong><ol>{response.next_steps.map((item, index) => <li key={`${index}-${item}`}>{item}</li>)}</ol></section>
+            <details><summary>Evidence and limitations</summary><p>{response.evidence_ids.join(' · ') || 'No evidence identifiers recorded.'}</p>{response.limitations.map((item, index) => <p key={`${index}-${item}`}>{item}</p>)}</details>
           </div>
         ) : null}
         <div className="response-provenance"><FileCheck2 aria-hidden="true" size={13} /><span>Ground truth remains hidden from this surface.</span><ProvenanceBadge kind="derived" /></div>

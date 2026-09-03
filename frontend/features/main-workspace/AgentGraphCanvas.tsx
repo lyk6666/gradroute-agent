@@ -1,4 +1,4 @@
-import { useLayoutEffect, useState, type MouseEvent as ReactMouseEvent } from 'react';
+import { useState, type MouseEvent as ReactMouseEvent } from 'react';
 import {
   BaseEdge,
   Background,
@@ -27,6 +27,7 @@ import {
 } from 'lucide-react';
 import { ProvenanceBadge } from '@/components/common/ProvenanceBadge';
 import type { DetailItem, NodeExecutionDetail, RunSnapshot } from '@/lib/runtime-api';
+import '@/lib/resize-observer-frame-scheduler';
 import {
   GRAPH_EDGES,
   INITIAL_GRAPH_NODES,
@@ -41,16 +42,21 @@ import '@xyflow/react/dist/style.css';
 type AgentGraphCanvasProps = {
   onApprovalDecision: (status: 'PENDING' | 'APPROVED' | 'REJECTED', decisionReason?: string) => void | Promise<void>;
   onClarificationSubmit: (answers: Record<string, string | boolean>) => void | Promise<void>;
-  onSelectNode: (nodeId: string) => void;
+  onSelectNode: (nodeId: string, attempt?: number) => void;
   runSnapshot: RunSnapshot | null;
+  selectedNodeAttempt: number | null;
   selectedNodeId: string;
 };
 
 type CanvasInspectorNodeData = {
   selectedNode: NodeSummary;
   selectedNodeId: string;
+  selectedNodeAttempt: number | null;
   detail: NodeExecutionDetail | null;
+  visits: NodeExecutionDetail[];
+  isLatestVisit: boolean;
   pause: RunSnapshot['pause'];
+  onSelectVisit: (nodeId: string, attempt: number) => void;
   onApprovalDecision: (status: 'PENDING' | 'APPROVED' | 'REJECTED', decisionReason?: string) => void | Promise<void>;
   onClarificationSubmit: (answers: Record<string, string | boolean>) => void | Promise<void>;
 } & Record<string, unknown>;
@@ -64,29 +70,6 @@ const statusLabels: Record<NodeStatus, string> = {
   skipped: 'Skipped',
 };
 
-const RESIZE_OBSERVER_LOOP_MESSAGES = new Set([
-  'ResizeObserver loop completed with undelivered notifications.',
-  'ResizeObserver loop limit exceeded',
-]);
-
-function useResizeObserverLoopGuard() {
-  useLayoutEffect(() => {
-    const ignoreBenignResizeObserverLoop = (event: ErrorEvent) => {
-      const message = event.message || (event.error instanceof Error ? event.error.message : '');
-      if (!RESIZE_OBSERVER_LOOP_MESSAGES.has(message)) return;
-
-      // Chromium reports this notification through window.onerror when a later
-      // frame must finish delivering ResizeObserver updates. React Flow already
-      // receives the next measurement, so it is not an application failure.
-      event.preventDefault();
-      event.stopImmediatePropagation();
-    };
-
-    window.addEventListener('error', ignoreBenignResizeObserverLoop, true);
-    return () => window.removeEventListener('error', ignoreBenignResizeObserverLoop, true);
-  }, []);
-}
-
 function StatusIcon({ status }: { status: NodeStatus }) {
   const props = { 'aria-hidden': true, size: 10 } as const;
   if (status === 'completed') return <Check {...props} />;
@@ -99,6 +82,7 @@ function StatusIcon({ status }: { status: NodeStatus }) {
 
 function AgentFlowNode({ data }: NodeProps<Node<AgentNodeData>>) {
   const Icon = data.icon;
+  const visitCount = Number(data.visitCount ?? 0);
   return (
     <div className={`agent-flow-node status-${data.status}`} title={`${data.label}: ${statusLabels[data.status]}`}>
       <Handle id="top" position={Position.Top} type="target" />
@@ -115,6 +99,7 @@ function AgentFlowNode({ data }: NodeProps<Node<AgentNodeData>>) {
       <Handle id="left-bottom" position={Position.Left} style={{ top: '72%' }} type="source" />
       <span className="agent-node-icon"><Icon aria-hidden="true" size={14} /></span>
       <span className="agent-node-copy"><strong>{data.label}</strong><small><StatusIcon status={data.status} /> {statusLabels[data.status]}</small></span>
+      {visitCount > 1 ? <span className="node-visit-count" title={`${visitCount} recorded visits`}>{visitCount}×</span> : null}
       <Handle id="right" position={Position.Right} type="source" />
       <Handle id="right-top" position={Position.Right} style={{ top: '28%' }} type="source" />
       <Handle id="right-bottom" position={Position.Right} style={{ top: '72%' }} type="source" />
@@ -207,24 +192,76 @@ function DetailRows({ items }: { items: DetailItem[] }) {
   );
 }
 
-function NodeDetail({ detail, node }: { detail: NodeExecutionDetail | null; node: NodeSummary }) {
+function visitLabel(nodeId: string, attempt: number) {
+  if (attempt === 1) return 'Initial pass';
+  if (nodeId === 'planner') return `Replan ${attempt - 1}`;
+  if (['degree_audit_agent', 'policy_agent', 'course_agent'].includes(nodeId)) return `Evidence recheck ${attempt - 1}`;
+  if (['pre_action_verifier', 'post_action_verifier'].includes(nodeId)) return `Verification pass ${attempt}`;
+  if (nodeId === 'transaction') return `Retry ${attempt - 1}`;
+  if (['clarification', 'human_approval', 'pause_checkpoint'].includes(nodeId)) return `Decision cycle ${attempt}`;
+  return `Return ${attempt}`;
+}
+
+function visitTime(detail: NodeExecutionDetail) {
+  const timestamp = detail.completed_at ?? detail.started_at;
+  return timestamp
+    ? new Date(timestamp).toLocaleTimeString('en-SG', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })
+    : 'Time unavailable';
+}
+
+function VisitEvidence({ detail }: { detail: NodeExecutionDetail }) {
+  return (
+    <details className="recorded-facts">
+      <summary>Evidence and audit details</summary>
+      <section className="runtime-detail-group"><h4>Input record</h4><DetailRows items={detail.input_items} /></section>
+      <section className="runtime-detail-group"><h4>Output record</h4><DetailRows items={detail.output_items} /></section>
+      <section className="runtime-detail-group"><h4>State record</h4><DetailRows items={detail.state_changes} /></section>
+      {detail.reasoning ? <p>{detail.reasoning.safety_rule}</p> : null}
+    </details>
+  );
+}
+
+function NodeDetail({
+  detail,
+  node,
+  onSelectVisit,
+  visits,
+}: {
+  detail: NodeExecutionDetail | null;
+  node: NodeSummary;
+  onSelectVisit: (attempt: number) => void;
+  visits: NodeExecutionDetail[];
+}) {
   const Icon = node.icon;
+  const selectedAttempt = detail?.attempt ?? null;
+  const status = detail?.status ?? node.status;
   return (
     <section className="canvas-detail-card node-detail-card" aria-label={`${node.label} details`}>
       <header>
         <span className="detail-node-icon"><Icon size={15} /></span>
         <div><span className="panel-kicker">Selected node</span><h3>{node.label}</h3></div>
-        <span className={`detail-status status-${node.status}`}><StatusIcon status={node.status} />{statusLabels[node.status]}</span>
+        <span className={`detail-status status-${status}`}><StatusIcon status={status} />{statusLabels[status]}</span>
       </header>
-      <p className="node-purpose">{detail?.narrative?.summary ?? (detail ? node.purpose : `${node.purpose} A case-specific result will appear when this step runs.`)}</p>
-      {detail ? (
-        <details className="recorded-facts">
-          <summary>Evidence and audit details</summary>
-          <section className="runtime-detail-group"><h4>Input record</h4><DetailRows items={detail.input_items} /></section>
-          <section className="runtime-detail-group"><h4>Output record</h4><DetailRows items={detail.output_items} /></section>
-          <section className="runtime-detail-group"><h4>State record</h4><DetailRows items={detail.state_changes} /></section>
-          {detail.reasoning ? <p>{detail.reasoning.safety_rule}</p> : null}
-        </details>
+      {!detail ? <p className="node-purpose">{node.purpose} A case-specific result will appear when this step runs.</p> : null}
+      {detail && visits.length <= 1 ? <><p className="node-purpose">{detail.narrative?.summary ?? node.purpose}</p><VisitEvidence detail={detail} /></> : null}
+      {visits.length > 1 ? (
+        <div className="node-visit-history" aria-label={`${visits.length} recorded visits`}>
+          <div className="node-visit-history-heading"><strong>{visits.length} recorded visits</strong><span>Latest shown first</span></div>
+          {[...visits].reverse().map((visit, index) => {
+            const selected = visit.attempt === selectedAttempt;
+            const latest = index === 0;
+            return (
+              <section className={`node-visit-section${selected ? ' is-selected' : ''}`} key={visit.attempt}>
+                <button aria-pressed={selected} onClick={() => onSelectVisit(visit.attempt)} type="button">
+                  <span><b>Visit {visit.attempt}</b><small>{visitLabel(node.id, visit.attempt)}</small></span>
+                  <span className={`visit-status status-${visit.status}`}><StatusIcon status={visit.status} />{statusLabels[visit.status]}</span>
+                  <time>{latest ? 'Latest · ' : ''}{visitTime(visit)}</time>
+                </button>
+                {selected ? <div className="node-visit-content"><p>{visit.narrative?.summary ?? node.purpose}</p><VisitEvidence detail={visit} /></div> : null}
+              </section>
+            );
+          })}
+        </div>
       ) : null}
     </section>
   );
@@ -235,12 +272,14 @@ function HumanInteraction({
   onClarificationSubmit,
   pause,
   detail,
+  isLatestVisit,
   selectedNodeId,
 }: {
   onApprovalDecision: (status: 'PENDING' | 'APPROVED' | 'REJECTED', decisionReason?: string) => void | Promise<void>;
   onClarificationSubmit: (answers: Record<string, string | boolean>) => void | Promise<void>;
   pause: RunSnapshot['pause'];
   detail: NodeExecutionDetail | null;
+  isLatestVisit: boolean;
   selectedNodeId: string;
 }) {
   const [answers, setAnswers] = useState<Record<string, string | boolean>>({});
@@ -249,7 +288,7 @@ function HumanInteraction({
   const actionNarrative = detail?.narrative?.action;
 
   if (selectedNodeId === 'clarification') {
-    const active = pause?.kind === 'clarification';
+    const active = pause?.kind === 'clarification' && isLatestVisit;
     const complete = active && pause.fields.every((field) => {
       const value = answers[field];
       return field === 'submission_declaration' ? value === true : Boolean(String(value ?? '').trim());
@@ -258,8 +297,9 @@ function HumanInteraction({
       <section className="canvas-detail-card human-interaction-card">
         <header><MessageCircleQuestion size={15} /><div><span className="panel-kicker">Human interaction</span><h3>Clarification required</h3></div></header>
         <p className="interaction-question">{active ? pause.message : actionNarrative ?? 'No clarification is active for this step yet.'}</p>
+        {!isLatestVisit ? <p className="historical-visit-note"><Clock3 size={12} /> This is a previous clarification visit. Its record is read-only.</p> : null}
         {active ? <div className="interaction-reason"><strong>Why this is needed</strong><p>{pause.narrative ?? pause.why_needed}</p>{pause.narrative ? <p>{pause.why_needed}</p> : null}<small>{pause.decision_depends_on}</small></div> : null}
-        {active && pause.evidence_summary.length ? <details className="recorded-facts"><summary>Evidence already checked</summary><ul>{pause.evidence_summary.map((item) => <li key={item}>{item}</li>)}</ul></details> : null}
+        {active && pause.evidence_summary.length ? <details className="recorded-facts"><summary>Evidence already checked</summary><ul>{pause.evidence_summary.map((item, index) => <li key={`${index}-${item}`}>{item}</li>)}</ul></details> : null}
         {active ? pause.fields.map((field) => (
           field === 'submission_declaration' ? (
             <label className="clarification-checkbox" key={field}>
@@ -279,11 +319,12 @@ function HumanInteraction({
   }
 
   if (selectedNodeId === 'human_approval' || selectedNodeId === 'pause_checkpoint') {
-    const active = pause?.kind === 'approval';
+    const active = pause?.kind === 'approval' && isLatestVisit;
     return (
       <section className="canvas-detail-card human-interaction-card approval-preview-card">
         <header><UserCheck size={15} /><div><span className="panel-kicker">Human decision</span><h3>{active ? pause.approver_role : 'Approval decision'}</h3></div><span className="simulated-role">Simulated</span></header>
         <p className="interaction-question">{active ? pause.message : actionNarrative ?? 'Approval details will appear if the action gate selects this route.'}</p>
+        {!isLatestVisit ? <p className="historical-visit-note"><Clock3 size={12} /> This earlier decision visit is preserved for review. Only the latest visit can accept a decision.</p> : null}
         {active ? <div className="approval-brief">
           <dl>
             <div><dt>Proposed action</dt><dd>{pause.requested_action}</dd></div>
@@ -291,7 +332,7 @@ function HumanInteraction({
           </dl>
           {pause.narrative ? <div className="decision-ready-summary"><strong>Decision summary</strong><p>{pause.narrative}</p></div> : null}
           <div className="interaction-reason"><strong>Why approval is required</strong><p>{pause.why_needed}</p><small>{pause.decision_depends_on}</small></div>
-          {pause.evidence_summary.length ? <div className="approval-evidence"><strong>Evidence prepared</strong><ul>{pause.evidence_summary.map((item) => <li key={item}>{item}</li>)}</ul></div> : null}
+          {pause.evidence_summary.length ? <div className="approval-evidence"><strong>Evidence prepared</strong><ul>{pause.evidence_summary.map((item, index) => <li key={`${index}-${item}`}>{item}</li>)}</ul></div> : null}
           <label><span>Reason required when rejecting</span><textarea onChange={(event) => setRejectionReason(event.target.value)} placeholder="Explain what is insufficient or why the request is rejected." rows={2} value={rejectionReason} /></label>
         </div> : null}
         <p><ShieldCheck size={12} /> The agent cannot make this decision for the approving role.</p>
@@ -309,8 +350,9 @@ function HumanInteraction({
       <section className="canvas-detail-card human-interaction-card">
         <header><UserCog size={15} /><div><span className="panel-kicker">Human interaction</span><h3>Administrative handoff</h3></div></header>
         <p>{actionNarrative ?? (detail ? 'The plain-language handoff explanation is temporarily unavailable.' : 'No administrative handoff has been prepared yet.')}</p>
+        {!isLatestVisit ? <p className="historical-visit-note"><Clock3 size={12} /> This previous handoff visit is preserved as a read-only record.</p> : null}
         {detail ? <details className="recorded-facts"><summary>Evidence and audit details</summary><DetailRows items={detail.state_changes.slice(0, 5)} /></details> : null}
-        {detail ? <button aria-live="polite" onClick={() => setHandoffAcknowledged(true)} type="button">{handoffAcknowledged ? 'Handoff acknowledged' : 'Acknowledge staff handoff'}</button> : null}
+        {detail ? <button aria-live="polite" disabled={!isLatestVisit} onClick={() => setHandoffAcknowledged(true)} type="button">{handoffAcknowledged ? 'Handoff acknowledged' : 'Acknowledge staff handoff'}</button> : null}
         <ProvenanceBadge kind="derived" />
       </section>
     );
@@ -341,9 +383,15 @@ function HumanInteraction({
 function CanvasInspectorNode({ data }: NodeProps<Node<CanvasInspectorNodeData>>) {
   return (
     <aside aria-label="Selected node and human interaction" className="canvas-embedded-inspector nodrag nowheel nopan">
-      <NodeDetail detail={data.detail} node={data.selectedNode} />
+      <NodeDetail
+        detail={data.detail}
+        node={data.selectedNode}
+        onSelectVisit={(attempt) => data.onSelectVisit(data.selectedNodeId, attempt)}
+        visits={data.visits}
+      />
       <HumanInteraction
-        key={`${data.pause?.kind ?? 'none'}-${data.pause?.message ?? 'idle'}`}
+        key={`${data.selectedNodeId}-${data.detail?.attempt ?? 'none'}-${data.pause?.kind ?? 'none'}-${data.pause?.message ?? 'idle'}`}
+        isLatestVisit={data.isLatestVisit}
         onApprovalDecision={data.onApprovalDecision}
         onClarificationSubmit={data.onClarificationSubmit}
         pause={data.pause}
@@ -368,21 +416,33 @@ export function AgentGraphCanvas({
   onClarificationSubmit,
   onSelectNode,
   runSnapshot,
+  selectedNodeAttempt,
   selectedNodeId,
 }: AgentGraphCanvasProps) {
-  useResizeObserverLoopGuard();
   const statuses = runSnapshot?.node_statuses ?? {};
   const selectedBase = NODE_SUMMARIES[selectedNodeId] ?? NODE_SUMMARIES.pre_action_verifier;
   const selectedNode = { ...selectedBase, status: statuses[selectedNodeId] ?? 'idle' };
+  const latestDetail = runSnapshot?.node_details[selectedNodeId] ?? null;
+  const visits = runSnapshot?.node_history[selectedNodeId] ?? (latestDetail ? [latestDetail] : []);
+  const selectedDetail = selectedNodeAttempt === null
+    ? latestDetail
+    : visits.find((visit) => visit.attempt === selectedNodeAttempt) ?? latestDetail;
+  const latestAttempt = visits.at(-1)?.attempt ?? latestDetail?.attempt ?? null;
   const inspectorNode: Node<CanvasInspectorNodeData> = {
     id: 'canvas_inspector',
     type: 'inspectorNode',
     position: { x: 0, y: 130 },
+    width: 330,
+    height: 700,
     data: {
       selectedNode,
       selectedNodeId,
-      detail: runSnapshot?.node_details[selectedNodeId] ?? null,
+      selectedNodeAttempt,
+      detail: selectedDetail,
+      visits,
+      isLatestVisit: selectedDetail === null || selectedDetail.attempt === latestAttempt,
       pause: runSnapshot?.pause ?? null,
+      onSelectVisit: onSelectNode,
       onApprovalDecision,
       onClarificationSubmit,
     },
@@ -393,7 +453,11 @@ export function AgentGraphCanvas({
   const nodes: Node[] = [
     ...INITIAL_GRAPH_NODES.map((node) => ({
       ...node,
-      data: { ...node.data, status: statuses[node.id] ?? 'idle' },
+      data: {
+        ...node.data,
+        status: statuses[node.id] ?? 'idle',
+        visitCount: runSnapshot?.node_history[node.id]?.length ?? (runSnapshot?.node_details[node.id] ? 1 : 0),
+      },
       ariaLabel: `${node.data.label}, ${statusLabels[statuses[node.id] ?? 'idle']}`,
       selected: node.id === selectedNodeId,
     })),
@@ -449,7 +513,6 @@ export function AgentGraphCanvas({
             if (nodeId && nodeId !== 'canvas_inspector') onSelectNode(nodeId);
           }}
           panOnScroll
-          proOptions={{ hideAttribution: true }}
           zoomOnDoubleClick={false}
         >
           <Background color="#edf2f8" gap={24} size={1} variant={BackgroundVariant.Lines} />

@@ -6,6 +6,7 @@ export type RunStatus = 'queued' | 'running' | 'waiting' | 'completed' | 'failed
 export type TimelineItem = {
   sequence: number;
   node_id: string;
+  attempt: number;
   label: string;
   status: NodeStatus;
   occurred_at: string;
@@ -108,6 +109,7 @@ export type RunSnapshot = {
   current_node: string | null;
   node_statuses: Record<string, NodeStatus>;
   node_details: Record<string, NodeExecutionDetail>;
+  node_history: Record<string, NodeExecutionDetail[]>;
   traversed_edges: string[];
   timeline: TimelineItem[];
   working_state: {

@@ -480,13 +480,13 @@ function RunInspector({ run }: { run: EvaluationRun | null }) {
           <InspectorGrid items={[
             ['Condition', run.memory_condition], ['Memory hits', String(run.memory_hits)], ['Write attempted', yesNo(run.memory_write_attempted)], ['Write completed', yesNo(run.memory_write_completed)], ['Paused', yesNo(run.checkpoint_paused)], ['Resumed', yesNo(run.checkpoint_resumed)],
           ]} />
-          {run.memory_candidate_ids.length ? <div className="evaluation-code-list">{run.memory_candidate_ids.map((item) => <code key={item}>{item}</code>)}</div> : null}
+          {run.memory_candidate_ids.length ? <div className="evaluation-code-list">{run.memory_candidate_ids.map((item, index) => <code key={`${index}-${item}`}>{item}</code>)}</div> : null}
         </InspectorSection>
         <InspectorSection title="Human and approval path" icon={Users}>
           <InspectorGrid items={[
             ['Admin escalation', yesNo(run.admin_escalation)], ['Clarification impact', run.clarification_impact ?? 'None'], ['Resume target', run.clarification_resume_target ?? 'None'], ['Approval transitions', String(run.approval_transitions.length)],
           ]} />
-          {run.approval_transitions.length ? <div className="evaluation-code-list">{run.approval_transitions.map((item) => <code key={item}>{item}</code>)}</div> : null}
+          {run.approval_transitions.length ? <div className="evaluation-code-list">{run.approval_transitions.map((item, index) => <code key={`${index}-${item}`}>{item}</code>)}</div> : null}
         </InspectorSection>
         {run.evaluation_mode === 'bedrock' ? (
           <InspectorSection title="Reasoning coverage" icon={BrainCircuit}>

@@ -2,7 +2,7 @@
 
 This package contains the current implementation specification for the NTU CCDS-grounded administrative exception-resolution prototype.
 
-Current status: Stage 13 is complete for the local hackathon-prototype boundary.
+Current status: Stage 14 is complete for the local hackathon-prototype boundary.
 Its UI is backed by the Stage 7 frozen 315-run held-out evaluation over the
 Stage 5/6 system. Both the deterministic fixture baseline and the
 qualifying Amazon Bedrock campaign pass 315/315 with 105/105 scenarios at 3/3
@@ -44,6 +44,11 @@ policy provenance. The right panel combines progress and material history into a
 single case overview. All seven demo workflows passed a real Bedrock narration
 review; unsuitable model wording was rejected in favour of the case-specific safe
 fallback.
+Stage 14 preserves every visit to a repeated workflow node instead of replacing
+the earlier record. Graph nodes show repeat counts, timeline events open their exact
+visit, the in-canvas inspector separates initial checks from replans and rechecks,
+and historical human checkpoints remain visible but read-only. The optional LLM is
+also given the preceding visit summary so later explanations can state what changed.
 
 Foundation specifications:
 
@@ -91,6 +96,9 @@ Stage records:
 - [`stage_13_evidence_rich_case_narration.md`](stage_13_evidence_rich_case_narration.md)
   — node-specific narration briefs, evidence-rich human decisions, unified case
   overview, model-output quality guard, and seven-demo live review
+- [`stage_14_node_visit_history.md`](stage_14_node_visit_history.md)
+  — ordered node-attempt history, exact timeline-to-visit inspection, repeat-count
+  indicators, read-only historical decisions, and compatibility safeguards
 
 Stage-specific documents use `stage_<number>_<topic>.md`. They do not receive
 an additional sequence prefix such as `06_`, `07_`, or `08_`; the same rule
@@ -121,7 +129,9 @@ Stage 11 — Scenario + Evaluation + Presentation Refinement (complete)
     ↓
 Stage 12 — Human-Centred Case Explanations + Review (complete)
     ↓
-Stage 13 — Evidence-Rich Case Narration + Live Demo Review (complete for local hackathon prototype)
+Stage 13 — Evidence-Rich Case Narration + Live Demo Review (complete)
+    ↓
+Stage 14 — Preserved Node Visit History + Exact Timeline Inspection (complete for local hackathon prototype)
 ```
 
 Key principle:

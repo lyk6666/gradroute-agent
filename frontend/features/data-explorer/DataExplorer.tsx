@@ -402,7 +402,7 @@ function TokenList({ label, items }: { label: string; items: string[] }) {
   return (
     <div className="data-token-group">
       <span>{label}</span>
-      <div>{items.map((item) => <code key={item}>{item}</code>)}</div>
+      <div>{items.map((item, index) => <code key={`${index}-${item}`}>{item}</code>)}</div>
     </div>
   );
 }

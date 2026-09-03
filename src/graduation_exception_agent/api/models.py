@@ -64,6 +64,7 @@ class ScenarioSummary(ApiModel):
 class TimelineItem(ApiModel):
     sequence: int
     node_id: str
+    attempt: int = Field(default=1, ge=1)
     label: str
     status: NodeStatus
     occurred_at: datetime
@@ -245,6 +246,7 @@ class RunSnapshot(ApiModel):
     current_node: str | None = None
     node_statuses: dict[str, NodeStatus]
     node_details: dict[str, NodeExecutionDetail] = Field(default_factory=dict)
+    node_history: dict[str, list[NodeExecutionDetail]] = Field(default_factory=dict)
     traversed_edges: list[str] = Field(default_factory=list)
     timeline: list[TimelineItem] = Field(default_factory=list)
     working_state: WorkingStateSummary

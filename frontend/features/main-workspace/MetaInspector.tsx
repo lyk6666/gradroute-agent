@@ -52,7 +52,7 @@ export function MetaInspector({ runSnapshot, selectedNodeId }: MetaInspectorProp
         <InspectorSection icon={ListTree} open title="Case overview">
           <div className="natural-language-summary"><p>{working?.narrative ?? 'The case is ready to begin from the student’s request.'}</p></div>
           {working?.narrative_known.length ? (
-            <div className="case-briefing-block"><strong>Important findings</strong><ul>{working.narrative_known.slice(0, 3).map((fact) => <li key={fact}>{fact}</li>)}</ul></div>
+            <div className="case-briefing-block"><strong>Important findings</strong><ul>{working.narrative_known.slice(0, 3).map((fact, index) => <li key={`${index}-${fact}`}>{fact}</li>)}</ul></div>
           ) : null}
           {working?.narrative_next ? <div className="case-next-step"><ArrowRight size={14} /><span><strong>Next</strong>{working.narrative_next}</span></div> : null}
           {working?.narrative_attention ? <div className="case-attention"><CircleAlert size={14} /><span><strong>Needs attention</strong>{working.narrative_attention}</span></div> : null}
@@ -72,8 +72,8 @@ export function MetaInspector({ runSnapshot, selectedNodeId }: MetaInspectorProp
               </dl>
               {working?.candidate_resolution ? <div className="processed-summary-box"><strong>Proposed resolution</strong><p>{working.candidate_resolution}</p></div> : null}
               {working?.outstanding_items.length ? <div className="inspector-alert"><strong>Outstanding</strong><p>{working.outstanding_items.join(' · ')}</p></div> : null}
-              {working?.errors.length ? <div className="inspector-alert is-error"><strong>Observed problems</strong>{working.errors.map((item) => <p key={item}>{item}</p>)}</div> : null}
-              {thread?.events.length ? <ol className="thread-event-list">{thread.events.slice(-6).map((event) => <li key={`${event.sequence}-${event.label}`}><div><strong>{event.label}</strong><small>{event.status} · {new Date(event.occurred_at).toLocaleTimeString()}</small></div></li>)}</ol> : null}
+              {working?.errors.length ? <div className="inspector-alert is-error"><strong>Observed problems</strong>{working.errors.map((item, index) => <p key={`${index}-${item}`}>{item}</p>)}</div> : null}
+              {thread?.events.length ? <ol className="thread-event-list">{thread.events.slice(-6).map((event) => <li key={`${event.sequence}-${event.label}`}><div><strong>{event.label}</strong><small>{event.status} · {new Date(event.occurred_at).toLocaleTimeString('en-SG', { hour12: false })}</small></div></li>)}</ol> : null}
             </div>
           </details>
         </InspectorSection>

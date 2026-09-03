@@ -394,7 +394,7 @@ summary:focus-visible,
 .graph-legend b { padding: 4px 7px; color: #92400e; border-radius: 999px; background: #fef3c7; font-size: 9px; }
 .agent-canvas-shell { position: relative; min-width: 0; min-height: 0; flex: 1; overflow: hidden; contain: layout paint; background: #fbfdff; }
 .agent-canvas-shell > .react-flow { position: absolute; inset: 0; width: auto; min-width: 0; height: auto; min-height: 0; }
-.canvas-embedded-inspector { display: grid; width: 330px; height: 700px; grid-template-rows: minmax(0, 1.12fr) minmax(0, .88fr); overflow: hidden; border: 1px solid #cbd5e1; border-radius: 12px; background: rgb(248 250 252 / 97%); box-shadow: 0 9px 26px rgb(15 23 42 / 11%); }
+.canvas-embedded-inspector { display: grid; width: 100%; height: 100%; grid-template-rows: minmax(0, 1.12fr) minmax(0, .88fr); overflow: hidden; border: 1px solid #cbd5e1; border-radius: 12px; background: rgb(248 250 252 / 97%); box-shadow: 0 9px 26px rgb(15 23 42 / 11%); }
 .canvas-embedded-inspector .canvas-detail-card { border: 0; border-radius: 0; box-shadow: none; }
 .canvas-embedded-inspector .canvas-detail-card:first-child { border-bottom: 1px solid var(--border); }
 .react-flow__node-inspectorNode { cursor: default; }
@@ -410,6 +410,28 @@ summary:focus-visible,
 .detail-status.status-idle,
 .detail-status.status-skipped { color: #64748b; background: #f1f5f9; }
 .node-purpose { margin: 9px 0; color: #475569; font-size: 10px; line-height: 1.5; }
+.node-visit-history { display: grid; gap: 6px; margin-top: 9px; }
+.node-visit-history-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; color: #64748b; }
+.node-visit-history-heading strong { color: #334155; font-size: 9px; }
+.node-visit-history-heading span { font-size: 8px; }
+.node-visit-section { overflow: hidden; border: 1px solid #e2e8f0; border-radius: 8px; background: #fbfdff; }
+.node-visit-section.is-selected { border-color: #a78bfa; background: #fdfcff; box-shadow: inset 3px 0 #8b5cf6; }
+.node-visit-section > button { display: grid; width: 100%; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 3px 7px; padding: 7px 8px; color: #334155; border: 0; background: transparent; cursor: pointer; text-align: left; }
+.node-visit-section > button > span:first-child { display: flex; min-width: 0; align-items: baseline; gap: 5px; }
+.node-visit-section > button b { font-size: 9px; }
+.node-visit-section > button small { overflow: hidden; color: #64748b; font-size: 8px; text-overflow: ellipsis; white-space: nowrap; }
+.node-visit-section > button time { grid-column: 1 / -1; color: #94a3b8; font-size: 8px; }
+.visit-status { display: inline-flex; align-items: center; gap: 3px; padding: 3px 5px; border-radius: 999px; font-size: 8px; font-weight: 800; white-space: nowrap; }
+.visit-status.status-completed { color: #047857; background: #d1fae5; }
+.visit-status.status-running { color: #1d4ed8; background: #dbeafe; }
+.visit-status.status-waiting { color: #b45309; background: #fef3c7; }
+.visit-status.status-failed { color: #b91c1c; background: #fee2e2; }
+.visit-status.status-idle,
+.visit-status.status-skipped { color: #64748b; background: #e2e8f0; }
+.node-visit-content { padding: 0 8px 8px; }
+.node-visit-content > p { margin: 2px 0 7px; color: #334155; font-size: 10px; line-height: 1.5; }
+.historical-visit-note { display: flex; align-items: flex-start; gap: 5px; padding: 7px; color: #6d28d9 !important; border: 1px solid #ddd6fe; border-radius: 7px; background: #faf8ff; font-size: 9px !important; }
+.historical-visit-note svg { flex: 0 0 auto; margin-top: 1px; }
 .node-narrative-pending { margin: 10px 0; padding: 9px; color: #64748b; border: 1px dashed #cbd5e1; border-radius: 7px; background: #f8fafc; font-size: 10px; line-height: 1.5; }
 .runtime-narrative-list { display: grid; gap: 7px; }
 .runtime-narrative-block { padding: 8px; border: 1px solid #dbeafe; border-radius: 8px; background: #f8fbff; }
@@ -469,16 +491,17 @@ summary:focus-visible,
 .clarification-checkbox input { width: 14px; height: 14px; margin: 1px 0 0; }
 .clarification-checkbox span { color: #334155; font-size: 10px; line-height: 1.35; }
 .interaction-empty { background: #fbfcfe; }
-.agent-flow-node { display: flex; width: 188px; min-height: 54px; align-items: center; gap: 9px; padding: 8px 10px; border: 1px solid #94a3b8; border-radius: 9px; background: white; box-shadow: 0 3px 9px rgb(15 23 42 / 7%); transition: opacity 130ms ease, filter 130ms ease, box-shadow 130ms ease; }
+.agent-flow-node { display: flex; width: 100%; height: 100%; min-height: 0; align-items: center; gap: 9px; padding: 8px 10px; overflow: hidden; border: 1px solid #94a3b8; border-radius: 9px; background: white; box-shadow: 0 3px 9px rgb(15 23 42 / 7%); transition: opacity 130ms ease, filter 130ms ease, box-shadow 130ms ease; }
 .agent-flow-node.status-idle,
 .agent-flow-node.status-skipped { opacity: .38; filter: saturate(.25); }
 .agent-flow-node.status-completed { border-color: #6ee7b7; background: #f3fffb; }
 .agent-flow-node.status-running { border-color: #3b82f6; background: #eff6ff; box-shadow: 0 0 0 3px rgb(59 130 246 / 18%), 0 5px 15px rgb(37 99 235 / 15%); }
 .react-flow__node.selected .agent-flow-node { border-color: #8b5cf6; box-shadow: 0 0 0 3px rgb(139 92 246 / 20%), 0 5px 15px rgb(76 29 149 / 14%); opacity: 1; filter: none; }
 .agent-node-icon { display: grid; width: 32px; height: 32px; flex: 0 0 auto; place-items: center; color: var(--primary-strong); border-radius: 7px; background: #eaf2ff; }
-.agent-node-copy { display: grid; min-width: 0; gap: 3px; }
+.agent-node-copy { display: grid; min-width: 0; flex: 1; gap: 3px; }
 .agent-node-copy strong { font-size: 11px; line-height: 1.2; }
 .agent-node-copy small { display: flex; align-items: center; gap: 3px; color: var(--muted); font-size: 9px; }
+.node-visit-count { display: grid; min-width: 25px; height: 21px; flex: 0 0 auto; place-items: center; color: #6d28d9; border: 1px solid #ddd6fe; border-radius: 999px; background: #faf8ff; font-size: 8px; font-weight: 850; }
 .agent-flow-node.status-running .agent-node-copy small svg { animation: graph-spin 1.2s linear infinite; }
 .react-flow__handle { width: 5px; height: 5px; min-width: 5px; min-height: 5px; border: 1px solid white; background: #64748b; }
 .agent-flow-node .react-flow__handle[data-handleid*="-"] { opacity: 0; }
@@ -644,6 +667,7 @@ summary:focus-visible,
 .timeline-event.status-running .timeline-node-icon i svg { animation: graph-spin 1.2s linear infinite; }
 .timeline-event.is-selected .timeline-node-icon { outline: 2px solid #8b5cf6; outline-offset: 2px; }
 .timeline-event strong { max-width: 100px; overflow: hidden; font-size: 10px; text-overflow: ellipsis; white-space: nowrap; }
+.timeline-event em { margin-top: -2px; color: #7c3aed; font-size: 8px; font-style: normal; font-weight: 800; }
 .timeline-event small { color: var(--muted); font-size: 9px; }
 .timeline-event.status-idle { color: #94a3b8; }
 .timeline-empty { position: relative; z-index: 1; width: 100%; color: #94a3b8; font-size: 11px; text-align: center; }

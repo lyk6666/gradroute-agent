@@ -233,6 +233,7 @@ class RunRecord:
         self.node_statuses["student_case"] = NodeStatus.COMPLETED
         self.timeline: list[TimelineItem] = []
         self.node_details: dict[str, NodeExecutionDetail] = {}
+        self.node_history: dict[str, list[NodeExecutionDetail]] = {}
         self.node_attempts: dict[str, int] = {}
         self.working_narrative: str | None = None
         self.thread_narrative: str | None = None
@@ -251,6 +252,20 @@ class RunRecord:
         self.step_permits = 1 if mode is RunMode.STEP else 0
         self.awaiting_step = False
         self.worker_active = False
+
+
+def _store_node_detail(record: RunRecord, detail: NodeExecutionDetail) -> None:
+    """Update the latest view and only the matching immutable visit record."""
+
+    record.node_details[detail.node_id] = detail
+    history = record.node_history.setdefault(detail.node_id, [])
+    for index, existing in enumerate(history):
+        if existing.attempt == detail.attempt:
+            history[index] = detail
+            break
+    else:
+        history.append(detail)
+        history.sort(key=lambda item: item.attempt)
 
 
 class RunService:
@@ -428,7 +443,7 @@ class RunService:
             intake=intake,
             profile_summary=summary,
         )
-        record.node_details["student_case"] = NodeExecutionDetail(
+        student_detail = NodeExecutionDetail(
             node_id="student_case",
             attempt=1,
             status=NodeStatus.COMPLETED,
@@ -447,6 +462,8 @@ class RunService:
             started_at=datetime.now(UTC),
             completed_at=datetime.now(UTC),
         )
+        _store_node_detail(record, student_detail)
+        record.node_attempts["student_case"] = 1
         with self._records_lock:
             self._records[run_id] = record
         self._publish(record, "run.queued", "Run accepted by the isolated runtime.")
@@ -641,7 +658,7 @@ class RunService:
             record.values = values
             attempt = record.node_attempts.get(node_id, 0) + 1
             record.node_attempts[node_id] = attempt
-            record.node_details[node_id] = _node_execution_detail(
+            detail = _node_execution_detail(
                 node_id=node_id,
                 attempt=attempt,
                 status=NodeStatus.RUNNING,
@@ -650,6 +667,7 @@ class RunService:
                 node_output=node_output,
                 started_at=started_at,
             )
+            _store_node_detail(record, detail)
         self._publish(record, "node.started", f"{NODE_LABELS[node_id]} started.", node_id)
         if self._node_delay_seconds:
             sleep(self._node_delay_seconds)
@@ -657,13 +675,15 @@ class RunService:
         with record.lock:
             record.node_statuses[node_id] = NodeStatus.COMPLETED
             detail = record.node_details[node_id]
-            record.node_details[node_id] = detail.model_copy(
+            detail = detail.model_copy(
                 update={"status": NodeStatus.COMPLETED, "completed_at": occurred_at}
             )
+            _store_node_detail(record, detail)
             record.timeline.append(
                 TimelineItem(
                     sequence=len(record.timeline) + 1,
                     node_id=node_id,
+                    attempt=attempt,
                     label=NODE_LABELS[node_id],
                     status=NodeStatus.COMPLETED,
                     occurred_at=occurred_at,
@@ -762,7 +782,7 @@ class RunService:
                 pause_fields.append(
                     DetailItem(label="Required fields", value=", ".join(pause.fields))
                 )
-            record.node_details[node_id] = NodeExecutionDetail(
+            detail = NodeExecutionDetail(
                 node_id=node_id,
                 attempt=attempt,
                 status=NodeStatus.WAITING,
@@ -776,10 +796,12 @@ class RunService:
                 reasoning=_reasoning_for_node(node_id, values),
                 started_at=datetime.now(UTC),
             )
+            _store_node_detail(record, detail)
             record.timeline.append(
                 TimelineItem(
                     sequence=len(record.timeline) + 1,
                     node_id=node_id,
+                    attempt=attempt,
                     label=NODE_LABELS[node_id],
                     status=NodeStatus.WAITING,
                     occurred_at=datetime.now(UTC),
@@ -807,7 +829,7 @@ class RunService:
                 record, node_id, detail, values=narration_values
             )
             detail = detail.model_copy(update={"narrative": fallback})
-            record.node_details[node_id] = detail
+            _store_node_detail(record, detail)
             record.working_narrative = fallback.summary
             record.working_next = fallback.next_step
             fallback_terminal = _mapping(narration_values.get("final_outcome"))
@@ -858,7 +880,7 @@ class RunService:
             latest = record.node_details.get(node_id)
             if latest is None or latest.attempt != detail.attempt:
                 return
-            record.node_details[node_id] = latest.model_copy(
+            latest = latest.model_copy(
                 update={
                     "narrative": NodeNarrativeSummary(
                         summary=result.node_output,
@@ -872,6 +894,7 @@ class RunService:
                     )
                 }
             )
+            _store_node_detail(record, latest)
             terminal = _mapping(narration_values.get("final_outcome"))
             terminal_response = (
                 _final_response_summary(
@@ -924,6 +947,14 @@ class RunService:
             if snapshot.final_response
             else None
         )
+        prior_visit = next(
+            (
+                item
+                for item in reversed(record.node_history.get(node_id, []))
+                if item.attempt < detail.attempt
+            ),
+            None,
+        )
         return {
             "node": {
                 "name": NODE_LABELS[node_id],
@@ -937,6 +968,24 @@ class RunService:
                 "node_summary": detail.narrative.summary if detail.narrative else None,
                 "next_action": detail.narrative.action if detail.narrative else None,
             },
+            "prior_visit": (
+                {
+                    "attempt": prior_visit.attempt,
+                    "status": prior_visit.status.value,
+                    "summary": (
+                        prior_visit.narrative.summary
+                        if prior_visit.narrative
+                        else _summarize_value(prior_visit.output_items)
+                    ),
+                    "completed_at": (
+                        prior_visit.completed_at.isoformat()
+                        if prior_visit.completed_at
+                        else None
+                    ),
+                }
+                if prior_visit
+                else None
+            ),
             "case_events": _case_event_summaries(narration_values),
             "observed_input": _narration_items(
                 detail.input_items, exclude_context=True
@@ -1075,6 +1124,10 @@ class RunService:
             node_details={
                 key: value.model_copy(deep=True)
                 for key, value in record.node_details.items()
+            },
+            node_history={
+                key: [item.model_copy(deep=True) for item in history]
+                for key, history in record.node_history.items()
             },
             traversed_edges=_traversed_edges(values, record.timeline),
             timeline=list(record.timeline),

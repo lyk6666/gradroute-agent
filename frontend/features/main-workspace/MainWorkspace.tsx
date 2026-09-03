@@ -41,6 +41,7 @@ export function MainWorkspace() {
   const [demoScenarios, setDemoScenarios] = useState<ScenarioPreview[]>(DEMO_SCENARIOS);
   const [evaluationScenarios, setEvaluationScenarios] = useState<ScenarioPreview[]>(EVALUATION_SCENARIOS);
   const [selectedNodeId, setSelectedNodeId] = useState('student_case');
+  const [selectedNodeAttempt, setSelectedNodeAttempt] = useState<number | null>(null);
   const [runSnapshot, setRunSnapshot] = useState<RunSnapshot | null>(null);
   const [runError, setRunError] = useState<string | null>(null);
   const streamRef = useRef<EventSource | null>(null);
@@ -83,7 +84,10 @@ export function MainWorkspace() {
       snapshot.latest_event_sequence,
       (event) => {
         applySnapshot(event.snapshot);
-        if (event.node_id) setSelectedNodeId(event.node_id);
+        if (event.node_id) {
+          setSelectedNodeId(event.node_id);
+          setSelectedNodeAttempt(null);
+        }
         if (['completed', 'failed'].includes(event.snapshot.status)) {
           source.close();
         }
@@ -101,6 +105,7 @@ export function MainWorkspace() {
   async function handleStart() {
     setRunError(null);
     setSelectedNodeId('intake_context');
+    setSelectedNodeAttempt(null);
     try {
       const snapshot = intakeMode === 'scenario'
         ? await startRun(scenario.id, runMode)
@@ -160,6 +165,11 @@ export function MainWorkspace() {
     setScenario(split === 'demo' ? demoScenarios[0] : evaluationScenarios[0]);
   }
 
+  function handleSelectNode(nodeId: string, attempt?: number) {
+    setSelectedNodeId(nodeId);
+    setSelectedNodeAttempt(attempt ?? null);
+  }
+
   return (
     <AppShell activeSection="main" systemStatus={runtimeStatus} workspace>
       <h1 className="sr-only">Graduation exception case execution workspace</h1>
@@ -187,12 +197,18 @@ export function MainWorkspace() {
         <AgentGraphCanvas
           onApprovalDecision={handleApprovalDecision}
           onClarificationSubmit={handleClarification}
-          onSelectNode={setSelectedNodeId}
+          onSelectNode={handleSelectNode}
           runSnapshot={runSnapshot}
+          selectedNodeAttempt={selectedNodeAttempt}
           selectedNodeId={selectedNodeId}
         />
         <MetaInspector runSnapshot={runSnapshot} selectedNodeId={selectedNodeId} />
-        <ExecutionTimeline onSelectNode={setSelectedNodeId} runSnapshot={runSnapshot} selectedNodeId={selectedNodeId} />
+        <ExecutionTimeline
+          onSelectNode={handleSelectNode}
+          runSnapshot={runSnapshot}
+          selectedNodeAttempt={selectedNodeAttempt}
+          selectedNodeId={selectedNodeId}
+        />
         <FinalResponsePanel runSnapshot={runSnapshot} scenario={intakeMode === 'manual' ? manualCase.profile : scenario} />
       </div>
     </AppShell>

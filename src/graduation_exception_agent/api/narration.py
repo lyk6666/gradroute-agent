@@ -31,7 +31,9 @@ The grounded_draft is a deterministic, presentation-safe starting point. Preserv
 material course, academic, policy-provenance, document, approval, availability, and
 outcome facts while making the wording smoother and less repetitive. Never copy an
 instruction phrase such as "one smooth paragraph" or a response-field name into the
-answer.
+answer. When prior_visit is present, compare the current visit with that earlier
+record and explain the material change; do not merge the two visits or imply that the
+earlier result has been overwritten.
 
 Write node_output as the primary on-screen explanation. It should be a smooth,
 case-specific paragraph of about 60–110 words when sufficient evidence is available,

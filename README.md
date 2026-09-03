@@ -24,7 +24,8 @@ demonstration and evaluation.
 - bounded registration and exception transactions with observable outcomes;
 - pre-action and post-action verification;
 - working, thread and advisory long-term memory with provenance labels;
-- a visual execution graph, human-readable timeline and verified final response;
+- a visual execution graph with visit-by-visit history, a human-readable timeline
+  and a verified final response;
 - case-specific Bedrock explanations of node activity, working state and memory;
 - read-only grounded-data and evaluation dashboards.
 

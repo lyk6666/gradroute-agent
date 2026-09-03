@@ -340,6 +340,8 @@ export const INITIAL_GRAPH_NODES: Node<AgentNodeData>[] = summaries.map((summary
   id: summary.id,
   type: 'agentNode',
   position: nodePositions[summary.id],
+  width: 188,
+  height: 58,
   data: summary,
   selected: summary.id === 'human_approval',
   draggable: false,

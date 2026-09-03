@@ -3,8 +3,9 @@ import type { RunSnapshot } from '@/lib/runtime-api';
 import { NODE_SUMMARIES, type NodeStatus } from './workspace-data';
 
 type ExecutionTimelineProps = {
-  onSelectNode: (nodeId: string) => void;
+  onSelectNode: (nodeId: string, attempt: number) => void;
   runSnapshot: RunSnapshot | null;
+  selectedNodeAttempt: number | null;
   selectedNodeId: string;
 };
 
@@ -15,18 +16,20 @@ function TimelineStatus({ status }: { status: NodeStatus }) {
   return <Circle aria-hidden="true" size={9} />;
 }
 
-export function ExecutionTimeline({ onSelectNode, runSnapshot, selectedNodeId }: ExecutionTimelineProps) {
+export function ExecutionTimeline({ onSelectNode, runSnapshot, selectedNodeAttempt, selectedNodeId }: ExecutionTimelineProps) {
   const events = runSnapshot?.timeline.map((event) => ({
     nodeId: event.node_id,
+    attempt: event.attempt,
     label: event.label,
     status: event.status,
-    time: new Date(event.occurred_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+    time: new Date(event.occurred_at).toLocaleTimeString('en-SG', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }),
     key: `${event.sequence}-${event.node_id}`,
   })) ?? [];
   if (runSnapshot?.current_node && runSnapshot.node_statuses[runSnapshot.current_node] === 'running') {
     const current = NODE_SUMMARIES[runSnapshot.current_node];
     events.push({
       nodeId: runSnapshot.current_node,
+      attempt: runSnapshot.node_details[runSnapshot.current_node]?.attempt ?? 1,
       label: current?.label ?? runSnapshot.current_node,
       status: 'running',
       time: 'Now',
@@ -41,17 +44,21 @@ export function ExecutionTimeline({ onSelectNode, runSnapshot, selectedNodeId }:
           const node = NODE_SUMMARIES[event.nodeId];
           if (!node) return null;
           const Icon = node.icon;
-          const selected = selectedNodeId === event.nodeId;
+          const selected = selectedNodeId === event.nodeId
+            && (selectedNodeAttempt === null
+              ? event.attempt === runSnapshot?.node_details[event.nodeId]?.attempt
+              : selectedNodeAttempt === event.attempt);
           return (
             <button
-              aria-label={`${event.label}, ${event.status}`}
+              aria-label={`${event.label}, visit ${event.attempt}, ${event.status}`}
               className={`timeline-event status-${event.status}${selected ? ' is-selected' : ''}`}
               key={event.key}
-              onClick={() => onSelectNode(event.nodeId)}
+              onClick={() => onSelectNode(event.nodeId, event.attempt)}
               type="button"
             >
               <span className="timeline-node-icon"><Icon aria-hidden="true" size={14} /><i><TimelineStatus status={event.status} /></i></span>
               <strong>{event.label}</strong>
+              {((runSnapshot?.node_history[event.nodeId]?.length ?? 0) > 1) ? <em>Visit {event.attempt}</em> : null}
               <small>{event.time}</small>
             </button>
           );
