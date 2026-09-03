@@ -73,8 +73,16 @@ export function MainWorkspace() {
   }, []);
 
   function applySnapshot(snapshot: RunSnapshot) {
+    const current = snapshotRef.current;
+    if (current?.run_id === snapshot.run_id) {
+      if (snapshot.latest_event_sequence < current.latest_event_sequence) return false;
+      if (snapshot.latest_event_sequence === current.latest_event_sequence
+        && ['completed', 'failed'].includes(current.status)
+        && !['completed', 'failed'].includes(snapshot.status)) return false;
+    }
     snapshotRef.current = snapshot;
     setRunSnapshot(snapshot);
+    return true;
   }
 
   function connectToRun(snapshot: RunSnapshot) {
@@ -83,7 +91,7 @@ export function MainWorkspace() {
       snapshot.run_id,
       snapshot.latest_event_sequence,
       (event) => {
-        applySnapshot(event.snapshot);
+        if (!applySnapshot(event.snapshot)) return;
         if (event.node_id) {
           setSelectedNodeId(event.node_id);
           setSelectedNodeAttempt(null);

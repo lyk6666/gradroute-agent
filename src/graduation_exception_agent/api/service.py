@@ -606,14 +606,17 @@ class RunService:
                 record.status = RunStatus.COMPLETED
                 record.pause = None
                 record.resume_token = None
-            self._publish(record, "run.completed", "Run reached a terminal response.")
+                # Status and its terminal event must become visible atomically.
+                # Otherwise an SSE reader can see terminal=True and close before
+                # the final snapshot is appended, leaving the UI running forever.
+                self._publish(record, "run.completed", "Run reached a terminal response.")
         except Exception as exc:  # The facade must normalize worker failures.
             with record.lock:
                 record.status = RunStatus.FAILED
                 record.error = str(exc)
                 if record.current_node:
                     record.node_statuses[record.current_node] = NodeStatus.FAILED
-            self._publish(record, "run.failed", f"Run failed safely: {exc}")
+                self._publish(record, "run.failed", f"Run failed safely: {exc}")
         finally:
             with record.condition:
                 record.worker_active = False
