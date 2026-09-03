@@ -1,16 +1,12 @@
 import {Composition} from 'remotion';
-import {SimulationFilm} from './SimulationFilm';
-import {FPS, OUTPUT_HEIGHT, OUTPUT_WIDTH, TOTAL_FRAMES} from './storyboard';
+import {SimulationFilm, UI_ONLY_FRAMES} from './SimulationFilm';
+import {FPS} from './director.mjs';
 
 export function RemotionRoot() {
   return (
-    <Composition
-      id="SimulationDemo4K"
-      component={SimulationFilm}
-      durationInFrames={TOTAL_FRAMES}
-      fps={FPS}
-      width={OUTPUT_WIDTH}
-      height={OUTPUT_HEIGHT}
-    />
+    <>
+      <Composition id="SimulationPreview720p" component={SimulationFilm} durationInFrames={UI_ONLY_FRAMES} fps={FPS} width={1280} height={720} />
+      <Composition id="SimulationUIOnly4K" component={SimulationFilm} durationInFrames={UI_ONLY_FRAMES} fps={FPS} width={3840} height={2160} />
+    </>
   );
 }

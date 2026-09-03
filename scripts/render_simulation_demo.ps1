@@ -9,7 +9,9 @@ param(
     [switch]$Fixture,
     [switch]$SkipCapture,
     [switch]$SkipNarration,
-    [switch]$HeadedCapture
+    [switch]$HeadedCapture,
+    [switch]$Final4K,
+    [switch]$CaptureOnly
 )
 
 $ErrorActionPreference = "Stop"
@@ -74,11 +76,11 @@ function Read-DotEnvValue {
 if (-not (Test-Path -LiteralPath $pythonPath)) {
     throw "Python environment not found. Complete the repository setup in README.md first."
 }
-if (-not (Test-Path -LiteralPath (Join-Path $frontendRoot "node_modules"))) {
+if (-not $SkipCapture -and -not (Test-Path -LiteralPath (Join-Path $frontendRoot "node_modules"))) {
     throw "Frontend dependencies are missing. Run npm ci in the frontend folder first."
 }
-$backendAlreadyRunning = Test-ListeningPort -Port $BackendPort
-$frontendAlreadyRunning = Test-ListeningPort -Port $FrontendPort
+$backendAlreadyRunning = if ($SkipCapture) { $false } else { Test-ListeningPort -Port $BackendPort }
+$frontendAlreadyRunning = if ($SkipCapture) { $false } else { Test-ListeningPort -Port $FrontendPort }
 $reuseServices = $backendAlreadyRunning -and $frontendAlreadyRunning
 if ($backendAlreadyRunning -xor $frontendAlreadyRunning) {
     throw "Only one requested service port is already in use. Stop that service or choose two unused ports."
@@ -109,7 +111,7 @@ if (-not $SkipNarration) {
 $envFile = Join-Path $repoRoot ".env"
 $configuredMode = if ($Fixture) { "fixture" } else { Read-DotEnvValue -Path $envFile -Name "EXECUTION_MODE" }
 $configuredProfile = Read-DotEnvValue -Path $envFile -Name "AWS_PROFILE"
-if ($configuredMode -eq "bedrock" -and $configuredProfile) {
+if (-not $SkipCapture -and $configuredMode -eq "bedrock" -and $configuredProfile) {
     $awsCommand = Get-Command aws.exe -ErrorAction SilentlyContinue
     if (-not $awsCommand) { throw "AWS CLI is required for the configured Bedrock capture." }
     & $awsCommand.Source sts get-caller-identity --profile $configuredProfile --output json | Out-Null
@@ -127,6 +129,7 @@ $previousEnvironment = @{
     FRONTEND_ORIGIN = [Environment]::GetEnvironmentVariable("FRONTEND_ORIGIN", "Process")
     NEXT_PUBLIC_API_BASE_URL = [Environment]::GetEnvironmentVariable("NEXT_PUBLIC_API_BASE_URL", "Process")
     EXECUTION_MODE = [Environment]::GetEnvironmentVariable("EXECUTION_MODE", "Process")
+    UI_NARRATION_ENABLED = [Environment]::GetEnvironmentVariable("UI_NARRATION_ENABLED", "Process")
 }
 
 try {
@@ -134,9 +137,12 @@ try {
     $env:API_PORT = $BackendPort.ToString()
     $env:FRONTEND_ORIGIN = "http://localhost:$FrontendPort"
     $env:NEXT_PUBLIC_API_BASE_URL = "http://127.0.0.1:$BackendPort"
-    if ($Fixture) { $env:EXECUTION_MODE = "fixture" }
+    if ($Fixture) {
+        $env:EXECUTION_MODE = "fixture"
+        $env:UI_NARRATION_ENABLED = "0"
+    }
 
-    if (-not $reuseServices) {
+    if (-not $reuseServices -and -not $SkipCapture) {
         $backendProcess = Start-Process `
             -FilePath $pythonPath `
             -ArgumentList "-m", "graduation_exception_agent.api" `
@@ -176,10 +182,16 @@ try {
         if ($LASTEXITCODE -ne 0) { throw "Automated browser capture failed." }
     }
 
-    & $npmCommand.Source --prefix $videoRoot run render
-    if ($LASTEXITCODE -ne 0) { throw "Remotion render failed." }
-    $output = Join-Path $videoRoot "output\simulation-demo-4k.mp4"
-    Write-Host "4K simulation video created: $output" -ForegroundColor Green
+    & $npmCommand.Source --prefix $videoRoot run verify
+    if ($LASTEXITCODE -ne 0) { throw "Captured clip or narration validation failed." }
+    if (-not $CaptureOnly) {
+        $renderTask = if ($Final4K) { "render:4k" } else { "render:preview" }
+        & $npmCommand.Source --prefix $videoRoot run $renderTask
+        if ($LASTEXITCODE -ne 0) { throw "Remotion render failed." }
+        $outputName = if ($Final4K) { "simulation-ui-only-4k.mp4" } else { "simulation-ui-only-720p.mp4" }
+        $output = Join-Path $videoRoot "output\$outputName"
+        Write-Host "UI-only simulation video created: $output" -ForegroundColor Green
+    }
 }
 finally {
     Stop-ProcessTree -Process $frontendProcess
@@ -187,5 +199,5 @@ finally {
     foreach ($name in $previousEnvironment.Keys) {
         [Environment]::SetEnvironmentVariable($name, $previousEnvironment[$name], "Process")
     }
-    Write-Host "Capture services stopped. Logs: $logRoot"
+    Write-Host "Finished; any services started for this capture have been stopped. Logs: $logRoot"
 }

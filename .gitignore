@@ -20,3 +20,5 @@ video/public/audio/*.wav
 video/public/audio/*.mp3
 video/output/*.mp4
 video/output/*.png
+video/public/footage/
+video/public/captures/simulation-take.json

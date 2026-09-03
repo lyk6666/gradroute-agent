@@ -1,0 +1,19 @@
+[
+  {"id":"s7-request","scenarioId":"S7-M01","phase":"ready","seconds":8,"focus":"request","speech":"Let's register ML0004 for this student."},
+  {"id":"s7-plan","scenarioId":"S7-M01","nodeId":"planner","attempt":1,"seconds":6,"focus":"detail"},
+  {"id":"s7-course","scenarioId":"S7-M01","nodeId":"course_agent","attempt":1,"seconds":6,"focus":"detail"},
+  {"id":"s7-failure","scenarioId":"S7-M01","nodeId":"transaction","attempt":1,"seconds":8,"focus":"action","speech":"The selected class has filled. The failed attempt is recorded, not reported as success."},
+  {"id":"s7-check","scenarioId":"S7-M01","nodeId":"post_action_verifier","attempt":1,"seconds":5,"focus":"graph"},
+  {"id":"s7-replan","scenarioId":"S7-M01","nodeId":"planner","attempt":2,"seconds":7,"focus":"detail","speech":"The agent checks updated availability and plans an alternative class for the same course."},
+  {"id":"s7-success","scenarioId":"S7-M01","nodeId":"transaction","attempt":2,"seconds":6,"focus":"action"},
+  {"id":"s7-result","scenarioId":"S7-M01","phase":"final","seconds":9,"focus":"response","speech":"The alternative registration succeeds. The final response explains the recovery and the verified result."},
+  {"id":"s2-request","scenarioId":"S2-M01","phase":"ready","seconds":8,"focus":"request","speech":"SC4002 is required, but its prerequisite exchange-credit transfer is pending."},
+  {"id":"s2-audit","scenarioId":"S2-M01","nodeId":"degree_audit_agent","attempt":1,"seconds":5,"focus":"detail"},
+  {"id":"s2-policy","scenarioId":"S2-M01","nodeId":"policy_agent","attempt":1,"seconds":7,"focus":"detail","speech":"The agent checks the documented exception route, the transcript, and the submitted course mappings."},
+  {"id":"s2-course","scenarioId":"S2-M01","nodeId":"course_agent","attempt":1,"seconds":6,"focus":"detail"},
+  {"id":"s2-check","scenarioId":"S2-M01","nodeId":"pre_action_verifier","attempt":1,"seconds":5,"focus":"graph"},
+  {"id":"s2-evidence","scenarioId":"S2-M01","phase":"approval-evidence","seconds":9,"focus":"approval","speech":"CCDS reviews the policy, prerequisite evidence, and available class."},
+  {"id":"s2-approve","scenarioId":"S2-M01","phase":"approval-action","seconds":6,"focus":"approval","speech":"I approve this simulated request; the agent cannot."},
+  {"id":"s2-action","scenarioId":"S2-M01","nodeId":"transaction","attempt":1,"seconds":4,"focus":"action"},
+  {"id":"s2-result","scenarioId":"S2-M01","phase":"final","seconds":10,"focus":"response","speech":"The authorised waiver is submitted and its result verified. This confirms the waiver outcome, not a new course registration."}
+]

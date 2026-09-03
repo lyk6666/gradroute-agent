@@ -4,8 +4,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "capture": "node scripts/capture-demo.mjs",
-    "render": "remotion render src/index.ts SimulationDemo4K output/simulation-demo-4k.mp4 --codec=h264 --crf=18 --pixel-format=yuv420p --concurrency=2",
+    "capture": "node scripts/capture-simulation.mjs",
+    "capture:legacy": "node scripts/capture-demo.mjs",
+    "render": "npm run render:preview",
+    "render:preview": "remotion render src/index.ts SimulationPreview720p output/simulation-ui-only-720p.mp4 --codec=h264 --crf=15 --pixel-format=yuv420p --concurrency=2",
+    "render:4k": "remotion render src/index.ts SimulationUIOnly4K output/simulation-ui-only-4k.mp4 --codec=h264 --crf=18 --pixel-format=yuv420p --concurrency=2",
+    "test": "node --test scripts/tests/*.test.mjs",
+    "verify": "node scripts/verify-simulation.mjs",
     "studio": "remotion studio src/index.ts",
     "typecheck": "tsc --noEmit"
   },
