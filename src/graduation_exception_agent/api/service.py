@@ -57,7 +57,10 @@ from graduation_exception_agent.models.runtime import ClarificationImpact
 from graduation_exception_agent.models.workflow import ApprovalStatus, ExceptionCaseType
 from graduation_exception_agent.orchestration import Stage5ControlPlane
 from graduation_exception_agent.reasoning import decision_provider_from_settings
-from graduation_exception_agent.runtime import ScenarioRuntimeFactory
+from graduation_exception_agent.runtime import (
+    HumanInteractionHandle,
+    ScenarioRuntimeFactory,
+)
 
 
 NODE_IDS = (
@@ -210,6 +213,7 @@ class RunRecord:
         thread_id: str,
         mode: RunMode,
         plane: Stage5ControlPlane,
+        human: HumanInteractionHandle,
         intake: Any,
         profile_summary: ScenarioSummary,
     ) -> None:
@@ -218,6 +222,7 @@ class RunRecord:
         self.thread_id = thread_id
         self.mode = mode
         self.plane = plane
+        self.human = human
         self.intake = intake
         self.profile_summary = profile_summary
         self.lock = RLock()
@@ -394,7 +399,9 @@ class RunService:
         display_scenario_id: str,
         request_text: str | None = None,
     ) -> RunSnapshot:
-        runtime = self._factory.build(summary.scenario_id)
+        runtime = self._factory.build(
+            summary.scenario_id, interactive_approval=True
+        )
         plane = Stage5ControlPlane.build(
             tools=runtime.tools,
             decisions=decision_provider_from_settings(self._settings),
@@ -417,6 +424,7 @@ class RunService:
             thread_id=thread_id,
             mode=mode,
             plane=plane,
+            human=runtime.human,
             intake=intake,
             profile_summary=summary,
         )
@@ -486,13 +494,20 @@ class RunService:
                 )
             else:
                 assert isinstance(request, ApprovalResumeRequest)
+                observed_at = getattr(record.intake, "received_at", datetime.now(UTC))
+                observed_version = record.human.record_approval(
+                    approval_id=str(token["approval_id"]),
+                    status=ApprovalStatus(request.status),
+                    decision_reason=request.decision_reason,
+                    observed_at=observed_at,
+                )
                 payload = ApprovalResumePayload(
                     approval_id=str(token["approval_id"]),
                     expected_version=int(token["approval_version"]),
-                    observed_version=int(token["approval_version"]),
+                    observed_version=observed_version,
                     status=ApprovalStatus(request.status),
                     decision_reason=request.decision_reason,
-                    observed_at=datetime.now(UTC),
+                    observed_at=observed_at,
                 )
             record.pause = None
             record.resume_token = None
@@ -654,7 +669,11 @@ class RunService:
                     occurred_at=occurred_at,
                 )
             )
-        self._apply_narration(record, node_id)
+        self._apply_narration(
+            record,
+            node_id,
+            presentation_values=_overlay_presentation_values(values, node_output),
+        )
         self._publish(
             record, "node.completed", f"{NODE_LABELS[node_id]} completed.", node_id
         )
@@ -668,12 +687,23 @@ class RunService:
         kind = str(interrupt_value.get("kind", ""))
         if kind == "CLARIFICATION":
             node_id = "clarification"
+            missing_fields = [str(item) for item in interrupt_value["missing_fields"]]
+            impact = str(interrupt_value["impact"])
             pause = PauseSummary(
                 kind="clarification",
                 title="Clarification required",
                 message=str(interrupt_value["question"]),
-                fields=[str(item) for item in interrupt_value["missing_fields"]],
-                impact=str(interrupt_value["impact"]),
+                fields=missing_fields,
+                impact=impact,
+                why_needed=_clarification_reason(
+                    missing_fields, values, record.profile_summary
+                ),
+                decision_depends_on=(
+                    "Because this changes the case basis, the answer will be validated and the plan rebuilt before any action is proposed."
+                    if impact == "MATERIAL"
+                    else "The answer completes a missing part of the current evidence, so the same proposal will return to the pre-action check."
+                ),
+                evidence_summary=_human_decision_evidence(values, limit=3),
             )
             token = {
                 "clarification_id": interrupt_value["clarification_id"],
@@ -681,14 +711,33 @@ class RunService:
             }
         elif kind == "APPROVAL":
             node_id = "pause_checkpoint"
+            requirement = _mapping(values.get("approval_requirement"))
+            candidate = _mapping(values.get("action_candidate"))
+            approver_role = str(interrupt_value["approver_role"])
+            requested_action = _humanize_action(
+                str(interrupt_value.get("requested_action") or candidate.get("action") or "")
+            )
+            approval_basis = _approval_basis_label(requirement)
             pause = PauseSummary(
                 kind="approval",
-                title="Approval observation required",
-                message=(
-                    f"Re-check the authoritative {interrupt_value['approver_role']} "
-                    "decision before continuing."
-                ),
+                title="Human approval required",
+                message=f"Decide whether {requested_action} may proceed.",
                 fields=[],
+                why_needed=_approval_reason(
+                    values,
+                    record.profile_summary,
+                    requested_action=requested_action,
+                    approver_role=approver_role,
+                    approval_basis=approval_basis,
+                ),
+                decision_depends_on=(
+                    f"Approval authorises only the prepared {requested_action}; it does not prove success. "
+                    "If rejected, rejection returns the evidence and reason to planning, while pending preserves the checkpoint without submitting anything."
+                ),
+                requested_action=requested_action,
+                approver_role=approver_role,
+                approval_basis=approval_basis,
+                evidence_summary=_human_decision_evidence(values, limit=5),
             )
             token = {
                 "approval_id": interrupt_value["approval_id"],
@@ -739,7 +788,13 @@ class RunService:
         self._apply_narration(record, node_id)
         self._publish(record, "run.waiting", pause.message, node_id)
 
-    def _apply_narration(self, record: RunRecord, node_id: str) -> None:
+    def _apply_narration(
+        self,
+        record: RunRecord,
+        node_id: str,
+        *,
+        presentation_values: dict[str, Any] | None = None,
+    ) -> None:
         """Narrate the latest UI-safe record without changing execution decisions."""
 
         narrator = self._narrator
@@ -747,15 +802,56 @@ class RunService:
             detail = record.node_details.get(node_id)
             if detail is None:
                 return
-            fallback = _fallback_node_narrative(record, node_id, detail)
+            narration_values = presentation_values or record.values
+            fallback = _fallback_node_narrative(
+                record, node_id, detail, values=narration_values
+            )
             detail = detail.model_copy(update={"narrative": fallback})
             record.node_details[node_id] = detail
-            payload = self._narration_payload(record, node_id, detail)
+            record.working_narrative = fallback.summary
+            record.working_next = fallback.next_step
+            fallback_terminal = _mapping(narration_values.get("final_outcome"))
+            if node_id == "memory_updater" and fallback_terminal:
+                final_summary = _final_response_summary(
+                    narration_values,
+                    fallback_terminal,
+                    narrative=record.final_narrative,
+                )
+                record.working_narrative = (
+                    final_summary.narrative or final_summary.resolution_summary
+                )
+                record.working_next = (
+                    final_summary.next_steps[0]
+                    if final_summary.next_steps
+                    else fallback.next_step
+                )
+            record.working_known = _human_decision_evidence(narration_values, limit=3)
+            record.thread_highlights = _case_event_summaries(narration_values)[-4:]
+            if record.pause is not None and node_id in {
+                "clarification",
+                "human_approval",
+                "pause_checkpoint",
+            }:
+                record.pause = record.pause.model_copy(
+                    update={"narrative": fallback.summary}
+                )
+            payload = self._narration_payload(
+                record, node_id, detail, values=narration_values
+            )
         if narrator is None:
             return
-        try:
-            result = narrator.narrate(payload)
-        except Exception:
+        result = None
+        for _ in range(3):
+            try:
+                candidate_result = narrator.narrate(payload)
+            except Exception:
+                continue
+            if _narration_fits_node(
+                node_id, candidate_result.node_output, narration_values
+            ):
+                result = candidate_result
+                break
+        if result is None:
             return
         generated_at = datetime.now(UTC)
         with record.lock:
@@ -765,6 +861,8 @@ class RunService:
             record.node_details[node_id] = latest.model_copy(
                 update={
                     "narrative": NodeNarrativeSummary(
+                        summary=result.node_output,
+                        next_step=result.action or None,
                         input=result.node_input,
                         output=result.node_output,
                         state=result.state_change,
@@ -774,7 +872,22 @@ class RunService:
                     )
                 }
             )
-            record.working_narrative = result.working_state
+            terminal = _mapping(narration_values.get("final_outcome"))
+            terminal_response = (
+                _final_response_summary(
+                    narration_values,
+                    terminal,
+                    narrative=result.final_response or record.final_narrative,
+                )
+                if node_id == "memory_updater" and terminal
+                else None
+            )
+            record.working_narrative = (
+                terminal_response.narrative
+                or terminal_response.resolution_summary
+                if terminal_response
+                else result.working_state
+            )
             record.thread_narrative = result.thread_memory
             record.working_known = list(result.working_known)
             record.working_next = result.working_next or None
@@ -783,6 +896,14 @@ class RunService:
             record.memory_narratives.update(
                 {item.memory_id: item.explanation for item in result.memories}
             )
+            if record.pause is not None and node_id in {
+                "clarification",
+                "human_approval",
+                "pause_checkpoint",
+            }:
+                record.pause = record.pause.model_copy(
+                    update={"narrative": result.action or result.node_output}
+                )
             if result.final_response:
                 record.final_narrative = result.final_response
 
@@ -791,7 +912,10 @@ class RunService:
         record: RunRecord,
         node_id: str,
         detail: NodeExecutionDetail,
+        *,
+        values: dict[str, Any] | None = None,
     ) -> dict[str, Any]:
+        narration_values = values or record.values
         snapshot = self._snapshot(record)
         final_response = (
             snapshot.final_response.model_dump(
@@ -807,14 +931,18 @@ class RunService:
                 "status": detail.status.value,
             },
             "case_profile": _narration_case_profile(record, snapshot),
-            "communication_goal": _node_communication_goal(node_id),
-            "case_events": _case_event_summaries(record.values),
+            "communication_brief": _node_communication_goal(node_id),
+            "case_evidence": _presentation_case_evidence(narration_values),
+            "grounded_draft": {
+                "node_summary": detail.narrative.summary if detail.narrative else None,
+                "next_action": detail.narrative.action if detail.narrative else None,
+            },
+            "case_events": _case_event_summaries(narration_values),
             "observed_input": _narration_items(
                 detail.input_items, exclude_context=True
             ),
             "observed_output": _narration_items(detail.output_items),
             "persisted_changes": _narration_items(detail.state_changes),
-            "tools_used": list(detail.tool_names),
             "evidence_references": list(detail.evidence_ids),
             "working_state": _presentation_working_state(snapshot),
             "thread_memory": _presentation_thread_memory(snapshot),
@@ -1008,7 +1136,116 @@ class RunService:
 
 
 def _mapping(value: Any) -> dict[str, Any]:
-    return dict(value) if isinstance(value, Mapping) else {}
+    if isinstance(value, Mapping):
+        return dict(value)
+    model_dump = getattr(value, "model_dump", None)
+    if callable(model_dump):
+        dumped = model_dump(mode="python")
+        return dict(dumped) if isinstance(dumped, Mapping) else {}
+    return {}
+
+
+def _overlay_presentation_values(
+    values: dict[str, Any], node_output: dict[str, Any]
+) -> dict[str, Any]:
+    """Expose the latest node delta to narration without changing runtime state."""
+
+    combined = deepcopy(values)
+    for key, value in node_output.items():
+        if key == "tool_results":
+            merged = _mapping(combined.get(key))
+            merged.update(_mapping(value))
+            combined[key] = merged
+        elif key == "specialist_evidence":
+            existing = list(combined.get(key, []))
+            incoming = value if isinstance(value, list) else [value]
+            by_id = {
+                str(_mapping(item).get("evidence_id")): item
+                for item in [*existing, *incoming]
+                if _mapping(item).get("evidence_id")
+            }
+            combined[key] = list(by_id.values()) or [*existing, *incoming]
+        else:
+            combined[key] = value
+    return combined
+
+
+def _narration_fits_node(
+    node_id: str, text: str, values: dict[str, Any]
+) -> bool:
+    """Reject fluent but generic or cross-node copy before it reaches the UI."""
+
+    normalized = " ".join(text.split()).lower()
+    if len(normalized.split()) < 12:
+        return False
+    if any(
+        phrase in normalized
+        for phrase in (
+            "node_output",
+            "one smooth 60",
+            "communication brief",
+            "grounded draft",
+            "response field",
+        )
+    ):
+        return False
+    evidence = _presentation_case_evidence(values)
+    course = _mapping(evidence.get("course"))
+    scenario = _mapping(values.get("scenario_context"))
+    target = str(
+        course.get("code")
+        or _mapping(scenario.get("initial_state")).get("target_course")
+        or ""
+    ).lower()
+    if target and node_id not in {"memory_updater"} and target not in normalized:
+        return False
+    role_terms: dict[str, tuple[str, ...]] = {
+        "planner": ("plan", "check"),
+        "supervisor_router": ("next", "route", "check", "specialist"),
+        "degree_audit_agent": ("au", "audit", "graduation", "requirement"),
+        "policy_agent": ("policy", "route", "approval", "eligible", "document"),
+        "course_agent": ("prerequisite", "class", "timetable", "workload", "availability"),
+        "resolution_builder": ("register", "registration", "waiver", "exception", "candidate", "proposed"),
+        "pre_action_verifier": ("verify", "verified", "check", "safe", "valid"),
+        "clarification": ("missing", "clarif", "provide", "confirm", "answer"),
+        "action_gate": ("approval", "automatically", "authority", "proceed", "gate"),
+        "pause_checkpoint": ("approval", "decide", "permission", "authorise", "authorize"),
+        "human_admin_review": ("review", "staff", "handoff", "cannot", "insufficient"),
+        "transaction": ("submitted", "attempt", "transaction", "register", "waiver", "exception"),
+        "observation": ("result", "observed", "failed", "success", "pending"),
+        "post_action_verifier": ("final", "goal", "verified", "complete", "condition"),
+        "final_response": ("verified", "completed", "review", "stopped", "next"),
+        "memory_retriever": ("past", "memory", "lesson", "experience", "current evidence"),
+        "memory_updater": ("lesson", "memory", "future", "deidentified", "advisory"),
+    }
+    expected = role_terms.get(node_id)
+    if expected and not any(term in normalized for term in expected):
+        return False
+    if node_id == "course_agent":
+        classes = [_mapping(item) for item in course.get("classes", [])]
+        chosen = _preferred_feasible_class(course)
+        if classes and chosen and str(chosen.get("class_index")) not in normalized:
+            return False
+    if node_id == "degree_audit_agent" and evidence.get("academic"):
+        academic = _mapping(evidence.get("academic"))
+        earned = str(academic.get("earned_aus") or "")
+        if earned and earned.lower() not in normalized:
+            return False
+    if node_id == "policy_agent":
+        policy = _mapping(evidence.get("policy_and_documents"))
+        references = [_mapping(item) for item in policy.get("policy_references", [])]
+        if references:
+            principal = references[0]
+            reference_terms = [
+                str(principal.get("reference", "")).lower(),
+                " ".join(str(principal.get("name", "")).lower().split()[:3]),
+            ]
+            if not any(term and term in normalized for term in reference_terms):
+                return False
+    if node_id == "planner" and int(_mapping(values.get("loop_counters")).get("replans", 0)):
+        if not any(term in normalized for term in ("replan", "changed", "failed", "refresh", "again")):
+            return False
+    return True
 
 
 def _narration_items(
@@ -1041,8 +1278,10 @@ def _narration_case_profile(
         "cohort": profile.cohort,
         "study_year": profile.study_year,
         "earned_aus": profile.earned_aus,
+        "completed_courses": list(profile.completed_courses),
         "registered_courses": list(profile.registered_courses),
         "supporting_documents": list(profile.supporting_documents),
+        "case_type": profile.case_type,
         "request": str(
             intake.get("request_text")
             or getattr(record.intake, "request_text", profile.request_text)
@@ -1052,28 +1291,506 @@ def _narration_case_profile(
     }
 
 
-def _node_communication_goal(node_id: str) -> str:
+def _node_communication_goal(node_id: str) -> dict[str, Any]:
+    """Return a node-specific writing brief rather than a shared prose template."""
+
+    briefs: dict[str, tuple[str, tuple[str, ...]]] = {
+        "student_case": (
+            "Introduce this student's situation as a coherent case.",
+            ("Who is the student?", "What do they need?", "Why is the request time-sensitive?"),
+        ),
+        "intake_context": (
+            "Explain what was accepted into the case and whether any essential fact is still missing.",
+            ("What is the concrete request?", "Which course and registration context apply?", "Can grounded checks begin?"),
+        ),
+        "memory_retriever": (
+            "Explain whether past experience suggests a useful approach without treating it as a current rule.",
+            ("What similar pattern was found?", "Why might it help?", "Which current facts still require checking?"),
+        ),
+        "planner": (
+            "Describe the ordered case plan in natural language and explain why each check matters.",
+            ("What will be checked?", "In what order and why?", "If this is a replan, what new event changed the plan?"),
+        ),
+        "supervisor_router": (
+            "Explain which specialist perspective comes next and which unanswered case question it will resolve.",
+            ("Which check is next?", "Why is it needed now?", "What evidence is already complete?"),
+        ),
+        "degree_audit_agent": (
+            "Explain the student's academic position and the target course's graduation significance.",
+            ("How many AUs are earned and required?", "What requirement remains outstanding?", "Which curriculum/cohort basis applies?"),
+        ),
+        "policy_agent": (
+            "Explain the represented exception route, eligibility, documents, approval role, and policy provenance.",
+            ("Which public or simulated rule applies?", "Why is the case eligible or ineligible?", "Are required documents present?", "Who must approve what?"),
+        ),
+        "course_agent": (
+            "Explain whether the actual course can be taken under the represented current conditions.",
+            ("What prerequisite and exclusions apply?", "Is it offered with a feasible class and vacancy?", "Do timetable and workload pass?"),
+        ),
+        "resolution_builder": (
+            "Explain the exact candidate action and how the academic, policy, and course findings support it.",
+            ("What would be submitted?", "For which course or class?", "What approval or condition remains?"),
+        ),
+        "pre_action_verifier": (
+            "Explain why the candidate is safe to proceed, must be clarified, must be replanned, or must stop.",
+            ("Which checks passed?", "What remains uncertain?", "Which route follows and why?"),
+        ),
+        "clarification": (
+            "Explain the exact missing fact, why current evidence cannot answer it, and how the answer changes the route.",
+            ("What must the person provide?", "Which decision depends on it?", "Will planning restart or verification resume?"),
+        ),
+        "action_gate": (
+            "Explain the authority boundary for the already-verified candidate.",
+            ("Can it proceed automatically?", "If approval is needed, which rule and role require it?", "What action is strictly in scope?"),
+        ),
+        "human_approval": (
+            "Give the approving person a decision-ready case brief grounded in the actual evidence.",
+            ("What exact action is requested?", "Which academic, prerequisite, availability, policy, and document facts support it?", "What do approve, reject, and pending do?"),
+        ),
+        "pause_checkpoint": (
+            "Explain why the case is paused and preserve a decision-ready summary for the approving role.",
+            ("Who is deciding what?", "Which policy and evidence support the request?", "What happens for each response?"),
+        ),
+        "human_admin_review": (
+            "Prepare a staff-facing handoff explaining why no safe automated route remains.",
+            ("What was checked?", "What rule, evidence, or authority is missing?", "Which CCDS role should take over and what should they review?"),
+        ),
+        "transaction": (
+            "Explain the precise action attempted and the authoritative observed response.",
+            ("What was submitted for which course/class?", "Was approval satisfied?", "Did it succeed, fail, or remain pending?"),
+        ),
+        "observation": (
+            "Explain what the transaction result means for the student's case.",
+            ("What changed?", "Is the result retryable?", "Must availability be refreshed, the plan changed, or the goal verified?"),
+        ),
+        "post_action_verifier": (
+            "Explain whether the student's requested outcome is actually true after the observed action.",
+            ("Which goal conditions passed?", "What evidence proves completion?", "If incomplete, why must the case recover or stop?"),
+        ),
+        "final_response": (
+            "Give the student the verified outcome, its concrete reasons, limitations, and immediate next steps.",
+            ("What happened?", "Why is it valid or why did it stop?", "What should the student do next?"),
+        ),
+        "memory_updater": (
+            "Explain the deidentified lesson retained after verified completion and its narrow future use.",
+            ("What strategy worked?", "Under which conditions?", "Why can it not replace current evidence?"),
+        ),
+    }
+    objective, questions = briefs.get(
+        node_id,
+        ("Explain the material case fact produced by this step.", ("What changed and why does it matter?",)),
+    )
     return {
-        "intake_context": "Introduce the student's concrete request and confirm what was accepted into the case.",
-        "memory_retriever": "Explain whether a relevant past pattern was found and that current evidence remains authoritative.",
-        "planner": "Explain why these particular checks are needed for this course request.",
-        "supervisor_router": "Name the next specialist check and why it comes next.",
-        "degree_audit_agent": "Summarize the student's graduation position and whether the target course remains outstanding.",
-        "policy_agent": "Summarize eligibility, documents, and whether human approval is required.",
-        "course_agent": "Summarize prerequisite, exclusion, workload, timetable, and live class feasibility.",
-        "resolution_builder": "Describe the concrete candidate action in student-facing language.",
-        "pre_action_verifier": "Explain whether the proposed action is safe to attempt and what blocks it if not.",
-        "clarification": "Ask only for the specific missing fact and explain why it matters.",
-        "action_gate": "Explain whether the action can proceed automatically or must wait for a person.",
-        "human_approval": "Explain the exact decision requested from the named approving role.",
-        "pause_checkpoint": "Explain what the case is waiting for and what will happen after the decision arrives.",
-        "human_admin_review": "Explain why automation stopped and what evidence is being handed to staff.",
-        "transaction": "Describe the action attempted and its observed result.",
-        "observation": "Explain what the system learned from the transaction result.",
-        "post_action_verifier": "State whether the student's requested outcome is now actually true.",
-        "final_response": "Give the verified outcome and the student's immediate next step.",
-        "memory_updater": "Describe the deidentified lesson retained for comparable future cases.",
-    }.get(node_id, "Explain the material case fact produced by this step.")
+        "objective": objective,
+        "questions_to_answer": list(questions),
+        "primary_copy": "one smooth 60–110 word paragraph when enough evidence exists",
+    }
+
+
+def _tool_result_data(values: dict[str, Any], key: str) -> dict[str, Any]:
+    result = _mapping(_mapping(values.get("tool_results")).get(key))
+    return _mapping(result.get("data"))
+
+
+def _tool_result_data_with_prefix(
+    values: dict[str, Any], prefix: str
+) -> list[dict[str, Any]]:
+    results = _mapping(values.get("tool_results"))
+    return [
+        _mapping(_mapping(raw).get("data"))
+        for key, raw in results.items()
+        if str(key).startswith(prefix) and _mapping(_mapping(raw).get("data"))
+    ]
+
+
+def _friendly_document(value: str) -> str:
+    return value.rsplit(".", 1)[-1].replace("_", " ").strip().lower()
+
+
+def _policy_reference(rule_id: str) -> dict[str, str]:
+    labels = {
+        "policy.exception.exchange.pending_transfer": "CCDS pending exchange-credit prerequisite-waiver route",
+        "policy.exception.icc.registration": "ICC study-plan deviation route",
+        "policy.exception.icc.cc0006_clash": "narrow CC0006 quiz and BDE clash route",
+        "policy.exception.restricted_repeat": "restricted-repeat eligibility boundary",
+        "policy.prototype.scenario_bounded_audit": "scenario-bounded degree-audit assumption",
+        "policy.prototype.registration_operations": "simulated registration-operation rule",
+        "policy.prototype.counterfactual_template_reuse": "simulated offering-state reuse rule",
+    }
+    provenance = (
+        "simulated prototype"
+        if ".prototype." in rule_id
+        else "unverified or unavailable public route"
+        if rule_id.startswith("unknown.")
+        else "collected public source"
+    )
+    return {
+        "reference": rule_id,
+        "name": labels.get(rule_id, rule_id.replace("policy.", "").replace(".", " ")),
+        "provenance": provenance,
+    }
+
+
+def _presentation_case_evidence(values: dict[str, Any]) -> dict[str, Any]:
+    """Project observed case facts for narration without evaluator-only state."""
+
+    student = _tool_result_data(values, "student_record")
+    registration = _tool_result_data(values, "current_registration")
+    audit = _tool_result_data(values, "degree_audit")
+    curriculum = _tool_result_data(values, "curriculum")
+    eligibility = _tool_result_data(values, "exception_eligibility") or _tool_result_data(values, "case_context")
+    requirement = _mapping(values.get("approval_requirement")) or _tool_result_data(values, "approval_requirement")
+    documents = _tool_result_data(values, "required_documents")
+    course = _tool_result_data(values, "course_details")
+    prerequisite = _tool_result_data(values, "prerequisite")
+    exclusion = _tool_result_data(values, "exclusion")
+    workload = _tool_result_data(values, "workload")
+    availability = _tool_result_data_with_prefix(values, "availability.")
+    timetable = _tool_result_data_with_prefix(values, "timetable.")
+    policy_ids = list(dict.fromkeys(
+        rule_id
+        for item in _evidence_summaries(values)
+        for rule_id in item.rule_ids
+        if rule_id.startswith("policy.")
+    ))
+    policy_ids.sort(key=lambda item: (".prototype." in item, item))
+    registered_courses = [
+        str(_mapping(item).get("course_code"))
+        for item in registration.get("registered_courses", [])
+        if _mapping(item).get("course_code")
+    ]
+    offered_classes = [
+        {
+            "class_index": str(item.get("offering_state_id", "")).rsplit(".", 1)[-1],
+            "available": item.get("available"),
+            "status": item.get("runtime_status"),
+            "vacancies": item.get("vacancies"),
+            "waitlist": item.get("waitlist_count"),
+            "unavailable_reason": item.get("unavailable_reason"),
+        }
+        for item in availability[:6]
+    ]
+    return {
+        "student": {
+            "programme": student.get("programme"),
+            "cohort": student.get("admission_cohort"),
+            "study_year": student.get("study_year"),
+            "earned_aus": student.get("earned_aus"),
+            "academic_standing": student.get("academic_standing"),
+            "registered_courses": registered_courses,
+        },
+        "academic": {
+            "audit_outcome": audit.get("audit_outcome"),
+            "earned_aus": audit.get("total_earned_aus"),
+            "required_aus": audit.get("total_required_aus") or curriculum.get("graduation_aus"),
+            "curriculum": curriculum.get("name"),
+            "outstanding_requirements": [
+                {
+                    "name": str(_mapping(item).get("requirement_id", "")).rsplit(".", 1)[-1].replace("_", " "),
+                    "earned_aus": _mapping(item).get("earned_aus"),
+                    "required_aus": _mapping(item).get("required_aus"),
+                    "courses": _mapping(item).get("outstanding_courses", []),
+                    "explanation": _mapping(item).get("explanation"),
+                }
+                for item in audit.get("requirement_results", [])
+                if _mapping(item).get("status") != "SATISFIED"
+            ][:4],
+        },
+        "policy_and_documents": {
+            "eligibility": eligibility.get("eligibility"),
+            "eligibility_reason": eligibility.get("reason"),
+            "approval_required": requirement.get("required", eligibility.get("approval_required")),
+            "approver": requirement.get("approver_role"),
+            "requested_action": requirement.get("requested_action"),
+            "approval_basis": requirement.get("basis"),
+            "policy_references": [_policy_reference(item) for item in policy_ids],
+            "documents": [
+                {
+                    "name": str(_mapping(item).get("document_type", "")).replace("_", " ").lower(),
+                    "provided": _mapping(item).get("provided"),
+                    "verified": _mapping(item).get("verified"),
+                }
+                for item in documents.get("documents", [])
+            ],
+            "missing_documents": [
+                _friendly_document(str(item))
+                for item in documents.get("missing_document_ids", eligibility.get("missing_document_ids", []))
+            ],
+        },
+        "course": {
+            "code": course.get("code") or prerequisite.get("course_code"),
+            "title": course.get("title"),
+            "aus": course.get("aus"),
+            "catalogue_prerequisite": _mapping(course.get("prerequisites")).get("raw_text"),
+            "prerequisite_result": prerequisite.get("result"),
+            "prerequisite_reason": prerequisite.get("reason"),
+            "exclusions": course.get("exclusions", []),
+            "exclusion_result": exclusion.get("result"),
+            "conflicting_courses": exclusion.get("conflicting_course_codes", []),
+            "workload_result": workload.get("result"),
+            "current_workload_aus": workload.get("current_workload_aus"),
+            "resulting_workload_aus": workload.get("resulting_workload_aus"),
+            "workload_limit_aus": workload.get("workload_limit_aus"),
+            "classes": offered_classes,
+            "timetable_results": [
+                {
+                    "class_index": str(item.get("offering_state_id", "")).rsplit(".", 1)[-1],
+                    "result": item.get("result"),
+                    "conflicts": item.get("conflicts", []),
+                }
+                for item in timetable[:6]
+            ],
+        },
+        "plan_and_action": {
+            "plan_version": _mapping(values.get("plan")).get("version"),
+            "plan_reason": _mapping(values.get("plan")).get("rationale"),
+            "plan_steps": [
+                str(_mapping(item).get("purpose"))
+                for item in _mapping(values.get("plan")).get("steps", [])
+                if _mapping(item).get("purpose")
+            ],
+            "replans": _mapping(values.get("loop_counters")).get("replans", 0),
+            "recent_verification": [
+                {
+                    "phase": _mapping(item).get("phase"),
+                    "decision": _mapping(item).get("decision"),
+                    "reason": _mapping(item).get("reason"),
+                }
+                for item in values.get("verification_history", [])[-3:]
+                if isinstance(item, Mapping)
+            ],
+            "candidate_action": _humanize_action(str(_mapping(values.get("action_candidate")).get("action") or "")),
+            "candidate_reason": _mapping(values.get("action_candidate")).get("rationale"),
+            "observation": _mapping(values.get("observation")).get("message"),
+        },
+    }
+
+
+def _preferred_feasible_class(course: dict[str, Any]) -> dict[str, Any] | None:
+    classes = [_mapping(item) for item in course.get("classes", [])]
+    timetable_by_class = {
+        str(_mapping(item).get("class_index")): str(_mapping(item).get("result", ""))
+        for item in course.get("timetable_results", [])
+    }
+    return next(
+        (
+            item
+            for item in classes
+            if item.get("available")
+            and timetable_by_class.get(str(item.get("class_index"))) == "PASS"
+        ),
+        next((item for item in classes if item.get("available")), classes[0] if classes else None),
+    )
+
+
+def _evidence_rich_fallback(
+    record: RunRecord,
+    node_id: str,
+    *,
+    default: str,
+    values: dict[str, Any] | None = None,
+) -> str:
+    """Create useful primary copy even when the optional narrator is unavailable."""
+
+    values = values or record.values
+    profile = record.profile_summary
+    evidence = _presentation_case_evidence(values)
+    academic = _mapping(evidence.get("academic"))
+    policy = _mapping(evidence.get("policy_and_documents"))
+    course = _mapping(evidence.get("course"))
+    action = _mapping(evidence.get("plan_and_action"))
+    target = str(course.get("code") or _mapping(_mapping(values.get("scenario_context")).get("initial_state")).get("target_course") or "the requested course")
+    plan = _mapping(values.get("plan"))
+    decision = _mapping(values.get("verifier_decision"))
+    final = _mapping(values.get("final_outcome"))
+    handoff = _mapping(values.get("admin_handoff"))
+    memories = _memory_summaries(values)
+    academic_sentence = (
+        f"The represented degree audit records {academic['earned_aus']} of {academic['required_aus']} AUs and lists {target} as outstanding."
+        if academic.get("earned_aus") and academic.get("required_aus")
+        else ""
+    )
+    prerequisite_sentence = (
+        f"For {target}, the catalogue prerequisite is {course.get('catalogue_prerequisite') or 'not fully represented'}, and the current check returned {str(course.get('prerequisite_result')).lower()}."
+        if course.get("prerequisite_result")
+        else ""
+    )
+    classes = [_mapping(item) for item in course.get("classes", [])]
+    feasible = [item for item in classes if item.get("available")]
+    class_sentence = ""
+    if classes:
+        selected = _preferred_feasible_class(course) or (feasible[0] if feasible else classes[0])
+        selected_timetable = next(
+            (
+                str(_mapping(item).get("result")).lower()
+                for item in course.get("timetable_results", [])
+                if _mapping(item).get("class_index") == selected.get("class_index")
+                and _mapping(item).get("result")
+            ),
+            "not confirmed",
+        )
+        selected_vacancy = (
+            f" with {selected.get('vacancies')} simulated vacancies"
+            if selected.get("vacancies") is not None
+            else ""
+        )
+        class_sentence = (
+            f"Class {selected.get('class_index')} is {'available' if selected.get('available') else 'unavailable'}"
+            f"{selected_vacancy}; "
+            f"the timetable check is {selected_timetable} and the workload check is "
+            f"{str(course.get('workload_result', 'not confirmed')).lower()}."
+        )
+    references = [_mapping(item) for item in policy.get("policy_references", [])]
+    policy_sentence = ""
+    if references:
+        principal = references[0]
+        policy_sentence = (
+            f"The relevant basis is {principal.get('name')} ({principal.get('reference')}), recorded as a {principal.get('provenance')} route."
+        )
+    documents = [_mapping(item) for item in policy.get("documents", [])]
+    provided = [str(item.get("name")) for item in documents if item.get("provided")]
+    document_sentence = (
+        f"The case records {', '.join(provided)} as provided."
+        if provided
+        else ""
+    )
+    candidate = _mapping(values.get("action_candidate"))
+    requirement = _mapping(values.get("approval_requirement"))
+    raw_requested_action = str(
+        candidate.get("action") or requirement.get("requested_action") or ""
+    )
+    lowered_action = raw_requested_action.lower()
+    requested_action = (
+        _humanize_action(raw_requested_action)
+        if candidate.get("action")
+        else "prerequisite waiver request"
+        if "waiver" in lowered_action
+        else "course registration"
+        if "register" in lowered_action or "registration" in lowered_action
+        else "exception request"
+        if raw_requested_action
+        else "proposed action"
+    )
+    approval_sentence = ""
+    if requirement.get("required"):
+        approval_sentence = (
+            f"{requirement.get('approver_role', 'The designated approving role')} must authorise the {requested_action}; eligibility alone is not approval."
+        )
+    plan_steps = [
+        str(_mapping(item).get("purpose"))
+        for item in plan.get("steps", [])
+        if _mapping(item).get("purpose")
+    ]
+    replan_count = int(_mapping(values.get("loop_counters")).get("replans", 0))
+    recent_reason = next(
+        (
+            str(_mapping(item).get("reason"))
+            for item in reversed(values.get("verification_history", []))
+            if _mapping(item).get("reason")
+        ),
+        "",
+    )
+    explanations = {
+        "student_case": (
+            f"This is a Year {profile.study_year} {profile.programme} student from {profile.cohort} with {profile.earned_aus} earned AUs. "
+            f"The request concerns {target} after the normal registration route, so the case must establish the correct academic, course, policy, document, and approval path before any action."
+        ),
+        "intake_context": (
+            f"The case accepts a Year {profile.study_year} {profile.programme} request concerning {target}. "
+            f"The student has {profile.earned_aus} earned AUs and is currently registered for {', '.join(profile.registered_courses) if profile.registered_courses else 'no represented courses'}. "
+            "The request and available supporting information are now ready for current academic, policy, and course checks; no expected scenario answer was added to the case."
+        ),
+        "memory_retriever": (
+            f"{len(memories)} comparable verified past lesson{' was' if len(memories) == 1 else 's were'} found for the {target} case. "
+            "These lessons can suggest an order of checks or a recovery pattern, but they do not establish this student's prerequisite, class vacancy, policy eligibility, or approval. Those facts must still come from the current case evidence."
+            if memories
+            else f"No comparable past lesson was needed for the {target} request. The case will proceed from the student's current degree audit, course conditions, represented policy route, documents, and approval state rather than borrowing a previous outcome."
+        ),
+        "planner": (
+            f"Plan version {plan.get('version', 1)} will "
+            + "; then ".join(step.rstrip(".").lower() for step in plan_steps)
+            + ". "
+            + (
+                f"This is replan {replan_count}: {recent_reason} The revised sequence checks the changed fact before another action is considered."
+                if replan_count
+                else str(plan.get("rationale") or f"Each check is needed before a safe action for {target} can be selected.")
+            )
+        ),
+        "supervisor_router": (
+            f"The plan has routed the {target} case to {_human_label(str(values.get('route', 'the next specialist'))).lower()}. "
+            f"This check comes next because {str(plan.get('rationale') or 'the unresolved evidence must be completed in the planned order').rstrip('.')}. "
+            f"Already recorded findings remain available and will be combined only after every required specialist question is answered."
+        ),
+        "degree_audit_agent": " ".join(filter(None, [academic_sentence, f"The applicable curriculum is {academic.get('curriculum') or profile.cohort}. This establishes the academic need for the request, but it does not by itself establish policy eligibility, course feasibility, or approval."])),
+        "policy_agent": " ".join(filter(None, [
+            f"The {target} case is {str(policy.get('eligibility', 'not yet classified')).replace('_', ' ').lower()}: {str(policy.get('eligibility_reason') or 'the represented route must still be checked').rstrip('.')}.",
+            policy_sentence,
+            document_sentence,
+            approval_sentence,
+        ])),
+        "course_agent": " ".join(filter(None, [
+            f"{target} is {course.get('title', 'the requested course')} ({course.get('aus', 'unknown')} AU).",
+            prerequisite_sentence,
+            f"The exclusion check is {str(course.get('exclusion_result', 'not confirmed')).lower()}.",
+            class_sentence,
+            "These are represented timetable and course facts; live vacancy is simulated for the prototype.",
+        ])),
+        "resolution_builder": " ".join(filter(None, [
+            str(candidate.get("rationale") or default),
+            academic_sentence,
+            prerequisite_sentence,
+            class_sentence,
+            approval_sentence,
+        ])),
+        "pre_action_verifier": " ".join(filter(None, [
+            str(decision.get("reason") or default),
+            f"The candidate is the {requested_action} for {target}.",
+            policy_sentence,
+            approval_sentence,
+            "Only the recorded route may continue; an unverified or stale condition sends the case back for clarification, replanning, or staff review.",
+        ])),
+        "clarification": " ".join(filter(None, [
+            record.pause.why_needed if record.pause else default,
+            record.pause.decision_depends_on if record.pause else "",
+        ])),
+        "action_gate": " ".join(filter(None, [
+            f"The verified candidate is the {requested_action} for {target}.",
+            policy_sentence,
+            approval_sentence or "No separate approval is recorded as necessary, so only the verified action may proceed automatically.",
+            "The gate does not decide academic facts or grant approval; it enforces the authority already established by the evidence.",
+        ])),
+        "human_approval": record.pause.why_needed if record.pause else " ".join(filter(None, [academic_sentence, prerequisite_sentence, class_sentence, policy_sentence, document_sentence, approval_sentence])),
+        "pause_checkpoint": record.pause.why_needed if record.pause else " ".join(filter(None, [academic_sentence, prerequisite_sentence, class_sentence, policy_sentence, document_sentence, approval_sentence])),
+        "human_admin_review": " ".join(filter(None, [
+            str(handoff.get("reason") or default),
+            academic_sentence,
+            prerequisite_sentence,
+            policy_sentence,
+            f"Staff should review {str(handoff.get('recommended_next_step') or 'the evidence package and decide the next authorised step').rstrip('.')}.",
+        ])),
+        "transaction": " ".join(filter(None, [
+            f"The runtime attempted the verified {requested_action} for {target}.",
+            approval_sentence,
+            str(_mapping(values.get("observation")).get("message") or "Its receipt has been recorded, but the student's goal still requires a separate outcome check."),
+        ])),
+        "observation": " ".join(filter(None, [
+            str(_mapping(values.get("observation")).get("message") or default),
+            f"This observed result—not the proposed plan—now determines whether the {target} case can be verified, retried with refreshed availability, replanned, or handed to staff.",
+        ])),
+        "post_action_verifier": " ".join(filter(None, [
+            str(decision.get("reason") or recent_reason or default),
+            f"The final check compares the observed {requested_action} result with every required goal condition for {target}; completion is reported only if all required conditions are satisfied.",
+        ])),
+        "final_response": (
+            f"The {target} case reached {str(final.get('status', 'its final state')).replace('_', ' ').lower()}. "
+            f"{str(final.get('message') or default)} The response explains the supporting academic, policy, approval, transaction, and final-check evidence, plus the student's next step."
+        ),
+        "memory_updater": (
+            f"After the {target} outcome was verified, the system retained a deidentified lesson about the successful checks and recovery path. "
+            "It contains no student identity and remains advisory: a future case must independently confirm its curriculum, prerequisite, offering, policy, documents, approval, and transaction outcome."
+        ),
+    }
+    return _bounded(explanations.get(node_id, default), 1_200)
 
 
 def _case_event_summaries(values: dict[str, Any]) -> list[str]:
@@ -1128,10 +1845,12 @@ def _fallback_node_narrative(
     record: RunRecord,
     node_id: str,
     detail: NodeExecutionDetail,
+    *,
+    values: dict[str, Any] | None = None,
 ) -> NodeNarrativeSummary:
     """Always provide concise case-specific prose, even when the LLM is offline."""
 
-    values = record.values
+    values = values or record.values
     profile = record.profile_summary
     scenario = _mapping(values.get("scenario_context"))
     target = str(_mapping(scenario.get("initial_state")).get("target_course") or "the requested course")
@@ -1210,6 +1929,9 @@ def _fallback_node_narrative(
         ),
         "memory_updater": "A deidentified resolution pattern was retained only after the outcome was verified.",
     }.get(node_id, _summarize_value([*detail.output_items, *detail.state_changes]))
+    finding = _evidence_rich_fallback(
+        record, node_id, default=finding, values=values
+    )
 
     waiting = record.pause is not None
     state_text = (
@@ -1258,6 +1980,8 @@ def _fallback_node_narrative(
         "memory_updater": "No user action is needed; the stored pattern contains no student identity or current rule claim.",
     }.get(node_id, "No separate human action is needed at this step.")
     return NodeNarrativeSummary(
+        summary=_bounded(finding, 700),
+        next_step=_bounded(action_text, 500),
         input=_bounded(input_text, 500),
         output=_bounded(finding, 700),
         state=_bounded(state_text, 400),
@@ -1557,7 +2281,10 @@ def _parameter_items(value: Any) -> list[DetailItem]:
 
 
 def _public_parameter_items(
-    value: Any, *, target_course: str | None = None
+    value: Any,
+    *,
+    target_course: str | None = None,
+    programme_path_label: str | None = None,
 ) -> list[DetailItem]:
     """Keep useful course/class facts while hiding runtime coordination IDs."""
 
@@ -1577,9 +2304,14 @@ def _public_parameter_items(
         items.append(
             DetailItem(
                 label="Programme path",
-                value=str(parameters["graduation_path_id"])
-                .replace("path.", "")
-                .replace(".", " "),
+                value=(
+                    programme_path_label
+                    or str(parameters["graduation_path_id"])
+                    .replace("graduation_path.", "")
+                    .replace("graduation.", "")
+                    .replace("path.", "")
+                    .replace(".", " ")
+                ),
             )
         )
     if parameters.get("retry"):
@@ -1753,6 +2485,157 @@ def _humanize_action(value: str | None) -> str:
     }.get(value, value.replace("_", " ").lower())
 
 
+def _approval_basis_label(requirement: dict[str, Any]) -> str:
+    basis = str(requirement.get("basis", "declared approval route"))
+    rules = [str(item) for item in requirement.get("basis_rule_ids", [])]
+    references = [_policy_reference(item) for item in rules]
+    if basis == "VERIFIED_PUBLIC_ROUTE" and references:
+        item = references[0]
+        return f"Collected public route: {item['name']} ({item['reference']})"
+    if references:
+        names = ", ".join(f"{item['name']} ({item['reference']})" for item in references[:2])
+        return f"Simulated prototype basis: {names}"
+    if "SIMULATED" in basis or "PROTOTYPE" in basis:
+        return f"Simulated prototype basis: {_human_label(basis)}"
+    return _human_label(basis)
+
+
+def _human_decision_evidence(
+    values: dict[str, Any], *, limit: int = 5
+) -> list[str]:
+    evidence = _presentation_case_evidence(values)
+    academic = _mapping(evidence.get("academic"))
+    policy = _mapping(evidence.get("policy_and_documents"))
+    course = _mapping(evidence.get("course"))
+    items: list[str] = []
+    if academic.get("earned_aus") and academic.get("required_aus"):
+        outstanding = [
+            str(code)
+            for requirement in academic.get("outstanding_requirements", [])
+            for code in _mapping(requirement).get("courses", [])
+        ]
+        items.append(
+            f"Degree audit: {academic['earned_aus']} of {academic['required_aus']} AUs are recorded"
+            f"; {', '.join(outstanding) if outstanding else 'a graduation requirement'} remains outstanding."
+        )
+    if course.get("code") and course.get("prerequisite_result"):
+        prerequisite = course.get("catalogue_prerequisite") or "the represented catalogue prerequisite"
+        items.append(
+            f"Prerequisite: {course['code']} requires {prerequisite}; the current check returned "
+            f"{str(course['prerequisite_result']).lower()}."
+        )
+    classes = [
+        _mapping(item) for item in course.get("classes", []) if _mapping(item).get("class_index")
+    ]
+    if classes:
+        described = _preferred_feasible_class(course) or classes[0]
+        timetable = next(
+            (
+                _mapping(item).get("result")
+                for item in course.get("timetable_results", [])
+                if _mapping(item).get("class_index") == described.get("class_index")
+            ),
+            None,
+        )
+        vacancy_text = (
+            f" with {described['vacancies']} simulated vacancies"
+            if described.get("vacancies") is not None
+            else ""
+        )
+        items.append(
+            f"Course feasibility: class {described['class_index']} is "
+            f"{'available' if described.get('available') else 'not available'}"
+            f"{vacancy_text}"
+            f"; timetable is {str(timetable).lower() if timetable else 'not yet confirmed'} and workload is "
+            f"{str(course.get('workload_result', 'not yet confirmed')).lower()}."
+        )
+    references = [_mapping(item) for item in policy.get("policy_references", [])]
+    if references:
+        names = "; ".join(
+            f"{item.get('name')} [{item.get('provenance')}]" for item in references[:2]
+        )
+        items.append(f"Policy basis: {names}.")
+    documents = [_mapping(item) for item in policy.get("documents", [])]
+    if documents:
+        provided = [str(item.get("name")) for item in documents if item.get("provided")]
+        missing = [str(item) for item in policy.get("missing_documents", [])]
+        items.append(
+            f"Documents: {', '.join(provided) if provided else 'none are recorded as provided'}"
+            f"; {', '.join(missing) + ' missing' if missing else 'no required document is recorded as missing'}."
+        )
+    return items[:limit]
+
+
+def _approval_reason(
+    values: dict[str, Any],
+    profile: ScenarioSummary,
+    *,
+    requested_action: str,
+    approver_role: str,
+    approval_basis: str,
+) -> str:
+    evidence = _presentation_case_evidence(values)
+    academic = _mapping(evidence.get("academic"))
+    course = _mapping(evidence.get("course"))
+    policy = _mapping(evidence.get("policy_and_documents"))
+    target = str(course.get("code") or "the requested course")
+    fragments = [
+        f"This Year {profile.study_year} {profile.programme} case concerns {target}."
+    ]
+    if academic.get("earned_aus") and academic.get("required_aus"):
+        fragments.append(
+            f"The represented degree audit records {academic['earned_aus']} of "
+            f"{academic['required_aus']} AUs and keeps {target} outstanding."
+        )
+    if course.get("prerequisite_result"):
+        prerequisite = course.get("catalogue_prerequisite") or "the represented prerequisite"
+        fragments.append(
+            f"The prerequisite check against {prerequisite} returned "
+            f"{str(course['prerequisite_result']).lower()}."
+        )
+    feasible = _preferred_feasible_class(course)
+    if feasible:
+        fragments.append(
+            f"Represented class {feasible.get('class_index')} is available"
+            f"{f' with {feasible.get('vacancies')} simulated vacancies' if feasible.get('vacancies') is not None else ''}, "
+            f"and the workload check is {str(course.get('workload_result', 'not confirmed')).lower()}."
+        )
+    documents = [_mapping(item) for item in policy.get("documents", [])]
+    provided = [str(item.get("name")) for item in documents if item.get("provided")]
+    if provided:
+        fragments.append(f"The case includes {', '.join(provided)}.")
+    fragments.append(
+        f"Under {approval_basis}, the prepared {requested_action} requires permission from "
+        f"{approver_role}, which must decide whether it "
+        "is authorised; eligibility and complete documents do not grant approval by themselves."
+    )
+    if "Simulated prototype" in approval_basis:
+        fragments.append("That approval basis is a hackathon simulation, not a general official NTU rule.")
+    return _bounded(" ".join(fragments), 1_400)
+
+
+def _clarification_reason(
+    fields: list[str], values: dict[str, Any], profile: ScenarioSummary
+) -> str:
+    friendly = ", ".join(field.replace("_", " ") for field in fields)
+    evidence = _presentation_case_evidence(values)
+    course = _mapping(evidence.get("course"))
+    academic = _mapping(evidence.get("academic"))
+    target = str(course.get("code") or "the requested course")
+    known = (
+        f" The represented audit currently records {academic['earned_aus']} of {academic['required_aus']} AUs."
+        if academic.get("earned_aus") and academic.get("required_aus")
+        else ""
+    )
+    return _bounded(
+        f"For this Year {profile.study_year} {profile.programme} request concerning {target}, "
+        f"the system cannot safely determine the correct exception route while {friendly} is missing."
+        f"{known} The missing answer can change the applicable curriculum, policy, or action, "
+        "so no registration or exception will be submitted before it is confirmed.",
+        1_200,
+    )
+
+
 def _final_response_summary(
     values: dict[str, Any],
     final: dict[str, Any],
@@ -1767,8 +2650,15 @@ def _final_response_summary(
     action_label = _humanize_action(action)
     scenario = _mapping(values.get("scenario_context"))
     target_course = _mapping(scenario.get("initial_state")).get("target_course")
+    programme_path_label = _tool_result_data(values, "student_record").get(
+        "study_plan_path_label"
+    )
     parameters = _public_parameter_items(
-        candidate.get("parameters"), target_course=str(target_course or "") or None
+        candidate.get("parameters"),
+        target_course=str(target_course or "") or None,
+        programme_path_label=(
+            str(programme_path_label) if programme_path_label else None
+        ),
     )
     parameter_phrase = ", ".join(
         f"{item.label.lower()} {item.value}"
@@ -1862,6 +2752,29 @@ def _final_response_summary(
         headline = status.replace("_", " ").title()
         resolution_summary = str(final.get("message", "The run ended at a safe boundary."))
         next_steps = ["Review the outstanding requirements before attempting another action."]
+    if status == "DONE":
+        validity_reasons = list(dict.fromkeys([
+            *(academic_basis[:2]),
+            *(policy_basis[:1]),
+            approval_summary,
+            (
+                f"The final check confirmed all {total} required outcome condition(s)."
+                if total
+                else "The final check confirmed that the requested outcome is now present in the simulated student record."
+            ),
+        ]))
+        reasoning_heading = "Why this is valid"
+    elif status == "ADMIN_HANDOFF":
+        validity_reasons = list(dict.fromkeys([
+            resolution_summary,
+            "The system stopped before an unsupported action because the available evidence or authority was insufficient.",
+        ]))
+        reasoning_heading = "Why human review is required"
+    else:
+        validity_reasons = [
+            "The case stopped at a safety boundary because the available information did not support a verified action."
+        ]
+        reasoning_heading = "Why the case stopped here"
     message = (
         f"{resolution_summary} {approval_summary} {transaction_summary}"
         if status == "DONE"
@@ -1882,6 +2795,8 @@ def _final_response_summary(
         message=_bounded(message, 1_600),
         request_summary=str(intake.get("request_text", "Request text was not retained.")),
         resolution_summary=resolution_summary,
+        reasoning_heading=reasoning_heading,
+        validity_reasons=validity_reasons,
         action=action,
         action_parameters=parameters,
         academic_basis=academic_basis,

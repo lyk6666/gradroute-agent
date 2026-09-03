@@ -7,7 +7,12 @@ from time import monotonic, sleep
 from fastapi.testclient import TestClient
 
 from graduation_exception_agent.api.app import create_app
-from graduation_exception_agent.api.models import ManualRunRequest, RunStatus, StartRunRequest
+from graduation_exception_agent.api.models import (
+    ApprovalResumeRequest,
+    ManualRunRequest,
+    RunStatus,
+    StartRunRequest,
+)
 from graduation_exception_agent.api.service import RunService
 from graduation_exception_agent.config import AppSettings, ExecutionMode
 
@@ -32,10 +37,20 @@ def _wait(service: RunService, run_id: str, timeout: float = 12.0):
     raise AssertionError("run did not reach a stable state")
 
 
+def _approve_and_wait(service: RunService, run_id: str):
+    waiting = _wait(service, run_id)
+    assert waiting.pause is not None and waiting.pause.kind == "approval"
+    service.resume(
+        run_id,
+        ApprovalResumeRequest(kind="approval", status="APPROVED"),
+    )
+    return _wait(service, run_id)
+
+
 def test_runtime_snapshot_exposes_processed_node_state_and_resolution() -> None:
     service = RunService(_settings(), node_delay_seconds=0)
     accepted = service.start(StartRunRequest(scenario_id="S2-M01"))
-    final = _wait(service, accepted.run_id)
+    final = _approve_and_wait(service, accepted.run_id)
 
     assert final.status is RunStatus.COMPLETED
     planner = final.node_details["planner"]
@@ -63,6 +78,8 @@ def test_runtime_snapshot_exposes_processed_node_state_and_resolution() -> None:
     assert "receipt.runtime" not in response.transaction_summary
     assert response.next_steps
     assert response.limitations
+    assert response.reasoning_heading == "Why this is valid"
+    assert response.validity_reasons
 
 
 def test_manual_case_uses_validated_profile_and_custom_request() -> None:

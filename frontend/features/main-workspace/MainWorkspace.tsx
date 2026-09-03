@@ -6,10 +6,10 @@ import {
   advanceRun,
   checkRuntime,
   loadScenarios,
-  recheckApproval,
   resumeClarification,
   startManualRun,
   startRun,
+  submitApprovalDecision,
   subscribeToRun,
   type ApiStatus,
   type RunSnapshot,
@@ -143,15 +143,15 @@ export function MainWorkspace() {
     }
   }
 
-  async function handleApprovalRecheck() {
+  async function handleApprovalDecision(status: 'PENDING' | 'APPROVED' | 'REJECTED', decisionReason?: string) {
     if (!runSnapshot) return;
     setRunError(null);
     try {
-      const snapshot = await recheckApproval(runSnapshot.run_id);
+      const snapshot = await submitApprovalDecision(runSnapshot.run_id, status, decisionReason);
       applySnapshot(snapshot);
       connectToRun(snapshot);
     } catch (error) {
-      setRunError(error instanceof Error ? error.message : 'The approval status could not be re-checked.');
+      setRunError(error instanceof Error ? error.message : 'The approval decision could not be recorded.');
     }
   }
 
@@ -185,7 +185,7 @@ export function MainWorkspace() {
           scenarioSplit={scenarioSplit}
         />
         <AgentGraphCanvas
-          onApprovalRecheck={handleApprovalRecheck}
+          onApprovalDecision={handleApprovalDecision}
           onClarificationSubmit={handleClarification}
           onSelectNode={setSelectedNodeId}
           runSnapshot={runSnapshot}

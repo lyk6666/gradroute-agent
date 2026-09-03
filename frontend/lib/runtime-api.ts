@@ -33,6 +33,8 @@ export type ReasoningSummary = {
 };
 
 export type NodeNarrativeSummary = {
+  summary: string;
+  next_step: string | null;
   input: string;
   output: string;
   state: string;
@@ -62,6 +64,13 @@ export type PauseSummary = {
   message: string;
   fields: string[];
   impact: string | null;
+  why_needed: string;
+  decision_depends_on: string;
+  requested_action: string | null;
+  approver_role: string | null;
+  approval_basis: string | null;
+  evidence_summary: string[];
+  narrative: string | null;
 };
 
 export type FinalResponseSummary = {
@@ -70,6 +79,8 @@ export type FinalResponseSummary = {
   message: string;
   request_summary: string;
   resolution_summary: string;
+  reasoning_heading: string;
+  validity_reasons: string[];
   action: string | null;
   action_parameters: DetailItem[];
   academic_basis: string[];
@@ -266,10 +277,18 @@ export async function resumeClarification(
   });
 }
 
-export async function recheckApproval(runId: string): Promise<RunSnapshot> {
+export async function submitApprovalDecision(
+  runId: string,
+  status: 'PENDING' | 'APPROVED' | 'REJECTED',
+  decisionReason?: string,
+): Promise<RunSnapshot> {
   return request(`/api/v1/runs/${runId}/resume`, {
     method: 'POST',
-    body: JSON.stringify({ kind: 'approval', status: 'PENDING' }),
+    body: JSON.stringify({
+      kind: 'approval',
+      status,
+      decision_reason: status === 'REJECTED' ? decisionReason : null,
+    }),
   });
 }
 
@@ -295,6 +314,9 @@ export function exportResolution(snapshot: RunSnapshot): void {
     `Request: ${snapshot.final_response.request_summary}`,
     '',
     snapshot.final_response.narrative ?? snapshot.final_response.message,
+    '',
+    `${snapshot.final_response.reasoning_heading}:`,
+    ...snapshot.final_response.validity_reasons.map((item) => `- ${item}`),
     '',
     `Approval: ${snapshot.final_response.approval_summary}`,
     `Transaction: ${snapshot.final_response.transaction_summary}`,

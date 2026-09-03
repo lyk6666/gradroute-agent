@@ -1,4 +1,4 @@
-import { useState, type MouseEvent as ReactMouseEvent } from 'react';
+import { useLayoutEffect, useState, type MouseEvent as ReactMouseEvent } from 'react';
 import {
   BaseEdge,
   Background,
@@ -39,7 +39,7 @@ import {
 import '@xyflow/react/dist/style.css';
 
 type AgentGraphCanvasProps = {
-  onApprovalRecheck: () => void | Promise<void>;
+  onApprovalDecision: (status: 'PENDING' | 'APPROVED' | 'REJECTED', decisionReason?: string) => void | Promise<void>;
   onClarificationSubmit: (answers: Record<string, string | boolean>) => void | Promise<void>;
   onSelectNode: (nodeId: string) => void;
   runSnapshot: RunSnapshot | null;
@@ -51,7 +51,7 @@ type CanvasInspectorNodeData = {
   selectedNodeId: string;
   detail: NodeExecutionDetail | null;
   pause: RunSnapshot['pause'];
-  onApprovalRecheck: () => void | Promise<void>;
+  onApprovalDecision: (status: 'PENDING' | 'APPROVED' | 'REJECTED', decisionReason?: string) => void | Promise<void>;
   onClarificationSubmit: (answers: Record<string, string | boolean>) => void | Promise<void>;
 } & Record<string, unknown>;
 
@@ -63,6 +63,29 @@ const statusLabels: Record<NodeStatus, string> = {
   failed: 'Failed',
   skipped: 'Skipped',
 };
+
+const RESIZE_OBSERVER_LOOP_MESSAGES = new Set([
+  'ResizeObserver loop completed with undelivered notifications.',
+  'ResizeObserver loop limit exceeded',
+]);
+
+function useResizeObserverLoopGuard() {
+  useLayoutEffect(() => {
+    const ignoreBenignResizeObserverLoop = (event: ErrorEvent) => {
+      const message = event.message || (event.error instanceof Error ? event.error.message : '');
+      if (!RESIZE_OBSERVER_LOOP_MESSAGES.has(message)) return;
+
+      // Chromium reports this notification through window.onerror when a later
+      // frame must finish delivering ResizeObserver updates. React Flow already
+      // receives the next measurement, so it is not an application failure.
+      event.preventDefault();
+      event.stopImmediatePropagation();
+    };
+
+    window.addEventListener('error', ignoreBenignResizeObserverLoop, true);
+    return () => window.removeEventListener('error', ignoreBenignResizeObserverLoop, true);
+  }, []);
+}
 
 function StatusIcon({ status }: { status: NodeStatus }) {
   const props = { 'aria-hidden': true, size: 10 } as const;
@@ -193,47 +216,36 @@ function NodeDetail({ detail, node }: { detail: NodeExecutionDetail | null; node
         <div><span className="panel-kicker">Selected node</span><h3>{node.label}</h3></div>
         <span className={`detail-status status-${node.status}`}><StatusIcon status={node.status} />{statusLabels[node.status]}</span>
       </header>
-      <p className="node-purpose">{node.purpose}</p>
-      {!detail ? <p className="node-narrative-pending">This step has not run yet. Its case-specific explanation will appear when the case reaches it.</p> : null}
-      {detail?.narrative ? (
-        <div className="runtime-narrative-list">
-          <section className="runtime-narrative-block"><h4>What came in</h4><p>{detail.narrative.input}</p></section>
-          <section className="runtime-narrative-block"><h4>What this step found</h4><p>{detail.narrative.output}</p></section>
-          <section className="runtime-narrative-block"><h4>What changed</h4><p>{detail.narrative.state}</p></section>
-        </div>
-      ) : detail ? <p className="node-narrative-pending">The plain-language explanation is temporarily unavailable. The recorded facts remain available below.</p> : null}
+      <p className="node-purpose">{detail?.narrative?.summary ?? (detail ? node.purpose : `${node.purpose} A case-specific result will appear when this step runs.`)}</p>
       {detail ? (
         <details className="recorded-facts">
-          <summary>View recorded facts</summary>
+          <summary>Evidence and audit details</summary>
           <section className="runtime-detail-group"><h4>Input record</h4><DetailRows items={detail.input_items} /></section>
           <section className="runtime-detail-group"><h4>Output record</h4><DetailRows items={detail.output_items} /></section>
           <section className="runtime-detail-group"><h4>State record</h4><DetailRows items={detail.state_changes} /></section>
           {detail.reasoning ? <p>{detail.reasoning.safety_rule}</p> : null}
         </details>
       ) : null}
-      <div className="node-tool-summary">
-        <span>Tools</span>
-        <strong>{detail?.tool_names.length ? detail.tool_names.join(' · ') : detail ? 'No external tool used' : 'Available after this step runs'}</strong>
-      </div>
-      {detail ? <p className="node-execution-meta">Attempt {detail.attempt} · {detail.evidence_ids.length} evidence reference(s)</p> : null}
     </section>
   );
 }
 
 function HumanInteraction({
-  onApprovalRecheck,
+  onApprovalDecision,
   onClarificationSubmit,
   pause,
   detail,
   selectedNodeId,
 }: {
-  onApprovalRecheck: () => void | Promise<void>;
+  onApprovalDecision: (status: 'PENDING' | 'APPROVED' | 'REJECTED', decisionReason?: string) => void | Promise<void>;
   onClarificationSubmit: (answers: Record<string, string | boolean>) => void | Promise<void>;
   pause: RunSnapshot['pause'];
   detail: NodeExecutionDetail | null;
   selectedNodeId: string;
 }) {
   const [answers, setAnswers] = useState<Record<string, string | boolean>>({});
+  const [rejectionReason, setRejectionReason] = useState('');
+  const [handoffAcknowledged, setHandoffAcknowledged] = useState(false);
   const actionNarrative = detail?.narrative?.action;
 
   if (selectedNodeId === 'clarification') {
@@ -245,7 +257,9 @@ function HumanInteraction({
     return (
       <section className="canvas-detail-card human-interaction-card">
         <header><MessageCircleQuestion size={15} /><div><span className="panel-kicker">Human interaction</span><h3>Clarification required</h3></div></header>
-        <p>{actionNarrative ?? (active ? pause.message : detail ? 'The plain-language action explanation is temporarily unavailable.' : 'No clarification is active for this step yet.')}</p>
+        <p className="interaction-question">{active ? pause.message : actionNarrative ?? 'No clarification is active for this step yet.'}</p>
+        {active ? <div className="interaction-reason"><strong>Why this is needed</strong><p>{pause.narrative ?? pause.why_needed}</p>{pause.narrative ? <p>{pause.why_needed}</p> : null}<small>{pause.decision_depends_on}</small></div> : null}
+        {active && pause.evidence_summary.length ? <details className="recorded-facts"><summary>Evidence already checked</summary><ul>{pause.evidence_summary.map((item) => <li key={item}>{item}</li>)}</ul></details> : null}
         {active ? pause.fields.map((field) => (
           field === 'submission_declaration' ? (
             <label className="clarification-checkbox" key={field}>
@@ -259,7 +273,7 @@ function HumanInteraction({
             </label>
           )
         )) : null}
-        <button disabled={!complete} onClick={() => onClarificationSubmit(answers)} type="button">Submit validated clarification</button>
+        <button disabled={!complete} onClick={() => onClarificationSubmit(answers)} type="button">Continue with this information</button>
       </section>
     );
   }
@@ -268,11 +282,24 @@ function HumanInteraction({
     const active = pause?.kind === 'approval';
     return (
       <section className="canvas-detail-card human-interaction-card approval-preview-card">
-        <header><UserCheck size={15} /><div><span className="panel-kicker">Simulated approver</span><h3>Approval decision</h3></div><span className="simulated-role">Demo only</span></header>
-        <p>{actionNarrative ?? (active ? pause.message : detail ? 'The plain-language approval explanation is temporarily unavailable.' : 'Approval details will appear if the action gate selects this route.')}</p>
-        {detail ? <details className="recorded-facts"><summary>View approval record</summary><DetailRows items={[...detail.input_items, ...detail.output_items].slice(0, 6)} /></details> : null}
-        <p><ShieldCheck size={12} /> The decision comes from the named approving role; the agent cannot approve its own request.</p>
-        <div className="approval-buttons approval-recheck"><button disabled={!active} onClick={onApprovalRecheck} type="button">Re-check authoritative status</button></div>
+        <header><UserCheck size={15} /><div><span className="panel-kicker">Human decision</span><h3>{active ? pause.approver_role : 'Approval decision'}</h3></div><span className="simulated-role">Simulated</span></header>
+        <p className="interaction-question">{active ? pause.message : actionNarrative ?? 'Approval details will appear if the action gate selects this route.'}</p>
+        {active ? <div className="approval-brief">
+          <dl>
+            <div><dt>Proposed action</dt><dd>{pause.requested_action}</dd></div>
+            <div><dt>Approval basis</dt><dd>{pause.approval_basis}</dd></div>
+          </dl>
+          {pause.narrative ? <div className="decision-ready-summary"><strong>Decision summary</strong><p>{pause.narrative}</p></div> : null}
+          <div className="interaction-reason"><strong>Why approval is required</strong><p>{pause.why_needed}</p><small>{pause.decision_depends_on}</small></div>
+          {pause.evidence_summary.length ? <div className="approval-evidence"><strong>Evidence prepared</strong><ul>{pause.evidence_summary.map((item) => <li key={item}>{item}</li>)}</ul></div> : null}
+          <label><span>Reason required when rejecting</span><textarea onChange={(event) => setRejectionReason(event.target.value)} placeholder="Explain what is insufficient or why the request is rejected." rows={2} value={rejectionReason} /></label>
+        </div> : null}
+        <p><ShieldCheck size={12} /> The agent cannot make this decision for the approving role.</p>
+        <div className="approval-buttons">
+          <button disabled={!active} onClick={() => onApprovalDecision('APPROVED')} type="button">Approve</button>
+          <button disabled={!active || !rejectionReason.trim()} onClick={() => onApprovalDecision('REJECTED', rejectionReason.trim())} type="button">Reject</button>
+          <button disabled={!active} onClick={() => onApprovalDecision('PENDING')} type="button">Leave pending</button>
+        </div>
       </section>
     );
   }
@@ -282,7 +309,8 @@ function HumanInteraction({
       <section className="canvas-detail-card human-interaction-card">
         <header><UserCog size={15} /><div><span className="panel-kicker">Human interaction</span><h3>Administrative handoff</h3></div></header>
         <p>{actionNarrative ?? (detail ? 'The plain-language handoff explanation is temporarily unavailable.' : 'No administrative handoff has been prepared yet.')}</p>
-        {detail ? <DetailRows items={detail.state_changes.slice(0, 5)} /> : null}
+        {detail ? <details className="recorded-facts"><summary>Evidence and audit details</summary><DetailRows items={detail.state_changes.slice(0, 5)} /></details> : null}
+        {detail ? <button aria-live="polite" onClick={() => setHandoffAcknowledged(true)} type="button">{handoffAcknowledged ? 'Handoff acknowledged' : 'Acknowledge staff handoff'}</button> : null}
         <ProvenanceBadge kind="derived" />
       </section>
     );
@@ -295,7 +323,7 @@ function HumanInteraction({
         {detail ? (
           <>
             <p className="runtime-action-narrative">{actionNarrative ?? 'The plain-language action explanation is temporarily unavailable.'}</p>
-            <details className="recorded-facts"><summary>View action record</summary><DetailRows items={detail.output_items.slice(0, 5)} /><div className="action-state-divider"><span>Persisted state</span></div><DetailRows items={detail.state_changes.slice(0, 5)} /></details>
+            <details className="recorded-facts"><summary>Evidence and audit details</summary><DetailRows items={detail.output_items.slice(0, 5)} /><div className="action-state-divider"><span>Recorded state</span></div><DetailRows items={detail.state_changes.slice(0, 5)} /></details>
           </>
         ) : <p>The exact decision, result and state update will appear here when this node executes.</p>}
       </section>
@@ -316,7 +344,7 @@ function CanvasInspectorNode({ data }: NodeProps<Node<CanvasInspectorNodeData>>)
       <NodeDetail detail={data.detail} node={data.selectedNode} />
       <HumanInteraction
         key={`${data.pause?.kind ?? 'none'}-${data.pause?.message ?? 'idle'}`}
-        onApprovalRecheck={data.onApprovalRecheck}
+        onApprovalDecision={data.onApprovalDecision}
         onClarificationSubmit={data.onClarificationSubmit}
         pause={data.pause}
         detail={data.detail}
@@ -336,12 +364,13 @@ const edgeTypes = {
 };
 
 export function AgentGraphCanvas({
-  onApprovalRecheck,
+  onApprovalDecision,
   onClarificationSubmit,
   onSelectNode,
   runSnapshot,
   selectedNodeId,
 }: AgentGraphCanvasProps) {
+  useResizeObserverLoopGuard();
   const statuses = runSnapshot?.node_statuses ?? {};
   const selectedBase = NODE_SUMMARIES[selectedNodeId] ?? NODE_SUMMARIES.pre_action_verifier;
   const selectedNode = { ...selectedBase, status: statuses[selectedNodeId] ?? 'idle' };
@@ -354,7 +383,7 @@ export function AgentGraphCanvas({
       selectedNodeId,
       detail: runSnapshot?.node_details[selectedNodeId] ?? null,
       pause: runSnapshot?.pause ?? null,
-      onApprovalRecheck,
+      onApprovalDecision,
       onClarificationSubmit,
     },
     draggable: false,
@@ -423,7 +452,7 @@ export function AgentGraphCanvas({
           proOptions={{ hideAttribution: true }}
           zoomOnDoubleClick={false}
         >
-          <Background color="#dbe5f2" gap={24} size={1} variant={BackgroundVariant.Lines} />
+          <Background color="#edf2f8" gap={24} size={1} variant={BackgroundVariant.Lines} />
           <Controls position="top-right" showInteractive={false} />
         </ReactFlow>
       </div>

@@ -21,6 +21,8 @@ export function FinalResponsePanel({ runSnapshot, scenario }: { runSnapshot: Run
     const text = [
       response.headline,
       response.narrative ?? response.message,
+      response.reasoning_heading,
+      ...response.validity_reasons.map((item) => `- ${item}`),
       `Request: ${response.request_summary}`,
       `Approval: ${response.approval_summary}`,
       `Transaction: ${response.transaction_summary}`,
@@ -45,6 +47,7 @@ export function FinalResponsePanel({ runSnapshot, scenario }: { runSnapshot: Run
           <div className="response-detail-sections">
             <section><strong>Request</strong><p>{response.request_summary}</p></section>
             <section><strong>Verified resolution</strong><p>{response.resolution_summary}</p></section>
+            <section className="response-reasoning"><strong>{response.reasoning_heading}</strong><ul>{response.validity_reasons.map((item) => <li key={item}>{item}</li>)}</ul></section>
             {response.action ? <section><strong>Action · {response.action.replaceAll('_', ' ')}</strong>{response.action_parameters.map((item) => <p key={item.label}><b>{item.label}:</b> {item.value}</p>)}</section> : null}
             <section><strong>Approval</strong><p>{response.approval_summary}</p></section>
             <section><strong>Transaction</strong><p>{response.transaction_summary}</p></section>

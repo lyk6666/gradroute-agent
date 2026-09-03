@@ -1,0 +1,1138 @@
+{
+  "stage": 13,
+  "execution_mode": "bedrock",
+  "model_id": "amazon.nova-micro-v1:0",
+  "scenarios": [
+    {
+      "scenario_id": "S1-M01",
+      "title": "Same-course registration recovery",
+      "target_course": "CC0015",
+      "status": "completed",
+      "human_decisions": [],
+      "expected_response_for_post_run_review_only": "Explain that the preferred class 83501 conflicts with the timetable, register conflict-free class 83506 for CC0015 without approval, and verify that the course appears in the final registration.",
+      "review": {
+        "passed": true,
+        "criteria": {
+          "live_model_called_for_every_executed_node": true,
+          "live_narration_accepted_when_grounding_guard_passed": true,
+          "target_course_is_visible": true,
+          "node_copy_fits_role": true,
+          "final_or_human_boundary_is_case_specific": true,
+          "no_internal_or_expected_answer_terms": true,
+          "safe_terminal_state": true
+        },
+        "node_fit": {
+          "planner": true,
+          "degree_audit": true,
+          "policy": true,
+          "course": true
+        },
+        "executed_nodes": 15,
+        "narrated_nodes": 15,
+        "live_narrated_nodes": 9,
+        "live_narration_ratio": 0.6,
+        "live_model_calls": 27,
+        "fallback_nodes": [
+          "memory_retriever",
+          "resolution_builder",
+          "action_gate",
+          "observation",
+          "final_response",
+          "memory_updater"
+        ]
+      },
+      "narration_errors": [
+        {
+          "node": "Candidate assembled",
+          "error_type": "ReasoningUnavailableError",
+          "message": "Bedrock reasoning request failed; no model output was accepted."
+        },
+        {
+          "node": "Candidate assembled",
+          "error_type": "ReasoningUnavailableError",
+          "message": "Bedrock reasoning request failed; no model output was accepted."
+        },
+        {
+          "node": "Candidate assembled",
+          "error_type": "ReasoningUnavailableError",
+          "message": "Bedrock reasoning request failed; no model output was accepted."
+        },
+        {
+          "node": "Action gate",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Action gate",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Action gate",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Outcome observed",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': \"The stude...', 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Outcome observed",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': \"The stude...', 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Outcome observed",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': \"The stude...', 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        }
+      ],
+      "representative_output": {
+        "planner": "The plan will confirm the documented exception route, required documents, and approval for CC0015; then check the current prerequisite, timetable, workload, and availability facts for CC0015.",
+        "degree_audit": null,
+        "policy": "The CC0015 case is eligible for review: A declared review route exists; this does not predict or grant approval. The relevant basis is registration stars_guide functions (policy.registration.stars_guide.functions), recorded as a collected public source route. The case records scenario supporting record as provided.",
+        "course": "The student can take CC0015 in class 83506 as all prerequisites, exclusions, timetable, and workload checks have passed. No separate approval is required, and the class has available vacancies.",
+        "human_boundary": null,
+        "final_response": {
+          "status": "DONE",
+          "headline": "Course registration verified",
+          "message": "The course registration completed for course CC0015, class index 83506 and the final check confirmed 1 of 1 required condition(s). No separate approval was required for the verified action. Course registration returned success. The system retained a transaction receipt for the case record.",
+          "request_summary": "I am a Year 4 AISC student from AY2025-26 with 129.0 earned AUs. CC0015 is still outstanding, and my preferred class conflicts with my current timetable (CC0001). During Add/Drop, please help me find a conflict-free class for the same course rather than substitute another course.",
+          "resolution_summary": "The course registration completed for course CC0015, class index 83506 and the final check confirmed 1 of 1 required condition(s).",
+          "reasoning_heading": "Why this is valid",
+          "validity_reasons": [
+            "For CC0015, prerequisite is pass, exclusion is pass, workload is pass, and feasible class(es): 83506.",
+            "The CC0015 case is eligible for review; no separate approval is required, and all declared documents are present.",
+            "No separate approval was required for the verified action.",
+            "The final check confirmed all 1 required outcome condition(s)."
+          ],
+          "action": "SUBMIT_REGISTRATION",
+          "action_parameters": [
+            {
+              "label": "Course",
+              "value": "CC0015"
+            },
+            {
+              "label": "Class index",
+              "value": "83506"
+            }
+          ],
+          "academic_basis": [
+            "For CC0015, prerequisite is pass, exclusion is pass, workload is pass, and feasible class(es): 83506."
+          ],
+          "policy_basis": [
+            "The CC0015 case is eligible for review; no separate approval is required, and all declared documents are present."
+          ],
+          "approval_summary": "No separate approval was required for the verified action.",
+          "transaction_summary": "Course registration returned success. The system retained a transaction receipt for the case record.",
+          "next_steps": [
+            "Confirm that the course and class index appear in the student registration record.",
+            "Keep the transaction receipt; if the class changes again, request a fresh availability check before another attempt."
+          ],
+          "limitations": [
+            "Student, offering, approval and transaction records are simulated for this hackathon prototype."
+          ],
+          "evidence_ids": [
+            "evidence.plan.case.sim-aisc-005.1.policy",
+            "evidence.plan.case.sim-aisc-005.1.course"
+          ],
+          "academic_verified": true,
+          "policy_verified": true,
+          "approval_state": "NOT_REQUIRED",
+          "completed_at": "2028-08-25T09:00:00.000030+08:00",
+          "narrative": null
+        },
+        "case_overview": "The course registration completed for course CC0015, class index 83506 and the final check confirmed 1 of 1 required condition(s).",
+        "case_developments": [
+          "The CC0015 case is eligible for review; no separate approval is required, and all declared documents are present.",
+          "For CC0015, prerequisite is pass, exclusion is pass, workload is pass, and feasible class(es): 83506.",
+          "Class 83506 registered successfully for CC0015.",
+          "Every required goal predicate is satisfied in current runtime state."
+        ],
+        "past_lessons": []
+      }
+    },
+    {
+      "scenario_id": "S2-M01",
+      "title": "Prerequisite evidence route",
+      "target_course": "SC4002",
+      "status": "completed",
+      "human_decisions": [
+        "approved simulated human checkpoint"
+      ],
+      "expected_response_for_post_run_review_only": "Confirm the pending-transfer evidence for SC4002, record CCDS Undergraduate Office approval, submit the prerequisite waiver, and verify the successful waiver result.",
+      "review": {
+        "passed": true,
+        "criteria": {
+          "live_model_called_for_every_executed_node": true,
+          "live_narration_accepted_when_grounding_guard_passed": true,
+          "target_course_is_visible": true,
+          "node_copy_fits_role": true,
+          "final_or_human_boundary_is_case_specific": true,
+          "no_internal_or_expected_answer_terms": true,
+          "safe_terminal_state": true
+        },
+        "node_fit": {
+          "planner": true,
+          "degree_audit": true,
+          "policy": true,
+          "course": true
+        },
+        "executed_nodes": 18,
+        "narrated_nodes": 18,
+        "live_narrated_nodes": 13,
+        "live_narration_ratio": 0.722,
+        "live_model_calls": 30,
+        "fallback_nodes": [
+          "memory_retriever",
+          "policy_agent",
+          "resolution_builder",
+          "pre_action_verifier",
+          "transaction"
+        ]
+      },
+      "narration_errors": [
+        {
+          "node": "Policy evidence",
+          "error_type": "ReasoningUnavailableError",
+          "message": "Bedrock reasoning request failed; no model output was accepted."
+        },
+        {
+          "node": "Policy evidence",
+          "error_type": "ReasoningUnavailableError",
+          "message": "Bedrock reasoning request failed; no model output was accepted."
+        },
+        {
+          "node": "Policy evidence",
+          "error_type": "ReasoningUnavailableError",
+          "message": "Bedrock reasoning request failed; no model output was accepted."
+        },
+        {
+          "node": "Candidate assembled",
+          "error_type": "ReasoningUnavailableError",
+          "message": "Bedrock reasoning request failed; no model output was accepted."
+        },
+        {
+          "node": "Candidate assembled",
+          "error_type": "ReasoningUnavailableError",
+          "message": "Bedrock reasoning request failed; no model output was accepted."
+        },
+        {
+          "node": "Candidate assembled",
+          "error_type": "ReasoningUnavailableError",
+          "message": "Bedrock reasoning request failed; no model output was accepted."
+        },
+        {
+          "node": "Pre-action verification",
+          "error_type": "ReasoningUnavailableError",
+          "message": "Bedrock reasoning request failed; no model output was accepted."
+        },
+        {
+          "node": "Pre-action verification",
+          "error_type": "ReasoningUnavailableError",
+          "message": "Bedrock reasoning request failed; no model output was accepted."
+        },
+        {
+          "node": "Pre-action verification",
+          "error_type": "ReasoningUnavailableError",
+          "message": "Bedrock reasoning request failed; no model output was accepted."
+        },
+        {
+          "node": "Transaction",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'The stude...], 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Transaction",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'The stude...], 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Transaction",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'The stude...], 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        }
+      ],
+      "representative_output": {
+        "planner": "The plan will confirm how SC4002 affects this student's applicable graduation requirements, then check the evidence and approval route for a SC4002 prerequisite waiver, and finally check the current prerequisite, timetable, workload, and availability facts for SC4002. The SC4002 request depends on both academic evidence and a documented approval path, so neither can be assumed.",
+        "degree_audit": "The student has earned 128.0 AUs out of the required 131 AUs for the Artificial Intelligence and Society AY2025-26 curriculum. The outstanding requirement is SC4002, which is part of the programme core with a requirement of 57 AUs. The degree audit is not yet complete, indicating that the student still needs to complete 3 AUs to meet the total requirement.",
+        "policy": "The SC4002 case is eligible for review: A declared review route exists; this does not predict or grant approval. The relevant basis is CCDS pending exchange-credit prerequisite-waiver route (policy.exception.exchange.pending_transfer), recorded as a collected public source route. The case records foreign course mapping, prerequisite course mapping, requested course mapping, unofficial transcript as provided. CCDS Undergraduate Office must authorise the prerequisite waiver request; eligibility alone is not approval.",
+        "course": "The SC4002 course, NATURAL LANGUAGE PROCESSING, is required for the student's programme core. The prerequisite check failed, but the exclusion and workload checks passed. Class 14526 is available with 5 vacancies. The timetable check also passed. These facts are crucial as they determine the student's eligibility to take the course under current conditions.",
+        "human_boundary": null,
+        "final_response": {
+          "status": "DONE",
+          "headline": "Prerequisite waiver request verified",
+          "message": "The prerequisite waiver request completed for course SC4002 and the final check confirmed 2 of 2 required condition(s). CCDS Undergraduate Office returned approved. Prerequisite waiver request returned success. The system retained a transaction receipt for the case record.",
+          "request_summary": "I am a Year 4 AISC student from AY2025-26 with 128.0 earned AUs, and SC4002 is required for my remaining study plan. I passed the simulated exchange course FX2001, but the transfer is still pending; my transcript and both course mappings are attached. Please check whether this evidence supports the documented prerequisite-exception route.",
+          "resolution_summary": "The prerequisite waiver request completed for course SC4002 and the final check confirmed 2 of 2 required condition(s).",
+          "reasoning_heading": "Why this is valid",
+          "validity_reasons": [
+            "The degree audit is not ready based on 128.0 of 131 AUs; SC4002 is recorded as outstanding.",
+            "For SC4002, prerequisite is fail, exclusion is pass, workload is pass, and feasible class(es): 14526.",
+            "The SC4002 case is eligible for review; human approval is required, and all declared documents are present.",
+            "CCDS Undergraduate Office returned approved.",
+            "The final check confirmed all 2 required outcome condition(s)."
+          ],
+          "action": "SUBMIT_WAIVER",
+          "action_parameters": [
+            {
+              "label": "Course",
+              "value": "SC4002"
+            }
+          ],
+          "academic_basis": [
+            "The degree audit is not ready based on 128.0 of 131 AUs; SC4002 is recorded as outstanding.",
+            "For SC4002, prerequisite is fail, exclusion is pass, workload is pass, and feasible class(es): 14526."
+          ],
+          "policy_basis": [
+            "The SC4002 case is eligible for review; human approval is required, and all declared documents are present."
+          ],
+          "approval_summary": "CCDS Undergraduate Office returned approved.",
+          "transaction_summary": "Prerequisite waiver request returned success. The system retained a transaction receipt for the case record.",
+          "next_steps": [
+            "Monitor the prerequisite-waiver record until the curriculum or registration view reflects the approved exception.",
+            "Keep the submitted exchange transcript, course mappings, approval, and receipt together."
+          ],
+          "limitations": [
+            "Student, offering, approval and transaction records are simulated for this hackathon prototype."
+          ],
+          "evidence_ids": [
+            "evidence.plan.case.sim-aisc-016.1.degree_audit",
+            "evidence.plan.case.sim-aisc-016.1.policy",
+            "evidence.plan.case.sim-aisc-016.1.course"
+          ],
+          "academic_verified": true,
+          "policy_verified": true,
+          "approval_state": "APPROVED",
+          "completed_at": "2028-08-25T09:00:00.000037+08:00",
+          "narrative": "The prerequisite waiver request completed for course SC4002 and the final check confirmed 2 of 2 required condition(s). CCDS Undergraduate Office returned approved. Prerequisite waiver request returned success. The system retained a transaction receipt for the case record. The student should monitor the prerequisite-waiver record until the curriculum or registration view reflects the approved exception and keep the submitted exchange transcript, course mappings, approval, and receipt together."
+        },
+        "case_overview": "The prerequisite waiver request completed for course SC4002 and the final check confirmed 2 of 2 required condition(s). CCDS Undergraduate Office returned approved. Prerequisite waiver request returned success. The system retained a transaction receipt for the case record. The student should monitor the prerequisite-waiver record until the curriculum or registration view reflects the approved exception and keep the submitted exchange transcript, course mappings, approval, and receipt together.",
+        "case_developments": [
+          "For SC4002, prerequisite is fail, exclusion is pass, workload is pass, and feasible class(es): 14526.",
+          "The approving role returned approved.",
+          "After approval, the submit waiver for SC4002 completed successfully.",
+          "Every required goal predicate is satisfied in current runtime state."
+        ],
+        "past_lessons": []
+      }
+    },
+    {
+      "scenario_id": "S3-M01",
+      "title": "Versioned multi-source reasoning",
+      "target_course": "MH1805",
+      "status": "completed",
+      "human_decisions": [],
+      "expected_response_for_post_run_review_only": "Use the cohort-specific curriculum source for MH1805, retain the stated source limitation, submit the supported graduation exception, and verify the result.",
+      "review": {
+        "passed": true,
+        "criteria": {
+          "live_model_called_for_every_executed_node": true,
+          "live_narration_accepted_when_grounding_guard_passed": true,
+          "target_course_is_visible": true,
+          "node_copy_fits_role": true,
+          "final_or_human_boundary_is_case_specific": true,
+          "no_internal_or_expected_answer_terms": true,
+          "safe_terminal_state": true
+        },
+        "node_fit": {
+          "planner": true,
+          "degree_audit": true,
+          "policy": true,
+          "course": true
+        },
+        "executed_nodes": 16,
+        "narrated_nodes": 16,
+        "live_narrated_nodes": 8,
+        "live_narration_ratio": 0.5,
+        "live_model_calls": 32,
+        "fallback_nodes": [
+          "student_case",
+          "memory_retriever",
+          "policy_agent",
+          "course_agent",
+          "pre_action_verifier",
+          "action_gate",
+          "post_action_verifier",
+          "final_response"
+        ]
+      },
+      "narration_errors": [
+        {
+          "node": "Student / Case",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Student / Case",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Student / Case",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Memory retrieved",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'Explain w...', 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Memory retrieved",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'Explain w...', 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Memory retrieved",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'Explain w...', 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Policy evidence",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'Explain t...', 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Policy evidence",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'Explain t...', 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Policy evidence",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'Explain t...', 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Pre-action verification",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Pre-action verification",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Pre-action verification",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Action gate",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Action gate",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Action gate",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Final response",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'The stude...], 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Final response",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'The stude...], 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Final response",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'The stude...], 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        }
+      ],
+      "representative_output": {
+        "planner": "The plan will confirm how MH1805 affects this student's applicable graduation requirements, then confirm the documented exception route, required documents, and approval for MH1805, and finally check the current prerequisite, timetable, workload, and availability facts for MH1805. The applicable cohort curriculum must be established before deciding how MH1805 affects graduation clearance.",
+        "degree_audit": "The represented degree audit records 127.0 of 131 AUs and lists MH1805 as outstanding. The applicable curriculum is Data Science and Artificial Intelligence – revised AY2025-26. This establishes the academic need for the request, but it does not by itself establish policy eligibility, course feasibility, or approval.",
+        "policy": "The MH1805 case is eligible for review: A declared review route exists; this does not predict or grant approval. The relevant basis is registration graduation_baseline (policy.registration.graduation_baseline), recorded as a collected public source route. The case records scenario supporting record as provided.",
+        "course": "MH1805 is CALCULUS (4.0 AU). For MH1805, the catalogue prerequisite is not fully represented, and the current check returned pass. The exclusion check is pass. Class 72001 is available with 6 simulated vacancies; the timetable check is pass and the workload check is pass. These are represented timetable and course facts; live vacancy is simulated for the prototype.",
+        "human_boundary": null,
+        "final_response": {
+          "status": "DONE",
+          "headline": "Exception request verified",
+          "message": "The exception request completed for course MH1805 and the final check confirmed 2 of 2 required condition(s). No separate approval was required for the verified action. Exception request returned success. The system retained a transaction receipt for the case record.",
+          "request_summary": "I am a Year 4 DSAI student from AY2025-26 with 127.0 earned AUs, and my degree audit is not ready with MH1805 still affecting graduation clearance. Please determine which dated curriculum rules apply to my cohort before recommending an exception.",
+          "resolution_summary": "The exception request completed for course MH1805 and the final check confirmed 2 of 2 required condition(s).",
+          "reasoning_heading": "Why this is valid",
+          "validity_reasons": [
+            "The degree audit is not ready based on 127.0 of 131 AUs; MH1805 is recorded as outstanding.",
+            "For MH1805, prerequisite is pass, exclusion is pass, workload is pass, and feasible class(es): 72001.",
+            "The MH1805 case is eligible for review; no separate approval is required, and all declared documents are present.",
+            "No separate approval was required for the verified action.",
+            "The final check confirmed all 2 required outcome condition(s)."
+          ],
+          "action": "SUBMIT_EXCEPTION",
+          "action_parameters": [
+            {
+              "label": "Course",
+              "value": "MH1805"
+            }
+          ],
+          "academic_basis": [
+            "The degree audit is not ready based on 127.0 of 131 AUs; MH1805 is recorded as outstanding.",
+            "For MH1805, prerequisite is pass, exclusion is pass, workload is pass, and feasible class(es): 72001."
+          ],
+          "policy_basis": [
+            "The MH1805 case is eligible for review; no separate approval is required, and all declared documents are present."
+          ],
+          "approval_summary": "No separate approval was required for the verified action.",
+          "transaction_summary": "Exception request returned success. The system retained a transaction receipt for the case record.",
+          "next_steps": [
+            "Monitor the exception case until the programme record reflects the approved outcome.",
+            "Keep the approval, supporting documents, and transaction receipt together."
+          ],
+          "limitations": [
+            "Student, offering, approval and transaction records are simulated for this hackathon prototype."
+          ],
+          "evidence_ids": [
+            "evidence.plan.case.sim-dsai-001.1.degree_audit",
+            "evidence.plan.case.sim-dsai-001.1.policy",
+            "evidence.plan.case.sim-dsai-001.1.course"
+          ],
+          "academic_verified": true,
+          "policy_verified": true,
+          "approval_state": "NOT_REQUIRED",
+          "completed_at": "2028-08-25T09:00:00.000031+08:00",
+          "narrative": null
+        },
+        "case_overview": "The exception request completed for course MH1805 and the final check confirmed 2 of 2 required condition(s).",
+        "case_developments": [
+          "The MH1805 case is eligible for review; no separate approval is required, and all declared documents are present.",
+          "For MH1805, prerequisite is pass, exclusion is pass, workload is pass, and feasible class(es): 72001.",
+          "The cohort-specific graduation review for MH1805 completed successfully.",
+          "Every required goal predicate is satisfied in current runtime state."
+        ],
+        "past_lessons": []
+      }
+    },
+    {
+      "scenario_id": "S4-M01",
+      "title": "Constraint-heavy index planning",
+      "target_course": "CC0001",
+      "status": "completed",
+      "human_decisions": [
+        "approved simulated human checkpoint"
+      ],
+      "expected_response_for_post_run_review_only": "Reject timetable-conflicting class 26501, record the required approval, register conflict-free class 82001 for CC0001, and verify the final timetable.",
+      "review": {
+        "passed": true,
+        "criteria": {
+          "live_model_called_for_every_executed_node": true,
+          "live_narration_accepted_when_grounding_guard_passed": true,
+          "target_course_is_visible": true,
+          "node_copy_fits_role": true,
+          "final_or_human_boundary_is_case_specific": true,
+          "no_internal_or_expected_answer_terms": true,
+          "safe_terminal_state": true
+        },
+        "node_fit": {
+          "planner": true,
+          "degree_audit": true,
+          "policy": true,
+          "course": true
+        },
+        "executed_nodes": 17,
+        "narrated_nodes": 17,
+        "live_narrated_nodes": 13,
+        "live_narration_ratio": 0.765,
+        "live_model_calls": 27,
+        "fallback_nodes": [
+          "intake_context",
+          "memory_retriever",
+          "pre_action_verifier",
+          "action_gate"
+        ]
+      },
+      "narration_errors": [
+        {
+          "node": "Intake validated",
+          "error_type": "ReasoningUnavailableError",
+          "message": "Bedrock reasoning request failed; no model output was accepted."
+        },
+        {
+          "node": "Intake validated",
+          "error_type": "ReasoningUnavailableError",
+          "message": "Bedrock reasoning request failed; no model output was accepted."
+        },
+        {
+          "node": "Intake validated",
+          "error_type": "ReasoningUnavailableError",
+          "message": "Bedrock reasoning request failed; no model output was accepted."
+        },
+        {
+          "node": "Pre-action verification",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Pre-action verification",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Pre-action verification",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Action gate",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Action gate",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Action gate",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        }
+      ],
+      "representative_output": {
+        "planner": "The plan will confirm the documented exception route, required documents, and approval for CC0001; then find a CC0001 class that avoids the student's timetable conflict and still has capacity. The plan must identify a conflict-free CC0001 class and confirm the required approval before registration.",
+        "degree_audit": null,
+        "policy": "The CC0001 case is eligible for review: A declared review route exists; this does not predict or grant approval. The relevant basis is simulated registration-operation rule (policy.prototype.registration_operations), recorded as a simulated prototype route. The case records scenario supporting record as provided. CCDS Undergraduate Office must authorise the course registration; eligibility alone is not approval.",
+        "course": "The student is a Year 4 AISC student from AY2025-26 with 129.0 earned AUs. CC0001 is outstanding, but the class I first selected clashes with my current timetable (CC0007). The prerequisite and exclusion checks for CC0001 are pass. Class 82001 is available with 3 simulated vacancies; the timetable check is pass and the workload check is pass. These are represented timetable and course facts; live vacancy is simulated for the prototype.",
+        "human_boundary": null,
+        "final_response": {
+          "status": "DONE",
+          "headline": "Course registration verified",
+          "message": "The course registration completed for course CC0001, class index 82001 and the final check confirmed 1 of 1 required condition(s). CCDS Undergraduate Office returned approved. Course registration returned success. The system retained a transaction receipt for the case record.",
+          "request_summary": "I am a Year 4 AISC student from AY2025-26 with 129.0 earned AUs. CC0001 is outstanding, but the class I first selected clashes with my current timetable (CC0007). Please check whether a conflict-free class can be used through the required timetable-exception process.",
+          "resolution_summary": "The course registration completed for course CC0001, class index 82001 and the final check confirmed 1 of 1 required condition(s).",
+          "reasoning_heading": "Why this is valid",
+          "validity_reasons": [
+            "For CC0001, prerequisite is pass, exclusion is pass, workload is pass, and feasible class(es): 82001.",
+            "The CC0001 case is eligible for review; human approval is required, and all declared documents are present.",
+            "CCDS Undergraduate Office returned approved.",
+            "The final check confirmed all 1 required outcome condition(s)."
+          ],
+          "action": "SUBMIT_REGISTRATION",
+          "action_parameters": [
+            {
+              "label": "Course",
+              "value": "CC0001"
+            },
+            {
+              "label": "Class index",
+              "value": "82001"
+            }
+          ],
+          "academic_basis": [
+            "For CC0001, prerequisite is pass, exclusion is pass, workload is pass, and feasible class(es): 82001."
+          ],
+          "policy_basis": [
+            "The CC0001 case is eligible for review; human approval is required, and all declared documents are present."
+          ],
+          "approval_summary": "CCDS Undergraduate Office returned approved.",
+          "transaction_summary": "Course registration returned success. The system retained a transaction receipt for the case record.",
+          "next_steps": [
+            "Confirm that the course and class index appear in the student registration record.",
+            "Keep the transaction receipt; if the class changes again, request a fresh availability check before another attempt."
+          ],
+          "limitations": [
+            "Student, offering, approval and transaction records are simulated for this hackathon prototype."
+          ],
+          "evidence_ids": [
+            "evidence.plan.case.sim-aisc-011.1.policy",
+            "evidence.plan.case.sim-aisc-011.1.course"
+          ],
+          "academic_verified": true,
+          "policy_verified": true,
+          "approval_state": "APPROVED",
+          "completed_at": "2028-08-25T09:00:00.000036+08:00",
+          "narrative": null
+        },
+        "case_overview": "The course registration completed for course CC0001, class index 82001 and the final check confirmed 1 of 1 required condition(s).",
+        "case_developments": [
+          "For CC0001, prerequisite is pass, exclusion is pass, workload is pass, and feasible class(es): 82001.",
+          "The approving role returned approved.",
+          "After approval, the submit registration for CC0001 completed successfully.",
+          "Every required goal predicate is satisfied in current runtime state."
+        ],
+        "past_lessons": []
+      }
+    },
+    {
+      "scenario_id": "S5-M01",
+      "title": "Integrated programme reasoning",
+      "target_course": "SC1004",
+      "status": "completed",
+      "human_decisions": [
+        "approved simulated human checkpoint"
+      ],
+      "expected_response_for_post_run_review_only": "Apply only the PA option : 10-WEEK Professional Attachment curriculum path, record approval, submit the SC1004 integrated-programme exception, and verify the result.",
+      "review": {
+        "passed": true,
+        "criteria": {
+          "live_model_called_for_every_executed_node": true,
+          "live_narration_accepted_when_grounding_guard_passed": true,
+          "target_course_is_visible": true,
+          "node_copy_fits_role": true,
+          "final_or_human_boundary_is_case_specific": true,
+          "no_internal_or_expected_answer_terms": true,
+          "safe_terminal_state": true
+        },
+        "node_fit": {
+          "planner": true,
+          "degree_audit": true,
+          "policy": true,
+          "course": true
+        },
+        "executed_nodes": 18,
+        "narrated_nodes": 18,
+        "live_narrated_nodes": 15,
+        "live_narration_ratio": 0.833,
+        "live_model_calls": 26,
+        "fallback_nodes": [
+          "student_case",
+          "memory_retriever",
+          "observation"
+        ]
+      },
+      "narration_errors": [
+        {
+          "node": "Student / Case",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'This is a...], 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Student / Case",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'This is a...], 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Student / Case",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'This is a...], 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Memory retrieved",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'Explain w...', 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Memory retrieved",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'Explain w...', 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Memory retrieved",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'Explain w...', 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        }
+      ],
+      "representative_output": {
+        "planner": "The plan will confirm how SC1004 affects this student's applicable graduation requirements, then confirm the documented exception route, required documents, and approval for SC1004, and finally check the current prerequisite, timetable, workload, and availability facts for SC1004. The SC1004 decision must remain within the student's declared integrated-programme path and its approval boundary.",
+        "degree_audit": "The student has earned 171.0 AUs out of the required 175 AUs for the Computer Engineering and Economics double degree AY2025-26. The degree audit is not complete as SC1004 remains outstanding. The student's academic standing is good, and they are in their fifth study year. The SC1004 course is a core requirement that has not been completed yet.",
+        "policy": "The SC1004 case is eligible for review: A declared review route exists; this does not predict or grant approval. The relevant basis is simulated registration-operation rule (policy.prototype.registration_operations), recorded as a simulated prototype route. The case records scenario supporting record as provided. CCDS Undergraduate Office must authorise the exception request; eligibility alone is not approval.",
+        "course": "The SC1004 course, LINEAR ALGEBRA FOR COMPUTING, has no known prerequisite, passes exclusion, and workload checks. Class 10058 is available with 7 vacancies. These facts confirm the course's feasibility under the current conditions.",
+        "human_boundary": null,
+        "final_response": {
+          "status": "DONE",
+          "headline": "Exception request verified",
+          "message": "The exception request completed for course SC1004, programme path PA option : 10-WEEK Professional Attachment and the final check confirmed 2 of 2 required condition(s). CCDS Undergraduate Office returned approved. Exception request returned success. The system retained a transaction receipt for the case record.",
+          "request_summary": "I am a Year 5 CEEC student from AY2025-26 with 171.0 earned AUs in the programme configuration linked to PA option : 10-WEEK Professional Attachment. SC1004 remains outstanding. Please assess the exception against this selected path without combining requirements from a different CCDS curriculum.",
+          "resolution_summary": "The exception request completed for course SC1004, programme path PA option : 10-WEEK Professional Attachment and the final check confirmed 2 of 2 required condition(s).",
+          "reasoning_heading": "Why this is valid",
+          "validity_reasons": [
+            "The degree audit is not ready based on 171.0 of 175 AUs; SC1004 is recorded as outstanding.",
+            "For SC1004, prerequisite is unknown, exclusion is pass, workload is pass, and feasible class(es): 10058.",
+            "The SC1004 case is eligible for review; human approval is required, and all declared documents are present.",
+            "CCDS Undergraduate Office returned approved.",
+            "The final check confirmed all 2 required outcome condition(s)."
+          ],
+          "action": "SUBMIT_EXCEPTION",
+          "action_parameters": [
+            {
+              "label": "Course",
+              "value": "SC1004"
+            },
+            {
+              "label": "Programme path",
+              "value": "PA option : 10-WEEK Professional Attachment"
+            }
+          ],
+          "academic_basis": [
+            "The degree audit is not ready based on 171.0 of 175 AUs; SC1004 is recorded as outstanding.",
+            "For SC1004, prerequisite is unknown, exclusion is pass, workload is pass, and feasible class(es): 10058."
+          ],
+          "policy_basis": [
+            "The SC1004 case is eligible for review; human approval is required, and all declared documents are present."
+          ],
+          "approval_summary": "CCDS Undergraduate Office returned approved.",
+          "transaction_summary": "Exception request returned success. The system retained a transaction receipt for the case record.",
+          "next_steps": [
+            "Monitor the exception case until the programme record reflects the approved outcome.",
+            "Keep the approval, supporting documents, and transaction receipt together."
+          ],
+          "limitations": [
+            "Student, offering, approval and transaction records are simulated for this hackathon prototype."
+          ],
+          "evidence_ids": [
+            "evidence.plan.case.sim-ceec-008.1.degree_audit",
+            "evidence.plan.case.sim-ceec-008.1.policy",
+            "evidence.plan.case.sim-ceec-008.1.course"
+          ],
+          "academic_verified": true,
+          "policy_verified": true,
+          "approval_state": "APPROVED",
+          "completed_at": "2029-08-25T09:00:00.000037+08:00",
+          "narrative": "The exception request completed for course SC1004, programme path PA option : 10-WEEK Professional Attachment and the final check confirmed 2 of 2 required condition(s). CCDS Undergraduate Office returned approved. Exception request returned success. The system retained a transaction receipt for the case record."
+        },
+        "case_overview": "The exception request completed for course SC1004, programme path PA option : 10-WEEK Professional Attachment and the final check confirmed 2 of 2 required condition(s). CCDS Undergraduate Office returned approved. Exception request returned success. The system retained a transaction receipt for the case record.",
+        "case_developments": [
+          "For SC1004, prerequisite is unknown, exclusion is pass, workload is pass, and feasible class(es): 10058.",
+          "The approving role returned approved.",
+          "After approval, the submit exception for SC1004 completed successfully.",
+          "Every required goal predicate is satisfied in current runtime state."
+        ],
+        "past_lessons": []
+      }
+    },
+    {
+      "scenario_id": "S6-M01",
+      "title": "No valid declared path",
+      "target_course": "CC0001",
+      "status": "waiting",
+      "human_decisions": [
+        "left clarification for the user, as required by the scenario"
+      ],
+      "expected_response_for_post_run_review_only": "Ask the student for submission declaration before taking action on CC0001; make no registration or exception write.",
+      "review": {
+        "passed": true,
+        "criteria": {
+          "live_model_called_for_every_executed_node": true,
+          "live_narration_accepted_when_grounding_guard_passed": true,
+          "target_course_is_visible": true,
+          "node_copy_fits_role": true,
+          "final_or_human_boundary_is_case_specific": true,
+          "no_internal_or_expected_answer_terms": true,
+          "safe_terminal_state": true
+        },
+        "node_fit": {
+          "planner": true,
+          "degree_audit": true,
+          "policy": true,
+          "course": true
+        },
+        "executed_nodes": 11,
+        "narrated_nodes": 11,
+        "live_narrated_nodes": 10,
+        "live_narration_ratio": 0.909,
+        "live_model_calls": 13,
+        "fallback_nodes": [
+          "degree_audit_agent"
+        ]
+      },
+      "narration_errors": [],
+      "representative_output": {
+        "planner": "The plan will first check how CC0001 affects the student's graduation requirements. It will then confirm the documented exception route, required documents, and approval for CC0001. Lastly, it will verify the current prerequisite, timetable, workload, and availability facts for CC0001. Because no verified public route is evident for CC0001, the plan first checks what can be supported and escalates rather than guessing.",
+        "degree_audit": "The represented degree audit records 139.0 of 141 AUs and lists CC0001 as outstanding. The applicable curriculum is Computer Engineering with Second Major in Entrepreneurship — AY2025-26. This establishes the academic need for the request, but it does not by itself establish policy eligibility, course feasibility, or approval.",
+        "policy": "The CC0001 case is eligible for review: A declared review route exists; this does not predict or grant approval. The relevant basis is scenario-bounded degree-audit assumption (policy.prototype.scenario_bounded_audit), recorded as a simulated prototype route. The case records scenario supporting record as provided.",
+        "course": "The course CC0001 is INQUIRY & COMMUNICATION IN AN INTERDISCIPLINARY WORLD (2.0 AU). For CC0001, the prerequisite is pass, exclusion is pass, workload is pass, and feasible class(es): 82008.",
+        "human_boundary": {
+          "kind": "clarification",
+          "title": "Clarification required",
+          "message": "Please provide the missing facts required to continue this graduation or registration exception safely.",
+          "fields": [
+            "submission_declaration"
+          ],
+          "impact": "SMALL_CHANGE",
+          "why_needed": "For this Year 4 CE-ENT request concerning CC0001, the system cannot safely determine the correct exception route while submission declaration is missing. The represented audit currently records 139.0 of 141 AUs. The missing answer can change the applicable curriculum, policy, or action, so no registration or exception will be submitted before it is confirmed.",
+          "decision_depends_on": "The answer completes a missing part of the current evidence, so the same proposal will return to the pre-action check.",
+          "requested_action": null,
+          "approver_role": null,
+          "approval_basis": null,
+          "evidence_summary": [
+            "Degree audit: 139.0 of 141 AUs are recorded; CC0001 remains outstanding.",
+            "Prerequisite: CC0001 requires the represented catalogue prerequisite; the current check returned pass.",
+            "Course feasibility: class 82008 is available with 6 simulated vacancies; timetable is pass and workload is pass."
+          ],
+          "narrative": "Await submission declaration from the student."
+        },
+        "final_response": null,
+        "case_overview": "The exact missing fact for CC0001 is the submission declaration. This is required to safely determine the correct exception route for the student's graduation requirements. Without this information, the system cannot proceed with any registration or exception submission. This missing piece of evidence is crucial as it can alter the applicable curriculum, policy, or action. Once provided, the verification process can resume.",
+        "case_developments": [
+          "The degree audit is indeterminate based on the recorded AU total; CC0001 is recorded as outstanding.",
+          "The CC0001 case is eligible for review; no separate approval is required, and all declared documents are present.",
+          "For CC0001, prerequisite is pass, exclusion is pass, workload is pass, and feasible class(es): 82008.",
+          "The route is stable, but a declared submission field is still missing and must be supplied before verification can continue."
+        ],
+        "past_lessons": []
+      }
+    },
+    {
+      "scenario_id": "S7-M01",
+      "title": "Dynamic registration recovery",
+      "target_course": "ML0004",
+      "status": "completed",
+      "human_decisions": [],
+      "expected_response_for_post_run_review_only": "Report that class 83008 for ML0004 failed because of vacancy becomes zero, refresh the offering state, register verified alternative class 83001, and confirm the post-action goal is complete.",
+      "review": {
+        "passed": true,
+        "criteria": {
+          "live_model_called_for_every_executed_node": true,
+          "live_narration_accepted_when_grounding_guard_passed": true,
+          "target_course_is_visible": true,
+          "node_copy_fits_role": true,
+          "final_or_human_boundary_is_case_specific": true,
+          "no_internal_or_expected_answer_terms": true,
+          "safe_terminal_state": true
+        },
+        "node_fit": {
+          "planner": true,
+          "degree_audit": true,
+          "policy": true,
+          "course": true
+        },
+        "executed_nodes": 15,
+        "narrated_nodes": 15,
+        "live_narrated_nodes": 8,
+        "live_narration_ratio": 0.533,
+        "live_model_calls": 43,
+        "fallback_nodes": [
+          "student_case",
+          "memory_retriever",
+          "policy_agent",
+          "course_agent",
+          "pre_action_verifier",
+          "action_gate",
+          "final_response"
+        ]
+      },
+      "narration_errors": [
+        {
+          "node": "Student / Case",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'This is a...], 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Student / Case",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'This is a...], 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Student / Case",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'This is a...], 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Memory retrieved",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'Explain w...', 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Memory retrieved",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'Explain w...', 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Memory retrieved",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': 'Explain w...', 'final_response': ''}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Candidate assembled",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Candidate assembled",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Candidate assembled",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Action gate",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Action gate",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Action gate",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Policy evidence",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Policy evidence",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Policy evidence",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Course feasibility",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Course feasibility",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Course feasibility",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Pre-action verification",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Pre-action verification",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Pre-action verification",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Action gate",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Action gate",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Action gate",
+          "error_type": "ValueError",
+          "message": "model returned a response-field placeholder"
+        },
+        {
+          "node": "Final response",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': \"The ML000...working_attention': '.'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Final response",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': \"The ML000...working_attention': '.'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        },
+        {
+          "node": "Final response",
+          "error_type": "ValidationError",
+          "message": "1 validation error for RuntimeNarration\nnode_output\n  Field required [type=missing, input_value={'node_input': \"The ML000...working_attention': '.'}, input_type=dict]\n    For further information visit https://errors.pydantic.dev/2.13/v/missing"
+        }
+      ],
+      "representative_output": {
+        "planner": "The plan will confirm the documented exception route, required documents, and approval for ML0004; then check the current prerequisite, timetable, workload, and availability facts for ML0004. This is replan 1: The observable action result did not satisfy the goal predicates. The revised sequence checks the changed fact before another action is considered.",
+        "degree_audit": null,
+        "policy": "The ML0004 case is eligible for review: A declared review route exists; this does not predict or grant approval. The relevant basis is simulated offering-state reuse rule (policy.prototype.counterfactual_template_reuse), recorded as a simulated prototype route. The case records scenario supporting record as provided.",
+        "course": "ML0004 is CAREER DESIGN & WORKPLACE READINESS IN A DYNAMIC WORLD (2.0 AU). For ML0004, the catalogue prerequisite is not fully represented, and the current check returned pass. The exclusion check is pass. Class 83001 is available with 6 simulated vacancies; the timetable check is pass and the workload check is pass. These are represented timetable and course facts; live vacancy is simulated for the prototype.",
+        "human_boundary": null,
+        "final_response": {
+          "status": "DONE",
+          "headline": "Course registration verified",
+          "message": "The course registration completed for course ML0004, class index 83001 and the final check confirmed 1 of 1 required condition(s). The first attempt did not complete, so availability was refreshed before the verified alternative was used. No separate approval was required for the verified action. Course registration returned success. The system retained a transaction receipt for the case record.",
+          "request_summary": "I am a Year 4 CE student from AY2025-26 with 134.0 earned AUs. ML0004 is outstanding and the selected class currently appears feasible during Add/Drop. Please attempt the registration, re-check live availability if the attempt fails, and confirm the final registered state.",
+          "resolution_summary": "The course registration completed for course ML0004, class index 83001 and the final check confirmed 1 of 1 required condition(s). The first attempt did not complete, so availability was refreshed before the verified alternative was used.",
+          "reasoning_heading": "Why this is valid",
+          "validity_reasons": [
+            "For ML0004, prerequisite is pass, exclusion is pass, workload is pass, and feasible class(es): 83008, 83001.",
+            "For ML0004, prerequisite is pass, exclusion is pass, workload is pass, and feasible class(es): 83001.",
+            "The ML0004 case is eligible for review; no separate approval is required, and all declared documents are present.",
+            "No separate approval was required for the verified action.",
+            "The final check confirmed all 1 required outcome condition(s)."
+          ],
+          "action": "SUBMIT_REGISTRATION",
+          "action_parameters": [
+            {
+              "label": "Course",
+              "value": "ML0004"
+            },
+            {
+              "label": "Class index",
+              "value": "83001"
+            },
+            {
+              "label": "Recovery attempt",
+              "value": "Yes; live state was refreshed"
+            }
+          ],
+          "academic_basis": [
+            "For ML0004, prerequisite is pass, exclusion is pass, workload is pass, and feasible class(es): 83008, 83001.",
+            "For ML0004, prerequisite is pass, exclusion is pass, workload is pass, and feasible class(es): 83001."
+          ],
+          "policy_basis": [
+            "The ML0004 case is eligible for review; no separate approval is required, and all declared documents are present.",
+            "The ML0004 case is eligible for review; no separate approval is required, and all declared documents are present."
+          ],
+          "approval_summary": "No separate approval was required for the verified action.",
+          "transaction_summary": "Course registration returned success. The system retained a transaction receipt for the case record.",
+          "next_steps": [
+            "Confirm that the course and class index appear in the student registration record.",
+            "Keep the transaction receipt; if the class changes again, request a fresh availability check before another attempt."
+          ],
+          "limitations": [
+            "Student, offering, approval and transaction records are simulated for this hackathon prototype."
+          ],
+          "evidence_ids": [
+            "evidence.plan.case.sim-ce-010.1.policy",
+            "evidence.plan.case.sim-ce-010.1.course",
+            "evidence.plan.case.sim-ce-010.2.policy",
+            "evidence.plan.case.sim-ce-010.2.course"
+          ],
+          "academic_verified": true,
+          "policy_verified": true,
+          "approval_state": "NOT_REQUIRED",
+          "completed_at": "2028-08-25T09:00:00.000040+08:00",
+          "narrative": null
+        },
+        "case_overview": "The course registration completed for course ML0004, class index 83001 and the final check confirmed 1 of 1 required condition(s). The first attempt did not complete, so availability was refreshed before the verified alternative was used.",
+        "case_developments": [
+          "For ML0004, prerequisite is pass, exclusion is pass, workload is pass, and feasible class(es): 83008, 83001.",
+          "For ML0004, prerequisite is pass, exclusion is pass, workload is pass, and feasible class(es): 83001.",
+          "After refreshing availability, class 83001 registered successfully for ML0004.",
+          "Every required goal predicate is satisfied in current runtime state."
+        ],
+        "past_lessons": [
+          {
+            "label": "REGISTRATION_AFTER_DEADLINE",
+            "narrative": "A late registration succeeded after the same course's prerequisite, timetable, workload, and class feasibility were checked together at action time.",
+            "applicability": "Use only for another late-registration case where the same academic and live scheduling checks can be repeated."
+          }
+        ]
+      }
+    }
+  ],
+  "summary": {
+    "passed": 7,
+    "total": 7,
+    "all_passed": true
+  }
+}

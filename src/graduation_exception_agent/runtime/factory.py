@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from datetime import datetime
 from pathlib import Path
 from uuid import uuid4
 
@@ -18,7 +19,18 @@ from graduation_exception_agent.models.runtime import (
 )
 from graduation_exception_agent.models.academic import OfferingState, Registration
 from graduation_exception_agent.models.tooling import ActionReceipt
-from graduation_exception_agent.models.workflow import ExceptionCase, ScenarioContext
+from graduation_exception_agent.models.workflow import (
+    ApprovalStatus,
+    EventType,
+    ExceptionCase,
+    ObservationCode,
+    ScenarioContext,
+    StateMutation,
+    TransactionAction,
+    TransactionCode,
+    TransactionResult,
+    TransactionScript,
+)
 from graduation_exception_agent.runtime.controller import ScenarioController
 from graduation_exception_agent.runtime.execution import ActionEngine
 from graduation_exception_agent.runtime.session import (
@@ -104,12 +116,35 @@ class EvaluatorHandle:
         return self.__session.get_case(self.__session.case_id)
 
 
+class HumanInteractionHandle:
+    """Host-only input boundary for a simulated human decision."""
+
+    def __init__(self, *, session: RuntimeSession) -> None:
+        self.__session = session
+
+    def record_approval(
+        self,
+        *,
+        approval_id: str,
+        status: ApprovalStatus,
+        decision_reason: str | None,
+        observed_at: datetime,
+    ) -> int:
+        return self.__session.record_human_approval(
+            approval_id=approval_id,
+            status=status,
+            decision_reason=decision_reason,
+            observed_at=observed_at,
+        )
+
+
 @dataclass(frozen=True, slots=True)
 class ScenarioRuntime:
     """Construction result; pass only ``tools`` into agent/control-plane code."""
 
     tools: Stage4Tools
     evaluator: EvaluatorHandle
+    human: HumanInteractionHandle
 
 
 class ScenarioRuntimeFactory:
@@ -149,7 +184,9 @@ class ScenarioRuntimeFactory:
         )
         return cls(real_repository=real, simulated_repository=simulated)
 
-    def build(self, scenario_id: str) -> ScenarioRuntime:
+    def build(
+        self, scenario_id: str, *, interactive_approval: bool = False
+    ) -> ScenarioRuntime:
         scenario = self.__scenarios[scenario_id]
         context = self._simulated.to_agent_context(scenario_id)
         student = self._simulated.get_student(scenario.student_id)
@@ -176,7 +213,11 @@ class ScenarioRuntimeFactory:
             )
         )
         observable_approval = (
-            approval if approval is not None and approval.observable else None
+            approval
+            if approval is not None
+            and approval.observable
+            and not interactive_approval
+            else None
         )
         session = RuntimeSession(
             session_id=f"session.{case.case_id}",
@@ -189,8 +230,11 @@ class ScenarioRuntimeFactory:
             approval_requirement=requirement,
             observable_approval=observable_approval,
         )
+        script = self.__scripts[scenario.transaction_script_id]
+        if interactive_approval:
+            script = _with_interactive_approval_checkpoint(script)
         controller = ScenarioController(
-            script=self.__scripts[scenario.transaction_script_id],
+            script=script,
             approval_seed=approval,
         )
         engine = ActionEngine(
@@ -221,7 +265,79 @@ class ScenarioRuntimeFactory:
         return ScenarioRuntime(
             tools=tools,
             evaluator=EvaluatorHandle(session=session, controller=controller),
+            human=HumanInteractionHandle(session=session),
         )
+
+
+def _with_interactive_approval_checkpoint(
+    script: TransactionScript,
+) -> TransactionScript:
+    """Turn a scripted approval result into a user-controlled pending gate.
+
+    Only the isolated UI runtime receives this copy. The frozen Stage 3 script
+    and the evaluator campaign continue to use their original decisions.
+    """
+
+    steps = list(script.steps)
+    approval_index = next(
+        (
+            index
+            for index, step in enumerate(steps)
+            if step.action is TransactionAction.REQUEST_APPROVAL
+        ),
+        None,
+    )
+    if approval_index is None:
+        return script
+    approval_step = steps[approval_index]
+    approval_id = str(approval_step.action_parameters["approval_id"])
+    mutation = next(
+        item
+        for item in approval_step.mutations
+        if item.target_id == approval_id
+    )
+    mutation_payload = mutation.model_dump(mode="python")
+    mutation_payload["changes"] = {
+        **mutation.changes,
+        "observable": True,
+        "status": ApprovalStatus.PENDING.value,
+        "decision_reason": None,
+        "decided_at": None,
+    }
+    pending_mutation = StateMutation.model_validate(mutation_payload)
+    event_payload = (
+        approval_step.event.model_dump(mode="python")
+        if approval_step.event
+        else None
+    )
+    if event_payload is not None:
+        event_payload["event_type"] = EventType.APPROVAL_PENDING
+    step_payload = approval_step.model_dump(mode="python")
+    step_payload.update(
+        {
+            "result_code": TransactionCode.APPROVAL_PENDING,
+            "observation": ObservationCode.APPROVAL_PENDING,
+            "retryable": True,
+            "error_code": "APPROVAL_PENDING",
+            "message": "The verified request is waiting for a simulated human decision.",
+            "event": event_payload,
+            "mutations": [pending_mutation],
+        }
+    )
+    steps[approval_index] = TransactionResult.model_validate(step_payload)
+
+    pending_version = int(pending_mutation.resulting_version or 1)
+    decided_version = pending_version + 1
+    for index in range(approval_index + 1, len(steps)):
+        later_payload = steps[index].model_dump(mode="python")
+        versions = dict(later_payload.get("precondition_state_versions", {}))
+        if versions.get(approval_id) == pending_version:
+            versions[approval_id] = decided_version
+            later_payload["precondition_state_versions"] = versions
+        steps[index] = TransactionResult.model_validate(later_payload)
+    payload = script.model_dump(mode="python")
+    payload["steps"] = steps
+    return TransactionScript.model_validate(payload)
 
 
 __all__ = [

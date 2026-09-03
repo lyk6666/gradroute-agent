@@ -10,7 +10,7 @@ from __future__ import annotations
 
 from copy import deepcopy
 from dataclasses import dataclass
-from datetime import timedelta
+from datetime import datetime, timedelta
 from threading import RLock
 from typing import Any
 
@@ -34,6 +34,8 @@ from graduation_exception_agent.models.tooling import ActionReceipt
 from graduation_exception_agent.models.workflow import (
     Approval,
     ApprovalBasis,
+    ApprovalStatus,
+    CaseState,
     ExceptionCase,
     ScenarioContext,
     StateTargetType,
@@ -236,6 +238,67 @@ class RuntimeSession:
                 None,
             )
             return None if match is None else match.model_copy(deep=True)
+
+    def record_human_approval(
+        self,
+        *,
+        approval_id: str,
+        status: ApprovalStatus,
+        decision_reason: str | None,
+        observed_at: datetime,
+    ) -> int:
+        """Record a UI user's simulated external decision at an active checkpoint.
+
+        This host-only mutation is not exposed as an agent tool. It changes only
+        the isolated runtime copy and therefore cannot alter the frozen scenario
+        corpus or another run.
+        """
+
+        with self._lock:
+            requirement = self._approval_requirement
+            if requirement is None or requirement.approval_id != approval_id:
+                raise ValueError("approval does not belong to this runtime case")
+            current = self._approvals.get(approval_id)
+            if current is None or not current.observable:
+                raise ValueError("approval is not observable at this checkpoint")
+            if current.status is not ApprovalStatus.PENDING:
+                raise ValueError("approval checkpoint already has a final decision")
+            if status is ApprovalStatus.PENDING:
+                return current.version
+            if status is ApprovalStatus.REJECTED and not (decision_reason or "").strip():
+                raise ValueError("a rejection requires a concise reason")
+
+            decided_at = observed_at
+            if decided_at < current.requested_at:
+                decided_at = current.requested_at
+            payload = current.model_dump(mode="python")
+            payload.update(
+                {
+                    "status": status,
+                    "observable": True,
+                    "version": current.version + 1,
+                    "decision_reason": (
+                        decision_reason.strip()
+                        if status is ApprovalStatus.REJECTED and decision_reason
+                        else None
+                    ),
+                    "decided_at": decided_at,
+                }
+            )
+            updated = Approval.model_validate(payload)
+            self._approvals[approval_id] = updated
+            self._entity_versions[approval_id] = updated.version
+
+            case_payload = self._case.model_dump(mode="python")
+            case_payload["state"] = (
+                CaseState.READY_FOR_ACTION
+                if status is ApprovalStatus.APPROVED
+                else CaseState.INVESTIGATING
+            )
+            self._case = ExceptionCase.model_validate(case_payload)
+            self._entity_versions[self._case.case_id] += 1
+            self._revision += 1
+            return updated.version
 
     def get_receipt(self, receipt_id: str) -> ActionReceipt:
         with self._lock:

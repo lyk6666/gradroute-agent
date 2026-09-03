@@ -4,7 +4,11 @@ from __future__ import annotations
 
 from time import monotonic, sleep
 
-from graduation_exception_agent.api.models import RunStatus, StartRunRequest
+from graduation_exception_agent.api.models import (
+    ApprovalResumeRequest,
+    RunStatus,
+    StartRunRequest,
+)
 from graduation_exception_agent.api.service import RunService
 from graduation_exception_agent.config import AppSettings, ExecutionMode
 from graduation_exception_agent.data.simulated import load_exception_cases, load_scenarios
@@ -32,6 +36,16 @@ def _wait(service: RunService, run_id: str, timeout: float = 12.0):
             return snapshot
         sleep(0.02)
     raise AssertionError("run did not reach a stable state")
+
+
+def _approve_and_wait(service: RunService, run_id: str):
+    waiting = _wait(service, run_id)
+    assert waiting.pause is not None and waiting.pause.kind == "approval"
+    service.resume(
+        run_id,
+        ApprovalResumeRequest(kind="approval", status="APPROVED"),
+    )
+    return _wait(service, run_id)
 
 
 def test_generated_cases_and_expected_responses_are_materially_varied() -> None:
@@ -67,10 +81,8 @@ def test_demo_expected_response_is_visible_but_evaluation_answer_is_hidden() -> 
 
 def test_runtime_presentation_uses_case_facts_instead_of_legacy_templates() -> None:
     service = RunService(_settings(), node_delay_seconds=0)
-    final = _wait(
-        service,
-        service.start(StartRunRequest(scenario_id="S2-M01")).run_id,
-    )
+    run_id = service.start(StartRunRequest(scenario_id="S2-M01")).run_id
+    final = _approve_and_wait(service, run_id)
 
     assert final.status is RunStatus.COMPLETED
     assert "SC4002" in final.working_state.plan_rationale
@@ -85,4 +97,3 @@ def test_runtime_presentation_uses_case_facts_instead_of_legacy_templates() -> N
     assert final.final_response is not None
     assert "receipt.runtime" not in final.final_response.transaction_summary
     assert all(item.label not in {"Approval Id", "Curriculum Id"} for item in final.final_response.action_parameters)
-

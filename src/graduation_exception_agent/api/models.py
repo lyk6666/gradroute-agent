@@ -94,6 +94,8 @@ class ReasoningSummary(ApiModel):
 
 
 class NodeNarrativeSummary(ApiModel):
+    summary: str
+    next_step: str | None = None
     input: str
     output: str
     state: str
@@ -159,6 +161,13 @@ class PauseSummary(ApiModel):
     message: str
     fields: list[str] = Field(default_factory=list)
     impact: str | None = None
+    why_needed: str
+    decision_depends_on: str
+    requested_action: str | None = None
+    approver_role: str | None = None
+    approval_basis: str | None = None
+    evidence_summary: list[str] = Field(default_factory=list)
+    narrative: str | None = None
 
 
 class FinalResponseSummary(ApiModel):
@@ -167,6 +176,8 @@ class FinalResponseSummary(ApiModel):
     message: str
     request_summary: str
     resolution_summary: str
+    reasoning_heading: str
+    validity_reasons: list[str] = Field(default_factory=list)
     action: str | None = None
     action_parameters: list[DetailItem] = Field(default_factory=list)
     academic_basis: list[str] = Field(default_factory=list)

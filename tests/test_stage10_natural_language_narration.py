@@ -14,7 +14,11 @@ from graduation_exception_agent.api.narration import (
     RuntimeNarration,
 )
 from graduation_exception_agent.api.service import RunService
-from graduation_exception_agent.api.models import RunStatus, StartRunRequest
+from graduation_exception_agent.api.models import (
+    ApprovalResumeRequest,
+    RunStatus,
+    StartRunRequest,
+)
 from graduation_exception_agent.config import AppSettings, ExecutionMode, load_settings
 
 
@@ -42,6 +46,16 @@ def _wait(service: RunService, run_id: str, timeout: float = 12.0):
     raise AssertionError("run did not reach a stable state")
 
 
+def _approve_and_wait(service: RunService, run_id: str):
+    waiting = _wait(service, run_id)
+    assert waiting.pause is not None and waiting.pause.kind == "approval"
+    service.resume(
+        run_id,
+        ApprovalResumeRequest(kind="approval", status="APPROVED"),
+    )
+    return _wait(service, run_id)
+
+
 class _ContextAwareNarrator:
     model_id = "fake.natural-language-model"
 
@@ -62,8 +76,9 @@ class _ContextAwareNarrator:
                 f"{inputs[0]['value']}."
             ),
             node_output=(
-                f"It recorded {outputs[0]['label'].lower()}: "
-                f"{outputs[0]['value']}."
+                str(captured.get("grounded_draft", {}).get("node_summary"))
+                if captured.get("grounded_draft", {}).get("node_summary")
+                else f"It recorded {outputs[0]['label'].lower()}: {outputs[0]['value']}."
             ),
             state_change=(
                 f"The case now records {changes[0]['label'].lower()}: "
@@ -123,7 +138,7 @@ def test_completed_nodes_receive_context_specific_narration() -> None:
     service = RunService(_settings(), node_delay_seconds=0, narrator=narrator)
 
     accepted = service.start(StartRunRequest(scenario_id="S2-M01"))
-    final = _wait(service, accepted.run_id)
+    final = _approve_and_wait(service, accepted.run_id)
 
     assert final.status is RunStatus.COMPLETED
     assert narrator.payloads

@@ -2,7 +2,7 @@
 
 This package contains the current implementation specification for the NTU CCDS-grounded administrative exception-resolution prototype.
 
-Current status: Stage 11 is complete for the local hackathon-prototype boundary.
+Current status: Stage 13 is complete for the local hackathon-prototype boundary.
 Its UI is backed by the Stage 7 frozen 315-run held-out evaluation over the
 Stage 5/6 system. Both the deterministic fixture baseline and the
 qualifying Amazon Bedrock campaign pass 315/315 with 105/105 scenarios at 3/3
@@ -31,6 +31,19 @@ Stage 11 removes repeated scenario and evaluator wording at the data source,
 adds demo-only expected-response previews, keeps evaluation answers hidden, and
 aligns plans, node details, actions, memories, and final responses with each
 case's actual course, constraints, evidence, approval, and observed outcome.
+Stage 12 replaces repeated node templates with concise case-specific findings,
+removes tool names from the ordinary presentation, adds reasoning-led final
+responses, simplifies working/thread/long-term memory, and makes approval-bound
+interactive runs pause for a real simulated human decision. Clarification and
+administrative handoff now explain why human involvement is required.
+Stage 13 adds a distinct communication brief for every graph role and grounds the
+visible prose in the actual student, course, prerequisite, class, timetable,
+workload, policy, document, approval, transaction, and replanning evidence. Human
+prompts now present a decision-ready reason with explicit public-versus-simulated
+policy provenance. The right panel combines progress and material history into a
+single case overview. All seven demo workflows passed a real Bedrock narration
+review; unsuitable model wording was rejected in favour of the case-specific safe
+fallback.
 
 Foundation specifications:
 
@@ -72,6 +85,12 @@ Stage records:
 - [`stage_11_scenario_and_presentation_refinement.md`](stage_11_scenario_and_presentation_refinement.md)
   — varied scenario inputs and evaluator expectations, concise case-specific
   runtime presentation, answer-key isolation, and modification history
+- [`stage_12_human_centered_case_explanations.md`](stage_12_human_centered_case_explanations.md)
+  — concise node monitoring, reasoning-led outcomes, simplified memory, and
+  interactive clarification, approval, and administrative-review boundaries
+- [`stage_13_evidence_rich_case_narration.md`](stage_13_evidence_rich_case_narration.md)
+  — node-specific narration briefs, evidence-rich human decisions, unified case
+  overview, model-output quality guard, and seven-demo live review
 
 Stage-specific documents use `stage_<number>_<topic>.md`. They do not receive
 an additional sequence prefix such as `06_`, `07_`, or `08_`; the same rule
@@ -98,7 +117,11 @@ Stage 9 — Runtime Transparency + Manual Intake (complete)
     ↓
 Stage 10 — Grounded Natural-Language Runtime Narration (complete)
     ↓
-Stage 11 — Scenario + Evaluation + Presentation Refinement (complete for local hackathon prototype)
+Stage 11 — Scenario + Evaluation + Presentation Refinement (complete)
+    ↓
+Stage 12 — Human-Centred Case Explanations + Review (complete)
+    ↓
+Stage 13 — Evidence-Rich Case Narration + Live Demo Review (complete for local hackathon prototype)
 ```
 
 Key principle:
