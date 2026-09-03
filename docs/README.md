@@ -2,7 +2,7 @@
 
 This package contains the current implementation specification for the NTU CCDS-grounded administrative exception-resolution prototype.
 
-Current status: Stage 10 is complete for the local hackathon-prototype boundary.
+Current status: Stage 11 is complete for the local hackathon-prototype boundary.
 Its UI is backed by the Stage 7 frozen 315-run held-out evaluation over the
 Stage 5/6 system. Both the deterministic fixture baseline and the
 qualifying Amazon Bedrock campaign pass 315/315 with 105/105 scenarios at 3/3
@@ -27,6 +27,10 @@ templates. Working State now reads as a concise case briefing, Thread Memory as
 a chronological case history, and Long-Term Memory as clearly advisory past
 experience; exact recorded facts remain inspectable and continue to control
 every decision.
+Stage 11 removes repeated scenario and evaluator wording at the data source,
+adds demo-only expected-response previews, keeps evaluation answers hidden, and
+aligns plans, node details, actions, memories, and final responses with each
+case's actual course, constraints, evidence, approval, and observed outcome.
 
 Foundation specifications:
 
@@ -65,6 +69,9 @@ Stage records:
 - [`stage_10_natural_language_runtime_narration.md`](stage_10_natural_language_runtime_narration.md)
   — case-specific Bedrock explanations for node input, output, state, action,
   working state, memory and final response, plus grounding and outage controls
+- [`stage_11_scenario_and_presentation_refinement.md`](stage_11_scenario_and_presentation_refinement.md)
+  — varied scenario inputs and evaluator expectations, concise case-specific
+  runtime presentation, answer-key isolation, and modification history
 
 Stage-specific documents use `stage_<number>_<topic>.md`. They do not receive
 an additional sequence prefix such as `06_`, `07_`, or `08_`; the same rule
@@ -89,7 +96,9 @@ Stage 8 — Demo/UI Delivery + Operational Hardening (complete)
     ↓
 Stage 9 — Runtime Transparency + Manual Intake (complete)
     ↓
-Stage 10 — Grounded Natural-Language Runtime Narration (complete for local hackathon prototype)
+Stage 10 — Grounded Natural-Language Runtime Narration (complete)
+    ↓
+Stage 11 — Scenario + Evaluation + Presentation Refinement (complete for local hackathon prototype)
 ```
 
 Key principle:

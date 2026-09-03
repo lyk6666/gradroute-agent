@@ -329,7 +329,7 @@ event, and evaluator-only ground truth. Selected fields from the materialized
   "scenario_id": "S7-M01",
   "family": "S7",
   "split": "demo",
-  "generator_version": "stage3.4.0",
+  "generator_version": "stage3.5.0",
   "simulation_scope_id": "scope.ce.terminal",
   "student_id": "SIM-CE-010",
   "curriculum_id": "curriculum.ce.ay2025-26",

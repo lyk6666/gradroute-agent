@@ -14,7 +14,7 @@ Stage 2 provenance. Private student facts, future time, live capacity,
 eligibility, decisions, and transaction outcomes are simulated and are kept
 structurally separate from verified rules.
 
-Completion status: generator `stage3.4.0` is materialized and byte-current.
+Completion status: generator `stage3.5.0` is materialized and byte-current.
 Offline repository reload reports zero consistency issues. The delivered
 population and distributions match the declared contract, including 60 students
 per terminal profile, 20 scenarios per family, a 28/7/105
@@ -399,7 +399,7 @@ The generator uses:
 
 ```text
 global seed:       42017
-generator version: stage3.4.0
+generator version: stage3.5.0
 entity seed:       first eight bytes of SHA-256("42017|type|stable-id")
 JSON ordering:     sorted records and keys
 timestamps:        fixed timezone-aware values

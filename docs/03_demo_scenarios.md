@@ -33,6 +33,80 @@ family or split.
 The exact delivered populations and validation boundaries are recorded in
 [`stage_3_simulation_data_details.md`](stage_3_simulation_data_details.md).
 
+## Materialized demo inputs and expected responses
+
+The Main workspace exposes the following seven polished demo inputs. Their
+expected responses are visible for presentation and learning. The same field is
+hidden for all evaluation cases and is never included in agent context.
+
+### `S1-M01` — same-course registration recovery
+
+Input: a Year 4 AISC student from AY2025–26 has 129 earned AUs, has `CC0001`
+registered, and still needs `CC0015`. Preferred class `83501` conflicts with the
+current timetable; the request asks for the same course, not a substitution.
+
+Expected response: reject class `83501`, register conflict-free class `83506`
+during Add/Drop without approval, and verify that `CC0015` appears in the final
+registration.
+
+### `S2-M01` — prerequisite evidence route
+
+Input: a Year 4 AISC student from AY2025–26 has 128 earned AUs and needs
+`SC4002`. Simulated exchange course `FX2001` was passed, but transfer credit is
+pending; the transcript and requested-course, prerequisite-course, and foreign-
+course mappings are attached.
+
+Expected response: validate the narrow pending-transfer evidence route, observe
+CCDS Undergraduate Office approval, submit the `SC4002` prerequisite waiver,
+and verify the waiver result.
+
+### `S3-M01` — versioned curriculum reasoning
+
+Input: a Year 4 DSAI student from AY2025–26 has 127 earned AUs, a not-ready
+audit, and `MH1805` affecting graduation clearance. The request asks which dated
+curriculum rules apply before any exception is recommended.
+
+Expected response: use the cohort-specific curriculum source, retain the source
+limitation, submit only the supported graduation exception, and verify the
+result.
+
+### `S4-M01` — timetable and approval constraints
+
+Input: a Year 4 AISC student from AY2025–26 has 129 earned AUs, has `CC0007`
+registered, and still needs `CC0001`. Preferred class `26501` conflicts with the
+current timetable.
+
+Expected response: reject class `26501`, observe the required approval,
+register conflict-free class `82001`, and verify the resulting timetable.
+
+### `S5-M01` — integrated-programme path
+
+Input: a Year 5 CEEC student from AY2025–26 has 171 earned AUs, follows the
+`PA option: 10-WEEK Professional Attachment` path, and still needs `SC1004`.
+The request explicitly forbids combining another CCDS curriculum.
+
+Expected response: keep the decision within that PA path, observe approval,
+submit the `SC1004` integrated-programme exception, and verify the result.
+
+### `S6-M01` — clarification instead of invention
+
+Input: a Year 4 CE-ENT student from AY2025–26 has 139 earned AUs and an
+unresolved `CC0001` issue after normal registration. No verified public
+exception route is evident, and the submission declaration is missing.
+
+Expected response: ask for the declaration and take no registration or
+exception action until it is supplied.
+
+### `S7-M01` — live-state recovery
+
+Input: a Year 4 CE student from AY2025–26 has 134 earned AUs and still needs
+`ML0004`. Class `83008` initially appears feasible, and the student asks the
+system to refresh current state if the attempt fails.
+
+Expected response: observe that class `83008` becomes full, refresh the
+offering state, register verified alternative class `83001`, and confirm that
+the final registration goal is complete.
+
 All curricula remain `PARTIAL`. Therefore the simulator may construct a
 scenario-bounded audit, but it must never label that audit as an official or
 complete NTU determination. General late-registration, prerequisite-waiver,
