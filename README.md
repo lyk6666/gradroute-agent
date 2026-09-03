@@ -67,6 +67,7 @@ frontend/    React/Vinext user interface
 scripts/     data, evaluation and delivery utilities
 src/         Python backend and agent runtime
 tests/       automated backend and contract tests
+video/       automated 4K system capture and Remotion simulation film
 ```
 
 ## Prerequisites
@@ -184,3 +185,36 @@ npm ci
 npm run build
 npm run start
 ```
+
+## Render the 4K simulation video
+
+The simulation film is generated from a real automated run of the local
+application. It records the Main, Data and Evaluation pages, executes S7 and
+S2 step by step, performs the explicitly labelled simulated approval,
+generates narration and renders the directed result at 3840×2160.
+
+From the repository root:
+
+```powershell
+& .\scripts\render_simulation_demo.ps1
+```
+
+The command starts any missing application services and stops only the
+processes it created; a healthy frontend/backend pair already using the
+requested ports is reused and left running. The final file is created at
+`video/output/simulation-demo-4k.mp4`.
+
+When Bedrock mode is configured, sign in first if the SSO session has expired:
+
+```powershell
+aws sso login --profile ccds-sandbox
+```
+
+For a reproducible offline capture that does not call Bedrock:
+
+```powershell
+& .\scripts\render_simulation_demo.ps1 -Fixture
+```
+
+Use `-HeadedCapture` to watch the automated browser. Use `-SkipCapture` to
+re-render an existing take after changing only the Remotion edit or narration.

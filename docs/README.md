@@ -2,7 +2,7 @@
 
 This package contains the current implementation specification for the NTU CCDS-grounded administrative exception-resolution prototype.
 
-Current status: Stage 14 is complete for the local hackathon-prototype boundary.
+Current status: Stage 15 is complete for the local hackathon-prototype boundary.
 Its UI is backed by the Stage 7 frozen 315-run held-out evaluation over the
 Stage 5/6 system. Both the deterministic fixture baseline and the
 qualifying Amazon Bedrock campaign pass 315/315 with 105/105 scenarios at 3/3
@@ -49,6 +49,10 @@ the earlier record. Graph nodes show repeat counts, timeline events open their e
 visit, the in-canvas inspector separates initial checks from replans and rechecks,
 and historical human checkpoints remain visible but read-only. The optional LLM is
 also given the preceding visit summary so later explanations can state what changed.
+Stage 15 adds a one-command, 4K simulation-film pipeline. It starts the real
+frontend and backend, records the three product surfaces, executes S7 and S2
+step by step, preserves raw capture evidence, generates replaceable narration,
+and uses Remotion for deterministic camera movement, captions and rendering.
 
 Foundation specifications:
 
@@ -99,6 +103,9 @@ Stage records:
 - [`stage_14_node_visit_history.md`](stage_14_node_visit_history.md)
   — ordered node-attempt history, exact timeline-to-visit inspection, repeat-count
   indicators, read-only historical decisions, and compatibility safeguards
+- [`stage_15_automated_4k_simulation_video.md`](stage_15_automated_4k_simulation_video.md)
+  — automated real-system capture, S7/S2 direction, neural narration, frame-based
+  camera choreography, 4K rendering, operational commands, and validation record
 
 Stage-specific documents use `stage_<number>_<topic>.md`. They do not receive
 an additional sequence prefix such as `06_`, `07_`, or `08_`; the same rule
@@ -131,7 +138,9 @@ Stage 12 — Human-Centred Case Explanations + Review (complete)
     ↓
 Stage 13 — Evidence-Rich Case Narration + Live Demo Review (complete)
     ↓
-Stage 14 — Preserved Node Visit History + Exact Timeline Inspection (complete for local hackathon prototype)
+Stage 14 — Preserved Node Visit History + Exact Timeline Inspection (complete)
+    ↓
+Stage 15 — Automated 4K Simulation Capture + Remotion Direction (complete for local hackathon prototype)
 ```
 
 Key principle:
