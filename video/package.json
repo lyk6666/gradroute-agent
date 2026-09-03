@@ -1,0 +1,25 @@
+{
+  "name": "graduation-exception-agent-simulation-video",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "capture": "node scripts/capture-demo.mjs",
+    "render": "remotion render src/index.ts SimulationDemo4K output/simulation-demo-4k.mp4 --codec=h264 --crf=18 --pixel-format=yuv420p --concurrency=2",
+    "studio": "remotion studio src/index.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.520",
+    "@remotion/media": "4.0.520",
+    "playwright": "1.62.1",
+    "react": "19.2.0",
+    "react-dom": "19.2.0",
+    "remotion": "4.0.520"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.0",
+    "@types/react-dom": "19.2.0",
+    "typescript": "5.9.3"
+  }
+}

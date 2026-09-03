@@ -1,0 +1,164 @@
+* {
+  box-sizing: border-box;
+}
+
+.film-root {
+  background: #0a1424;
+  color: #10213e;
+  font-family: "Segoe UI", Arial, sans-serif;
+  overflow: hidden;
+}
+
+.shot {
+  background: #edf3fb;
+  overflow: hidden;
+}
+
+.capture-image {
+  display: block;
+  left: 0;
+  max-width: none;
+  object-fit: fill;
+  position: absolute;
+  top: 0;
+  will-change: transform;
+}
+
+.film-vignette {
+  background:
+    linear-gradient(180deg, rgba(6, 18, 37, 0.12), transparent 15%, transparent 78%, rgba(6, 18, 37, 0.28)),
+    radial-gradient(circle at center, transparent 68%, rgba(3, 12, 27, 0.18));
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+}
+
+.chapter-chip,
+.capture-badge,
+.film-disclosure {
+  align-items: center;
+  backdrop-filter: blur(20px);
+  background: rgba(9, 24, 46, 0.86);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 999px;
+  color: #fff;
+  display: flex;
+  font-size: 31px;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  padding: 20px 30px;
+  position: absolute;
+  top: 54px;
+}
+
+.chapter-chip {
+  left: 64px;
+}
+
+.chapter-chip i,
+.capture-badge i {
+  border-radius: 50%;
+  display: block;
+  height: 15px;
+  margin-right: 16px;
+  width: 15px;
+}
+
+.capture-badge {
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  right: 64px;
+}
+
+.capture-badge i {
+  background: #00c58a;
+  box-shadow: 0 0 0 10px rgba(0, 197, 138, 0.15);
+}
+
+.caption-card {
+  backdrop-filter: blur(24px);
+  background: rgba(255, 255, 255, 0.94);
+  border: 0 solid #2f6fec;
+  border-left-width: 12px;
+  border-radius: 24px;
+  bottom: 112px;
+  box-shadow: 0 24px 80px rgba(10, 26, 52, 0.24);
+  color: #142747;
+  font-size: 42px;
+  font-weight: 650;
+  left: 50%;
+  line-height: 1.35;
+  max-width: 3100px;
+  padding: 30px 44px;
+  position: absolute;
+  text-align: center;
+  transform: translateX(-50%);
+  width: max-content;
+}
+
+.film-disclosure {
+  background: rgba(5, 15, 31, 0.82);
+  border-radius: 10px;
+  bottom: 26px;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 19px;
+  font-weight: 600;
+  left: 50%;
+  letter-spacing: 0.015em;
+  padding: 10px 18px;
+  top: auto;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  z-index: 20;
+}
+
+.approval-pulse {
+  align-items: center;
+  background: rgba(255, 255, 255, 0.96);
+  border: 7px solid;
+  border-radius: 999px;
+  bottom: 315px;
+  box-shadow: 0 24px 80px rgba(10, 26, 52, 0.24);
+  display: flex;
+  font-size: 34px;
+  font-weight: 800;
+  gap: 18px;
+  left: 50%;
+  padding: 22px 34px;
+  position: absolute;
+  transform-origin: center;
+}
+
+.approval-pulse i {
+  border-radius: 50%;
+  box-shadow: 0 0 0 12px rgba(229, 138, 0, 0.16);
+  height: 20px;
+  width: 20px;
+}
+
+.missing-capture {
+  align-items: center;
+  background: radial-gradient(circle at 50% 45%, #183661, #081426 72%);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  font-family: "Segoe UI", Arial, sans-serif;
+  justify-content: center;
+  text-align: center;
+}
+
+.missing-capture strong {
+  font-size: 72px;
+}
+
+.missing-capture span {
+  color: #77a8ff;
+  font-size: 44px;
+  margin: 24px 0;
+}
+
+.missing-capture small {
+  color: #b8c7dc;
+  font-size: 30px;
+}

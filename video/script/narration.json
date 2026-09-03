@@ -1,0 +1,42 @@
+[
+  {
+    "id": "opening",
+    "rate": 8,
+    "text": "A registration problem discovered near graduation can involve much more than adding one course. The correct resolution depends on the student's academic record, programme requirements, course availability, university policy, and human approval."
+  },
+  {
+    "id": "main-page",
+    "rate": 8,
+    "text": "The Graduation Exception Agent brings these elements into one transparent workspace. On the left, a user can enter a case or select a prepared scenario. The central graph shows planning, specialist analysis, verification, human checkpoints, and execution. The inspector explains the current situation and case history. The timeline translates the process into plain language, and a final response appears only after verification."
+  },
+  {
+    "id": "data-page",
+    "rate": 12,
+    "text": "The Data Page makes the grounding visible. Public NTU and CCDS materials establish curriculum, course, calendar, and policy rules. Simulated records provide the student profile, registration state, live availability, approval, and transaction outcomes needed for a safe demonstration."
+  },
+  {
+    "id": "evaluation-page",
+    "rate": 5,
+    "text": "The Evaluation Page compares every observed run with its expected academic, policy, operational, and safety outcome. Individual runs and failures remain inspectable instead of being hidden behind a single score."
+  },
+  {
+    "id": "scenarios",
+    "rate": 0,
+    "text": "Seven scenarios cover recovery after a deadline, prerequisite evidence, overload handling, timetable conflict, missing documents, safe clarification when no valid path exists, and recovery when course availability changes."
+  },
+  {
+    "id": "s7-recovery",
+    "rate": 0,
+    "text": "In S7, the student initially has a feasible registration path. The planner asks the Course Agent to check the current offering, and the proposal passes pre-action verification. But when registration is attempted, the selected class is already full. The agent does not report success or repeat the same request blindly. It observes the failed transaction, verifies that the academic goal remains unsatisfied, and returns to planning with the latest availability. A new feasible index is checked against prerequisites, exclusions, timetable, and workload. The revised transaction succeeds. Post-action verification confirms the required course is registered, and the final response explains both the outcome and why replanning was necessary."
+  },
+  {
+    "id": "s2-approval",
+    "rate": 0,
+    "text": "S2 demonstrates a decision the agent must not make on its own. The student lacks the normally required prerequisite, so the system reviews the degree audit, prerequisite expression, course availability, submitted evidence, and applicable exception policy. Pre-action verification concludes that the request is reviewable but not automatically executable. The case pauses for the designated CCDS approving role. The approval panel explains what is requested, why approval is necessary, and which evidence supports it. After the simulated reviewer approves the request, the agent executes only the authorised action and verifies whether the registration objective has actually been achieved."
+  },
+  {
+    "id": "closing",
+    "rate": 8,
+    "text": "The Evaluation Page connects both demonstrations to their expected outcomes. S7 shows adaptive recovery from a changing environment, while S2 shows governed human intervention. Together, they demonstrate an agent that can reason, act, recover, and escalate without concealing uncertainty."
+  }
+]

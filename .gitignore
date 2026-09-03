@@ -12,3 +12,11 @@ dist/
 *.egg-info/
 tmp/
 var/
+video/node_modules/
+video/artifacts/
+video/public/captures/*.png
+video/public/captures/*.webm
+video/public/audio/*.wav
+video/public/audio/*.mp3
+video/output/*.mp4
+video/output/*.png

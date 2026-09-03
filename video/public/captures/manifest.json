@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "capturedAt": null,
+  "viewport": {
+    "width": 3840,
+    "height": 2160
+  },
+  "executionMode": "not-captured",
+  "source": {
+    "frontendUrl": null,
+    "backendUrl": null,
+    "disclosure": "Recorded from a real system run using grounded public sources and simulated operational data."
+  },
+  "frames": {}
+}
