@@ -1,7 +1,7 @@
 # Graduation Exception Agent
 
-> A grounded prototype for guiding NTU CCDS students through graduation and
-> registration exception cases that arise after normal registration closes.
+> A grounded hackathon prototype for resolving graduation-critical academic and
+> course-registration cases, using NTU CCDS reference data as its simulation ground.
 
 > **Prototype boundary:** This is a hackathon research prototype, not an
 > official NTU service. It combines public NTU/CCDS academic information with
@@ -13,11 +13,14 @@
 
 ## The problem
 
-A final-year student who discovers a graduation or registration issue after
-course registration has closed needs a reliable way to identify and complete
-the correct exception process, because resolving the issue may depend on degree
-requirements, prerequisites, course availability, supporting documents,
-policies, and approvals across multiple institutional divisions.
+A final-year student who discovers a graduation-critical degree or
+course-registration problem while preparing to complete their degree needs a
+reliable way to identify and pursue the correct resolution route, whether a
+routine registration adjustment, a documented exception request, or human
+review, because the necessary evidence and decision authority are fragmented
+across cohort-specific curriculum requirements, prerequisite and transfer-credit
+records, current course availability, supporting documents, institutional
+policies, and multiple administrative divisions.
 
 The agent turns that fragmented case into a safe, explainable path. It checks
 the current case against grounded and simulated records, identifies whether

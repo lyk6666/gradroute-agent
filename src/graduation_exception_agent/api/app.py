@@ -54,7 +54,7 @@ def create_app(
         title="Graduation Exception Agent API",
         version="1.0.0",
         description=(
-            "Agent-observable facade for the NTU CCDS-grounded research prototype."
+            "Agent-observable facade for a research prototype grounded in NTU CCDS reference data."
         ),
     )
     app.state.run_service = run_service

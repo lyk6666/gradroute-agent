@@ -27,7 +27,7 @@ export function TopNavigation({ activeSection, preview = false, systemStatus }: 
         <span className="brand-mark" aria-hidden="true"><i /><i /><i /></span>
         <span>
           <strong>Graduation Exception Agent</strong>
-          <small>NTU CCDS-grounded prototype</small>
+          <small>NTU CCDS reference-data prototype</small>
         </span>
       </div>
 

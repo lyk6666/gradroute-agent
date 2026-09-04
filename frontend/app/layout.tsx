@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     template: '%s | Graduation Exception Agent',
   },
   description:
-    'Team AIGO prototype for transparent, grounded NTU CCDS graduation exception resolution.',
+    'Team AIGO prototype for transparent, explainable resolution of graduation-critical academic and course-registration cases, grounded in NTU CCDS reference data.',
 };
 
 export const viewport: Viewport = {
