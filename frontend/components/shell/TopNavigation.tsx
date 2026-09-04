@@ -50,7 +50,13 @@ export function TopNavigation({ activeSection, preview = false, systemStatus }: 
         <span aria-live="polite" className={`system-health is-${status}`} role="status">
           <i /> {statusLabel}
         </span>
-        <span className="team-badge"><b>A</b> Team AIGO</span>
+        <span className="team-badge" title="Team Leader Li Yikai; Tang Ruixuan; Ong Alvin; Goh Hym Leong">
+          <b>A</b>
+          <span className="team-details">
+            <strong>Team AIGO</strong>
+            <small><em>Team Leader</em> Li Yikai · Tang Ruixuan · Ong Alvin · Goh Hym Leong</small>
+          </span>
+        </span>
       </div>
     </header>
   );
