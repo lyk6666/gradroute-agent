@@ -1,6 +1,6 @@
-"""Build the deterministic, evaluator-only Stage 4 execution contracts.
+"""Build deterministic, evaluator-only execution contracts.
 
-The Stage 3 scenario, transaction, and approval artifacts are immutable inputs.
+Scenario, transaction, and approval artifacts are immutable inputs.
 This builder adds only control-flow expectations; it does not reinterpret any
 academic fact or simulated transaction result.
 
@@ -12,7 +12,7 @@ Mappings are deliberately explicit:
   missing cohort/path fact changes the plan; they resume at Planner.
 * S6 missing-declaration cases require a small clarification because the
   declaration completes the existing candidate; they resume at PRE_ACTION.
-* Stage 3 ``requires_human`` means an approval record exists.  Administrative
+* ``requires_human`` means an approval record exists. Administrative
   review is represented separately: it follows a rejected approval through
   Planner, or follows a no-route S6 failure without fabricating an approval.
 * A successful REQUEST_APPROVAL is always intermediate.  Only the final

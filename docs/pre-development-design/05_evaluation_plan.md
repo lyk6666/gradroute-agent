@@ -13,7 +13,7 @@ Implementation status: Stage 7 now materializes this plan in
 `scripts/run_stage7_evaluation.py`. The accepted fixture baseline and
 qualifying Bedrock report are stored in `../evaluation/` and
 `../evaluation/live/`; see
-[`stage_7_evaluation_and_robustness.md`](stage_7_evaluation_and_robustness.md)
+[`stage_7_evaluation_and_robustness.md`](../development-log/stage_7_evaluation_and_robustness.md)
 for the measured results and live acceptance boundary.
 
 The hackathon training material highlights metrics such as schema validation, tool-call success, task completion, token cost, loop discipline, and answer fidelity. This plan incorporates those concepts and adds domain-specific checks.
@@ -88,7 +88,7 @@ Selected fields:
 
 The agent cannot access these evaluator-only fields during execution. The full
 schema and materialized records are documented in
-[`stage_3_simulation_data_details.md`](stage_3_simulation_data_details.md) and
+[`stage_3_simulation_data_details.md`](../development-log/stage_3_simulation_data_details.md) and
 stored in [`../data/tests/scenarios.json`](../data/tests/scenarios.json).
 
 # 4. Execution and Control-Flow Oracle
@@ -469,7 +469,7 @@ Stage 5 materializes the actual graph traces, clarification response cycle,
 pending-approval checkpoint/resume behavior, rejection-to-replan route, and
 hard-cap termination runs. The resulting architecture-conformance evidence is
 recorded in
-[`stage_5_langgraph_control_plane.md`](stage_5_langgraph_control_plane.md).
+[`stage_5_langgraph_control_plane.md`](../development-log/stage_5_langgraph_control_plane.md).
 
 Stage 7 now runs the 315 held-out repetitions in isolated runtimes, writes the
 four declared report artifacts, and applies deterministic acceptance gates.

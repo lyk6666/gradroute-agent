@@ -53,9 +53,10 @@ _EVALUATOR_SCENARIO_CODE = re.compile(r"\bS[1-9][0-9]*-[DE][0-9]{2,}\b", re.IGNO
 _MATRICULATION_ID = re.compile(r"\b[UNG][0-9]{7}[A-Z]\b", re.IGNORECASE)
 _SINGAPORE_PHONE = re.compile(r"(?<!\d)(?:\+?65[ -]?)?[689][0-9]{7}(?!\d)")
 
-# Runtime receipts are opaque operational references emitted by Stage 4.  Their
-# fixed namespace happens to contain a simulated case identifier, so permit the
-# complete generated shape rather than weakening the synthetic-ID filter.
+# Runtime receipts are opaque operational references emitted by the transaction
+# runtime. Their fixed namespace happens to contain a simulated case identifier,
+# so permit the complete generated shape rather than weakening the synthetic-ID
+# filter.
 _RUNTIME_RECEIPT_ID = re.compile(
     r"^receipt\.runtime\.case\.sim-[A-Z][A-Z0-9]*-[0-9]{3}\.[1-9][0-9]*$",
     re.IGNORECASE,

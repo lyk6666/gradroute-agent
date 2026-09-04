@@ -202,7 +202,7 @@ cohort, counterfactual terminal period, student count, audit mode, permitted
 paths, and accepted public-data gaps.
 
 The materialized fields, populations, temporal mapping, and validation rules are
-specified in [`stage_3_simulation_data_details.md`](stage_3_simulation_data_details.md).
+specified in [`stage_3_simulation_data_details.md`](../development-log/stage_3_simulation_data_details.md).
 
 ### `audit_assumptions.json`
 

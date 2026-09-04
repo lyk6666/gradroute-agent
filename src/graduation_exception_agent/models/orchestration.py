@@ -39,8 +39,8 @@ from graduation_exception_agent.models.workflow import (
 )
 
 
-# The architecture uses this more explicit name.  Keep it an alias so Stage 4
-# and Stage 5 share one optimistic-lock contract rather than diverging types.
+# The architecture uses this more explicit name. Keep it as an alias so the
+# runtime and control plane share one optimistic-lock contract.
 StateVersionExpectation = VersionExpectation
 
 MAX_REPLANS = 4

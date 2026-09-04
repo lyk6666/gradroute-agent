@@ -573,7 +573,7 @@ the live campaign also validates 720/720 structured reasoning calls without
 fallback. Neither stage may bypass current tools,
 approval/version gates, loop caps, checkpoint identity, or verified-only memory
 writes. See
-[`stage_5_langgraph_control_plane.md`](stage_5_langgraph_control_plane.md) for
+[`stage_5_langgraph_control_plane.md`](../development-log/stage_5_langgraph_control_plane.md) for
 the control-plane record and
-[`stage_6_grounded_llm_reasoning.md`](stage_6_grounded_llm_reasoning.md) for the
+[`stage_6_grounded_llm_reasoning.md`](../development-log/stage_6_grounded_llm_reasoning.md) for the
 reasoning boundary and live gate.

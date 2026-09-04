@@ -1,9 +1,0 @@
-* { box-sizing: border-box; }
-.ui-only-film, .ui-only-moment { background: #fff; overflow: hidden; }
-.spoken-region {
-  position: absolute;
-  border: 2px solid;
-  border-radius: 7px;
-  pointer-events: none;
-  background: transparent;
-}

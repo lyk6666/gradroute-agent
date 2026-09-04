@@ -1,238 +1,202 @@
 # Graduation Exception Agent
 
-The Graduation Exception Agent is a research prototype for resolving complex
-graduation and course-registration exceptions within NTU's College of
-Computing and Data Science (CCDS).
+> A grounded prototype for guiding NTU CCDS students through graduation and
+> registration exception cases that arise after normal registration closes.
 
-It is designed for cases in which a final-year student discovers an academic
-or registration issue after normal registration has closed. The system brings
-together curriculum requirements, prerequisites, course availability,
-registration policy, supporting evidence and approval requirements to produce
-a grounded, verifiable resolution path.
+> **Prototype boundary:** This is a hackathon research prototype, not an
+> official NTU service. It combines public NTU/CCDS academic information with
+> clearly labelled simulated student and operational data.
 
-This repository is not an official NTU service. It combines public NTU/CCDS
-sources with simulated student and operational records for research,
-demonstration and evaluation.
+## System overview
 
-## Product capabilities
+![Graduation Exception Agent system workspace](docs/assets/system-screenshots.png)
 
-- scenario-based and manual case intake;
-- curriculum and degree-audit analysis across CCDS programmes;
-- prerequisite, exclusion, semester-offering, timetable and workload checks;
-- policy retrieval and exception-eligibility assessment;
-- explicit clarification, administrative-review and human-approval gates;
-- bounded registration and exception transactions with observable outcomes;
-- pre-action and post-action verification;
-- working, thread and advisory long-term memory with provenance labels;
-- a visual execution graph with visit-by-visit history, a human-readable timeline
-  and a verified final response;
-- case-specific Bedrock explanations of node activity, working state and memory;
-- read-only grounded-data and evaluation dashboards.
+## The problem
 
-## System architecture
+A final-year student may discover an unresolved degree requirement, missing
+prerequisite, unavailable class, registration failure, or approval requirement
+after the normal registration window has closed. Resolving it can require facts
+held across curriculum rules, course offerings, degree audits, registration
+policy, supporting documents, and several approval roles.
 
-The backend is a typed Python application built around FastAPI, LangGraph and
-an isolated tool/runtime boundary. It supports deterministic fixture execution
-and grounded Amazon Bedrock reasoning through the Converse API.
+The agent turns that fragmented case into a safe, explainable path. It checks
+the current case against grounded and simulated records, identifies whether
+clarification or human review is necessary, carries out only permitted actions,
+and verifies the observable result before presenting a final response.
 
-The frontend is a React application built with Next-compatible routing,
-Vinext and Vite. It provides three product surfaces:
+The canonical wording is in [PROBLEM_STATEMENT.md](PROBLEM_STATEMENT.md).
 
-- **Main** — case intake and live agent execution;
-- **Data** — processed views of real and simulated grounding data;
-- **Evaluation** — isolated fixture and Bedrock evaluation evidence.
+## What the prototype demonstrates
 
-Evaluator-only ground truth is excluded from the agent's runtime context.
-Actions requiring approval cannot be self-approved, and final outcomes are
-shown only after verification.
+- Manual intake and seven demo scenarios, plus isolated evaluation scenarios.
+- Degree-audit, course-feasibility, prerequisite, exclusion, timetable,
+  workload, policy, document, and approval checks.
+- A controlled agent workflow with planning, specialist routing, two verifier
+  phases, clarification, administrative review, human approval, transaction,
+  observation, and memory update states.
+- Human checkpoints that cannot be auto-approved by the agent.
+- A visual execution graph, visit history, timeline, readable evidence summary,
+  and final outcome with reasons.
+- A read-only data explorer that distinguishes public grounding from simulated
+  operational data, and an evaluation dashboard that keeps answer keys outside
+  the agent runtime.
+- Deterministic fixture execution by default, with optional Amazon Bedrock
+  narration and reasoning when configured.
 
-## Data boundary
+## Team
 
-The grounded package covers public NTU/CCDS curricula, courses, academic
-calendar information and published policies. Student records, live offerings,
-transactions, exception cases and approval states are simulated.
+- **Team Leader:** Li Yikai
+- **Members:** Tang Ruixuan, Ong Alvin, Goh Hym Leong
 
-Authenticated curriculum plans, personalised registration slots, real-time
-vacancies and undocumented approval chains are outside the prototype's
-authoritative scope. See [`docs/README.md`](docs/README.md) for the detailed
-implementation specifications, source conventions and development records.
-
-## Repository structure
+## Repository guide
 
 ```text
-data/        grounded public sources, simulated records and scenarios
-docs/        architecture, data specifications and development records
-evaluation/  accepted fixture and Bedrock evaluation artifacts
-frontend/    React/Vinext user interface
-scripts/     data, evaluation and delivery utilities
-src/         Python backend and agent runtime
-tests/       automated backend and contract tests
-video/       automated browser capture and UI-only Remotion simulation film
+.
+├── .env.example                  local configuration template; never commit .env
+├── PROBLEM_STATEMENT.md          agreed user problem and scope
+├── README.md                     submission overview and startup guide
+├── pyproject.toml                Python package and test configuration
+├── data/
+│   ├── real/                     public NTU/CCDS-derived academic sources
+│   └── simulated/                anonymous students, offerings, cases and approvals
+├── docs/
+│   ├── README.md                 documentation map
+│   ├── assets/                   README images and other documentation assets
+│   ├── pre-development-design/   original data, architecture, scenario and evaluation designs
+│   └── development-log/          retained implementation history (Stages 1–14)
+├── evaluation/                   accepted fixture and optional Bedrock campaign artifacts
+├── frontend/
+│   ├── app/                      Main, Data and Evaluation routes
+│   ├── components/               shared application shell and reusable UI
+│   ├── features/                 workspace, data-explorer and evaluation surfaces
+│   └── lib/                      API clients, presentation models and utilities
+├── scripts/                      reproducible data, evaluation and local-start utilities
+├── src/graduation_exception_agent/
+│   ├── api/                      FastAPI endpoints and presentation services
+│   ├── data/                     real/simulated data loading and validation
+│   ├── evaluation/               isolated contracts, campaigns and metrics
+│   ├── memory/                   privacy-safe advisory memory interfaces
+│   ├── models/                   typed academic, workflow and runtime contracts
+│   ├── orchestration/            graph decisions, nodes and checkpoint control
+│   ├── reasoning/                optional Amazon Bedrock integration
+│   ├── runtime/                  controlled tools, transactions and sessions
+│   └── tools/                    degree, policy, course and action tool domains
+└── tests/                        backend, contract, safety and presentation tests
 ```
 
-## Prerequisites
+For design rationale and implementation history, start with
+[docs/README.md](docs/README.md).
 
-- Python 3.11 or newer;
-- Node.js 22.13 or newer and npm;
-- AWS CLI v2 plus an IAM Identity Center profile when using Bedrock.
+## Quick start
 
-## Initial setup
+### Prerequisites
 
-From the repository root in PowerShell:
+- Python 3.11 or later
+- Node.js 22.13 or later with npm
+- Optional for live narration/reasoning: AWS CLI v2 and an IAM Identity Center
+  profile that can access the selected Amazon Bedrock model
+
+### Install
+
+Run these commands from the repository root in PowerShell:
 
 ```powershell
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -e ".[dev]"
 Copy-Item .env.example .env
-```
 
-Install the frontend dependencies:
-
-```powershell
-cd frontend
+Push-Location frontend
 npm ci
-cd ..
+Pop-Location
 ```
 
-The default `fixture` execution mode does not require AWS credentials. For
-Bedrock, configure `.env` with a refreshable AWS profile rather than temporary
-access keys:
+The default `fixture` mode runs locally without AWS credentials.
 
-```dotenv
-EXECUTION_MODE=bedrock
-AWS_PROFILE=ccds-sandbox
-AWS_REGION=us-east-1
-BEDROCK_MODEL_ID=amazon.nova-micro-v1:0
-UI_NARRATION_ENABLED=1
-```
-
-Natural-language UI narration runs whenever it is enabled and a Bedrock model
-is configured. This can be used with either fixture or Bedrock control-plane
-execution; narration explains recorded results but cannot change them.
-
-Sign in when the overall SSO session has expired:
-
-```powershell
-aws sso login --profile ccds-sandbox
-```
-
-Never commit `.env`, AWS access keys or session tokens.
-
-## Start the application
-
-### Start both services together
-
-The simplest local startup uses the repository-relative PowerShell launcher.
-It starts both services with matching API and CORS settings, waits until they
-are ready, and stops both when you press Enter:
+### Start frontend and backend together
 
 ```powershell
 & .\scripts\start_local.ps1
 ```
 
-The command may be run from any current directory when invoked with the
-script's absolute path. Optional ports can be supplied explicitly:
+The launcher starts the backend at `http://127.0.0.1:8000` and the frontend at
+`http://localhost:3000`, waits for both to become ready, and stops both when
+you press Enter.
 
-```powershell
-& .\scripts\start_local.ps1 -BackendPort 8000 -FrontendPort 5173
-```
+### Start services separately
 
-### Start the backend separately
-
-From the repository root:
+In one PowerShell terminal:
 
 ```powershell
 .\.venv\Scripts\python.exe -m graduation_exception_agent.api
 ```
 
-The backend starts at `http://127.0.0.1:8000`:
-
-- API documentation: `http://127.0.0.1:8000/docs`
-- health check: `http://127.0.0.1:8000/api/v1/health`
-- readiness check: `http://127.0.0.1:8000/api/v1/ready`
-
-### Start the frontend separately
-
-For separate-process startup, keep the backend running and open a second
-PowerShell terminal:
+In a second terminal:
 
 ```powershell
-cd frontend
+Set-Location frontend
 npm run dev
 ```
 
-The frontend normally starts at `http://localhost:3000`.
+Useful backend endpoints:
 
-If port 3000 is occupied, choose another port and give the backend the same
-allowed frontend origin. For example, set
-`FRONTEND_ORIGIN=http://localhost:5173` in the root `.env`, restart the backend,
-and run:
+- `http://127.0.0.1:8000/docs` — API reference
+- `http://127.0.0.1:8000/api/v1/health` — health check
+- `http://127.0.0.1:8000/api/v1/ready` — readiness check
 
-```powershell
-cd frontend
-npm run dev -- --port 5173
+### Optional Bedrock mode
+
+Use a refreshable named profile in `.env`; do not paste temporary credentials
+or access keys into the repository.
+
+```dotenv
+EXECUTION_MODE=bedrock
+AWS_PROFILE=<your-sso-profile>
+AWS_REGION=<your-bedrock-region>
+BEDROCK_MODEL_ID=amazon.nova-micro-v1:0
+UI_NARRATION_ENABLED=1
 ```
 
-If the API is hosted at a non-default address, set
-`NEXT_PUBLIC_API_BASE_URL` in `frontend/.env.local` before starting the
-frontend.
-
-For a production-like local frontend:
+When the Identity Center session expires, refresh it before starting the app:
 
 ```powershell
-cd frontend
-npm ci
+aws sso login --profile <your-sso-profile>
+```
+
+`UI_NARRATION_ENABLED=1` can also enrich fixture-mode explanations when a
+Bedrock profile and model are available. Generated narration explains recorded
+facts; it does not override the deterministic workflow, policy, or tool checks.
+
+## Verification
+
+```powershell
+# Backend tests
+.\.venv\Scripts\python.exe -m pytest
+
+# Frontend checks
+Push-Location frontend
+npm run typecheck
+npm run lint
 npm run build
-npm run start
+Pop-Location
 ```
 
-## Render the UI-only simulation video
+Live Bedrock checks and the larger evaluation campaign are intentionally opt-in
+through `.env` because they make real model calls.
 
-The simulation film is generated from a real automated run of the local
-application. It goes directly through S7 recovery and S2 prerequisite review,
-including an explicit simulated approval. Continuous browser footage is edited
-with close-ups, subtle outlines and short narration; there are no captions,
-title cards, dark masks or repeated screenshot fades.
+## Data and safety boundaries
 
-From the repository root:
+- Public NTU/CCDS sources ground academic structure and published policies.
+- Student records, live class states, transactions, approval decisions, and
+  operational failures are simulated.
+- Evaluator-only ground truth is not available to the agent or the normal UI.
+- The agent cannot self-approve; any approval, clarification, or administrative
+  review remains a visible human checkpoint.
+- A final resolution is shown only after the relevant post-action check has
+  observed its required condition.
 
-```powershell
-& .\scripts\render_simulation_demo.ps1
-```
+## Submission notes
 
-The default is a 1:55, 1280×720 review copy. The command starts the
-application services when both requested ports are free and stops only the
-processes it created; a healthy frontend/backend pair already using the
-requested ports is reused and left running. The final file is created at
-`video/output/simulation-ui-only-720p.mp4`. It refuses a partially occupied
-service pair so it cannot accidentally combine unrelated frontend/backend
-processes. The earlier 4K film is preserved separately.
-
-When Bedrock mode is configured, sign in first if the SSO session has expired:
-
-```powershell
-aws sso login --profile ccds-sandbox
-```
-
-For a reproducible fixture capture that does not call Bedrock:
-
-```powershell
-& .\scripts\render_simulation_demo.ps1 -Fixture
-```
-
-Use `-HeadedCapture` to watch the automated browser. Use `-SkipCapture` to
-re-render the existing take without starting the application. Narration
-generation requires network access; add `-SkipNarration` to reuse existing audio.
-
-```powershell
-# Quickly render the current edit again without restarting or calling the runtime.
-& .\scripts\render_simulation_demo.ps1 -SkipCapture -SkipNarration
-
-# Optional 4K composition export after the preview has been reviewed.
-& .\scripts\render_simulation_demo.ps1 -SkipCapture -SkipNarration -Final4K
-```
-
-The review take uses 1920×1080 source footage. A 4K export from that same take
-does not add source detail. The script, framing and narration are maintained in
-`video/script/simulation-edit.json`; generated media and runtime manifests are
-local artifacts, not Git-tracked source files.
+The repository excludes local environments, credentials, runtime databases,
+and build outputs. The included application, data package, tests,
+documentation, and screenshot are sufficient to install, run, inspect, and
+evaluate the prototype locally.

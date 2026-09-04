@@ -547,7 +547,7 @@ against this frozen package. It also adds the control-flow oracle,
 action-specific postconditions, and approval/clarification/checkpoint
 expectations described in [`05_evaluation_plan.md`](05_evaluation_plan.md),
 without reclassifying unknown NTU rules as verified facts. See
-[`stage_4_runtime_and_tools.md`](stage_4_runtime_and_tools.md) for the delivered
+[`stage_4_runtime_and_tools.md`](../development-log/stage_4_runtime_and_tools.md) for the delivered
 tool boundary. Stage 5 now executes the normative graph in
 [`02_solution_architecture.md`](02_solution_architecture.md), as recorded in
-[`stage_5_langgraph_control_plane.md`](stage_5_langgraph_control_plane.md).
+[`stage_5_langgraph_control_plane.md`](../development-log/stage_5_langgraph_control_plane.md).

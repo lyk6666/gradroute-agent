@@ -307,7 +307,7 @@ summary:focus-visible,
 .mode-tabs button { display: flex; min-height: 38px; align-items: center; justify-content: center; gap: 6px; color: var(--muted); border: 0; border-radius: 7px; background: transparent; font-size: 12px; font-weight: 800; cursor: pointer; }
 .mode-tabs button.is-active { color: var(--primary-strong); background: white; box-shadow: var(--shadow-sm); }
 
-/* UI-2 intake */
+/* Case intake */
 .intake-scroll-content,
 .meta-scroll-content { min-height: 0; overflow: auto; scrollbar-width: thin; scrollbar-color: #cbd5e1 transparent; }
 .intake-scroll-content { display: grid; align-content: start; grid-auto-rows: max-content; gap: 12px; padding: 0 12px 12px; }
@@ -401,7 +401,7 @@ summary:focus-visible,
 .start-run-button:disabled { cursor: not-allowed; opacity: 0.55; }
 .run-error { margin: 0; padding: 6px 8px; color: #b91c1c; border-radius: 6px; background: #fef2f2; font-size: 9px; line-height: 1.4; }
 
-/* UI-2 graph and in-canvas interaction rail */
+/* Execution graph and in-canvas interaction */
 .graph-panel { position: relative; }
 .graph-toolbar { position: absolute; z-index: 5; top: 8px; right: 44px; padding: 5px 7px; border: 1px solid rgb(219 227 238 / 85%); border-radius: 8px; background: rgb(255 255 255 / 90%); box-shadow: var(--shadow-sm); backdrop-filter: blur(6px); }
 .graph-legend { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px; color: var(--muted); font-size: 9px; }
@@ -579,7 +579,7 @@ summary:focus-visible,
 .flow-edge-label.label-success { color: #047857; border-color: #a7f3d0; background: #f5fffb; }
 @keyframes graph-spin { to { transform: rotate(360deg); } }
 
-/* UI-2 processed inspector */
+/* Processed case inspector */
 .meta-scroll-content { padding: 12px; }
 .selected-node-callout { display: flex; gap: 7px; margin-bottom: 8px; padding: 8px; color: #1e3a8a; border: 1px solid #bfdbfe; border-radius: 8px; background: #eff6ff; }
 .selected-node-callout svg { flex: 0 0 auto; }
@@ -688,7 +688,7 @@ summary:focus-visible,
 .inspector-provenance-row { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 7px; }
 .inspector-provenance-row > span:last-child { color: #475569; font-size: 10px; }
 
-/* UI-2 execution timeline */
+/* Execution timeline */
 .timeline-scroll { position: relative; display: flex; min-height: 0; flex: 1; align-items: center; gap: 0; padding: 5px 18px 1px; overflow-x: auto; scrollbar-width: thin; }
 .timeline-scroll::before { position: absolute; top: calc(50% - 16px); left: 40px; width: calc(100% - 80px); height: 2px; content: ''; background: #dbe3ee; }
 .timeline-event { position: relative; z-index: 1; display: grid; min-width: 104px; flex: 1; justify-items: center; gap: 4px; padding: 0 5px; color: var(--text); border: 0; background: transparent; cursor: pointer; }
@@ -707,7 +707,7 @@ summary:focus-visible,
 .timeline-empty { position: relative; z-index: 1; width: 100%; color: #94a3b8; font-size: 11px; text-align: center; }
 .timeline-hint { display: flex; align-items: center; justify-content: center; gap: 5px; padding: 1px 10px 4px; color: #94a3b8; font-size: 9px; }
 
-/* UI-2 final response */
+/* Final response */
 .response-content { display: flex; min-height: 0; flex: 1; flex-direction: column; gap: 10px; padding: 12px; overflow: auto; }
 .response-checks { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5px; margin-top: auto; }
 .response-checks > span { display: flex; min-height: 36px; align-items: center; justify-content: center; gap: 5px; padding: 5px; border: 1px solid var(--border); border-radius: 7px; font-size: 9px; font-weight: 800; text-align: center; }
@@ -1171,7 +1171,7 @@ summary:focus-visible,
   }
 }
 
-/* Stage 8 · UI-4 grounded data explorer */
+/* Grounded data explorer */
 .data-explorer {
   display: grid;
   min-height: 0;
@@ -1504,7 +1504,7 @@ summary:focus-visible,
   .data-record-table { min-width: 760px; }
 }
 
-/* Stage 8 · UI-5 evaluation evidence */
+/* Evaluation evidence */
 .evaluation-dashboard {
   display: grid;
   height: 100%;

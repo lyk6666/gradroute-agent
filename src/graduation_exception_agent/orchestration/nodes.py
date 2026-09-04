@@ -706,7 +706,7 @@ class Stage5Nodes:
                 parameters["offering_state_id"] = state_id
                 expected_versions.append(self._offering_version(state, state_id))
         else:
-            # The Stage 3 graduation-clearance simulation intentionally accepts
+            # The graduation-clearance simulation intentionally accepts
             # an empty submission payload.  Academic facts stay in evidence and
             # are not smuggled into a mismatched write contract.
             action = TransactionAction.SUBMIT_EXCEPTION

@@ -455,8 +455,8 @@ class Stage5ControlPlane:
         return {
             "configurable": {
                 # This is a private saver key. The stable public thread id is
-                # retained in WorkflowState and never used without the owning
-                # Stage 4 session/case namespace.
+                # retained in WorkflowState and never used outside its owning
+                # session and case namespace.
                 "thread_id": (
                     f"{self._checkpoint_key_prefix}"
                     f"|thread:{len(thread_id)}:{thread_id}"
@@ -487,7 +487,7 @@ class Stage5ControlPlane:
                 )
             self.tools._claim_stage5_control_plane(self._owner_token, thread_id)
             # Claim before invoking. If execution fails, retaining the claim is
-            # fail-closed because the Stage 4 session may already have mutated.
+            # fail-closed because the mutable session may already have changed.
             self._owned_thread_id = thread_id
 
     def _require_owned_checkpoint(self, thread_id: str) -> Any:

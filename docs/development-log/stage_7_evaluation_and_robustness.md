@@ -3,7 +3,7 @@
 ## 1. Status and purpose
 
 Stage 7 implements the frozen held-out evaluation campaign described in
-[`05_evaluation_plan.md`](05_evaluation_plan.md). It measures the complete
+[`05_evaluation_plan.md`](../pre-development-design/05_evaluation_plan.md). It measures the complete
 Stage 5/6 workflow with deterministic evaluator-owned oracles rather than
 asking the same model to grade itself.
 

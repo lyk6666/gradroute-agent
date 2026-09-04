@@ -31,7 +31,7 @@ case and context identifiers are opaque rather than encoding the scenario
 family or split.
 
 The exact delivered populations and validation boundaries are recorded in
-[`stage_3_simulation_data_details.md`](stage_3_simulation_data_details.md).
+[`stage_3_simulation_data_details.md`](../development-log/stage_3_simulation_data_details.md).
 
 ## Materialized demo inputs and expected responses
 
@@ -437,5 +437,5 @@ The Stage 3 corpus supplies academic and transaction scenarios. Stage 4 adds
 the checked-in execution/control-flow fixture for verifier phases,
 clarification routing, approval versus escalation, checkpoint expectations,
 and goal postconditions. Stage 5 now executes and traces those graph behaviors;
-see [`stage_5_langgraph_control_plane.md`](stage_5_langgraph_control_plane.md).
+see [`stage_5_langgraph_control_plane.md`](../development-log/stage_5_langgraph_control_plane.md).
 Neither later stage changes the grounded academic facts.

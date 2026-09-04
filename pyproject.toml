@@ -24,9 +24,6 @@ graduation-exception-api = "graduation_exception_agent.api.__main__:main"
 dev = [
     "pytest>=8.3,<10",
 ]
-video = [
-    "edge-tts>=7.2.8,<8",
-]
 
 [tool.setuptools.packages.find]
 where = ["src"]
