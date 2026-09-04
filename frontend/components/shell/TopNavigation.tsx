@@ -46,7 +46,7 @@ export function TopNavigation({ activeSection, preview = false, systemStatus }: 
       </nav>
 
       <div className="topbar-actions">
-        <span className="event-badge">✦ IGNITE 2026 Prototype</span>
+        <span className="event-badge">✦ IGNITE: SimplifyNext Agentic AI Hackathon 2026 Prototype</span>
         <span aria-live="polite" className={`system-health is-${status}`} role="status">
           <i /> {statusLabel}
         </span>
