@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 from pathlib import Path
+import re
 from typing import Any, Iterable
 
 from graduation_exception_agent.api.models import (
@@ -58,6 +59,11 @@ DOMAINS = (
         dataset_ids=[],
     ),
 )
+
+
+# ``_value`` abbreviates long lists for table cells (for example, ``CSC +2 more``).
+# That is useful presentation text, but the trailing count is never a programme.
+_COMPACT_LIST_SUFFIX = re.compile(r"\s+\+\d+\s+more$")
 
 
 class DataService:
@@ -414,9 +420,9 @@ def _options(records: list[DataRecord], keys: tuple[str, ...]) -> list[str]:
             value = record.cells.get(key)
             if value and value not in {"None", "Not available"}:
                 values.update(
-                    part.strip()
+                    _COMPACT_LIST_SUFFIX.sub("", part).strip()
                     for part in value.replace(";", ",").split(",")
-                    if part.strip()
+                    if _COMPACT_LIST_SUFFIX.sub("", part).strip()
                 )
     return sorted(values)
 

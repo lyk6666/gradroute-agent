@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import re
+
 import pytest
 from fastapi.testclient import TestClient
 
@@ -61,6 +63,15 @@ def test_table_supports_search_sort_filter_and_pagination(client: TestClient) ->
     assert all(
         "CSC" in item["cells"]["programmes"] for item in payload["records"]
     )
+
+
+def test_programme_filter_omits_display_truncation_markers(client: TestClient) -> None:
+    payload = client.get("/api/v1/data/courses", params={"page_size": 5}).json()
+    programmes = payload["filters"]["programmes"]
+
+    assert "CSC" in programmes
+    assert "CSEC" in programmes
+    assert not any(re.search(r"\s+\+\d+\s+more$", item) for item in programmes)
 
 
 def test_markdown_documents_are_available_as_processed_records(
