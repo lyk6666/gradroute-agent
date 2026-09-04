@@ -26,7 +26,7 @@ export function TopNavigation({ activeSection, preview = false, systemStatus }: 
       <div className="brand-lockup">
         <span className="brand-mark" aria-hidden="true"><i /><i /><i /></span>
         <span>
-          <strong>Graduation Exception Agent</strong>
+          <strong>GradRoute Agent</strong>
           <small>NTU CCDS reference-data prototype</small>
         </span>
       </div>

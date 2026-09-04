@@ -1,4 +1,4 @@
-"""Deterministic rules used by the graduation exception agent."""
+"""Deterministic rules used by GradRoute Agent."""
 
 from graduation_exception_agent.rules.prerequisites import (
     AndRequirement,

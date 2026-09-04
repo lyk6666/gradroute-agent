@@ -1,4 +1,4 @@
-"""Foundation package for the graduation exception agent."""
+"""Foundation package for GradRoute Agent."""
 
 from graduation_exception_agent.config import AppSettings, ExecutionMode, load_settings
 from graduation_exception_agent.models import (

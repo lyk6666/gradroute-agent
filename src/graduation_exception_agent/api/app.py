@@ -51,7 +51,7 @@ def create_app(
         return evaluation_service or EvaluationService(selected_settings)
 
     app = FastAPI(
-        title="Graduation Exception Agent API",
+        title="GradRoute Agent API",
         version="1.0.0",
         description=(
             "Agent-observable facade for a research prototype grounded in NTU CCDS reference data."

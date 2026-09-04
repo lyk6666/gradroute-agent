@@ -3,9 +3,9 @@ requires = ["setuptools>=75"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "graduation-exception-agent"
+name = "gradroute-agent"
 version = "0.1.0"
-description = "NTU CCDS-grounded graduation and registration exception agent prototype"
+description = "Reference-data-grounded graduation and course-registration resolution prototype"
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
@@ -18,7 +18,7 @@ dependencies = [
 ]
 
 [project.scripts]
-graduation-exception-api = "graduation_exception_agent.api.__main__:main"
+gradroute-agent-api = "graduation_exception_agent.api.__main__:main"
 
 [project.optional-dependencies]
 dev = [

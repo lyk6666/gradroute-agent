@@ -176,7 +176,7 @@ try {
         throw "Frontend became ready but its listening process could not be identified."
     }
 
-    Write-Host "Graduation Exception Agent is running." -ForegroundColor Green
+    Write-Host "GradRoute Agent is running." -ForegroundColor Green
     Write-Host "Frontend: http://localhost:$FrontendPort"
     Write-Host "Backend:  http://127.0.0.1:$BackendPort"
     Write-Host "API docs: http://127.0.0.1:$BackendPort/docs"

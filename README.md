@@ -1,4 +1,4 @@
-# Graduation Exception Agent
+# GradRoute Agent
 
 > A grounded hackathon prototype for resolving graduation-critical academic and
 > course-registration cases, using NTU CCDS reference data as its simulation ground.
@@ -9,7 +9,7 @@
 
 ## System overview
 
-![Graduation Exception Agent system workspace](docs/assets/system-screenshots.png)
+![GradRoute Agent system workspace](docs/assets/system-screenshots.png)
 
 ## The problem
 
