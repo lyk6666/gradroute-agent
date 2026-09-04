@@ -13,14 +13,12 @@
 
 ## The problem
 
-A final-year student who discovers a graduation-critical degree or
-course-registration problem while preparing to complete their degree needs a
-reliable way to identify and pursue the correct resolution route, whether a
-routine registration adjustment, a documented exception request, or human
-review, because the necessary evidence and decision authority are fragmented
-across cohort-specific curriculum requirements, prerequisite and transfer-credit
-records, current course availability, supporting documents, institutional
-policies, and multiple administrative divisions.
+A final-year student facing a graduation-critical degree or course-registration
+problem needs a reliable way to identify the correct route, whether a routine
+adjustment, documented exception request, or human review, because the required
+evidence and authority are spread across curriculum rules, prerequisite and
+transfer-credit records, course availability, policies, supporting documents,
+and institutional divisions.
 
 The agent turns that fragmented case into a safe, explainable path. It checks
 the current case against grounded and simulated records, identifies whether
