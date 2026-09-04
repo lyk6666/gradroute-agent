@@ -13,18 +13,18 @@
 
 ## The problem
 
-A final-year student may discover an unresolved degree requirement, missing
-prerequisite, unavailable class, registration failure, or approval requirement
-after the normal registration window has closed. Resolving it can require facts
-held across curriculum rules, course offerings, degree audits, registration
-policy, supporting documents, and several approval roles.
+A final-year student who discovers a graduation or registration issue after
+normal registration has closed needs a reliable way to identify and complete
+the correct exception process, because resolving the issue may depend on degree
+requirements, prerequisites, module availability, supporting documents,
+policies, and approvals across multiple university units.
 
 The agent turns that fragmented case into a safe, explainable path. It checks
 the current case against grounded and simulated records, identifies whether
 clarification or human review is necessary, carries out only permitted actions,
 and verifies the observable result before presenting a final response.
 
-The canonical wording is in [PROBLEM_STATEMENT.md](PROBLEM_STATEMENT.md).
+This section is the canonical problem statement for the submission.
 
 ## What the prototype demonstrates
 
@@ -53,7 +53,6 @@ The canonical wording is in [PROBLEM_STATEMENT.md](PROBLEM_STATEMENT.md).
 ```text
 .
 ├── .env.example                  local configuration template; never commit .env
-├── PROBLEM_STATEMENT.md          agreed user problem and scope
 ├── README.md                     submission overview and startup guide
 ├── pyproject.toml                Python package and test configuration
 ├── data/
