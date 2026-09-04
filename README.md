@@ -43,10 +43,12 @@ This section is the canonical problem statement for the submission.
 - Deterministic fixture execution by default, with optional Amazon Bedrock
   narration and reasoning when configured.
 
-## Team
+## Research team and contributors
+
+This hackathon research prototype was developed by the following team:
 
 - **Team Leader:** Li Yikai
-- **Members:** Tang Ruixuan, Ong Alvin, Goh Hym Leong
+- **Contributors:** Tang Ruixuan, Ong Alvin, Goh Hym Leong
 
 ## Repository guide
 
