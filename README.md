@@ -14,10 +14,10 @@
 ## The problem
 
 A final-year student who discovers a graduation or registration issue after
-normal registration has closed needs a reliable way to identify and complete
+course registration has closed needs a reliable way to identify and complete
 the correct exception process, because resolving the issue may depend on degree
-requirements, prerequisites, module availability, supporting documents,
-policies, and approvals across multiple university units.
+requirements, prerequisites, course availability, supporting documents,
+policies, and approvals across multiple institutional divisions.
 
 The agent turns that fragmented case into a safe, explainable path. It checks
 the current case against grounded and simulated records, identifies whether
